@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135679482262923797}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.63803655, y: 1.0680838, z: 1.2472737}
+  m_LocalPosition: {x: 0, y: 1.0680838, z: 1.2472737}
   m_LocalScale: {x: 0.10841535, y: 0.10841535, z: 0.10841535}
   m_Children: []
   m_Father: {fileID: 1630012804697359665}
@@ -102,6 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630012804697359665}
+  - component: {fileID: 2576141108520106730}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -125,6 +126,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2576141108520106730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993760371542683018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd913934680ceb64bb150b706a46e706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2494507430304659886
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2494507430304659886}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.6410365, y: 1.0690837, z: 0.83327365}
+  m_LocalPosition: {x: 0, y: 1.0690837, z: 0.83327365}
   m_LocalScale: {x: 0.05147935, y: 0.43546897, z: 0.051479355}
   m_Children: []
   m_Father: {fileID: 1630012804697359665}

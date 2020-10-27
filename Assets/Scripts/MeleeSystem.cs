@@ -5,7 +5,10 @@ using UnityEngine;
 public class Meele : MonoBehaviour
 {
 
-    
+    private ArrayList enemys = new ArrayList();
+    public float attackPause = 1f;
+    private float periodeTimeSum = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +19,13 @@ public class Meele : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemys = GetComponentInChildren<EnemyDetector>().enemys;
+
+        if ( enemys.Count != 0)
+        {
+
+        }
+
         
     }
 

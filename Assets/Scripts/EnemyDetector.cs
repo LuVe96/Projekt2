@@ -7,17 +7,11 @@ public class EnemyDetector : MonoBehaviour
 
     public ArrayList enemys { get; private set; } = new ArrayList();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
-            enemys.Add(other.gameObject);
+            enemys.Add(other.gameObject);     
         }
     }
 
