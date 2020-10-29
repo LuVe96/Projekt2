@@ -67,7 +67,7 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
 
         GameObject arrow = Instantiate(arrowPrefab);
         arrow.transform.position = transform.position;
-        arrow.GetComponent<ArrowHandler>().ShotAt(enemy.transform, arrowVelocity);
+        arrow.GetComponent<ProjectileHandler>().ShotAt(enemy.transform, arrowVelocity);
         //transform.parent.parent.GetComponent<PlayerMovement>().LookAt(enemy.transform);
     }
 
