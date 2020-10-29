@@ -28,8 +28,6 @@ public class ProjectileHandler : MonoBehaviour
 
     public void ShotAt(Transform goalTransform, float? projectilVelocity = null)
     {
-        Debug.Log("akt Pos: " + transform.position);
-        Debug.Log("Shot At: " + goalTransform.position);
         transform.LookAt(goalTransform.position);
         direction = goalTransform.position - this.transform.position;
         if (projectilVelocity.HasValue)
