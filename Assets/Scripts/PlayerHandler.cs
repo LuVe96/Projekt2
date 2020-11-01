@@ -28,6 +28,7 @@ public class PlayerHandler : MonoBehaviour
     {
         if(collision.transform.tag == "EnemyProjectile")
         {
+            Debug.Log("hit");
             lifeAmount -= collision.gameObject.GetComponent<ProjectileHandler>().damage;
             GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
         }
