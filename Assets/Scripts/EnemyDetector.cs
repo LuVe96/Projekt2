@@ -23,7 +23,7 @@ public class EnemyDetector : MonoBehaviour
         }
     }
 
-    public void removeFromEnemyList(GameObject enemy)
+    public void RemoveFromEnemyList(GameObject enemy)
     {
         if (enemy.tag == "Enemy")
         {

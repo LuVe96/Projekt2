@@ -30,7 +30,8 @@ public class EnemyHandler : MonoBehaviour
 
         if(lifeAmount <= 0)
         {
-            GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().removeFromEnemyList(transform.Find("Charakter").gameObject);
+            //GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(transform.Find("Charakter").gameObject);
+            GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(gameObject);
             Destroy(gameObject);
         }
 

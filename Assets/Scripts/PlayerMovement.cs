@@ -10,8 +10,14 @@ public class PlayerMovement : MonoBehaviour
     public Transform playerModel;
     static public bool playerIsMoving { get;  private set; } = false;
     private GameObject goalObject = null;
+    private new Rigidbody rigidbody;
 
     private IAttackEnemyInterface attackEnemyInterface;
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,26 +25,32 @@ public class PlayerMovement : MonoBehaviour
         float playerSpeedWD = playerSpeed * Time.deltaTime;
         playerIsMoving = false;
         Vector2 keyboardMovement = getMovementInput();
-    
-        if(joystick.Horizontal <= -0.1 ||  keyboardMovement.x <= -0.1)
+
+        Vector3 newRigidbodyVelocity = new Vector3(0, rigidbody.velocity.y, 0);
+
+        if (joystick.Horizontal <= -0.1 ||  keyboardMovement.x <= -0.1)
         {
-            transform.position += new Vector3(-playerSpeedWD, 0, 0);
+            //transform.position += new Vector3(-playerSpeedWD, 0, 0);
+            newRigidbodyVelocity = new Vector3(-playerSpeed, rigidbody.velocity.y, newRigidbodyVelocity.z);
             playerIsMoving = true;
         }
         else if (joystick.Horizontal >= 0.1 || keyboardMovement.x >= 0.1)
         {
-            transform.position += new Vector3(playerSpeedWD, 0, 0);
+            //transform.position += new Vector3(playerSpeedWD, 0, 0);
+            newRigidbodyVelocity = new Vector3(playerSpeed, rigidbody.velocity.y, newRigidbodyVelocity.z);
             playerIsMoving = true;
         }
 
         if (joystick.Vertical <= -0.1 || keyboardMovement.y <= -0.1)
         {
-            transform.position += new Vector3(0, 0, -playerSpeedWD);
+            //transform.position += new Vector3(0, 0, -playerSpeedWD);
+            newRigidbodyVelocity = new Vector3(newRigidbodyVelocity.x, rigidbody.velocity.y, -playerSpeed);
             playerIsMoving = true;
         }
         else if (joystick.Vertical >= 0.1 || keyboardMovement.y >= 0.1)
         {
-            transform.position += new Vector3(0, 0, playerSpeedWD);
+            //transform.position += new Vector3(0, 0, playerSpeedWD);
+            newRigidbodyVelocity = new Vector3(newRigidbodyVelocity.x, rigidbody.velocity.y, playerSpeed);
             playerIsMoving = true;
         }
 
@@ -68,6 +80,8 @@ public class PlayerMovement : MonoBehaviour
                 goalObject = null;
             }
         }
+
+        rigidbody.velocity = newRigidbodyVelocity;
 
     }
 
