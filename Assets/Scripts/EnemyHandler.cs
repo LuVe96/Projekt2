@@ -37,18 +37,37 @@ public class EnemyHandler : MonoBehaviour
 
         if(Vector3.Distance(transform.position, player.position) <= attackDistance)
         {
-            attackPeriodeSum += Time.deltaTime;
-            if (attackPeriodeSum >= attackPause)
+            if (LookAtPlayer())
             {
-                attackPeriodeSum = 0;
-                AttackPlayer();
+                attackPeriodeSum += Time.deltaTime;
+                if (attackPeriodeSum >= attackPause)
+                {
+                    attackPeriodeSum = 0;
+
+                    AttackPlayer();
+
+                }
             }
+
+               
         }
         else
         {
             attackPeriodeSum = 0;
         }
-        
+    }
+
+    private bool LookAtPlayer()
+    {
+        var rotation = Quaternion.LookRotation( transform.position - player.transform.position);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1f);
+
+        // when rotation ended
+        //if (rotation == transform.rotation)
+        //{
+        //    return true;
+        //}
+        return true;
     }
 
     private void AttackPlayer()

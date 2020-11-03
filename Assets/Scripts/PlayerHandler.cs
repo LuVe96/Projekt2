@@ -37,7 +37,6 @@ public class PlayerHandler : MonoBehaviour
     {
         if (other.tag == "EnemyProjectile")
         {
-            Debug.Log("ht trigger ");
             lifeAmount -= other.gameObject.GetComponent<ProjectileHandler>().damage;
             GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
         }
