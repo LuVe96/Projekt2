@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class EnemyHandler : MonoBehaviour
@@ -16,7 +17,6 @@ public class EnemyHandler : MonoBehaviour
 
     private Transform player;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,39 +28,40 @@ public class EnemyHandler : MonoBehaviour
     void Update()
     {
 
-        if(lifeAmount <= 0)
-        {
-            //GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(transform.Find("Charakter").gameObject);
-            GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(gameObject);
-            Destroy(gameObject);
-        }
+        
 
         if(Vector3.Distance(transform.position, player.position) <= attackDistance)
         {
-            if (LookAtPlayer())
+            // rotate and move towards player
+            GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+
+            attackPeriodeSum += Time.deltaTime;
+            if (attackPeriodeSum >= attackPause)
             {
-                attackPeriodeSum += Time.deltaTime;
-                if (attackPeriodeSum >= attackPause)
-                {
-                    attackPeriodeSum = 0;
+                attackPeriodeSum = 0;
 
-                    AttackPlayer();
+                AttackPlayer();
 
-                }
-            }
-
-               
+            }     
         }
         else
         {
             attackPeriodeSum = 0;
         }
+
+        //On Death
+        if (lifeAmount <= 0)
+        {
+            //GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(transform.Find("Charakter").gameObject);
+            GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(gameObject);
+            Destroy(gameObject);
+        }
     }
 
     private bool LookAtPlayer()
     {
-        var rotation = Quaternion.LookRotation( transform.position - player.transform.position);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1f);
+        //var rotation = Quaternion.LookRotation( transform.position - player.transform.position);
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1f);
 
         // when rotation ended
         //if (rotation == transform.rotation)
