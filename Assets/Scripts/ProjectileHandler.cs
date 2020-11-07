@@ -10,7 +10,6 @@ public class ProjectileHandler : MonoBehaviour
     public float aliveTime = 7;
     private float aliveTimeSum = 0;
     public float damage = 25;
-    public GameObject particlesOnCollision;
 
     // Update is called once per frame
     void Update()
@@ -27,10 +26,10 @@ public class ProjectileHandler : MonoBehaviour
         }
     }
 
-    public void ShotAt(Transform goalTransform, float? projectilVelocity = null)
+    public void ShotAt(Vector3 position, float? projectilVelocity = null)
     {
-        transform.LookAt(goalTransform.position);
-        direction = goalTransform.position - this.transform.position;
+        transform.LookAt(position);
+        direction = position - this.transform.position;
         if (projectilVelocity.HasValue)
         {
             velocity = (float)projectilVelocity;
@@ -39,13 +38,10 @@ public class ProjectileHandler : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void StopShoot()
     {
-        if(collision.gameObject.tag != "Arrow")
-        {
-            Instantiate(particlesOnCollision, transform.position, new Quaternion(0, 0, 0, 0));
-            Destroy(gameObject);
-        }
-       
+        isShooting = false;
     }
+    
+
 }
