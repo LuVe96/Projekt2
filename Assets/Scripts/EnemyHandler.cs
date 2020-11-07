@@ -12,6 +12,7 @@ public class EnemyHandler : MonoBehaviour
     private float FullLifeAmount;
     public GameObject projectilePrfab;
     public GameObject bloodParticles;
+    public AudioSource hitSound;
     public float attackDistance = 15;
     public float attackPause = 1.5f;
     public float attackPeriodeSum = 0; 
@@ -86,6 +87,7 @@ public class EnemyHandler : MonoBehaviour
             lifeAmount -= collision.gameObject.GetComponent<ProjectileHandler>().damage;
             transform.Find("Canvas/lifebar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
             Instantiate(bloodParticles, transform.position, transform.rotation);
+            hitSound.Play();
 
         }
     }
