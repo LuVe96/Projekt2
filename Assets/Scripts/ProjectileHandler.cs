@@ -10,6 +10,7 @@ public class ProjectileHandler : MonoBehaviour
     public float aliveTime = 7;
     private float aliveTimeSum = 0;
     public float damage = 25;
+    public GameObject particlesOnCollision;
 
     // Update is called once per frame
     void Update()
@@ -36,5 +37,15 @@ public class ProjectileHandler : MonoBehaviour
         }  
         isShooting = true;
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag != "Arrow")
+        {
+            Instantiate(particlesOnCollision, transform.position, new Quaternion(0, 0, 0, 0));
+            Destroy(gameObject);
+        }
+       
     }
 }

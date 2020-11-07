@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4278575051057096799}
   - component: {fileID: 1026328017948333956}
   - component: {fileID: 8302297812263063290}
+  - component: {fileID: 8143628247444734249}
   m_Layer: 0
   m_Name: MagicanProjectile
   m_TagString: EnemyProjectile
@@ -48,6 +49,8 @@ MonoBehaviour:
   velocity: 1
   aliveTime: 7
   damage: 25
+  particlesOnCollision: {fileID: 2863468016715786989, guid: fe07aee406366184790ab79010be3006,
+    type: 3}
 --- !u!136 &8302297812263063290
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -56,12 +59,28 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2320759669102018788}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.05867124
   m_Height: 0.11734249
   m_Direction: 1
   m_Center: {x: -0.0000048975153, y: 0.4926711, z: 0}
+--- !u!54 &8143628247444734249
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2320759669102018788}
+  serializedVersion: 2
+  m_Mass: 0.01
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3178541401358944123
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 37d6c9f4ba8d76045b5aff3dab1a2230, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

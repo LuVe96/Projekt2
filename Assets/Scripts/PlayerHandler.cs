@@ -25,23 +25,25 @@ public class PlayerHandler : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.transform.tag == "EnemyProjectile")
-    //    {
-    //        lifeAmount -= collision.gameObject.GetComponent<ProjectileHandler>().damage;
-    //        GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
-    //    }
-    //}
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "EnemyProjectile")
+        if (collision.transform.tag == "EnemyProjectile")
         {
-            lifeAmount -= other.gameObject.GetComponent<ProjectileHandler>().damage;
+            lifeAmount -= collision.gameObject.GetComponent<ProjectileHandler>().damage;
             GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
             Instantiate(bloodParticles, transform.position, transform.rotation);
             hitSound.Play();
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.tag == "EnemyProjectile")
+    //    {
+    //        lifeAmount -= other.gameObject.GetComponent<ProjectileHandler>().damage;
+    //        GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
+    //        Instantiate(bloodParticles, transform.position, transform.rotation);
+    //        hitSound.Play();
+    //    }
+    //}
 }

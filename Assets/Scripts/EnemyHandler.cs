@@ -76,7 +76,7 @@ public class EnemyHandler : MonoBehaviour
     private void AttackPlayer()
     {
         GameObject projectile = Instantiate(projectilePrfab);
-        projectile.transform.position = transform.position;
+        projectile.transform.position = transform.localPosition + new Vector3(0.8f,0,0);
         projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform);
     }
 
