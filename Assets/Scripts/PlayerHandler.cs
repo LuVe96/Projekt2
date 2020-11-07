@@ -7,7 +7,7 @@ public class PlayerHandler : MonoBehaviour
 {
     public float lifeAmount = 100;
     private float FullLifeAmount;
-
+    public GameObject bloodParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +39,7 @@ public class PlayerHandler : MonoBehaviour
         {
             lifeAmount -= other.gameObject.GetComponent<ProjectileHandler>().damage;
             GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
+            Instantiate(bloodParticles, transform.position, transform.rotation);
         }
     }
 }

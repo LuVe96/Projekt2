@@ -11,6 +11,7 @@ public class EnemyHandler : MonoBehaviour
     public float lifeAmount = 100;
     private float FullLifeAmount;
     public GameObject projectilePrfab;
+    public GameObject bloodParticles;
     public float attackDistance = 15;
     public float attackPause = 1.5f;
     public float attackPeriodeSum = 0; 
@@ -83,8 +84,9 @@ public class EnemyHandler : MonoBehaviour
         if (collision.transform.tag == "Arrow")
         {
             lifeAmount -= collision.gameObject.GetComponent<ProjectileHandler>().damage;
-
             transform.Find("Canvas/lifebar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
+            Instantiate(bloodParticles, transform.position, transform.rotation);
+
         }
     }
 }

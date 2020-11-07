@@ -125,6 +125,8 @@ MonoBehaviour:
   lifeAmount: 100
   projectilePrfab: {fileID: 2320759669102018788, guid: bf1a1f444acf06b48ac4ea5d3e3d1b75,
     type: 3}
+  bloodParticles: {fileID: 3672329326037452674, guid: 6fed4d931f0e7e648a95010dd04318fc,
+    type: 3}
   attackDistance: 15
   attackPause: 1.5
   attackPeriodeSum: 0
