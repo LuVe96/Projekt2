@@ -37,7 +37,7 @@ public class ProjectileOnCollisionHandler : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<ProjectileHandler>().StopShoot();
             transform.position = collision.GetContact(0).point;
-            transform.localPosition += new Vector3(0, 0, -0.4f);
+            transform.localPosition += transform.forward * -0.4f; // new Vector3(0, 0, -0.4f);
             transform.SetParent(collision.transform);
         }
 

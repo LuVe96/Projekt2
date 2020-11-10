@@ -76,7 +76,7 @@ public class EnemyHandler : MonoBehaviour
     private void AttackPlayer()
     {
         GameObject projectile = Instantiate(projectilePrfab);
-        projectile.transform.position = transform.localPosition + new Vector3(0.8f,0,0);
+        projectile.transform.position = transform.forward + transform.localPosition;
         projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position + new Vector3(0, UnityEngine.Random.Range(-0.5f, 0.5f), 0));
     }
 
