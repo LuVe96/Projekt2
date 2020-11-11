@@ -44,6 +44,8 @@ public class DogAttackHandler : MonoBehaviour
             }
 
         }
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -52,6 +54,7 @@ public class DogAttackHandler : MonoBehaviour
         {
             attackTimeSum = 0;
             isAttacking = false;
+
         }
     }
 
