@@ -70,7 +70,9 @@ public class PlayerMovement : MonoBehaviour
         // Player Looks at position of next enemy
         else if (goalObject != null)
         {
-            var rotation = Quaternion.LookRotation(goalObject.transform.position - playerModel.transform.position );
+            // damit spieler sich nicht neigt
+            Vector3 goalPos = new Vector3(goalObject.transform.position.x, playerModel.transform.position.y, goalObject.transform.position.z);
+            var rotation = Quaternion.LookRotation(goalPos - playerModel.transform.position );
             playerModel.transform.rotation = Quaternion.RotateTowards(playerModel.transform.rotation, rotation, 30f);
 
             // when rotation ended

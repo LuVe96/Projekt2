@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ public class EnemyHandler : MonoBehaviour
     public AudioSource hitSound;
     public float attackDistance = 15;
     public float attackPause = 1.5f;
-    public float attackPeriodeSum = 0; 
+    private float attackPeriodeSum = 0; 
 
     private Transform player;
 
@@ -29,8 +30,6 @@ public class EnemyHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
 
         if(Vector3.Distance(transform.position, player.position) <= attackDistance)
         {
@@ -75,9 +74,16 @@ public class EnemyHandler : MonoBehaviour
 
     private void AttackPlayer()
     {
-        GameObject projectile = Instantiate(projectilePrfab);
-        projectile.transform.position = transform.forward + transform.localPosition;
-        projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position + new Vector3(0, UnityEngine.Random.Range(-0.5f, 0.5f), 0));
+        if (enemyType == EnemyType.Magician)
+        {
+            GameObject projectile = Instantiate(projectilePrfab);
+            projectile.transform.position = transform.forward + transform.localPosition;
+            projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position + new Vector3(0, UnityEngine.Random.Range(-0.5f, 0.5f), 0));
+        } else if (enemyType == EnemyType.Dog)
+        {
+            GetComponent<DogAttackHandler>().Attack();
+        }
+       
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -36,14 +36,18 @@ public class PlayerHandler : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.tag == "EnemyProjectile")
-    //    {
-    //        lifeAmount -= other.gameObject.GetComponent<ProjectileHandler>().damage;
-    //        GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
-    //        Instantiate(bloodParticles, transform.position, transform.rotation);
-    //        hitSound.Play();
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EnemyProjectile")
+        {
+            if( other.transform.parent.GetComponent<EnemyHandler>().enemyType == EnemyType.Dog)
+            {
+                lifeAmount -= other.transform.parent.GetComponent<DogAttackHandler>().damage;
+                GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
+                Instantiate(bloodParticles, transform.position, transform.rotation);
+                hitSound.Play();
+            }
+
+        }
+    }
 }
