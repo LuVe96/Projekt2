@@ -11,12 +11,14 @@ public class PlayerMovement : MonoBehaviour
     static public bool playerIsMoving { get;  private set; } = false;
     private GameObject goalObject = null;
     private new Rigidbody rigidbody;
+    private Animator animator;
 
     private IAttackEnemyInterface attackEnemyInterface;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -60,11 +62,15 @@ public class PlayerMovement : MonoBehaviour
         {
             var rotation = Quaternion.LookRotation(new Vector3(joystick.Horizontal, 0, joystick.Vertical));
             playerModel.transform.rotation = Quaternion.RotateTowards(playerModel.transform.rotation, rotation, 30f);
+
+            animator.SetBool("isWalking", true);
         }
         else if (keyboardMovement.x != 0|| keyboardMovement.y != 0)
         {
             var rotation = Quaternion.LookRotation(new Vector3(keyboardMovement.x, 0, keyboardMovement.y));
             playerModel.transform.rotation = Quaternion.RotateTowards(playerModel.transform.rotation, rotation, 30f);
+
+            animator.SetBool("isWalking", true);
         }
 
         // Player Looks at position of next enemy
@@ -81,7 +87,14 @@ public class PlayerMovement : MonoBehaviour
                 attackEnemyInterface.PlayerHasTurnedToEnemy(goalObject);
                 goalObject = null;
             }
+
+            animator.SetBool("isWalking", true);
         }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
 
         rigidbody.velocity = newRigidbodyVelocity;
 
