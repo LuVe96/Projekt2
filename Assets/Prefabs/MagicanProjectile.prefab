@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd913934680ceb64bb150b706a46e706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 1
+  velocity: 15
   aliveTime: 7
   damage: 25
 --- !u!136 &8302297812263063290
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesOnCollision: {fileID: 2863468016715786989, guid: fe07aee406366184790ab79010be3006,
     type: 3}
+  stayAtCollisionPosition: 0
 --- !u!1 &3178541401358944123
 GameObject:
   m_ObjectHideFlags: 0

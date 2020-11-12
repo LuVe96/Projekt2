@@ -9,7 +9,6 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     public float attackPause = 1f;
     private float periodeTimeSum;
     public GameObject arrowPrefab;
-    public float arrowVelocity = 2;
 
 
     // Start is called before the first frame update
@@ -68,7 +67,7 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
         GameObject arrow = Instantiate(arrowPrefab);
         arrow.transform.position = transform.position;
 
-        arrow.GetComponent<ProjectileHandler>().ShotAt(enemy.transform.position + new Vector3(0,Random.Range(0.5f, 1f), 0), arrowVelocity);
+        arrow.GetComponent<ProjectileHandler>().ShotAt(enemy.transform.position + new Vector3(0,Random.Range(0.5f, 1f), 0));
         //transform.parent.parent.GetComponent<PlayerMovement>().LookAt(enemy.transform);
     }
 

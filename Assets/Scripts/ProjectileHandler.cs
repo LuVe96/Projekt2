@@ -16,7 +16,7 @@ public class ProjectileHandler : MonoBehaviour
     {
         if (isShooting)
         {
-            transform.position += direction * velocity * Time.deltaTime;   
+            transform.position += direction.normalized * velocity * Time.deltaTime;   
         }
 
         aliveTimeSum += Time.deltaTime;
