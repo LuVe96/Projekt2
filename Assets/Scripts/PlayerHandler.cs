@@ -27,12 +27,14 @@ public class PlayerHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "EnemyProjectile")
+        if (collision.transform.tag == "EnemyProjectile" && !collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage)
         {
+            collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage = true;
             lifeAmount -= collision.gameObject.GetComponent<ProjectileHandler>().damage;
             GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
             Instantiate(bloodParticles, transform.position, transform.rotation);
             hitSound.Play();
+            Destroy(collision.gameObject);
         }
     }
 
@@ -46,6 +48,7 @@ public class PlayerHandler : MonoBehaviour
                 GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
                 Instantiate(bloodParticles, transform.position, transform.rotation);
                 hitSound.Play();
+                
             }
 
         }

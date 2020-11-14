@@ -8,6 +8,7 @@ public class FocusMarker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0,0,1), rotationSpeed * Time.deltaTime);   
+        transform.Rotate(new Vector3(0,0,1), rotationSpeed * Time.deltaTime);
+
     }
 }

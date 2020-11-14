@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileHandler : MonoBehaviour
 {
     private bool isShooting = false;
+    public bool disabledDamage = false;
     private Vector3 direction;
     public float velocity = 1;
     public float aliveTime = 7;
@@ -42,6 +43,7 @@ public class ProjectileHandler : MonoBehaviour
     {
         isShooting = false;
     }
+
     
 
 }

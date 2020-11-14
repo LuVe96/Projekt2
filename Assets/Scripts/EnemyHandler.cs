@@ -88,13 +88,13 @@ public class EnemyHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Arrow")
+        if (collision.transform.tag == "Arrow" && !collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage)
         {
+            collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage = true;
             lifeAmount -= collision.gameObject.GetComponent<ProjectileHandler>().damage;
             transform.Find("Canvas/lifebar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
             Instantiate(bloodParticles, transform.position, transform.rotation);
             hitSound.Play();
-
         }
     }
 }

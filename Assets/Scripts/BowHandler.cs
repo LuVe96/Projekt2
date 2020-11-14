@@ -32,10 +32,9 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
         float? nearestDistance = null;
         foreach (GameObject enemy in enemys)
         {
-            enemy.transform.Find("focus_marker").gameObject.SetActive(false);
 
-            float distance = new Vector2(transform.parent.transform.position.x / transform.parent.transform.position.y,
-                enemy.transform.position.x / enemy.transform.position.y).magnitude;
+            float distance = new Vector2(transform.parent.transform.position.x - enemy.transform.position.x,
+                transform.parent.transform.position.y - enemy.transform.position.y).magnitude;
             if (!nearestDistance.HasValue)
             {
                 nearestDistance = distance;
@@ -67,7 +66,18 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     public void MarkFocusedEnemy(GameObject enemy)
     {
         enemy.transform.Find("focus_marker").gameObject.SetActive(true);
-    }
+
+        //disable others
+        foreach (GameObject e in enemys)
+        {
+            if (e != enemy)
+            {
+                e.transform.Find("focus_marker").gameObject.SetActive(false);
+            }
+        }
+
+
+    }   
 
     void AttackEnemy(GameObject enemy)
     {
