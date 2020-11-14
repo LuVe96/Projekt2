@@ -24,40 +24,49 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
         enemys = transform.parent.parent.GetComponentInChildren<EnemyDetector>().enemys;
 
         // return when there are no enemys
-        if (enemys.Count == 0 || PlayerMovement.playerIsMoving){
-            periodeTimeSum = attackPause;
+        if (enemys.Count == 0){
             return;
         }
+
+        GameObject nearestEnemy = null;
+        float? nearestDistance = null;
+        foreach (GameObject enemy in enemys)
+        {
+            enemy.transform.Find("focus_marker").gameObject.SetActive(false);
+
+            float distance = new Vector2(transform.parent.transform.position.x / transform.parent.transform.position.y,
+                enemy.transform.position.x / enemy.transform.position.y).magnitude;
+            if (!nearestDistance.HasValue)
+            {
+                nearestDistance = distance;
+                nearestEnemy = enemy;
+            }
+            else if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+
+        MarkFocusedEnemy(nearestEnemy);
+
 
 
         // move on when there are enemys
         periodeTimeSum += Time.deltaTime;
-        if (periodeTimeSum >= attackPause)
+        if (periodeTimeSum >= attackPause && !PlayerMovement.playerIsMoving)
         {
-            periodeTimeSum = 0;
-
-            GameObject enemyToAtack = null;
-            float? nearestDistance = null;
-            foreach (GameObject enemy in enemys)
-            {
-                float distance = new Vector2(transform.parent.transform.position.x / transform.parent.transform.position.y,
-                    enemy.transform.position.x / enemy.transform.position.y).magnitude;
-                if (!nearestDistance.HasValue)
-                {
-                    nearestDistance = distance;
-                    enemyToAtack = enemy;
-                }
-                else if (distance < nearestDistance)
-                {
-                    nearestDistance = distance;
-                    enemyToAtack = enemy;
-                }
-            }
+            periodeTimeSum = 0;        
 
             //AttackEnemy(enemyToAtack);
-            ///let player turn to enemy
-            transform.parent.parent.GetComponent<PlayerMovement>().LookAt(enemyToAtack, this);
+            ///let player turn to enemy then atack gets triggered
+            transform.parent.parent.GetComponent<PlayerMovement>().LookAt(nearestEnemy, this);
         }
+    }
+
+    public void MarkFocusedEnemy(GameObject enemy)
+    {
+        enemy.transform.Find("focus_marker").gameObject.SetActive(true);
     }
 
     void AttackEnemy(GameObject enemy)

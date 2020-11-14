@@ -20,6 +20,7 @@ public class EnemyDetector : MonoBehaviour
         if (other.tag == "Enemy")
         {
             enemys.Remove(other.gameObject);
+            other.transform.Find("focus_marker").gameObject.SetActive(false);
         }
     }
 
