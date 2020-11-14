@@ -42,8 +42,10 @@ public class PlayerHandler : MonoBehaviour
     {
         if (other.tag == "EnemyProjectile")
         {
-            if( other.transform.parent.GetComponent<EnemyHandler>().enemyType == EnemyType.Dog)
+            if( other.transform.parent.GetComponent<EnemyHandler>().enemyType == EnemyType.Dog 
+                && !other.transform.parent.GetComponent<DogAttackHandler>().hasHitten)
             {
+                other.transform.parent.GetComponent<DogAttackHandler>().hasHitten = true;
                 lifeAmount -= other.transform.parent.GetComponent<DogAttackHandler>().damage;
                 GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
                 Instantiate(bloodParticles, transform.position, transform.rotation);
