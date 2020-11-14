@@ -66,6 +66,7 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     public void MarkFocusedEnemy(GameObject enemy)
     {
         enemy.transform.Find("focus_marker").gameObject.SetActive(true);
+        enemy.GetComponent<EnemyIndicator>().setFocused(true);
 
         //disable others
         foreach (GameObject e in enemys)
@@ -73,6 +74,7 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
             if (e != enemy)
             {
                 e.transform.Find("focus_marker").gameObject.SetActive(false);
+                enemy.GetComponent<EnemyIndicator>().setFocused(false);
             }
         }
 

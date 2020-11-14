@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 1301414489}
   - component: {fileID: 2027175943912680072}
   - component: {fileID: 492562980}
+  - component: {fileID: 173074690}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -376,6 +377,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &173074690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190174687013697142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa982a8205188c448a9ab4e2e3fd3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imagePrefab: {fileID: 4077725644903096089, guid: 367e9436b17684645993da3c598ef6cb,
+    type: 3}
+  stdColor: {r: 0.9056604, g: 0.81049216, b: 0.029903898, a: 1}
+  focusedColor: {r: 1, g: 0.4249188, b: 0.0047169924, a: 1}
 --- !u!1 &9190174687182808909
 GameObject:
   m_ObjectHideFlags: 0

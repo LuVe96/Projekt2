@@ -19,12 +19,17 @@ public class EnemyHandler : MonoBehaviour
     private float attackPeriodeSum = 0; 
 
     private Transform player;
+    private EnemyIndicator enemyIndicator;
+    private Vector3 startPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").transform;
         FullLifeAmount = lifeAmount;
+        startPosition = transform.position;
+
+        enemyIndicator = GetComponent<EnemyIndicator>();
     }
 
     // Update is called once per frame
@@ -33,6 +38,9 @@ public class EnemyHandler : MonoBehaviour
 
         if(Vector3.Distance(transform.position, player.position) <= attackDistance)
         {
+            //turn on enemy indicator
+            enemyIndicator.setIndicator(true);
+
             // rotate and move towards player
             GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
 
@@ -48,12 +56,17 @@ public class EnemyHandler : MonoBehaviour
         else
         {
             attackPeriodeSum = 0;
+            GetComponent<NavMeshAgent>().SetDestination(startPosition);
+
+            //turn off enemy indicator
+            enemyIndicator.setIndicator(false);
         }
 
         //On Death
         if (lifeAmount <= 0)
         {
             //GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(transform.Find("Charakter").gameObject);
+            enemyIndicator.setIndicator(false);
             GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(gameObject);
             Destroy(gameObject);
         }
