@@ -35,23 +35,29 @@ public class EnemyHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(Vector3.Distance(transform.position, player.position) <= attackDistance)
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance <= attackDistance)
         {
-            //turn on enemy indicator
-            enemyIndicator.setIndicator(true);
 
-            // rotate and move towards player
-            GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
-
-            attackPeriodeSum += Time.deltaTime;
-            if (attackPeriodeSum >= attackPause)
+            if (!HitsAntiAttackCollider(distance))
             {
-                attackPeriodeSum = 0;
+                //turn on enemy indicator
+                enemyIndicator.setIndicator(true);
 
-                AttackPlayer();
+                // rotate and move towards player
+                GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
 
-            }     
+                attackPeriodeSum += Time.deltaTime;
+                if (attackPeriodeSum >= attackPause)
+                {
+                    attackPeriodeSum = 0;
+
+                    AttackPlayer();
+
+                }
+
+            }
+         
         }
         else
         {
@@ -72,17 +78,20 @@ public class EnemyHandler : MonoBehaviour
         }
     }
 
-    private bool LookAtPlayer()
-    {
-        //var rotation = Quaternion.LookRotation( transform.position - player.transform.position);
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1f);
 
-        // when rotation ended
-        //if (rotation == transform.rotation)
-        //{
-        //    return true;
-        //}
-        return true;
+    private bool HitsAntiAttackCollider(float distance)
+    {
+        Ray ray = new Ray(transform.position, player.position - transform.position);
+        RaycastHit[] hits = Physics.RaycastAll(ray, distance);
+
+        foreach(RaycastHit hit in hits) {
+            if(hit.collider.tag == "AntiAttackCollider")
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void AttackPlayer()

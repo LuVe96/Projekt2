@@ -47,20 +47,22 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
             }
         }
 
-        MarkFocusedEnemy(nearestEnemy);
-
-
-
-        // move on when there are enemys
-        periodeTimeSum += Time.deltaTime;
-        if (periodeTimeSum >= attackPause && !PlayerMovement.playerIsMoving)
+        if (!HitsAntiAttackCollider(nearestEnemy))
         {
-            periodeTimeSum = 0;        
+            MarkFocusedEnemy(nearestEnemy);
 
-            //AttackEnemy(enemyToAtack);
-            ///let player turn to enemy then atack gets triggered
-            transform.parent.parent.GetComponent<PlayerMovement>().LookAt(nearestEnemy, this);
+            // move on when there are enemys
+            periodeTimeSum += Time.deltaTime;
+            if (periodeTimeSum >= attackPause && !PlayerMovement.playerIsMoving)
+            {
+                periodeTimeSum = 0;
+
+                //AttackEnemy(enemyToAtack);
+                ///let player turn to enemy then atack gets triggered
+                transform.parent.parent.GetComponent<PlayerMovement>().LookAt(nearestEnemy, this);
+            }
         }
+       
     }
 
     public void MarkFocusedEnemy(GameObject enemy)
@@ -77,9 +79,25 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
                 enemy.GetComponent<EnemyIndicator>().setFocused(false);
             }
         }
+    }
 
+    private bool HitsAntiAttackCollider(GameObject enemy)
+    {
+        Ray ray = new Ray(transform.position, enemy.transform.position - transform.position);
+        float distance = Vector3.Distance(transform.position, enemy.transform.position);
+        RaycastHit[] hits = Physics.RaycastAll(ray, distance);
 
-    }   
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.tag == "AntiAttackCollider")
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     void AttackEnemy(GameObject enemy)
     {
