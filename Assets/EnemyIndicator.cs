@@ -24,7 +24,7 @@ public class EnemyIndicator : MonoBehaviour
         if (image != null)
         {
             float minX = image.GetPixelAdjustedRect().width / 2;
-            float maxX = Screen.width - minX;
+            float maxX = Screen.width  - minX; 
 
             float minY = image.GetPixelAdjustedRect().height / 2;
             float maxY = Screen.height - minY;
