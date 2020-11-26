@@ -21,44 +21,47 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        float playerSpeedWD = playerSpeed * Time.deltaTime;
         playerIsMoving = false;
         Vector2 keyboardMovement = getMovementInput();
 
         Vector3 newRigidbodyVelocity = new Vector3(0, rigidbody.velocity.y, 0);
 
-        if (joystick.Horizontal <= -0.1 ||  keyboardMovement.x <= -0.1)
+        //if (joystick.Horizontal <= -0.1 ||  keyboardMovement.x <= -0.1)
+        //{
+        //    newRigidbodyVelocity = new Vector3(-playerSpeed, rigidbody.velocity.y, newRigidbodyVelocity.z);
+        //    playerIsMoving = true;
+        //}
+        //else if (joystick.Horizontal >= 0.1 || keyboardMovement.x >= 0.1)
+        //{
+        //    newRigidbodyVelocity = new Vector3(playerSpeed, rigidbody.velocity.y, newRigidbodyVelocity.z);
+        //    playerIsMoving = true;
+        //}
+
+        //if (joystick.Vertical <= -0.1 || keyboardMovement.y <= -0.1)
+        //{
+        //    newRigidbodyVelocity = new Vector3(newRigidbodyVelocity.x, rigidbody.velocity.y, -playerSpeed);
+        //    playerIsMoving = true;
+        //}
+        //else if (joystick.Vertical >= 0.1 || keyboardMovement.y >= 0.1)
+        //{
+
+        //    newRigidbodyVelocity = new Vector3(newRigidbodyVelocity.x, rigidbody.velocity.y, playerSpeed);
+        //    playerIsMoving = true;
+        //}
+        if (joystick.Horizontal > 0.1 || joystick.Horizontal < -0.1
+           || joystick.Vertical < -0.1 || joystick.Vertical > 0.1)
         {
-            //transform.position += new Vector3(-playerSpeedWD, 0, 0);
-            newRigidbodyVelocity = new Vector3(-playerSpeed, rigidbody.velocity.y, newRigidbodyVelocity.z);
-            playerIsMoving = true;
-        }
-        else if (joystick.Horizontal >= 0.1 || keyboardMovement.x >= 0.1)
-        {
-            //transform.position += new Vector3(playerSpeedWD, 0, 0);
-            newRigidbodyVelocity = new Vector3(playerSpeed, rigidbody.velocity.y, newRigidbodyVelocity.z);
-            playerIsMoving = true;
+            newRigidbodyVelocity = (new Vector3(joystick.Horizontal, 0, joystick.Vertical).normalized * playerSpeed) 
+                + new Vector3(0,rigidbody.velocity.y,0);
+                playerIsMoving = true;
         }
 
-        if (joystick.Vertical <= -0.1 || keyboardMovement.y <= -0.1)
-        {
-            //transform.position += new Vector3(0, 0, -playerSpeedWD);
-            newRigidbodyVelocity = new Vector3(newRigidbodyVelocity.x, rigidbody.velocity.y, -playerSpeed);
-            playerIsMoving = true;
-        }
-        else if (joystick.Vertical >= 0.1 || keyboardMovement.y >= 0.1)
-        {
-            //transform.position += new Vector3(0, 0, playerSpeedWD);
-            newRigidbodyVelocity = new Vector3(newRigidbodyVelocity.x, rigidbody.velocity.y, playerSpeed);
-            playerIsMoving = true;
-        }
-
-        // Player Looks at joystick direction
-        if (joystick.Horizontal > 0.1 || joystick.Horizontal < -0.1 
-            || joystick.Vertical < -0.1 && joystick.Vertical > 0.1)
+            /// Player Looks at joystick direction
+            if (joystick.Horizontal > 0.1 || joystick.Horizontal < -0.1 
+            || joystick.Vertical < -0.1 || joystick.Vertical > 0.1)
         {
             var rotation = Quaternion.LookRotation(new Vector3(joystick.Horizontal, 0, joystick.Vertical));
             playerModel.transform.rotation = Quaternion.RotateTowards(playerModel.transform.rotation, rotation, 30f);
