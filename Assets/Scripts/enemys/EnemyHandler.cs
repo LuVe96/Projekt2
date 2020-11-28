@@ -74,6 +74,7 @@ public class EnemyHandler : MonoBehaviour
             //GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(transform.Find("Charakter").gameObject);
             enemyIndicator.setIndicator(false);
             GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(gameObject);
+            GetComponent<LootDropper>().DropLoot();
             Destroy(gameObject);
         }
     }
