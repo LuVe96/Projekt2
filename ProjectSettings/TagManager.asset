@@ -8,6 +8,7 @@ TagManager:
   - Arrow
   - EnemyProjectile
   - AntiAttackCollider
+  - Loot
   layers:
   - Default
   - TransparentFX

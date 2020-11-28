@@ -57,6 +57,11 @@ public class PlayerMovement : MonoBehaviour
             newRigidbodyVelocity = (new Vector3(joystick.Horizontal, 0, joystick.Vertical).normalized * playerSpeed) 
                 + new Vector3(0,rigidbody.velocity.y,0);
                 playerIsMoving = true;
+        } else
+        {
+            newRigidbodyVelocity = (new Vector3(keyboardMovement.x, 0, keyboardMovement.y).normalized * playerSpeed)
+               + new Vector3(0, rigidbody.velocity.y, 0);
+            playerIsMoving = true;
         }
 
             /// Player Looks at joystick direction
