@@ -409,9 +409,9 @@ MonoBehaviour:
   spawnHeight: 0.5
   mainProbability: 30
   lootObjects:
-  - obj: {fileID: 2096982839094822637, guid: f5e966510830d9742a142c4f5c3e00a6, type: 3}
+  - lootItem: {fileID: 11400000, guid: a595fecb5e236b44b864babf09a10661, type: 2}
     probability: 50
-  - obj: {fileID: 1457677674291732440, guid: 8be1bef73d238f343a93987e46ab10b3, type: 3}
+  - lootItem: {fileID: 11400000, guid: 25063f192ed39944781af4096d2369f8, type: 2}
     probability: 50
 --- !u!1 &9190174687182808909
 GameObject:

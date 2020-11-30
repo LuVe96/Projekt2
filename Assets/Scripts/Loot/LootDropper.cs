@@ -12,7 +12,7 @@ public class LootDropper : MonoBehaviour
     [Serializable]
     public struct LootObject
     {
-        public GameObject obj;
+        public LootItem lootItem;
         [Range(0, 100)]
         public int probability;
     }
@@ -54,7 +54,7 @@ public class LootDropper : MonoBehaviour
             calcProp += l.probability;
             if(calcProp >= randomSumPropValue)
             {
-                return l.obj;
+                return l.lootItem.gameObject;
             }
         }
 

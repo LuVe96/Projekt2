@@ -21878,7 +21878,7 @@ MonoBehaviour:
   spawnHeight: 0.2
   mainProbability: 0
   lootObjects:
-  - obj: {fileID: 0}
+  - lootItem: {fileID: 0}
     probability: 0
 --- !u!1001 &1299992795
 PrefabInstance:

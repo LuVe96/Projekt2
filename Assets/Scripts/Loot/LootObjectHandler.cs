@@ -6,6 +6,7 @@ public class LootObjectHandler : MonoBehaviour
 {
 
     public float rotationSpeed = 5;
+    public LootItem item;
 
     // Update is called once per frame
     void Update()

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 439389826508777272}
   - component: {fileID: 2096982839094822638}
   - component: {fileID: 2096982839094822639}
-  - component: {fileID: 4326739470697233935}
   m_Layer: 0
   m_Name: bootle_m
   m_TagString: Loot
@@ -95,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 80
+  item: {fileID: 11400000, guid: a595fecb5e236b44b864babf09a10661, type: 2}
 --- !u!136 &2096982839094822639
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -109,16 +109,3 @@ CapsuleCollider:
   m_Height: 0.009280821
   m_Direction: 1
   m_Center: {x: 0.0001922965, y: 0.00010538995, z: -0.00044246734}
---- !u!114 &4326739470697233935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096982839094822637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c95d1e2b64702a44a804fdf356d64364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healing: 20
