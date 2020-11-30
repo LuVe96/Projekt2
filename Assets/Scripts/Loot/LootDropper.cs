@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class LootDropper : MonoBehaviour
 {
-
-    //public PlayerMovement[] lootObjects;
+    public float spawnHeight = 0.2f;
+    [Range(0, 100)]
+    public int mainProbability;
 
     [Serializable]
     public struct LootObject
@@ -19,30 +20,53 @@ public class LootDropper : MonoBehaviour
     [SerializeField]
     private LootObject[] lootObjects;
 
-    [Range(0, 100)]
-    public int mainProbability;
-
-    public float spawnHeight = 0.2f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private bool allreadyCalled = false;
 
     public void DropLoot()
     {
-        SpawnLootObj(lootObjects[0].obj);
+        if (!allreadyCalled)
+        {
+            SpawnLootObj(CalcRandomObj());
+            allreadyCalled = true;
+        }
+
+    }
+
+    private GameObject CalcRandomObj()
+    {
+        int randomValueBetween0And99 = UnityEngine.Random.Range(0, 100);
+        if (randomValueBetween0And99 > mainProbability)
+        {
+            return null;
+        }
+
+
+        int sumProp = 0;
+        foreach (var l in lootObjects)
+        {
+            sumProp += l.probability;
+        }
+        int randomSumPropValue = UnityEngine.Random.Range(0, sumProp) +1;
+
+        int calcProp = 0;
+        foreach (var l in lootObjects)
+        {
+            calcProp += l.probability;
+            if(calcProp >= randomSumPropValue)
+            {
+                return l.obj;
+            }
+        }
+
+        Debug.Log("Propability Error");
+        return null;
     }
 
     void SpawnLootObj(GameObject obj )
     {
+
+        if (obj == null) return;
+
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z);
 
         var lo = Instantiate(obj);

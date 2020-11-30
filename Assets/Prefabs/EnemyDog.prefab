@@ -860,6 +860,7 @@ GameObject:
   - component: {fileID: 844154381}
   - component: {fileID: 844154380}
   - component: {fileID: 8440504911083466702}
+  - component: {fileID: 5933603701633524330}
   m_Layer: 0
   m_Name: EnemyDog
   m_TagString: Enemy
@@ -1087,6 +1088,25 @@ MonoBehaviour:
     type: 3}
   stdColor: {r: 0.9056604, g: 0.81049216, b: 0.029903898, a: 1}
   focusedColor: {r: 1, g: 0.4249188, b: 0.0047169924, a: 1}
+--- !u!114 &5933603701633524330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7258127419863144916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bd55819c10b6b4a8edbc3e2cf4bc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnHeight: 0.2
+  mainProbability: 50
+  lootObjects:
+  - obj: {fileID: 1457677674291732440, guid: 8be1bef73d238f343a93987e46ab10b3, type: 3}
+    probability: 50
+  - obj: {fileID: 2096982839094822637, guid: f5e966510830d9742a142c4f5c3e00a6, type: 3}
+    probability: 50
 --- !u!1 &7258127419983808839
 GameObject:
   m_ObjectHideFlags: 0
