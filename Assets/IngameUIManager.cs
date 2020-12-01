@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class IngameUIManager : MonoBehaviour
 {
-    public static MenuManager Instance = null;
+
+    public static IngameUIManager Instance = null;
     private void Awake()
     {
         if (Instance == null)
@@ -19,13 +19,20 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void RestartGame()
+    // Start is called before the first frame update
+    void Start()
     {
-        SceneManager.LoadScene(0);
+        
     }
 
-    public void OpenInventory()
+    // Update is called once per frame
+    void Update()
     {
-        transform.Find("TabbedPager").gameObject.SetActive(true);
+        
+    }
+
+    public void ObenInventory()
+    {
+        MenuManager.Instance.OpenInventory();
     }
 }
