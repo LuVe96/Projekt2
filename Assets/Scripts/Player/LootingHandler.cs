@@ -9,7 +9,7 @@ public class LootingHandler : MonoBehaviour
     {
         if(other.tag == "Loot")
         {
-            
+            Inventory.Instance.Add(other.gameObject.GetComponent<LootObjectHandler>().item);
             Destroy(other.gameObject);
         }
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scroll
   m_EditorClassIdentifier: 
   name: Scroll
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3746b0c8290235848be3961e49fb6e06, type: 3}
   gameObject: {fileID: 1457677674291732440, guid: 8be1bef73d238f343a93987e46ab10b3,
     type: 3}
   type: 1

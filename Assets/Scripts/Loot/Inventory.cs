@@ -21,12 +21,20 @@ public class Inventory : MonoBehaviour
 
     public List<LootItem> items = new List<LootItem>();
 
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
+
     public void Add(LootItem item) {
         items.Add(item);
+        
+        if(onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
     }
 
     public void Remove(LootItem item)
     {
         items.Remove(item);
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
     }
 }

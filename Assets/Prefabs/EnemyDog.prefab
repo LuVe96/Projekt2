@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHeight: 0.2
-  mainProbability: 50
+  mainProbability: 100
   lootObjects:
   - lootItem: {fileID: 11400000, guid: a595fecb5e236b44b864babf09a10661, type: 2}
     probability: 50

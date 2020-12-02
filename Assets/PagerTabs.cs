@@ -15,7 +15,12 @@ public class PagerTabs : MonoBehaviour
         pageSwiper = transform.parent.Find("Pager").GetComponent<PageSwiper>();
         for (int i = 0; i < transform.childCount; i++)
         {
-            buttons.Add(transform.GetChild(i).gameObject);
+            var btn = transform.GetChild(i).gameObject;
+            if (btn.name != "CloseButton")
+            {
+                buttons.Add(transform.GetChild(i).gameObject);
+            }
+
         }
     }
 
