@@ -9,9 +9,6 @@ public class LootItem : ScriptableObject
     public Sprite icon;
     public GameObject gameObject;
 
-    public LootItemType type;
-    public float healing = 0;
-
 }
 
 public enum LootItemType {

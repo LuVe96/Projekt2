@@ -21400,6 +21400,12 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5933603701633524330, guid: db04f4200111e5c45b829bb326d756b6,
+        type: 3}
+      propertyPath: lootObjects.Array.data[0].lootItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9,
+        type: 2}
     - target: {fileID: 7258127418331570438, guid: db04f4200111e5c45b829bb326d756b6,
         type: 3}
       propertyPath: m_Camera
