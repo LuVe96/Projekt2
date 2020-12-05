@@ -1103,7 +1103,7 @@ MonoBehaviour:
   spawnHeight: 0.2
   mainProbability: 100
   lootObjects:
-  - lootItem: {fileID: 0}
+  - lootItem: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9, type: 2}
     probability: 50
   - lootItem: {fileID: 11400000, guid: 25063f192ed39944781af4096d2369f8, type: 2}
     probability: 50

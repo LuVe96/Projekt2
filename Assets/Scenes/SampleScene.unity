@@ -21395,17 +21395,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 793352346007997341, guid: db04f4200111e5c45b829bb326d756b6,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5933603701633524330, guid: db04f4200111e5c45b829bb326d756b6,
-        type: 3}
-      propertyPath: lootObjects.Array.data[0].lootItem
-      value: 
-      objectReference: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9,
-        type: 2}
     - target: {fileID: 7258127418331570438, guid: db04f4200111e5c45b829bb326d756b6,
         type: 3}
       propertyPath: m_Camera
@@ -21415,11 +21404,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyDog (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7258127419863144916, guid: db04f4200111e5c45b829bb326d756b6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7258127419863144922, guid: db04f4200111e5c45b829bb326d756b6,
         type: 3}
@@ -23297,16 +23281,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 498352696}
     m_Modifications:
-    - target: {fileID: 3655957098905282937, guid: 10bacadd8a7b58647b8ac4abb3fd2e16,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3655957098905282937, guid: 10bacadd8a7b58647b8ac4abb3fd2e16,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3655957100353895640, guid: 10bacadd8a7b58647b8ac4abb3fd2e16,
         type: 3}
       propertyPath: m_Name
@@ -32647,7 +32621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54bfa7d1cf4ef8409cb91e37b25081d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
 --- !u!1001 &1624585260
 PrefabInstance:
   m_ObjectHideFlags: 0

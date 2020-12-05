@@ -8,18 +8,27 @@ public class InventorySlotHandler : MonoBehaviour
 
     LootItem item;
     public Image icon;
+    public Text amountText;
 
     private void Start()
     {
-        //icon = GetComponentInChildren<Image>();
+
     }
 
 
-    public void AddItem( LootItem newItem)
+    public void AddItem( LootItem newItem, int amount)
     {
         item = newItem;
         icon.sprite = item.icon;
         icon.enabled = true;
+        if(amount == 1)
+        {
+            amountText.text = null;
+        }  else
+        {
+            amountText.text = amount.ToString();
+        }
+
     }
 
     public void ClearSlot()
@@ -28,5 +37,6 @@ public class InventorySlotHandler : MonoBehaviour
 
         icon.sprite = null;
         icon.enabled = false;
+        amountText.text = null;
     }
 }

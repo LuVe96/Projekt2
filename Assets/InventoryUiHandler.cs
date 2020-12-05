@@ -16,7 +16,6 @@ public class InventoryUiHandler : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlotHandler>();
-        Debug.Log("Start Inventory");
     }
 
     // Update is called once per frame
@@ -29,7 +28,8 @@ public class InventoryUiHandler : MonoBehaviour
     {
         for (int i = 0; i < inventory.items.Count; i++)
         {
-            slots[i].AddItem(inventory.items[i]);
+            var groupedItems = inventory.items[i];
+            slots[i].AddItem(groupedItems.items[0], groupedItems.items.Count);
         }
     }
 }
