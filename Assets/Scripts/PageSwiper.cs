@@ -14,12 +14,22 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     private int pagesCount;
     private Vector3 startLocation;
 
+    public RectTransform[] pages;
+
     void Start()
     {
         panelLocation = transform.position;
         startLocation = panelLocation;
         currentPage = 1;
         pagesCount = transform.childCount;
+
+        for (int i = 0; i < pages.Length; i++)
+        {
+            if (i == 0) continue;
+
+            pages[i].offsetMin = new Vector2(Screen.width * i, 0);
+            pages[i].offsetMax = new Vector2(Screen.width * i, 0);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

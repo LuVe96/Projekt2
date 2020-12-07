@@ -10,12 +10,6 @@ public class InventorySlotHandler : MonoBehaviour
     public Image icon;
     public Text amountText;
 
-    private void Start()
-    {
-
-    }
-
-
     public void AddItem( LootItem newItem, int amount)
     {
         item = newItem;
