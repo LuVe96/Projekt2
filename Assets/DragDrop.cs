@@ -2,61 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private Canvas canvas;
+    private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
     [HideInInspector]
     public bool isInDragMode = false;
-    private bool firstTime = true;
+    [HideInInspector]
+    public static bool DragModeActive { private set; get; } = false;
 
     private void Awake()
     {
         canvas = IngameUIManager.Instance.gameObject.GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
-        //GameObject.Find("EventSystem").GetComponent<EventSystem>().enabled = false;
+        canvasGroup = GetComponent<CanvasGroup>();
 
     }
 
-    private void Update()
+    public void ActivateDragMode()
     {
-        //GameObject.Find("EventSystem").GetComponent<EventSystem>().enabled = true;
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("Dragged");
+        DragModeActive = true;
+        isInDragMode = true;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-
+        canvasGroup.blocksRaycasts = false;
+        DragModeActive = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (isInDragMode)
         {
-            if (firstTime)
-            {
-                Debug.Log("Curr Pos: " + rectTransform.anchoredPosition);
-                Debug.Log("new Pos: " + eventData.pointerCurrentRaycast.screenPosition);
-                //rectTransform.anchoredPosition = eventData.pointerCurrentRaycast.screenPosition;
-                //rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-                firstTime = false;
-            }
-            else
-            {
-                rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-            }
+            DragModeActive = true;
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+
         }
           
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-
+        canvasGroup.blocksRaycasts = true;
+        DragModeActive = false;
     }
 
+    private void OnDisable()
+    {
+        DragModeActive = false;
+    }
 }

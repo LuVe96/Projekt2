@@ -46,33 +46,29 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     private void OnLongPress()
     {
-        //var clonedItem = Instantiate(gameObject, GameObject.Find("IngameUICanvas").transform);
-        //clonedItem.transform.position = transform.position;
-        //clonedItem.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetComponent<RectTransform>().rect.height);
-        //clonedItem.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, GetComponent<RectTransform>().rect.width);
-        //clonedItem.GetComponent<DragDrop>().enabled = true;
-        //clonedItem.GetComponent<InventorySlotHandler>().enabled = false;
-        //MenuManager.Instance.ToggleInventory(false);
-
         var clonedItem = Instantiate(gameObject, transform.parent);
         clonedItem.transform.SetSiblingIndex(transform.GetSiblingIndex());
+        clonedItem.GetComponent<InventorySlotHandler>().item = item;
 
         transform.parent = GameObject.Find("IngameUICanvas").transform;
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetComponent<RectTransform>().rect.height);
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, GetComponent<RectTransform>().rect.width);
-        GetComponent<DragDrop>().enabled = true;
-        GetComponent<DragDrop>().isInDragMode = true;
+        GetComponent<DragDrop>().ActivateDragMode();
+
         GetComponent<InventorySlotHandler>().enabled = false;
         MenuManager.Instance.ToggleInventory(false);
     }
 
     private void OnShortPress()
     {
+        GameObject.Find("DebugText").GetComponent<Text>().text += "  |ShortPress|";
 
     }
 
     private void Update()
     {
+        if (item == null) return;
+
         if (isClicked)
         {
             if (isLongPressed)
@@ -91,10 +87,15 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
                 longPressTimeSum = 0;
                 isClicked = false;
             }
+        } else
+        {
+            longPressTimeSum = 0;
+            isClicked = false;
         }
 
     }
 
+    ///OnPointer only works with mouse click
     public void OnPointerDown(PointerEventData eventData)
     {
         isLongPressed = true;
@@ -105,4 +106,5 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     {
         isLongPressed = false;
     }
+
 }
