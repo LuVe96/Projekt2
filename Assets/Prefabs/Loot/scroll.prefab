@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 80
-  item: {fileID: 11400000, guid: 25063f192ed39944781af4096d2369f8, type: 2}
+  item: {fileID: 11400000, guid: e334a825ff7fee44a8ff14b7e337e329, type: 2}
 --- !u!136 &3023742516536313288
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -411,7 +411,7 @@ MonoBehaviour:
   lootObjects:
   - lootItem: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9, type: 2}
     probability: 50
-  - lootItem: {fileID: 11400000, guid: 25063f192ed39944781af4096d2369f8, type: 2}
+  - lootItem: {fileID: 11400000, guid: e334a825ff7fee44a8ff14b7e337e329, type: 2}
     probability: 50
 --- !u!1 &9190174687182808909
 GameObject:

@@ -58,7 +58,11 @@ public class Inventory : MonoBehaviour
                 {
                     foreach (var equippedSlot in it.equiptedSlots)
                     {
-                        Destroy(equippedSlot.gameObject);
+                        if (equippedSlot != null)
+                        {
+                            Destroy(equippedSlot.gameObject);
+                        } 
+                          
                     }
                     items.Remove(it);
                 }

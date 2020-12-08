@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 126a177aae6a92a4b9c4f811a93ce6c9, type: 3}
-  m_Name: Scroll
+  m_Script: {fileID: 11500000, guid: 96a85e806834a674b9cdbd845502e14c, type: 3}
+  m_Name: scroll 1
   m_EditorClassIdentifier: 
   name: Scroll
+  id: Scroll_001
   icon: {fileID: 21300000, guid: 3746b0c8290235848be3961e49fb6e06, type: 3}
   gameObject: {fileID: 1457677674291732440, guid: 8be1bef73d238f343a93987e46ab10b3,
     type: 3}
-  type: 1
-  healing: 0
