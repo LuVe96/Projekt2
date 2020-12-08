@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
         bool itemAdded = false;
         foreach (var it in items)
         {
-            if(item.name == it.name)
+            if(item.id == it.id)
             {
                 it.items.Add(item);
                 itemAdded = true;
@@ -51,11 +51,15 @@ public class Inventory : MonoBehaviour
     {
         foreach (var it in items)
         {
-            if (item.name == it.name)
+            if (item.id == it.id)
             {
                 it.items.Remove(item);
                 if(it.items.Count <= 0)
                 {
+                    foreach (var equippedSlot in it.equiptedSlots)
+                    {
+                        Destroy(equippedSlot.gameObject);
+                    }
                     items.Remove(it);
                 }
                 break;
@@ -71,16 +75,29 @@ public class Inventory : MonoBehaviour
         if (onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
     }
+
+    public void SetEquippedSlot(LootItem item, InventorySlotHandler equippedSlot)
+    {
+        foreach (var groupedItem in items)
+        {
+            if(groupedItem.id == item.id)
+            {
+                groupedItem.equiptedSlots.Add(equippedSlot);
+            }
+        }
+    }
 }
 
 public struct GroupedItems
 {
-    public string name;
+    public string id;
     public List<LootItem> items;
+    public List<InventorySlotHandler> equiptedSlots;
 
     public GroupedItems(LootItem item)
     {
-        this.name = item.name;
+        this.id = item.id;
+        equiptedSlots = new List<InventorySlotHandler>();
         items = new List<LootItem>();
         items.Add(item);
     }

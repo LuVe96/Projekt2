@@ -36,7 +36,7 @@ public class ItemBarSlot : MonoBehaviour, IDropHandler
             rect.anchoredPosition = new Vector2(0, 0);
             var dragDrop = eventData.pointerDrag.GetComponent<DragDrop>();
 
-            dragDrop.gameObject.GetComponent<InventorySlotHandler>().isEquipped = true;
+            dragDrop.gameObject.GetComponent<InventorySlotHandler>().setAsEquipped();
             dragDrop.enabled = false;
             
 

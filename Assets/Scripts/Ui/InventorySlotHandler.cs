@@ -16,20 +16,26 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     public float longPressTime = 1f;
     private float longPressTimeSum = 0;
     [HideInInspector]
-    public bool isEquipped = false;
-    private InventorySlotHandler equippedItemSlot;
+    public bool isEquipped { get; private set; } = false;
+    //private InventorySlotHandler equippedItemSlot;
 
 
     private void Awake()
     {
 
     }
+    public void setAsEquipped()
+    {
+        isEquipped = true;
+        Inventory.Instance.SetEquippedSlot(item, this);
+        
+    }
 
     public void AddItem( LootItem newItem, int amount)
     {
-        if(equippedItemSlot != null){
-            equippedItemSlot.AddItem(newItem, amount);
-        }
+        //if(equippedItemSlot != null){
+        //    equippedItemSlot.AddItem(newItem, amount);
+        //}
 
         item = newItem;
         icon.sprite = item.icon;
@@ -46,11 +52,11 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     public void ClearSlot()
     {
-        if (equippedItemSlot != null)
-        {
-            equippedItemSlot.ClearSlot();
-            Destroy(equippedItemSlot.gameObject);
-        }
+        //if (equippedItemSlot != null)
+        //{
+        //    equippedItemSlot.ClearSlot();
+        //    Destroy(equippedItemSlot.gameObject);
+        //}
         item = null;
         icon.sprite = null;
         icon.enabled = false;
@@ -62,7 +68,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
         /// sets eqipted slot as equiptedSlot of cloned slot in inventory in current index
         var clonedItem = Instantiate(gameObject, transform.parent);
         clonedItem.transform.SetSiblingIndex(transform.GetSiblingIndex());
-        clonedItem.GetComponent<InventorySlotHandler>().equippedItemSlot = this;
+        //clonedItem.GetComponent<InventorySlotHandler>().equippedItemSlot = this;
 
         transform.SetParent(GameObject.Find("IngameUICanvas").transform);
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetComponent<RectTransform>().rect.height);

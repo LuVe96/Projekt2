@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class LootItem : ScriptableObject
 {
     new public string name;
+    public string id;
     public Sprite icon;
     public GameObject gameObject;
 

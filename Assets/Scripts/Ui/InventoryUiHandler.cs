@@ -40,6 +40,13 @@ public class InventoryUiHandler : MonoBehaviour
             {
                 var groupedItems = inventory.items[i];
                 slots[i].AddItem(groupedItems.items[0], groupedItems.items.Count);
+                foreach (var equippedSlot in groupedItems.equiptedSlots)
+                {
+                    if(equippedSlot != null)
+                    {
+                        equippedSlot.AddItem(groupedItems.items[0], groupedItems.items.Count);
+                    }
+                }
             }
             else {
                 slots[i].ClearSlot();
