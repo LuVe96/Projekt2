@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IEndDragHandler, IDragHandler
 {
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
     [HideInInspector]
-    public bool isInDragMode = false;
+    public bool shouldGoInDragMode = false;
     [HideInInspector]
     public static bool DragModeActive { private set; get; } = false;
 
@@ -24,28 +24,31 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void ActivateDragMode()
     {
         DragModeActive = true;
-        isInDragMode = true;
+        shouldGoInDragMode = true;
+        canvasGroup.blocksRaycasts = false;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        canvasGroup.blocksRaycasts = false;
-        DragModeActive = true;
-    }
+    //public void OnBeginDrag(PointerEventData eventData)
+    //{
+    //    canvasGroup.blocksRaycasts = false;
+    //    DragModeActive = true;
+    //    Debug.Log("OnBeginDrag");
+    //}
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (isInDragMode)
+        if (shouldGoInDragMode)
         {
             DragModeActive = true;
             rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-
+            Debug.Log("OnDrag");
         }
           
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Debug.Log("OnEndDrag");
         canvasGroup.blocksRaycasts = true;
         DragModeActive = false;
 

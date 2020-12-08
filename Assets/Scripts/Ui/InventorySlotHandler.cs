@@ -17,7 +17,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     private float longPressTimeSum = 0;
     [HideInInspector]
     public bool isEquipped { get; private set; } = false;
-    //private InventorySlotHandler equippedItemSlot;
+    private PointerEventData pointerEnterEventData;
 
 
     private void Awake()
@@ -65,9 +65,10 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     private void OnLongPress()
     {
-        /// sets eqipted slot as equiptedSlot of cloned slot in inventory in current index
+        Debug.Log("OnLongPress");
         var clonedItem = Instantiate(gameObject, transform.parent);
         clonedItem.transform.SetSiblingIndex(transform.GetSiblingIndex());
+        //clonedItem.GetComponent<CanvasGroup>().blocksRaycasts = true;
         //clonedItem.GetComponent<InventorySlotHandler>().equippedItemSlot = this;
 
         transform.SetParent(GameObject.Find("IngameUICanvas").transform);
@@ -99,8 +100,28 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     {
         if (item == null) return;
 
+        ///Check if Long click is over the slot
+        if (pointerEnterEventData != null)
+        {
+            /// disable dragging while pressing
+            if (isLongPressed)
+            {
+                pointerEnterEventData.dragging = false;
+            }
+            else
+            {
+                pointerEnterEventData.dragging = true;
+            }
 
-        if (isClicked && EventSystem.current.IsPointerOverGameObject())
+            if (pointerEnterEventData.pointerEnter != gameObject)
+            {
+                longPressTimeSum = 0;
+                isClicked = false;
+                return;
+            }
+        }
+
+        if (isClicked)
         {
             if (isLongPressed)
             {
@@ -110,6 +131,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
                     OnLongPress();
                     longPressTimeSum = 0;
                     isClicked = false;
+                    isLongPressed = false;
                 }
             }
             else
@@ -123,11 +145,11 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
             longPressTimeSum = 0;
             isClicked = false;
         }
-
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        pointerEnterEventData = eventData;
         isLongPressed = true;
         isClicked = true;
     }

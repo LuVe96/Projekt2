@@ -21,6 +21,7 @@ public class ItemBarSlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        Debug.Log("Drop");
         if (eventData.pointerDrag != null)
         {
             for (int i = 0; i < transform.childCount; i++)
