@@ -15,9 +15,16 @@ public class InventoryUiHandler : MonoBehaviour
         inventory = Inventory.Instance;
         inventory.onItemChangedCallback += UpdateUI;
 
-        slots = itemsParent.GetComponentsInChildren<InventorySlotHandler>();
+        UpdateSlots();
+
     }
 
+    public void UpdateSlots()
+    {
+        slots = itemsParent.GetComponentsInChildren<InventorySlotHandler>();
+        Inventory.Instance.UpdateInventory();
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -26,10 +33,18 @@ public class InventoryUiHandler : MonoBehaviour
 
     void UpdateUI()
     {
-        for (int i = 0; i < inventory.items.Count; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
-            var groupedItems = inventory.items[i];
-            slots[i].AddItem(groupedItems.items[0], groupedItems.items.Count);
+
+            if (i < inventory.items.Count)
+            {
+                var groupedItems = inventory.items[i];
+                slots[i].AddItem(groupedItems.items[0], groupedItems.items.Count);
+            }
+            else {
+                slots[i].ClearSlot();
+            }
+
         }
     }
 }

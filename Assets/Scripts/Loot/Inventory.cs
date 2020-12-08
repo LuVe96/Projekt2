@@ -65,6 +65,12 @@ public class Inventory : MonoBehaviour
         if (onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
     }
+
+    public void UpdateInventory()
+    {
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
+    }
 }
 
 public struct GroupedItems

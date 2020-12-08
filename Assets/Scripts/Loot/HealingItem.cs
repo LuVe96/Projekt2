@@ -7,6 +7,12 @@ public class HealingItem : LootItem
 {
 
     public float healing = 0;
-   
-   
+
+    public override void UseItem()
+    {
+        GameObject.Find("Player").GetComponent<PlayerHandler>().HealPlayer(healing);
+        Inventory.Instance.Remove(this);
+    }
+
+
 }

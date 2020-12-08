@@ -15,13 +15,22 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     private bool isClicked;
     public float longPressTime = 1f;
     private float longPressTimeSum = 0;
+    [HideInInspector]
+    public bool isEquipped = false;
+    private InventorySlotHandler equippedItemSlot;
+
 
     private void Awake()
     {
+
     }
 
     public void AddItem( LootItem newItem, int amount)
     {
+        if(equippedItemSlot != null){
+            equippedItemSlot.AddItem(newItem, amount);
+        }
+
         item = newItem;
         icon.sprite = item.icon;
         icon.enabled = true;
@@ -37,8 +46,12 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     public void ClearSlot()
     {
+        if (equippedItemSlot != null)
+        {
+            equippedItemSlot.ClearSlot();
+            Destroy(equippedItemSlot.gameObject);
+        }
         item = null;
-
         icon.sprite = null;
         icon.enabled = false;
         amountText.text = null;
@@ -46,30 +59,42 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     private void OnLongPress()
     {
+        /// sets eqipted slot as equiptedSlot of cloned slot in inventory in current index
         var clonedItem = Instantiate(gameObject, transform.parent);
         clonedItem.transform.SetSiblingIndex(transform.GetSiblingIndex());
-        clonedItem.GetComponent<InventorySlotHandler>().item = item;
+        clonedItem.GetComponent<InventorySlotHandler>().equippedItemSlot = this;
 
-        transform.parent = GameObject.Find("IngameUICanvas").transform;
+        transform.SetParent(GameObject.Find("IngameUICanvas").transform);
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetComponent<RectTransform>().rect.height);
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, GetComponent<RectTransform>().rect.width);
         GetComponent<DragDrop>().ActivateDragMode();
 
-        GetComponent<InventorySlotHandler>().enabled = false;
+        //GetComponent<InventorySlotHandler>().enabled = false;
+        GameObject.Find("MenuCanvas").GetComponent<InventoryUiHandler>().UpdateSlots();
+
         MenuManager.Instance.ToggleInventory(false);
     }
 
     private void OnShortPress()
     {
-        GameObject.Find("DebugText").GetComponent<Text>().text += "  |ShortPress|";
-
+        if (isEquipped)
+        {
+            Debug.Log("Use  Item");
+            /// Use Item
+            item.UseItem();
+        }else
+        {
+            Debug.Log("Open Item Menu");
+            //Open Iventory Menu
+        }
     }
 
     private void Update()
     {
         if (item == null) return;
 
-        if (isClicked)
+
+        if (isClicked && EventSystem.current.IsPointerOverGameObject())
         {
             if (isLongPressed)
             {
@@ -95,7 +120,6 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     }
 
-    ///OnPointer only works with mouse click
     public void OnPointerDown(PointerEventData eventData)
     {
         isLongPressed = true;

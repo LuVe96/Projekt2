@@ -19,7 +19,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvas = IngameUIManager.Instance.gameObject.GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-
     }
 
     public void ActivateDragMode()
@@ -49,10 +48,17 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         canvasGroup.blocksRaycasts = true;
         DragModeActive = false;
+
+        var slotHander = GetComponent<InventorySlotHandler>();
+        if(!slotHander.isEquipped)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDisable()
     {
+        canvasGroup.blocksRaycasts = true;
         DragModeActive = false;
     }
 }

@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public class PlayerHandler : MonoBehaviour
 {
     public float lifeAmount = 100;
-    private float FullLifeAmount;
+    private float MaxLifeAmount;
     public GameObject bloodParticles;
     public AudioSource hitSound;
+    public GameObject uiLifeBarFront;
 
     // Start is called before the first frame update
     void Start()
     {
-        FullLifeAmount = lifeAmount;
+        MaxLifeAmount = lifeAmount;
+        //uiLifeBar = GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject;
     }
 
     // Update is called once per frame
@@ -30,12 +32,27 @@ public class PlayerHandler : MonoBehaviour
         if (collision.transform.tag == "EnemyProjectile" && !collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage)
         {
             collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage = true;
-            lifeAmount -= collision.gameObject.GetComponent<ProjectileHandler>().damage;
-            GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
-            Instantiate(bloodParticles, transform.position, transform.rotation);
-            hitSound.Play();
+            DamagePlayer(collision.gameObject.GetComponent<ProjectileHandler>().damage);
             Destroy(collision.gameObject);
         }
+    }
+
+    public void HealPlayer(float amount)
+    {
+        lifeAmount += amount;
+        if(lifeAmount >= MaxLifeAmount)
+        {
+            lifeAmount = MaxLifeAmount;
+        }
+        uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
+    }
+
+    private void DamagePlayer(float amount)
+    {
+        lifeAmount -= amount;
+        uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
+        Instantiate(bloodParticles, transform.position, transform.rotation);
+        hitSound.Play();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,11 +63,7 @@ public class PlayerHandler : MonoBehaviour
                 && !other.transform.parent.GetComponent<DogAttackHandler>().hasHitten)
             {
                 other.transform.parent.GetComponent<DogAttackHandler>().hasHitten = true;
-                lifeAmount -= other.transform.parent.GetComponent<DogAttackHandler>().damage;
-                GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
-                Instantiate(bloodParticles, transform.position, transform.rotation);
-                hitSound.Play();
-                
+                DamagePlayer(other.transform.parent.GetComponent<DogAttackHandler>().damage);
             }
 
         }
