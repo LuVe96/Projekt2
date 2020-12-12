@@ -84,6 +84,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     private void OnShortPress()
     {
+        Debug.LogWarning("short_click");
         if (isEquipped)
         {
             Debug.Log("Use  Item");
@@ -128,6 +129,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
                 longPressTimeSum += Time.deltaTime;
                 if (longPressTimeSum >= longPressTime)
                 {
+
                     OnLongPress();
                     longPressTimeSum = 0;
                     isClicked = false;
@@ -142,6 +144,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
             }
         } else
         {
+
             longPressTimeSum = 0;
             isClicked = false;
         }
@@ -149,6 +152,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     public void OnPointerDown(PointerEventData eventData)
     {
+
         pointerEnterEventData = eventData;
         isLongPressed = true;
         isClicked = true;
@@ -157,6 +161,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     public void OnPointerUp(PointerEventData eventData)
     {
         isLongPressed = false;
+        pointerEnterEventData = null;
     }
 
 }

@@ -28,13 +28,6 @@ public class DragDrop : MonoBehaviour, IEndDragHandler, IDragHandler
         canvasGroup.blocksRaycasts = false;
     }
 
-    //public void OnBeginDrag(PointerEventData eventData)
-    //{
-    //    canvasGroup.blocksRaycasts = false;
-    //    DragModeActive = true;
-    //    Debug.Log("OnBeginDrag");
-    //}
-
     public void OnDrag(PointerEventData eventData)
     {
         if (shouldGoInDragMode)
@@ -48,15 +41,19 @@ public class DragDrop : MonoBehaviour, IEndDragHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
-        canvasGroup.blocksRaycasts = true;
-        DragModeActive = false;
-
-        var slotHander = GetComponent<InventorySlotHandler>();
-        if(!slotHander.isEquipped)
+        if (shouldGoInDragMode)
         {
-            Destroy(gameObject);
+            Debug.Log("OnEndDrag");
+            canvasGroup.blocksRaycasts = true;
+            DragModeActive = false;
+
+            var slotHander = GetComponent<InventorySlotHandler>();
+            if (!slotHander.isEquipped)
+            {
+                Destroy(gameObject);
+            }
         }
+           
     }
 
     private void OnDisable()
