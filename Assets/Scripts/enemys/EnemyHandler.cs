@@ -101,7 +101,7 @@ public class EnemyHandler : MonoBehaviour
         {
             GameObject projectile = Instantiate(projectilePrfab);
             projectile.transform.position = transform.forward + transform.localPosition;
-            projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position + new Vector3(0, UnityEngine.Random.Range(-0.5f, 0.5f), 0));
+            projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position);
         } else if (enemyType == EnemyType.Dog)
         {
             GetComponent<DogAttackHandler>().Attack();
