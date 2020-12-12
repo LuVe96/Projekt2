@@ -18,11 +18,16 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     [HideInInspector]
     public bool isEquipped { get; private set; } = false;
     private PointerEventData pointerEnterEventData;
+    private Image image;
+
+    private Color stdColor;
+    public Color pressedColor;
 
 
-    private void Awake()
+    private void Start()
     {
-
+        image = GetComponent<Image>();
+        stdColor = image.color;
     }
     public void setAsEquipped()
     {
@@ -65,7 +70,9 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     private void OnLongPress()
     {
-        Debug.Log("OnLongPress");
+        if (isEquipped) return;
+
+        image.color = stdColor;
         var clonedItem = Instantiate(gameObject, transform.parent);
         clonedItem.transform.SetSiblingIndex(transform.GetSiblingIndex());
         //clonedItem.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -116,6 +123,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
             if (pointerEnterEventData.pointerEnter != gameObject)
             {
+                image.color = stdColor;
                 longPressTimeSum = 0;
                 isClicked = false;
                 return;
@@ -124,7 +132,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
         if (isClicked)
         {
-            if (isLongPressed)
+            if (isLongPressed && !isEquipped)
             {
                 longPressTimeSum += Time.deltaTime;
                 if (longPressTimeSum >= longPressTime)
@@ -152,16 +160,30 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("opdown: " + (item == null));
+        if(item != null)
+        {
+            pointerEnterEventData = eventData;
+            isLongPressed = true;
+            isClicked = true;
+            image.color = pressedColor;
+        }
 
-        pointerEnterEventData = eventData;
-        isLongPressed = true;
-        isClicked = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         isLongPressed = false;
         pointerEnterEventData = null;
+        image.color = stdColor;
+
     }
+
+    //private void ChangeButtonColor(Color color)
+    //{
+    //    var colors = image.colors;
+    //    colors.normalColor = color;
+    //    image.colors = colors;
+    //}
 
 }
