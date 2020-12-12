@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 {
@@ -15,6 +16,8 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     private Vector3 startLocation;
 
     public RectTransform[] pages;
+    public CanvasScaler canvasScaler;
+    private float scaledScreenWidth;
 
     void Start()
     {
@@ -23,12 +26,14 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         currentPage = 1;
         pagesCount = transform.childCount;
 
+        scaledScreenWidth = Screen.width / canvasScaler.scaleFactor;
+
         for (int i = 0; i < pages.Length; i++)
         {
             if (i == 0) continue;
 
-            pages[i].offsetMin = new Vector2(Screen.width * i, 0);
-            pages[i].offsetMax = new Vector2(Screen.width * i, 0);
+            pages[i].offsetMin = new Vector2(scaledScreenWidth * i , 0);
+            pages[i].offsetMax = new Vector2(scaledScreenWidth * i, 0);
         }
     }
 
@@ -45,7 +50,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        float percentage = (eventData.pressPosition.x - eventData.position.x) / Screen.width;
+        float percentage = (eventData.pressPosition.x - eventData.position.x) / scaledScreenWidth;
         if(Mathf.Abs(percentage) >= precentThreshold)
         {
             Vector3 newLocation = panelLocation;
@@ -68,7 +73,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     void CalcCurrentPage()
     {
         var dif = startLocation.x - transform.position.x;
-        currentPage = (int)Mathf.Round(dif / Screen.width) + 1;
+        currentPage = (int)Mathf.Round(dif / scaledScreenWidth) + 1;
 
     }
 

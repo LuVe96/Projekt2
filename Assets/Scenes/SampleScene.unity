@@ -6158,6 +6158,7 @@ GameObject:
   - component: {fileID: 376615339}
   - component: {fileID: 376615338}
   - component: {fileID: 376615342}
+  - component: {fileID: 376615343}
   m_Layer: 5
   m_Name: IngameUICanvas
   m_TagString: Untagged
@@ -6261,6 +6262,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a8e07c53a4a384686dfaf82fbfe5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &376615343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376615337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff44ee553a7fce47a39ad8483f6c9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referenzWidth: 1440
 --- !u!1001 &383139950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28456,6 +28470,7 @@ GameObject:
   - component: {fileID: 1513663182}
   - component: {fileID: 1513663186}
   - component: {fileID: 1513663187}
+  - component: {fileID: 1513663188}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -28570,6 +28585,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1903878320}
+--- !u!114 &1513663188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513663181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff44ee553a7fce47a39ad8483f6c9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referenzWidth: 1440
 --- !u!1001 &1520347362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35587,6 +35615,7 @@ MonoBehaviour:
   pages:
   - {fileID: 1949087491}
   - {fileID: 1903878320}
+  canvasScaler: {fileID: 1513663183}
 --- !u!1001 &1787771254
 PrefabInstance:
   m_ObjectHideFlags: 0

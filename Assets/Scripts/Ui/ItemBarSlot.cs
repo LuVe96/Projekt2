@@ -22,7 +22,8 @@ public class ItemBarSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("Drop");
-        if (eventData.pointerDrag != null)
+        Debug.Log("Pointer: " + eventData.pointerDrag);
+        if (eventData.pointerDrag != null && eventData.pointerDrag.tag == "InventorySlot")
         {
             for (int i = 0; i < transform.childCount; i++)
             {
@@ -37,8 +38,12 @@ public class ItemBarSlot : MonoBehaviour, IDropHandler
             rect.anchoredPosition = new Vector2(0, 0);
             var dragDrop = eventData.pointerDrag.GetComponent<DragDrop>();
 
-            dragDrop.gameObject.GetComponent<InventorySlotHandler>().setAsEquipped();
-            dragDrop.enabled = false;
+            if(dragDrop.gameObject.GetComponent<InventorySlotHandler>() != null)
+            {
+                dragDrop.gameObject.GetComponent<InventorySlotHandler>().setAsEquipped();
+                dragDrop.enabled = false;
+            }
+
             
 
         }
