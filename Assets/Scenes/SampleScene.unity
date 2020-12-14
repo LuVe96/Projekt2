@@ -17670,7 +17670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &928329366
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -45737,6 +45737,7 @@ MonoBehaviour:
     type: 3}
   hitSound: {fileID: 2024505135}
   uiLifeBarFront: {fileID: 296716718}
+  burnEffect: {fileID: 928329367}
 --- !u!54 &2024505134
 Rigidbody:
   m_ObjectHideFlags: 0

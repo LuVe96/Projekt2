@@ -14,5 +14,6 @@ public class HealingItem : LootItem
         Inventory.Instance.Remove(this);
     }
 
+    
 
 }

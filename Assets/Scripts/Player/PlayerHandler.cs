@@ -11,6 +11,9 @@ public class PlayerHandler : MonoBehaviour
     public AudioSource hitSound;
     public GameObject uiLifeBarFront;
 
+    ///Efects
+    public ParticleSystem burnEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +28,7 @@ public class PlayerHandler : MonoBehaviour
         {
             GameManager.Instance.playerIsDead = true;
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "EnemyProjectile" && !collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage)
-        {
-            collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage = true;
-            DamagePlayer(collision.gameObject.GetComponent<ProjectileHandler>().damage);
-            Destroy(collision.gameObject);
-        }
     }
 
     public void HealPlayer(float amount)
@@ -47,12 +41,42 @@ public class PlayerHandler : MonoBehaviour
         uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
     }
 
-    private void DamagePlayer(float amount)
+    private void DamagePlayer(float amount, OnHitEffect effect = OnHitEffect.None, float effectTime = 0)
     {
         lifeAmount -= amount;
         uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
         Instantiate(bloodParticles, transform.position, transform.rotation);
         hitSound.Play();
+
+        switch (effect)
+        {
+            case OnHitEffect.Burn:
+                StartCoroutine(EnableEffect(burnEffect, effectTime));
+                break;
+            default: break;
+        }
+       
+    }
+
+    IEnumerator EnableEffect(ParticleSystem particle, float time)
+    {
+        particle.gameObject.SetActive(true);
+        yield return new WaitForSeconds(time);
+
+        // Code to execute after the delay
+        particle.gameObject.SetActive(false);
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "EnemyProjectile" && !collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage)
+        {
+            var projHander = collision.gameObject.GetComponent<ProjectileHandler>();
+            projHander.disabledDamage = true;
+            DamagePlayer(projHander.damage, projHander.onHitEffect, projHander.onHitEffectTime);
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

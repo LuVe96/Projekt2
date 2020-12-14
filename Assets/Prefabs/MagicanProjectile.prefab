@@ -47,9 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd913934680ceb64bb150b706a46e706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disabledDamage: 0
   velocity: 15
   aliveTime: 7
   damage: 25
+  onHitEffect: 1
+  onHitEffectTime: 2.5
 --- !u!136 &8302297812263063290
 CapsuleCollider:
   m_ObjectHideFlags: 0
