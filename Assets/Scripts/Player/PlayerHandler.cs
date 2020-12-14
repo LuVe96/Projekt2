@@ -41,7 +41,7 @@ public class PlayerHandler : MonoBehaviour
         uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
     }
 
-    private void DamagePlayer(float amount, OnHitEffect effect = OnHitEffect.None, float effectTime = 0)
+    private void DamagePlayer(float amount, OnHitEffectType effect = OnHitEffectType.None, float effectTime = 0)
     {
         lifeAmount -= amount;
         uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
@@ -50,7 +50,7 @@ public class PlayerHandler : MonoBehaviour
 
         switch (effect)
         {
-            case OnHitEffect.Burn:
+            case OnHitEffectType.Burn:
                 StartCoroutine(EnableEffect(burnEffect, effectTime));
                 break;
             default: break;

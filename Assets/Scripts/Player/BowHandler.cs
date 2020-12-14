@@ -99,6 +99,12 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     }
 
 
+    public void EnableEffect(OnHitEffectType effect, float time)
+    {
+
+    }
+
+
     void AttackEnemy(GameObject enemy)
     {
         if (enemy == null) { return; }

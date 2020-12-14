@@ -11,7 +11,7 @@ public class ProjectileHandler : MonoBehaviour
     public float aliveTime = 7;
     private float aliveTimeSum = 0;
     public float damage = 25;
-    public OnHitEffect onHitEffect = OnHitEffect.None;
+    public OnHitEffectType onHitEffect = OnHitEffectType.None;
     public float onHitEffectTime = 1f;
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class ProjectileHandler : MonoBehaviour
   
 }
 
-public enum OnHitEffect
+public enum OnHitEffectType
 {
     None, Burn
 }

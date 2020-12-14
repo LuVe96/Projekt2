@@ -10,7 +10,7 @@ public class EnemyHandler : MonoBehaviour
 {
     public EnemyType enemyType = EnemyType.Magician;
     public float lifeAmount = 100;
-    private float FullLifeAmount;
+    private float MaxLifeAmount;
     public GameObject projectilePrfab;
     public GameObject bloodParticles;
     public AudioSource hitSound;
@@ -21,15 +21,19 @@ public class EnemyHandler : MonoBehaviour
     private Transform player;
     private EnemyIndicator enemyIndicator;
     private Vector3 startPosition;
+    private Image uiLifeBarFront;
+
+    public ParticleSystem burnParticle;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").transform;
-        FullLifeAmount = lifeAmount;
+        MaxLifeAmount = lifeAmount;
         startPosition = transform.position;
 
         enemyIndicator = GetComponent<EnemyIndicator>();
+        uiLifeBarFront = transform.Find("Canvas/lifebar/front").gameObject.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -114,11 +118,48 @@ public class EnemyHandler : MonoBehaviour
         if (collision.transform.tag == "Arrow" && !collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage)
         {
             collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage = true;
-            lifeAmount -= collision.gameObject.GetComponent<ProjectileHandler>().damage;
-            transform.Find("Canvas/lifebar/front").gameObject.GetComponent<Image>().fillAmount = lifeAmount / FullLifeAmount;
+            DamageEnemy(collision.gameObject.GetComponent<ProjectileHandler>().damage);
+            Instantiate(bloodParticles, transform.position, transform.rotation);
+            hitSound.Play();
+
+            foreach (var effect in HitEffectManager.Instance.currentHitEffects)
+            {
+                switch (effect.onHitEffectType)
+                {
+                    case OnHitEffectType.Burn:
+                        StartCoroutine( EnableEffect(effect, burnParticle));
+                        break;
+                    default: break;
+                }
+            }
+        }
+    }
+
+    private void DamageEnemy(float amount, bool calledByEffect = false)
+    {
+        lifeAmount -= amount;
+        uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
+        if (!calledByEffect)
+        {
             Instantiate(bloodParticles, transform.position, transform.rotation);
             hitSound.Play();
         }
+
+    }
+
+    IEnumerator EnableEffect(OnHitEffect effect, ParticleSystem particle)
+    {
+        particle.gameObject.SetActive(true);
+        float timeSum = 0;
+        while(timeSum < effect.effectTime){
+            timeSum += Time.deltaTime;
+           
+            float damage = effect.damageOverTime / effect.effectTime * Time.deltaTime;
+            DamageEnemy(damage, true);
+            yield return null;
+        }
+        //yield return new WaitForSeconds(effect.effectTime);
+        particle.gameObject.SetActive(false);
     }
 }
 
