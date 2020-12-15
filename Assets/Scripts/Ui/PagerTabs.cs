@@ -9,10 +9,11 @@ public class PagerTabs : MonoBehaviour
     private List<GameObject> buttons = new List<GameObject>();
     private int? currentPage = null;
     private PageSwiper pageSwiper;
+    public bool noPager;
 
     void Start()
     {
-        pageSwiper = transform.parent.Find("Pager").GetComponent<PageSwiper>();
+
         for (int i = 0; i < transform.childCount; i++)
         {
             var btn = transform.GetChild(i).gameObject;
@@ -20,13 +21,16 @@ public class PagerTabs : MonoBehaviour
             {
                 buttons.Add(transform.GetChild(i).gameObject);
             }
-
         }
+        if (noPager) return;
+        pageSwiper = transform.parent.Find("Pager").GetComponent<PageSwiper>();
     }
 
 
     void Update()
     {
+        if (noPager) return;
+
         int page = pageSwiper.currentPage;
 
         if(page != currentPage || currentPage == null)

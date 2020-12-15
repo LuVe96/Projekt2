@@ -26,6 +26,7 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleInventory(bool open)
     {
-        transform.Find("TabbedPager").gameObject.SetActive(open);
+        //transform.Find("TabbedPager").gameObject.SetActive(open);
+        transform.Find("Inventory").gameObject.SetActive(open);
     }
 }
