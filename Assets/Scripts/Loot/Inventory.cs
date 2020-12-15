@@ -54,18 +54,19 @@ public class Inventory : MonoBehaviour
             if (item.id == it.id)
             {
                 it.items.Remove(item);
-                if(it.items.Count <= 0)
-                {
-                    foreach (var equippedSlot in it.equiptedSlots)
-                    {
-                        if (equippedSlot != null)
-                        {
-                            Destroy(equippedSlot.gameObject);
-                        } 
-                          
-                    }
-                    items.Remove(it);
-                }
+                //if(it.items.Count <= 0)
+                //{
+                //    foreach (var equippedSlot in it.equiptedSlots)
+                //    {
+                //        if (equippedSlot != null)
+                //        {
+                //            Destroy(equippedSlot.gameObject);
+                //        } 
+
+                //    }
+                //    ////items.Remove(it);
+                //}
+                it.equiptedSlots.RemoveAll(i => i == null);
                 break;
             }
         }
@@ -96,6 +97,7 @@ public struct GroupedItems
 {
     public string id;
     public List<LootItem> items;
+    public LootItem referenzItem;
     public List<InventorySlotHandler> equiptedSlots;
 
     public GroupedItems(LootItem item)
@@ -104,6 +106,7 @@ public struct GroupedItems
         equiptedSlots = new List<InventorySlotHandler>();
         items = new List<LootItem>();
         items.Add(item);
+        referenzItem = item;
     }
 
 

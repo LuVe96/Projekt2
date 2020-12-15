@@ -34,18 +34,21 @@ public class InventoryUiHandler : MonoBehaviour
 
     void UpdateUI()
     {
+        var inventoryItems = inventory.items.FindAll(i => i.items.Count > 0);
+        var emptyItems = inventory.items.FindAll(i => i.items.Count <= 0);
+
         for (int i = 0; i < slots.Length; i++)
         {
 
-            if (i < inventory.items.Count)
+            if (i < inventoryItems.Count)
             {
-                var groupedItems = inventory.items[i];
-                slots[i].AddItem(groupedItems.items[0], groupedItems.items.Count);
+                var groupedItems = inventoryItems[i];
+                slots[i].AddItem(groupedItems.referenzItem, groupedItems.items.Count);
                 foreach (var equippedSlot in groupedItems.equiptedSlots)
                 {
                     if(equippedSlot != null)
                     {
-                        equippedSlot.AddItem(groupedItems.items[0], groupedItems.items.Count);
+                        equippedSlot.AddItem(groupedItems.referenzItem, groupedItems.items.Count);
                     }
                 }
             }
@@ -53,6 +56,17 @@ public class InventoryUiHandler : MonoBehaviour
                 slots[i].ClearSlot();
             }
 
+        }
+
+        foreach (var groupedItems in emptyItems)
+        {
+            foreach (var equippedSlot in groupedItems.equiptedSlots)
+            {
+                if (equippedSlot != null)
+                {
+                    equippedSlot.AddItem(groupedItems.referenzItem, groupedItems.items.Count);
+                }
+            }
         }
     }
 }

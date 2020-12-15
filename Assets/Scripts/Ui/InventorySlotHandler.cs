@@ -10,6 +10,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     LootItem item;
     public Image icon;
     public Text amountText;
+    public Image useTimeIndicator;
 
     private bool isLongPressed;
     private bool isClicked;
@@ -17,18 +18,22 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     private float longPressTimeSum = 0;
     [HideInInspector]
     public bool isEquipped { get; private set; } = false;
+    private bool isEmpty = false;
     private PointerEventData pointerEnterEventData;
     private Image image;
 
     private Color stdColor;
     public Color pressedColor;
+    public Color disabledColor;
 
 
-    private void Start()
+    private void Awake()
     {
         image = GetComponent<Image>();
         stdColor = image.color;
     }
+
+   
     public void setAsEquipped()
     {
         isEquipped = true;
@@ -48,11 +53,14 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
         if(amount == 1)
         {
             amountText.text = null;
-        }  else
+        }
+        else
         {
             amountText.text = amount.ToString();
         }
 
+        isEmpty = (amount <= 0);
+        if(image != null) image.color = (amount <= 0) ? disabledColor : stdColor;
     }
 
     public void ClearSlot()
@@ -94,9 +102,14 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
         Debug.LogWarning("short_click");
         if (isEquipped)
         {
-            Debug.Log("Use  Item");
             /// Use Item
             item.UseItem();
+            if(item is HitEffectItem i)
+            {
+                //var i = item as HitEffectItem;
+                StartCoroutine(ShowTimeIndicator(i.effectItemDuration));
+                
+            }
         }else
         {
             Debug.Log("Open Item Menu");
@@ -106,6 +119,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
 
     private void Update()
     {
+
         if (item == null) return;
 
         ///Check if Long click is over the slot
@@ -161,7 +175,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("opdown: " + (item == null));
-        if(item != null)
+        if(item != null && !isEmpty)
         {
             pointerEnterEventData = eventData;
             isLongPressed = true;
@@ -175,15 +189,24 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
     {
         isLongPressed = false;
         pointerEnterEventData = null;
-        image.color = stdColor;
+        if(!isEmpty) image.color = stdColor;
 
     }
 
-    //private void ChangeButtonColor(Color color)
-    //{
-    //    var colors = image.colors;
-    //    colors.normalColor = color;
-    //    image.colors = colors;
-    //}
+   IEnumerator ShowTimeIndicator(float time)
+    {
+        useTimeIndicator.enabled = true;
+        useTimeIndicator.fillAmount = 1;
+        float timeSum = 0;
+        while (timeSum < time)
+        {
+            timeSum += Time.deltaTime;
+            useTimeIndicator.fillAmount = 1 - timeSum/time;
+            yield return null;
+        }
+        useTimeIndicator.enabled = false;
+        image.color = isEmpty ? disabledColor : stdColor;
+        yield return null;
+    }
 
 }
