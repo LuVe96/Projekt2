@@ -8,5 +8,6 @@ public class TabbedPager : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }

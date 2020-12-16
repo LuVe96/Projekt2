@@ -148,7 +148,7 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
         {
             if (isLongPressed && !isEquipped)
             {
-                longPressTimeSum += Time.deltaTime;
+                longPressTimeSum += Time.unscaledDeltaTime;
                 if (longPressTimeSum >= longPressTime)
                 {
 

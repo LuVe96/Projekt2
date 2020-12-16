@@ -46,6 +46,7 @@ public class DragDrop : MonoBehaviour, IEndDragHandler, IDragHandler
             Debug.Log("OnEndDrag");
             canvasGroup.blocksRaycasts = true;
             DragModeActive = false;
+            Time.timeScale = 1;
 
             var slotHander = GetComponent<InventorySlotHandler>();
             if (!slotHander.isEquipped)
@@ -60,5 +61,6 @@ public class DragDrop : MonoBehaviour, IEndDragHandler, IDragHandler
     {
         canvasGroup.blocksRaycasts = true;
         DragModeActive = false;
+        Time.timeScale = 1;
     }
 }

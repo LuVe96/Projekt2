@@ -28,5 +28,6 @@ public class MenuManager : MonoBehaviour
     {
         //transform.Find("TabbedPager").gameObject.SetActive(open);
         transform.Find("Inventory").gameObject.SetActive(open);
+        Time.timeScale = open ? 0 : 1;
     }
 }
