@@ -9,6 +9,8 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     public float attackPause = 1f;
     private float periodeTimeSum;
     public GameObject arrowPrefab;
+    public Animator charakterAnimator;
+    public Animator bowAnimator;
 
 
     // Start is called before the first frame update
@@ -105,21 +107,31 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     }
 
 
-    void AttackEnemy(GameObject enemy)
+    IEnumerator AttackEnemy(GameObject enemy)
     {
-        if (enemy == null) { return; }
+        if (enemy == null) { yield return null; }
+
+        charakterAnimator.SetBool("isShooting", true);
+
+        yield return new WaitForSeconds(0.2f);
+        bowAnimator.SetBool("isShooting", true);
+
+
+        yield return new WaitForSeconds(0.4f);
 
         GameObject arrow = Instantiate(arrowPrefab);
         arrow.transform.position = transform.position;
-
         arrow.GetComponent<ProjectileHandler>().ShotAt(enemy.transform.position + new Vector3(0,0.7f, 0));
         //transform.parent.parent.GetComponent<PlayerMovement>().LookAt(enemy.transform);
+        charakterAnimator.SetBool("isShooting", false);
+        bowAnimator.SetBool("isShooting", false);
+        yield return null;
     }
 
     public void PlayerHasTurnedToEnemy(GameObject enemy)
     {
-        AttackEnemy(enemy);
-
+        //AttackEnemy(enemy);
+        StartCoroutine(AttackEnemy(enemy));
     }
 }
 
