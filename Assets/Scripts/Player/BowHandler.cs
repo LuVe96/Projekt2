@@ -113,11 +113,11 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
 
         charakterAnimator.SetBool("isShooting", true);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         bowAnimator.SetBool("isShooting", true);
 
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
 
         GameObject arrow = Instantiate(arrowPrefab);
         arrow.transform.position = transform.position;
