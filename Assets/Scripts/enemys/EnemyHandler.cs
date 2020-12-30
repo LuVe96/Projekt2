@@ -24,6 +24,10 @@ public class EnemyHandler : MonoBehaviour
     private Image uiLifeBarFront;
 
     public ParticleSystem burnParticle;
+    private NavMeshAgent navMeshAgent;
+    private float stdMoveSpeed;
+
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,8 @@ public class EnemyHandler : MonoBehaviour
         player = GameObject.Find("Player").transform;
         MaxLifeAmount = lifeAmount;
         startPosition = transform.position;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        stdMoveSpeed = navMeshAgent.speed;
 
         enemyIndicator = GetComponent<EnemyIndicator>();
         uiLifeBarFront = transform.Find("Canvas/lifebar/front").gameObject.GetComponent<Image>();
@@ -49,7 +55,10 @@ public class EnemyHandler : MonoBehaviour
                 enemyIndicator.setIndicator(true);
 
                 // rotate and move towards player
-                GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+                navMeshAgent.SetDestination(player.transform.position);
+
+                // walkanimation when moving
+                if (navMeshAgent.speed != 0) animator.SetBool("isWalking", true);
 
                 attackPeriodeSum += Time.deltaTime;
                 if (attackPeriodeSum >= attackPause)
@@ -66,10 +75,16 @@ public class EnemyHandler : MonoBehaviour
         else
         {
             attackPeriodeSum = 0;
-            GetComponent<NavMeshAgent>().SetDestination(startPosition);
+            navMeshAgent.SetDestination(startPosition);
 
             //turn off enemy indicator
             enemyIndicator.setIndicator(false);
+
+
+            if(transform.position == startPosition)
+            {
+                animator.SetBool("isWalking", false);
+            }
         }
 
         //On Death
@@ -103,14 +118,32 @@ public class EnemyHandler : MonoBehaviour
     {
         if (enemyType == EnemyType.Magician)
         {
-            GameObject projectile = Instantiate(projectilePrfab);
-            projectile.transform.position = transform.forward + transform.localPosition;
-            projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position);
+            StartCoroutine(ProjectilAttack());
         } else if (enemyType == EnemyType.Dog)
         {
             GetComponent<DogAttackHandler>().Attack();
         }
        
+    }
+
+    IEnumerator ProjectilAttack()
+    {
+        navMeshAgent.speed = 0;
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isShooting", true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        GameObject projectile = Instantiate(projectilePrfab);
+        projectile.transform.position = transform.forward + transform.localPosition;
+        projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position);
+
+        yield return new WaitForSeconds(0.5f);
+
+        navMeshAgent.speed = stdMoveSpeed;
+        animator.SetBool("isShooting", false);
+        animator.SetBool("isWalking", true);
+
     }
 
     private void OnCollisionEnter(Collision collision)
