@@ -83,11 +83,10 @@ public class PlayerHandler : MonoBehaviour
     {
         if (other.tag == "EnemyProjectile")
         {
-            if( other.transform.parent.GetComponent<EnemyHandler>().enemyType == EnemyType.Dog 
-                && !other.transform.parent.GetComponent<DogAttackHandler>().hasHitten)
+            if (!other.transform.parent.GetComponent<DogEnemyHandler>().hasHitten)
             {
-                other.transform.parent.GetComponent<DogAttackHandler>().hasHitten = true;
-                DamagePlayer(other.transform.parent.GetComponent<DogAttackHandler>().damage);
+                other.transform.parent.GetComponent<DogEnemyHandler>().hasHitten = true;
+                DamagePlayer(other.transform.parent.GetComponent<DogEnemyHandler>().damage);
             }
 
         }

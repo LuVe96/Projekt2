@@ -3166,13 +3166,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9190174687013697143}
-  - component: {fileID: 9190174687013697140}
   - component: {fileID: 9190174687013697141}
   - component: {fileID: 1301414489}
   - component: {fileID: 2027175943912680072}
   - component: {fileID: 492562980}
   - component: {fileID: 173074690}
   - component: {fileID: 533836682}
+  - component: {fileID: 753955275}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -3199,29 +3199,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9190174687013697140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9190174687013697142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56fb04d3f734eac41a389c283c002179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyType: 1
-  lifeAmount: 100
-  projectilePrfab: {fileID: 2320759669102018788, guid: bf1a1f444acf06b48ac4ea5d3e3d1b75,
-    type: 3}
-  bloodParticles: {fileID: 3672329326037452674, guid: 6fed4d931f0e7e648a95010dd04318fc,
-    type: 3}
-  hitSound: {fileID: 2027175943912680072}
-  attackDistance: 15
-  attackPause: 1.5
-  burnParticle: {fileID: 5587071891294763741}
-  animator: {fileID: 8781547504572758734}
 --- !u!136 &9190174687013697141
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3405,6 +3382,28 @@ MonoBehaviour:
     probability: 50
   - lootItem: {fileID: 11400000, guid: fa4df7f3027dbf34c8b2279d51ed4ff4, type: 2}
     probability: 50
+--- !u!114 &753955275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190174687013697142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2cf412a02a79047864ab16fa05dc3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeAmount: 100
+  projectilePrfab: {fileID: 2320759669102018788, guid: bf1a1f444acf06b48ac4ea5d3e3d1b75,
+    type: 3}
+  bloodParticles: {fileID: 3672329326037452674, guid: 6fed4d931f0e7e648a95010dd04318fc,
+    type: 3}
+  hitSound: {fileID: 2027175943912680072}
+  attackDistance: 15
+  attackPause: 1.5
+  burnParticle: {fileID: 5587071891294763741}
+  animator: {fileID: 8781547504572758734}
 --- !u!1 &9190174687182808909
 GameObject:
   m_ObjectHideFlags: 0
@@ -3980,17 +3979,17 @@ PrefabInstance:
     - target: {fileID: 3603807034466723767, guid: 4a062f04636f83c4c97dc92ecb64d231,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5220696
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3603807034466723767, guid: 4a062f04636f83c4c97dc92ecb64d231,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4791666
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3603807034466723767, guid: 4a062f04636f83c4c97dc92ecb64d231,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.8842733
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3603807034466723767, guid: 4a062f04636f83c4c97dc92ecb64d231,
         type: 3}
@@ -4052,6 +4051,21 @@ PrefabInstance:
       propertyPath: ShapeModule.m_SkinnedMeshRenderer
       value: 
       objectReference: {fileID: 8747166131042210972}
+    - target: {fileID: 3603807034466723768, guid: 4a062f04636f83c4c97dc92ecb64d231,
+        type: 3}
+      propertyPath: ShapeModule.m_MeshSpawn.spread
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603807034466723768, guid: 4a062f04636f83c4c97dc92ecb64d231,
+        type: 3}
+      propertyPath: ShapeModule.m_UseMeshColors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603807034466723768, guid: 4a062f04636f83c4c97dc92ecb64d231,
+        type: 3}
+      propertyPath: ForceModule.inWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3603807034466723770, guid: 4a062f04636f83c4c97dc92ecb64d231,
         type: 3}
       propertyPath: m_Name

@@ -6,44 +6,41 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class EnemyHandler : MonoBehaviour
+public abstract class EnemyHandler : MonoBehaviour
 {
-    public EnemyType enemyType = EnemyType.Magician;
     public float lifeAmount = 100;
-    private float MaxLifeAmount;
-    public GameObject projectilePrfab;
+    protected float MaxLifeAmount;
     public GameObject bloodParticles;
     public AudioSource hitSound;
     public float attackDistance = 15;
     public float attackPause = 1.5f;
-    private float attackPeriodeSum = 0; 
+    private float attackPeriodeSum = 0;
 
-    private Transform player;
+    protected Transform player;
     private EnemyIndicator enemyIndicator;
     private Vector3 startPosition;
     private Image uiLifeBarFront;
 
     public ParticleSystem burnParticle;
-    private NavMeshAgent navMeshAgent;
-    private float stdMoveSpeed;
+    protected NavMeshAgent navMeshAgent;
 
     public Animator animator;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         player = GameObject.Find("Player").transform;
         MaxLifeAmount = lifeAmount;
         startPosition = transform.position;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        stdMoveSpeed = navMeshAgent.speed;
 
         enemyIndicator = GetComponent<EnemyIndicator>();
         uiLifeBarFront = transform.Find("Canvas/lifebar/front").gameObject.GetComponent<Image>();
+
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance <= attackDistance)
@@ -114,40 +111,11 @@ public class EnemyHandler : MonoBehaviour
         return false;
     }
 
-    private void AttackPlayer()
+    protected abstract void AttackPlayer();
+
+    protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (enemyType == EnemyType.Magician)
-        {
-            StartCoroutine(ProjectilAttack());
-        } else if (enemyType == EnemyType.Dog)
-        {
-            GetComponent<DogAttackHandler>().Attack();
-        }
-       
-    }
 
-    IEnumerator ProjectilAttack()
-    {
-        navMeshAgent.speed = 0;
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isShooting", true);
-
-        yield return new WaitForSeconds(0.5f);
-
-        GameObject projectile = Instantiate(projectilePrfab);
-        projectile.transform.position = transform.forward + transform.localPosition;
-        projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position);
-
-        yield return new WaitForSeconds(0.5f);
-
-        navMeshAgent.speed = stdMoveSpeed;
-        animator.SetBool("isShooting", false);
-        animator.SetBool("isWalking", true);
-
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
         if (collision.transform.tag == "Arrow" && !collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage)
         {
             collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage = true;
