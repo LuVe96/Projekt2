@@ -78,7 +78,7 @@ public abstract class EnemyHandler : MonoBehaviour
             enemyIndicator.setIndicator(false);
 
 
-            if(transform.position == startPosition)
+            if(EqualizePositions(transform.position, startPosition, 0.2f) || (transform.position == startPosition))
             {
                 animator.SetBool("isWalking", false);
             }
@@ -161,6 +161,16 @@ public abstract class EnemyHandler : MonoBehaviour
         }
         //yield return new WaitForSeconds(effect.effectTime);
         particle.gameObject.SetActive(false);
+    }
+
+    bool EqualizePositions(Vector3 pos1, Vector3 pos2, float toleranz)
+    {
+        var tolHa = toleranz / 2;
+        bool _x = pos2.x - tolHa <= pos1.x && pos1.x <= pos2.x + tolHa;
+        //bool _y = pos2.y - tolHa <= pos1.y && pos1.y <= pos2.x + tolHa; // no Height
+        bool _z = pos2.z - tolHa <= pos1.z && pos1.z <= pos2.z + tolHa;
+
+        return _x && _z;
     }
 }
 
