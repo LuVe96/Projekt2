@@ -10,6 +10,7 @@ public class PlayerHandler : MonoBehaviour
     public GameObject bloodParticles;
     public AudioSource hitSound;
     public GameObject uiLifeBarFront;
+    public BowHandler bowHandler;
 
     ///Efects
     public ParticleSystem burnEffect;
@@ -76,6 +77,7 @@ public class PlayerHandler : MonoBehaviour
     {
         particle.gameObject.SetActive(true);
         GetComponent<PlayerMovement>().setMovementSpeed(moveSpeedMultipliyer);
+        bowHandler.freezed = true;
 
         float timeSum = 0;
 
@@ -89,6 +91,7 @@ public class PlayerHandler : MonoBehaviour
         }
 
         GetComponent<PlayerMovement>().setMovementSpeed(1);
+        bowHandler.freezed = false;
         particle.gameObject.SetActive(false);
     }
 

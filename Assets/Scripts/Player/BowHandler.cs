@@ -11,6 +11,7 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     public GameObject arrowPrefab;
     public Animator charakterAnimator;
     public Animator bowAnimator;
+    public bool freezed = false;
 
 
     // Start is called before the first frame update
@@ -131,7 +132,8 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     public void PlayerHasTurnedToEnemy(GameObject enemy)
     {
         //AttackEnemy(enemy);
-        StartCoroutine(AttackEnemy(enemy));
+        if(!freezed)
+            StartCoroutine(AttackEnemy(enemy));
     }
 }
 

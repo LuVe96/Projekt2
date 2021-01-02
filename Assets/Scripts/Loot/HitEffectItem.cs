@@ -10,6 +10,7 @@ public class HitEffectItem : LootItem
     public float effectTime;
     public float effectItemDuration;
     public float damageOverTime;
+    public float walkSpeedMultiplier = 1;
 
     public override void UseItem()
     {

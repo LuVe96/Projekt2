@@ -22,7 +22,9 @@ public abstract class EnemyHandler : MonoBehaviour
     private Image uiLifeBarFront;
 
     public ParticleSystem burnParticle;
+    public ParticleSystem freezeParticle;
     protected NavMeshAgent navMeshAgent;
+    protected bool freezed = false;
 
     public Animator animator;
 
@@ -58,7 +60,7 @@ public abstract class EnemyHandler : MonoBehaviour
                 if (navMeshAgent.speed != 0) animator.SetBool("isWalking", true);
 
                 attackPeriodeSum += Time.deltaTime;
-                if (attackPeriodeSum >= attackPause)
+                if (attackPeriodeSum >= attackPause && !freezed)
                 {
                     attackPeriodeSum = 0;
 
@@ -130,6 +132,9 @@ public abstract class EnemyHandler : MonoBehaviour
                     case OnHitEffectType.Burn:
                         StartCoroutine( EnableEffect(effect, burnParticle));
                         break;
+                    case OnHitEffectType.Freeze:
+                        StartCoroutine(EnableEffect(effect, freezeParticle));
+                        break;
                     default: break;
                 }
             }
@@ -151,6 +156,8 @@ public abstract class EnemyHandler : MonoBehaviour
     IEnumerator EnableEffect(OnHitEffect effect, ParticleSystem particle)
     {
         particle.gameObject.SetActive(true);
+        animator.SetFloat("WalkingSpeedMultiplier", 0.3f);
+        freezed = true;
         float timeSum = 0;
         while(timeSum < effect.effectTime){
             timeSum += Time.deltaTime;
@@ -160,6 +167,8 @@ public abstract class EnemyHandler : MonoBehaviour
             yield return null;
         }
         //yield return new WaitForSeconds(effect.effectTime);
+        animator.SetFloat("WalkingSpeedMultiplier", 1f);
+        freezed = false;
         particle.gameObject.SetActive(false);
     }
 
