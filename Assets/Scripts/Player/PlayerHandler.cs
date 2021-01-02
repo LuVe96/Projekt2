@@ -13,6 +13,7 @@ public class PlayerHandler : MonoBehaviour
 
     ///Efects
     public ParticleSystem burnEffect;
+    public ParticleSystem freezeEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -41,29 +42,53 @@ public class PlayerHandler : MonoBehaviour
         uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
     }
 
-    private void DamagePlayer(float amount, OnHitEffectType effect = OnHitEffectType.None, float effectTime = 0)
+    private void PlayerAttacked(float amount, OnHitEffectType effect = OnHitEffectType.None, 
+        float effectTime = 0, float damageOverTime = 0, float moveSpeedMultiplier = 1)
     {
-        lifeAmount -= amount;
-        uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
-        Instantiate(bloodParticles, transform.position, transform.rotation);
-        hitSound.Play();
+        DamagePlayer(amount);
 
         switch (effect)
         {
             case OnHitEffectType.Burn:
-                StartCoroutine(EnableEffect(burnEffect, effectTime));
+                StartCoroutine(EnableEffect(burnEffect, effectTime, damageOverTime, moveSpeedMultiplier));
+                break;
+            case OnHitEffectType.Freeze:
+                StartCoroutine(EnableEffect(freezeEffect, effectTime, damageOverTime, moveSpeedMultiplier));
                 break;
             default: break;
         }
        
     }
 
-    IEnumerator EnableEffect(ParticleSystem particle, float time)
+    private void DamagePlayer(float amount, bool calledByEffect = false)
+    {
+        lifeAmount -= amount;
+        uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
+        if (!calledByEffect)
+        {
+            Instantiate(bloodParticles, transform.position, transform.rotation);
+            hitSound.Play();
+        }
+
+    }
+
+    IEnumerator EnableEffect(ParticleSystem particle, float time, float damageOverTime , float moveSpeedMultipliyer)
     {
         particle.gameObject.SetActive(true);
-        yield return new WaitForSeconds(time);
+        GetComponent<PlayerMovement>().setMovementSpeed(moveSpeedMultipliyer);
 
-        // Code to execute after the delay
+        float timeSum = 0;
+
+        while(timeSum <= time)
+        {
+            timeSum += Time.deltaTime;
+            float damage = damageOverTime / time * Time.deltaTime;
+            DamagePlayer(damage, true);
+            yield return null;
+
+        }
+
+        GetComponent<PlayerMovement>().setMovementSpeed(1);
         particle.gameObject.SetActive(false);
     }
 
@@ -74,7 +99,7 @@ public class PlayerHandler : MonoBehaviour
         {
             var projHander = collision.gameObject.GetComponent<ProjectileHandler>();
             projHander.disabledDamage = true;
-            DamagePlayer(projHander.damage, projHander.onHitEffect, projHander.onHitEffectTime);
+            PlayerAttacked(projHander.damage, projHander.onHitEffect, projHander.onHitEffectTime, projHander.damageOverTime, projHander.walkSpeedMultiplier);
             Destroy(collision.gameObject);
         }
     }
@@ -86,7 +111,7 @@ public class PlayerHandler : MonoBehaviour
             if (!other.transform.parent.GetComponent<DogEnemyHandler>().hasHitten)
             {
                 other.transform.parent.GetComponent<DogEnemyHandler>().hasHitten = true;
-                DamagePlayer(other.transform.parent.GetComponent<DogEnemyHandler>().damage);
+                PlayerAttacked(other.transform.parent.GetComponent<DogEnemyHandler>().damage);
             }
 
         }

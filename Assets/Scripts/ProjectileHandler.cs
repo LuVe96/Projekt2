@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ProjectileHandler : MonoBehaviour
 {
-    private bool isShooting = false;
     public bool disabledDamage = false;
-    private Vector3 direction;
     public float velocity = 1;
     public float aliveTime = 7;
-    private float aliveTimeSum = 0;
     public float damage = 25;
     public OnHitEffectType onHitEffect = OnHitEffectType.None;
     public float onHitEffectTime = 1f;
+    public float damageOverTime = 1f;
+    public float walkSpeedMultiplier = 1f;
+
+    private Vector3 direction;
+    private float aliveTimeSum = 0;
+    private bool isShooting = false;
 
     // Update is called once per frame
     void Update()
@@ -51,5 +54,5 @@ public class ProjectileHandler : MonoBehaviour
 
 public enum OnHitEffectType
 {
-    None, Burn
+    None, Burn, Freeze
 }

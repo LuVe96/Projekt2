@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject goalObject = null;
     private new Rigidbody rigidbody;
     private Animator animator;
+    private float playerSpeedMultiplier = 1;
 
     private IAttackEnemyInterface attackEnemyInterface;
 
@@ -54,12 +55,12 @@ public class PlayerMovement : MonoBehaviour
         if (joystick.Horizontal > 0.1 || joystick.Horizontal < -0.1
            || joystick.Vertical < -0.1 || joystick.Vertical > 0.1)
         {
-            newRigidbodyVelocity = (new Vector3(joystick.Horizontal, 0, joystick.Vertical).normalized * playerSpeed) 
+            newRigidbodyVelocity = (new Vector3(joystick.Horizontal, 0, joystick.Vertical).normalized * playerSpeed * playerSpeedMultiplier) 
                 + new Vector3(0,rigidbody.velocity.y,0);
                 playerIsMoving = true;
         } else if (keyboardMovement.x != 0 || keyboardMovement.y != 0)
         {
-            newRigidbodyVelocity = (new Vector3(keyboardMovement.x, 0, keyboardMovement.y).normalized * playerSpeed)
+            newRigidbodyVelocity = (new Vector3(keyboardMovement.x, 0, keyboardMovement.y).normalized * playerSpeed * playerSpeedMultiplier)
                + new Vector3(0, rigidbody.velocity.y, 0);
             playerIsMoving = true;
         }
@@ -116,6 +117,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    public void setMovementSpeed(float multiplier)
+    {
+        playerSpeedMultiplier = multiplier;
+        animator.SetFloat("walkspeedMultiplier", multiplier);
+    }
+
+
+
+    // Tastatur input
 
     private string horizontalKeyDown = "";
     private string verticalKeyDown = "";
