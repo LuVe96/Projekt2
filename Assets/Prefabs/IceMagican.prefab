@@ -112,7 +112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5757713510000323704
 Transform:
   m_ObjectHideFlags: 0
@@ -14782,12 +14782,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHeight: 0.5
-  mainProbability: 70
+  mainProbability: 85
   lootObjects:
   - lootItem: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9, type: 2}
     probability: 50
-  - lootItem: {fileID: 11400000, guid: fa4df7f3027dbf34c8b2279d51ed4ff4, type: 2}
-    probability: 50
+  - lootItem: {fileID: 11400000, guid: e08122b0c72a5c94ca2481fe5a443a4d, type: 2}
+    probability: 75
 --- !u!114 &1626253991466020128
 MonoBehaviour:
   m_ObjectHideFlags: 0

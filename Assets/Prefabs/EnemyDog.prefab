@@ -6729,8 +6729,6 @@ MonoBehaviour:
   lootObjects:
   - lootItem: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9, type: 2}
     probability: 50
-  - lootItem: {fileID: 11400000, guid: fa4df7f3027dbf34c8b2279d51ed4ff4, type: 2}
-    probability: 50
 --- !u!1 &7258127419983808839
 GameObject:
   m_ObjectHideFlags: 0

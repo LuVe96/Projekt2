@@ -190,6 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817bc2e486deb384799e8c78b24d0a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlesOnCollision: {fileID: 2047936986249305062, guid: 0ff92bcfcb8921c47a4d69fd4850bf0a,
+  particlesOnCollision: {fileID: 6730182559821665555, guid: adcaf07de495c914b8f5886f84f09e3b,
     type: 3}
   stayAtCollisionPosition: 0

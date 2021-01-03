@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &500308418267771210
 Transform:
   m_ObjectHideFlags: 0
@@ -14575,7 +14575,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2309608259316463535}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.21, y: -0.093, z: 5.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14766,12 +14766,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHeight: 0.5
-  mainProbability: 70
+  mainProbability: 85
   lootObjects:
   - lootItem: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9, type: 2}
     probability: 50
-  - lootItem: {fileID: 11400000, guid: fa4df7f3027dbf34c8b2279d51ed4ff4, type: 2}
-    probability: 50
+  - lootItem: {fileID: 11400000, guid: afdecc8dbbddf544883a2e3ef56be113, type: 2}
+    probability: 75
 --- !u!114 &6883592971104628754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14794,7 +14794,7 @@ MonoBehaviour:
   freezeParticle: {fileID: 2217251129383002967}
   poisonParticle: {fileID: 500308418267771205}
   animator: {fileID: 2763307723858098967}
-  projectilePrfab: {fileID: 4763530573275500323, guid: 4a5f5c894280eb3459f3247fa4494f54,
+  projectilePrfab: {fileID: 7945877125095457482, guid: 4b3abb3ab2386f54db975c830783b2c9,
     type: 3}
 --- !u!1 &2309608259934607423
 GameObject:
