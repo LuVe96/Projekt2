@@ -15,6 +15,7 @@ public class PlayerHandler : MonoBehaviour
     ///Efects
     public ParticleSystem burnEffect;
     public ParticleSystem freezeEffect;
+    public ParticleSystem poisonEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,9 @@ public class PlayerHandler : MonoBehaviour
                 break;
             case OnHitEffectType.Freeze:
                 StartCoroutine(EnableEffect(freezeEffect, effectTime, damageOverTime, moveSpeedMultiplier));
+                break;
+            case OnHitEffectType.Poison:
+                StartCoroutine(EnableEffect(poisonEffect, effectTime, damageOverTime, moveSpeedMultiplier));
                 break;
             default: break;
         }

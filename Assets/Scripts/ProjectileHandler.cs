@@ -54,5 +54,5 @@ public class ProjectileHandler : MonoBehaviour
 
 public enum OnHitEffectType
 {
-    None, Burn, Freeze
+    None, Burn, Freeze, Poison
 }

@@ -21,10 +21,12 @@ public abstract class EnemyHandler : MonoBehaviour
     private Vector3 startPosition;
     private Image uiLifeBarFront;
 
-    public ParticleSystem burnParticle;
-    public ParticleSystem freezeParticle;
     protected NavMeshAgent navMeshAgent;
     protected bool freezed = false;
+
+    public ParticleSystem burnParticle;
+    public ParticleSystem freezeParticle;
+    public ParticleSystem poisonParticle;
 
     public Animator animator;
 
@@ -134,6 +136,9 @@ public abstract class EnemyHandler : MonoBehaviour
                         break;
                     case OnHitEffectType.Freeze:
                         StartCoroutine(EnableEffect(effect, freezeParticle));
+                        break;
+                    case OnHitEffectType.Poison:
+                        StartCoroutine(EnableEffect(effect, poisonParticle));
                         break;
                     default: break;
                 }
