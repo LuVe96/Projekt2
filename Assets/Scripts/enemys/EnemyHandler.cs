@@ -23,6 +23,7 @@ public abstract class EnemyHandler : MonoBehaviour
 
     protected NavMeshAgent navMeshAgent;
     protected bool freezed = false;
+    public Transform projectileSpawnPos;
 
     public ParticleSystem burnParticle;
     public ParticleSystem freezeParticle;

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6435369101177579416}
   - component: {fileID: 7787203881292453955}
-  - component: {fileID: 1231774705864458557}
   - component: {fileID: 1381604463229947630}
   - component: {fileID: 8519328145210508451}
+  - component: {fileID: 2003247835436333625}
   m_Layer: 0
   m_Name: IceProjectile
   m_TagString: EnemyProjectile
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4763530573275500323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.21}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 3955217269295780303}
@@ -55,20 +55,6 @@ MonoBehaviour:
   onHitEffectTime: 2.5
   damageOverTime: 0
   walkSpeedMultiplier: 0.3
---- !u!136 &1231774705864458557
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4763530573275500323}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.05867124
-  m_Height: 0.11734249
-  m_Direction: 1
-  m_Center: {x: -0.0000048975153, y: 0.4926711, z: 0}
 --- !u!54 &1381604463229947630
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100,6 +86,19 @@ MonoBehaviour:
   particlesOnCollision: {fileID: 8528806098733604165, guid: 0eca34c8521a7e847a2f14fa01b08827,
     type: 3}
   stayAtCollisionPosition: 0
+--- !u!135 &2003247835436333625
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763530573275500323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5635122293583825084
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5635122293583825084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.491, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.10841535, y: 0.10841535, z: 0.10841535}
   m_Children: []
   m_Father: {fileID: 6435369101177579416}

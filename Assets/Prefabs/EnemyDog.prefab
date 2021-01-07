@@ -564,6 +564,36 @@ Transform:
   m_Father: {fileID: 148127628611632178}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3382040377533657265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5635374405988510339}
+  m_Layer: 0
+  m_Name: ' projectileSpawnPos'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5635374405988510339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3382040377533657265}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.821, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7258127419863144922}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3852274167373694420
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,6 +763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6923640467055474202}
+  - component: {fileID: 7479090401144964935}
   m_Layer: 0
   m_Name: Bone.004
   m_TagString: Untagged
@@ -756,6 +787,19 @@ Transform:
   m_Father: {fileID: 5278903738870389390}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7479090401144964935
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469975940656784246}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0016972447
+  m_Center: {x: 0.0000000014842089, y: 0.0006977267, z: -0.00000045529205}
 --- !u!1 &4724177643998037916
 GameObject:
   m_ObjectHideFlags: 0
@@ -6517,6 +6561,7 @@ Transform:
   - {fileID: 543450651680970398}
   - {fileID: 4036549034093322656}
   - {fileID: 7191273844726453609}
+  - {fileID: 5635374405988510339}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6656,6 +6701,7 @@ MonoBehaviour:
   hitSound: {fileID: 7258127419863144923}
   attackDistance: 15
   attackPause: 1.5
+  projectileSpawnPos: {fileID: 5635374405988510339}
   burnParticle: {fileID: 3987135844450778532}
   freezeParticle: {fileID: 8516123206102808441}
   poisonParticle: {fileID: 7191273844726453606}
@@ -6692,10 +6738,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.440207
-  m_Height: 1.9057503
+  m_Radius: 0.28737617
+  m_Height: 1.4018908
   m_Direction: 2
-  m_Center: {x: -0.02690363, y: 0.41493893, z: 0.07750893}
+  m_Center: {x: -0.107260704, y: 0.67298615, z: -0.00018262863}
 --- !u!114 &8440504911083466702
 MonoBehaviour:
   m_ObjectHideFlags: 0

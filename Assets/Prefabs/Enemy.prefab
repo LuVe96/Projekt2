@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1739966117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1739966118}
+  m_Layer: 0
+  m_Name: ' projectileSpawnPos'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1739966118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739966117}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.35, z: 1.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9190174687013697143}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2117452841
 GameObject:
   m_ObjectHideFlags: 0
@@ -11971,8 +12001,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.38750574, y: 0.2522425, z: 0.36895433}
-  m_Center: {x: -0.034460932, y: -0.029595742, z: 0.010940233}
+  m_Size: {x: 0.4462997, y: 0.2522425, z: 0.36895433}
+  m_Center: {x: -0.005063861, y: -0.029595742, z: 0.010940233}
 --- !u!1 &8685926287337484824
 GameObject:
   m_ObjectHideFlags: 0
@@ -12724,6 +12754,7 @@ Transform:
   - {fileID: 8684022464711277858}
   - {fileID: 7809241208822199162}
   - {fileID: 8123869746411326392}
+  - {fileID: 1739966118}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12928,6 +12959,7 @@ MonoBehaviour:
   hitSound: {fileID: 2027175943912680072}
   attackDistance: 15
   attackPause: 1.5
+  projectileSpawnPos: {fileID: 1739966118}
   burnParticle: {fileID: 5587071891294763741}
   freezeParticle: {fileID: 8971624796945265541}
   poisonParticle: {fileID: 8123869746411326391}
@@ -13603,15 +13635,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a062f04636f83c4c97dc92ecb64d231, type: 3}
---- !u!4 &5587071891294763730 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3603807034466723767, guid: 4a062f04636f83c4c97dc92ecb64d231,
-    type: 3}
-  m_PrefabInstance: {fileID: 9190174688020585829}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &5587071891294763741 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3603807034466723768, guid: 4a062f04636f83c4c97dc92ecb64d231,
+    type: 3}
+  m_PrefabInstance: {fileID: 9190174688020585829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5587071891294763730 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3603807034466723767, guid: 4a062f04636f83c4c97dc92ecb64d231,
     type: 3}
   m_PrefabInstance: {fileID: 9190174688020585829}
   m_PrefabAsset: {fileID: 0}

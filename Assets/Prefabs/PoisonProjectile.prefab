@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7092572561636705621}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.491, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.10841535, y: 0.10841535, z: 0.10841535}
   m_Children: []
   m_Father: {fileID: 8435557584136432241}
@@ -103,9 +103,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8435557584136432241}
   - component: {fileID: 4634112069619275178}
-  - component: {fileID: 4415282891398302932}
   - component: {fileID: 4571832039448331015}
   - component: {fileID: 6513510437344610634}
+  - component: {fileID: 6734642613292507940}
   m_Layer: 0
   m_Name: PoisonProjectile
   m_TagString: EnemyProjectile
@@ -121,7 +121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7945877125095457482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7307763, y: -0.21774, z: 8.313458}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1926935713818254374}
@@ -148,20 +148,6 @@ MonoBehaviour:
   onHitEffectTime: 2.5
   damageOverTime: 10
   walkSpeedMultiplier: 1
---- !u!136 &4415282891398302932
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7945877125095457482}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.05867124
-  m_Height: 0.11734249
-  m_Direction: 1
-  m_Center: {x: -0.0000048975153, y: 0.4926711, z: 0}
 --- !u!54 &4571832039448331015
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -193,3 +179,16 @@ MonoBehaviour:
   particlesOnCollision: {fileID: 6730182559821665555, guid: adcaf07de495c914b8f5886f84f09e3b,
     type: 3}
   stayAtCollisionPosition: 0
+--- !u!135 &6734642613292507940
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945877125095457482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
