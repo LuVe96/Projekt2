@@ -8,6 +8,6 @@ public class EnemyCanvasHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = new Quaternion(50, 0, 0, transform.rotation.w);
+        transform.rotation = new Quaternion(transform.rotation.x, 0, 0, transform.rotation.w);
     }
 }

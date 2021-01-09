@@ -17,6 +17,10 @@ public abstract class EnemyHandler : MonoBehaviour
     public float attackPause = 1.5f;
     private float attackPeriodeSum = 0;
 
+    public OnHitEffectType weakness = OnHitEffectType.None;
+    public float weaknessMultiplier = 1.5f;
+    private float currentWeaknessMultiplier = 1;
+
     protected Transform player;
     private EnemyIndicator enemyIndicator;
     private Vector3 startPosition;
@@ -132,13 +136,16 @@ public abstract class EnemyHandler : MonoBehaviour
 
         if (collision.transform.tag == "Arrow" && !collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage)
         {
-            collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage = true;
-            DamageEnemy(collision.gameObject.GetComponent<ProjectileHandler>().damage);
-            Instantiate(bloodParticles, transform.position, transform.rotation);
-            hitSound.Play();
+            // reset weakness multiplier on every new arrow hit
+            currentWeaknessMultiplier = 1;
 
             foreach (var effect in HitEffectManager.Instance.currentHitEffects)
             {
+                if(weakness == effect.onHitEffectType)
+                {
+                    currentWeaknessMultiplier = weaknessMultiplier;
+                }
+
                 switch (effect.onHitEffectType)
                 {
                     case OnHitEffectType.Burn:
@@ -153,19 +160,21 @@ public abstract class EnemyHandler : MonoBehaviour
                     default: break;
                 }
             }
+
+            collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage = true;
+            DamageEnemy(collision.gameObject.GetComponent<ProjectileHandler>().damage);
         }
     }
 
     private void DamageEnemy(float amount, bool calledByEffect = false)
     {
-        lifeAmount -= amount;
+        lifeAmount -= amount * currentWeaknessMultiplier;
         uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
         if (!calledByEffect)
         {
             Instantiate(bloodParticles, transform.position, transform.rotation);
             hitSound.Play();
         }
-
     }
 
     IEnumerator EnableEffect(OnHitEffect effect, ParticleSystem particle)
