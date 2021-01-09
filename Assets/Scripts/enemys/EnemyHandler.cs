@@ -12,6 +12,7 @@ public abstract class EnemyHandler : MonoBehaviour
     protected float MaxLifeAmount;
     public GameObject bloodParticles;
     public AudioSource hitSound;
+    public float detectDistance = 20;
     public float attackDistance = 15;
     public float attackPause = 1.5f;
     private float attackPeriodeSum = 0;
@@ -48,7 +49,7 @@ public abstract class EnemyHandler : MonoBehaviour
     protected virtual void Update()
     {
         float distance = Vector3.Distance(transform.position, player.position);
-        if (distance <= attackDistance)
+        if (distance <= detectDistance)
         {
 
             if (!HitsAntiAttackCollider(distance))
@@ -62,14 +63,18 @@ public abstract class EnemyHandler : MonoBehaviour
                 // walkanimation when moving
                 if (navMeshAgent.speed != 0) animator.SetBool("isWalking", true);
 
-                attackPeriodeSum += Time.deltaTime;
-                if (attackPeriodeSum >= attackPause && !freezed)
+                if (distance <= attackDistance)
                 {
-                    attackPeriodeSum = 0;
+                    attackPeriodeSum += Time.deltaTime;
+                    if (attackPeriodeSum >= attackPause && !freezed && OnSameLevel(player.transform, transform))
+                    {
+                        attackPeriodeSum = 0;
 
-                    AttackPlayer();
+                        AttackPlayer();
 
+                    }
                 }
+
 
             }
          
@@ -100,6 +105,10 @@ public abstract class EnemyHandler : MonoBehaviour
         }
     }
 
+    private bool OnSameLevel(Transform player, Transform enemy, float toleranz = 0.5f)
+    {
+        return (player.position.y + toleranz / 2 >= enemy.position.y) && (player.position.y - toleranz / 2 <= enemy.position.y);
+    }
 
     private bool HitsAntiAttackCollider(float distance)
     {

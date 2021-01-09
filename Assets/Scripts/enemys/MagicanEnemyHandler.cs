@@ -30,7 +30,7 @@ public class MagicanEnemyHandler : EnemyHandler
 
         GameObject projectile = Instantiate(projectilePrfab);
         projectile.transform.position = projectileSpawnPos.position; /*transform.forward + transform.localPosition;*/
-        projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position + new Vector3(0,projectileSpawnPos.position.y, 0));
+        projectile.GetComponent<ProjectileHandler>().ShotAt(player.transform.position + new Vector3(0,projectileSpawnPos.localPosition.y, 0));
 
         yield return new WaitForSeconds(0.5f);
 

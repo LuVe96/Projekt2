@@ -12,6 +12,7 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     public Animator charakterAnimator;
     public Animator bowAnimator;
     public bool freezed = false;
+    private Transform player;
 
 
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
     {
         //then he attacks instantly
         periodeTimeSum = attackPause;
+        player = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
@@ -36,8 +38,8 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
         foreach (GameObject enemy in enemys)
         {
 
-            float distance = new Vector2(transform.parent.transform.position.x - enemy.transform.position.x,
-                transform.parent.transform.position.y - enemy.transform.position.y).magnitude;
+            float distance = new Vector2(player.position.x - enemy.transform.position.x,
+                player.position.y - enemy.transform.position.y).magnitude;
             if (!nearestDistance.HasValue)
             {
                 nearestDistance = distance;
@@ -50,7 +52,7 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
             }
         }
 
-        if (!HitsAntiAttackCollider(nearestEnemy))
+        if (!HitsAntiAttackCollider(nearestEnemy) && OnSameLevel(player, nearestEnemy.transform))
         {
             MarkFocusedEnemy(nearestEnemy);
 
@@ -82,6 +84,11 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
                 enemy.GetComponent<EnemyIndicator>().setFocused(false);
             }
         }
+    }
+
+    private bool OnSameLevel(Transform player, Transform enemy, float toleranz = 0.5f)
+    {
+        return (player.position.y + toleranz/2 >= enemy.position.y) && (player.position.y - toleranz/2 <= enemy.position.y) ;
     }
 
     private bool HitsAntiAttackCollider(GameObject enemy)
@@ -123,7 +130,7 @@ public class BowHandler : MonoBehaviour, IAttackEnemyInterface
         GameObject arrow = Instantiate(arrowPrefab);
         arrow.transform.position = transform.position;
         arrow.GetComponent<ProjectileHandler>().ShotAt(enemy.transform.position 
-            + new Vector3(0, enemy.GetComponent<EnemyHandler>().projectileSpawnPos.position.y, 0));
+            + new Vector3(0, enemy.GetComponent<EnemyHandler>().projectileSpawnPos.localPosition.y, 0));
         //transform.parent.parent.GetComponent<PlayerMovement>().LookAt(enemy.transform);
         charakterAnimator.SetBool("isShooting", false);
         bowAnimator.SetBool("isShooting", false);
