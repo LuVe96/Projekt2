@@ -13,7 +13,7 @@ public class MagicWaveItem : LootItem
 
     public override void UseItem()
     {
-        GameObject.Find("Player").GetComponent<PlayerHandler>().CastSpell(onHitEffectType);
+        GameObject.Find("Player").GetComponent<PlayerCombatHandler>().CastSpell(onHitEffectType);
         Inventory.Instance.Remove(this);
     }
 

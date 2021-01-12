@@ -337,11 +337,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPause: 1
-  arrowPrefab: {fileID: 993760371542683018, guid: cf296231db556cf468a57f7bbfa0879d,
-    type: 3}
   charakterAnimator: {fileID: 0}
   bowAnimator: {fileID: 0}
-  freezed: 0
+  arrowPrefab: {fileID: 993760371542683018, guid: cf296231db556cf468a57f7bbfa0879d,
+    type: 3}
 --- !u!136 &40296935
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22294,11 +22293,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPause: 1
-  arrowPrefab: {fileID: 993760371542683018, guid: cf296231db556cf468a57f7bbfa0879d,
-    type: 3}
   charakterAnimator: {fileID: 2024505136}
   bowAnimator: {fileID: 4603651452796117761}
-  freezed: 0
+  arrowPrefab: {fileID: 993760371542683018, guid: cf296231db556cf468a57f7bbfa0879d,
+    type: 3}
 --- !u!136 &1057160647
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -44359,6 +44357,7 @@ GameObject:
   - component: {fileID: 2024505135}
   - component: {fileID: 2024505136}
   - component: {fileID: 2024505137}
+  - component: {fileID: 2024505138}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -44437,15 +44436,9 @@ MonoBehaviour:
     type: 3}
   hitSound: {fileID: 2024505135}
   uiLifeBarFront: {fileID: 296716718}
-  bowHandler: {fileID: 1057160646}
   burnEffect: {fileID: 928329367}
   freezeEffect: {fileID: 933324555}
   poisonEffect: {fileID: 488869522565807873}
-  fireWave: {fileID: 1067194046840441682, guid: 0a031767ce1df6942875e638647e3440,
-    type: 3}
-  iceWave: {fileID: 1708406822613363402, guid: 170e329865a61354e92711b50c0873ce, type: 3}
-  poisonWave: {fileID: 6694250464459073492, guid: 4fd46be10bfb91247aa20c284c6b8e97,
-    type: 3}
 --- !u!54 &2024505134
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -44589,6 +44582,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a16c78997c3f743a48e42100354482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2024505138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024505129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c790bda2730ecc44a310c143eca3e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHandler: {fileID: 1057160646}
+  fireWave: {fileID: 1067194046840441682, guid: 0a031767ce1df6942875e638647e3440,
+    type: 3}
+  iceWave: {fileID: 1708406822613363402, guid: 170e329865a61354e92711b50c0873ce, type: 3}
+  poisonWave: {fileID: 6694250464459073492, guid: 4fd46be10bfb91247aa20c284c6b8e97,
+    type: 3}
+  freezed: 0
 --- !u!1001 &2028907825
 PrefabInstance:
   m_ObjectHideFlags: 0

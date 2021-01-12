@@ -10,22 +10,19 @@ public class PlayerHandler : MonoBehaviour
     public GameObject bloodParticles;
     public AudioSource hitSound;
     public GameObject uiLifeBarFront;
-    public BowHandler bowHandler;
+    private PlayerCombatHandler combatHandler;
 
     ///Efects
     public ParticleSystem burnEffect;
     public ParticleSystem freezeEffect;
     public ParticleSystem poisonEffect;
 
-    //SpellParticle
-    public GameObject fireWave;
-    public GameObject iceWave;
-    public GameObject poisonWave;
 
     // Start is called before the first frame update
     void Start()
     {
         MaxLifeAmount = lifeAmount;
+        combatHandler = GetComponent<PlayerCombatHandler>();
         //uiLifeBar = GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject;
     }
 
@@ -37,27 +34,6 @@ public class PlayerHandler : MonoBehaviour
             GameManager.Instance.playerIsDead = true;
         }
 
-    }
-
-    public void CastSpell(OnHitEffectType onHitEffectType)
-    {
-
-        switch (onHitEffectType)
-        {
-            case OnHitEffectType.Burn:
-                var fireW = Instantiate(fireWave);
-                fireW.transform.position = transform.position;
-                break;
-            case OnHitEffectType.Freeze:
-                var iceW = Instantiate(iceWave);
-                iceW.transform.position = transform.position;
-                break;
-            case OnHitEffectType.Poison:
-                var poisonW = Instantiate(poisonWave);
-                poisonW.transform.position = transform.position;
-                break;
-            default: break;
-        }
     }
 
     public void HealPlayer(float amount)
@@ -107,7 +83,7 @@ public class PlayerHandler : MonoBehaviour
     {
         particle.gameObject.SetActive(true);
         GetComponent<PlayerMovement>().setMovementSpeed(moveSpeedMultipliyer);
-        bowHandler.freezed = true;
+        combatHandler.freezed = true;
 
         float timeSum = 0;
 
@@ -121,7 +97,7 @@ public class PlayerHandler : MonoBehaviour
         }
 
         GetComponent<PlayerMovement>().setMovementSpeed(1);
-        bowHandler.freezed = false;
+        combatHandler.freezed = false;
         particle.gameObject.SetActive(false);
     }
 
