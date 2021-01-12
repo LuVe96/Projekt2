@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70df11e0e9f43174989a3db6ccddbb3b, type: 3}
-  m_Name: fire_wave_item_001
+  m_Name: ice_wave_item_001
   m_EditorClassIdentifier: 
-  name: Feuer Zauber
-  id: fire_wave_001
-  icon: {fileID: 21300000, guid: 96d95fb96acaaa2458b519597a309c35, type: 3}
-  gameObject: {fileID: 1457677674291732440, guid: 8be1bef73d238f343a93987e46ab10b3,
+  name: "Eis Fl\xE4chen Zauber"
+  id: ice_wave_001
+  icon: {fileID: 21300000, guid: 4138733a18387804a8869a65cc434011, type: 3}
+  gameObject: {fileID: 1134884206159167285, guid: 7cbe31cf4ad90c947938c49b04657053,
     type: 3}
-  onHitEffectType: 1
-  effectTime: 5
-  damageOverTime: 50
-  walkSpeedMultiplier: 1
+  onHitEffectType: 2
+  effectTime: 3
+  damageOverTime: 10
+  walkSpeedMultiplier: 0.3

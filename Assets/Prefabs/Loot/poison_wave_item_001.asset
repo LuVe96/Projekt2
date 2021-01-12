@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70df11e0e9f43174989a3db6ccddbb3b, type: 3}
-  m_Name: fire_wave_item_001
+  m_Name: poison_wave_item_001
   m_EditorClassIdentifier: 
-  name: Feuer Zauber
-  id: fire_wave_001
-  icon: {fileID: 21300000, guid: 96d95fb96acaaa2458b519597a309c35, type: 3}
-  gameObject: {fileID: 1457677674291732440, guid: 8be1bef73d238f343a93987e46ab10b3,
+  name: "Gift Fl\xE4chen Zauber"
+  id: poison_wave_001
+  icon: {fileID: 21300000, guid: 003ee84826bef63429503d3bf739d790, type: 3}
+  gameObject: {fileID: 273512685058212220, guid: 356f287348fe4a74985f71cee2850796,
     type: 3}
-  onHitEffectType: 1
-  effectTime: 5
-  damageOverTime: 50
+  onHitEffectType: 3
+  effectTime: 7
+  damageOverTime: 30
   walkSpeedMultiplier: 1

@@ -19,6 +19,8 @@ public class PlayerHandler : MonoBehaviour
 
     //SpellParticle
     public GameObject fireWave;
+    public GameObject iceWave;
+    public GameObject poisonWave;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,14 @@ public class PlayerHandler : MonoBehaviour
             case OnHitEffectType.Burn:
                 var fireW = Instantiate(fireWave);
                 fireW.transform.position = transform.position;
+                break;
+            case OnHitEffectType.Freeze:
+                var iceW = Instantiate(iceWave);
+                iceW.transform.position = transform.position;
+                break;
+            case OnHitEffectType.Poison:
+                var poisonW = Instantiate(poisonWave);
+                poisonW.transform.position = transform.position;
                 break;
             default: break;
         }

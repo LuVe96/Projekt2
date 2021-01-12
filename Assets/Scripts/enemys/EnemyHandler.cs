@@ -151,6 +151,14 @@ public abstract class EnemyHandler : MonoBehaviour
                     StartCoroutine(EnableEffect(new OnHitEffect(wave.onHitEffectType, wave.effectTime, wave.damageOverTime)
                         , burnParticle, currentWeaknessMultiplier));
                     break;
+                case OnHitEffectType.Freeze:
+                    StartCoroutine(EnableEffect(new OnHitEffect(wave.onHitEffectType, wave.effectTime, wave.damageOverTime)
+                        , freezeParticle, currentWeaknessMultiplier));
+                    break;
+                case OnHitEffectType.Poison:
+                    StartCoroutine(EnableEffect(new OnHitEffect(wave.onHitEffectType, wave.effectTime, wave.damageOverTime)
+                        , poisonParticle, currentWeaknessMultiplier));
+                    break;
                 default: break;
 
             }

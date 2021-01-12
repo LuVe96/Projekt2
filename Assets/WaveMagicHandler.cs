@@ -49,6 +49,7 @@ public class WaveMagicHandler : MonoBehaviour
             sizeVal = Mathf.LerpUnclamped(1f, 3f, t);
             if(Time.time > timeStamp + duration - 1.5f)
             {
+                scaleVal = 0;
                 main.loop = false;
             }
             yield return null;
