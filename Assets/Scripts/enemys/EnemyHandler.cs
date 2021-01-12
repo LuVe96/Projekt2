@@ -207,8 +207,11 @@ public abstract class EnemyHandler : MonoBehaviour
     IEnumerator EnableEffect(OnHitEffect effect, ParticleSystem particle, float currentWeaknessMultiplier)
     {
         particle.gameObject.SetActive(true);
-        animator.SetFloat("WalkingSpeedMultiplier", 0.3f);
-        freezed = true; // testen
+        animator.SetFloat("WalkingSpeedMultiplier", currentWeaknessMultiplier);
+        if(effect.onHitEffectType == OnHitEffectType.Freeze)
+        {
+            freezed = true;
+        }
         float timeSum = 0;
         while(timeSum < effect.effectTime){
             timeSum += Time.deltaTime;
