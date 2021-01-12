@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1800278554408253046}
   - component: {fileID: 3023742516536313288}
   m_Layer: 0
-  m_Name: scroll
+  m_Name: FireWave
   m_TagString: Loot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 80
-  item: {fileID: 11400000, guid: fa4df7f3027dbf34c8b2279d51ed4ff4, type: 2}
+  item: {fileID: 11400000, guid: 38b972c6c5799d445aa1369a85ed4720, type: 2}
 --- !u!136 &3023742516536313288
 CapsuleCollider:
   m_ObjectHideFlags: 0

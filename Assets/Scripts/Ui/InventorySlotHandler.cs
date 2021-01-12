@@ -108,8 +108,8 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
             {
                 //var i = item as HitEffectItem;
                 StartCoroutine(ShowTimeIndicator(i.effectItemDuration));
-                
             }
+
         }else
         {
             Debug.Log("Open Item Menu");

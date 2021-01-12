@@ -12804,7 +12804,7 @@ GameObject:
   - component: {fileID: 533836682}
   - component: {fileID: 753955275}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: FireMagican
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13015,6 +13015,8 @@ MonoBehaviour:
     probability: 50
   - lootItem: {fileID: 11400000, guid: fa4df7f3027dbf34c8b2279d51ed4ff4, type: 2}
     probability: 50
+  - lootItem: {fileID: 11400000, guid: 38b972c6c5799d445aa1369a85ed4720, type: 2}
+    probability: 20
 --- !u!114 &753955275
 MonoBehaviour:
   m_ObjectHideFlags: 0

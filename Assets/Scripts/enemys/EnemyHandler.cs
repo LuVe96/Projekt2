@@ -19,7 +19,6 @@ public abstract class EnemyHandler : MonoBehaviour
 
     public OnHitEffectType weakness = OnHitEffectType.None;
     public float weaknessMultiplier = 1.5f;
-    private float currentWeaknessMultiplier = 1;
 
     protected Transform player;
     private EnemyIndicator enemyIndicator;
@@ -35,6 +34,7 @@ public abstract class EnemyHandler : MonoBehaviour
     public ParticleSystem poisonParticle;
 
     public Animator animator;
+    private GameObject currentMagicWave;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -131,13 +131,40 @@ public abstract class EnemyHandler : MonoBehaviour
 
     protected abstract void AttackPlayer();
 
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+
+        if(other.tag == "MagicWave" && currentMagicWave != other.transform.parent.gameObject)
+        {
+            currentMagicWave = other.transform.parent.gameObject;       // save currentMagicWave to avoid multiple trigger -> one wave can only trigger once
+            float currentWeaknessMultiplier = 1;
+            var wave = currentMagicWave.GetComponent<WaveMagicHandler>().magicWaveItem;
+
+            if (weakness == wave.onHitEffectType)
+            {
+                currentWeaknessMultiplier = weaknessMultiplier;
+            }
+
+            switch (wave.onHitEffectType)
+            {
+                case OnHitEffectType.Burn:
+                    StartCoroutine(EnableEffect(new OnHitEffect(wave.onHitEffectType, wave.effectTime, wave.damageOverTime)
+                        , burnParticle, currentWeaknessMultiplier));
+                    break;
+                default: break;
+
+            }
+
+        }
+    }
+
     protected virtual void OnCollisionEnter(Collision collision)
     {
 
         if (collision.transform.tag == "Arrow" && !collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage)
         {
             // reset weakness multiplier on every new arrow hit
-            currentWeaknessMultiplier = 1;
+            float currentWeaknessMultiplier = 1;
 
             foreach (var effect in HitEffectManager.Instance.currentHitEffects)
             {
@@ -149,24 +176,24 @@ public abstract class EnemyHandler : MonoBehaviour
                 switch (effect.onHitEffectType)
                 {
                     case OnHitEffectType.Burn:
-                        StartCoroutine( EnableEffect(effect, burnParticle));
+                        StartCoroutine( EnableEffect(effect, burnParticle, currentWeaknessMultiplier));
                         break;
                     case OnHitEffectType.Freeze:
-                        StartCoroutine(EnableEffect(effect, freezeParticle));
+                        StartCoroutine(EnableEffect(effect, freezeParticle, currentWeaknessMultiplier));
                         break;
                     case OnHitEffectType.Poison:
-                        StartCoroutine(EnableEffect(effect, poisonParticle));
+                        StartCoroutine(EnableEffect(effect, poisonParticle, currentWeaknessMultiplier));
                         break;
                     default: break;
                 }
             }
 
             collision.gameObject.GetComponent<ProjectileHandler>().disabledDamage = true;
-            DamageEnemy(collision.gameObject.GetComponent<ProjectileHandler>().damage);
+            DamageEnemy(collision.gameObject.GetComponent<ProjectileHandler>().damage, currentWeaknessMultiplier);
         }
     }
 
-    private void DamageEnemy(float amount, bool calledByEffect = false)
+    private void DamageEnemy(float amount, float currentWeaknessMultiplier, bool calledByEffect = false)
     {
         lifeAmount -= amount * currentWeaknessMultiplier;
         uiLifeBarFront.GetComponent<Image>().fillAmount = lifeAmount / MaxLifeAmount;
@@ -177,17 +204,17 @@ public abstract class EnemyHandler : MonoBehaviour
         }
     }
 
-    IEnumerator EnableEffect(OnHitEffect effect, ParticleSystem particle)
+    IEnumerator EnableEffect(OnHitEffect effect, ParticleSystem particle, float currentWeaknessMultiplier)
     {
         particle.gameObject.SetActive(true);
         animator.SetFloat("WalkingSpeedMultiplier", 0.3f);
-        freezed = true;
+        freezed = true; // testen
         float timeSum = 0;
         while(timeSum < effect.effectTime){
             timeSum += Time.deltaTime;
            
             float damage = effect.damageOverTime / effect.effectTime * Time.deltaTime;
-            DamageEnemy(damage, true);
+            DamageEnemy(damage, currentWeaknessMultiplier, true);
             yield return null;
         }
         //yield return new WaitForSeconds(effect.effectTime);

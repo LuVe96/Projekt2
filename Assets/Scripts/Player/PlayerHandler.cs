@@ -17,6 +17,9 @@ public class PlayerHandler : MonoBehaviour
     public ParticleSystem freezeEffect;
     public ParticleSystem poisonEffect;
 
+    //SpellParticle
+    public GameObject fireWave;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,19 @@ public class PlayerHandler : MonoBehaviour
             GameManager.Instance.playerIsDead = true;
         }
 
+    }
+
+    public void CastSpell(OnHitEffectType onHitEffectType)
+    {
+
+        switch (onHitEffectType)
+        {
+            case OnHitEffectType.Burn:
+                var fireW = Instantiate(fireWave);
+                fireW.transform.position = transform.position;
+                break;
+            default: break;
+        }
     }
 
     public void HealPlayer(float amount)

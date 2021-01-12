@@ -10,6 +10,7 @@ TagManager:
   - AntiAttackCollider
   - Loot
   - InventorySlot
+  - MagicWave
   layers:
   - Default
   - TransparentFX
