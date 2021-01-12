@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 2669357737520965837}
   - component: {fileID: 793352346007997341}
   m_Layer: 0
-  m_Name: AttackCollider
+  m_Name: DogAttackCollider
   m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

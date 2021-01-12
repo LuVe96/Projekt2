@@ -115,14 +115,14 @@ public class PlayerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "EnemyProjectile")
+
+        if (other.name == "DogAttackCollider")
         {
             if (!other.transform.parent.GetComponent<DogEnemyHandler>().hasHitten)
             {
                 other.transform.parent.GetComponent<DogEnemyHandler>().hasHitten = true;
                 PlayerAttacked(other.transform.parent.GetComponent<DogEnemyHandler>().damage);
             }
-
         }
     }
 }

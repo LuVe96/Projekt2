@@ -56,7 +56,7 @@ public class DogEnemyHandler : EnemyHandler
         if (hasHitten)
         {
             navMeshAgent.speed = 0;
-            transform.Find("AttackCollider").gameObject.SetActive(false);
+            transform.Find("DogAttackCollider").gameObject.SetActive(false);
             animator.SetBool("isWalking", false);
 
             stopTimeAfterHitSum += Time.deltaTime;
@@ -69,7 +69,7 @@ public class DogEnemyHandler : EnemyHandler
                 hasHitten = false;
                 attackTimeSum = 0;
                 isAttacking = false;
-                transform.Find("AttackCollider").gameObject.SetActive(true);
+                transform.Find("DogAttackCollider").gameObject.SetActive(true);
             }
 
         }
