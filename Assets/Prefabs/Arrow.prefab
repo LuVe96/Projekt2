@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 717624417909528370}
   - component: {fileID: 8577044109556950761}
   - component: {fileID: 662875454303587045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8733112159065109350
 Transform:
   m_ObjectHideFlags: 0
@@ -105,7 +105,8 @@ GameObject:
   - component: {fileID: 2576141108520106730}
   - component: {fileID: 7866260286996053088}
   - component: {fileID: 7953920171796682173}
-  m_Layer: 0
+  - component: {fileID: 8319702814751504560}
+  m_Layer: 10
   m_Name: Arrow
   m_TagString: Arrow
   m_Icon: {fileID: 0}
@@ -147,6 +148,8 @@ MonoBehaviour:
   damage: 20
   onHitEffect: 0
   onHitEffectTime: 1
+  damageOverTime: 1
+  walkSpeedMultiplier: 1
 --- !u!54 &7866260286996053088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,6 +180,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesOnCollision: {fileID: 0}
   stayAtCollisionPosition: 1
+--- !u!135 &8319702814751504560
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993760371542683018}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.053130437
+  m_Center: {x: 0, y: 0, z: 0.41419044}
 --- !u!1 &2494507430304659886
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +205,7 @@ GameObject:
   - component: {fileID: 5378237800747023099}
   - component: {fileID: 6210395291010184714}
   - component: {fileID: 2535152454164090949}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,6 +373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Arrow_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ab8d795959c8b54e816e21a074010ce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ab8d795959c8b54e816e21a074010ce, type: 3}
