@@ -29,7 +29,7 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(lifeAmount <= 0)
+        if (lifeAmount <= 0)
         {
             GameManager.Instance.playerIsDead = true;
         }
@@ -57,7 +57,7 @@ public class PlayerHandler : MonoBehaviour
                 StartCoroutine(EnableEffect(burnEffect, effectTime, damageOverTime, moveSpeedMultiplier));
                 break;
             case OnHitEffectType.Freeze:
-                StartCoroutine(EnableEffect(freezeEffect, effectTime, damageOverTime, moveSpeedMultiplier));
+                StartCoroutine(EnableEffect(freezeEffect, effectTime, damageOverTime, moveSpeedMultiplier, true));
                 break;
             case OnHitEffectType.Poison:
                 StartCoroutine(EnableEffect(poisonEffect, effectTime, damageOverTime, moveSpeedMultiplier));
@@ -79,11 +79,15 @@ public class PlayerHandler : MonoBehaviour
 
     }
 
-    IEnumerator EnableEffect(ParticleSystem particle, float time, float damageOverTime , float moveSpeedMultipliyer)
+    IEnumerator EnableEffect(ParticleSystem particle, float time, float damageOverTime , float moveSpeedMultipliyer, bool freeze = false)
     {
         particle.gameObject.SetActive(true);
         GetComponent<PlayerMovement>().setMovementSpeed(moveSpeedMultipliyer);
-        combatHandler.freezed = true;
+        if (freeze)
+        {
+            combatHandler.freezed = true;
+        }
+
 
         float timeSum = 0;
 
@@ -97,7 +101,11 @@ public class PlayerHandler : MonoBehaviour
         }
 
         GetComponent<PlayerMovement>().setMovementSpeed(1);
-        combatHandler.freezed = false;
+        if (freeze)
+        {
+            combatHandler.freezed = false;
+        }
+
         particle.gameObject.SetActive(false);
     }
 

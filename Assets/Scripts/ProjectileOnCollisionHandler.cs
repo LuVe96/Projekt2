@@ -31,6 +31,13 @@ public class ProjectileOnCollisionHandler : MonoBehaviour
             }  
 
         }
+        if(gameObject.tag == "Arrow")
+        {
+            if(collision.gameObject.tag == "Player")
+            {
+                Destroy(gameObject);
+            }
+        }
         //else if (collision.gameObject.tag == "Arrow" || collision.gameObject.tag == "EnemyProjectile")
         //{
         //    Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());  // ignore collision with arrow 
