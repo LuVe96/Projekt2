@@ -57,14 +57,14 @@ public class DialogManager : MonoBehaviour
         {
             nameText.text = currentNPCname;
             nameText.alignment = TextAnchor.MiddleRight;
-            //charImage.sprite = currentNPCImage;
+            charImage.sprite = currentNPCImage;
             charImage.rectTransform.pivot = new Vector2(0, 0.5f);
 
         }
         else{
             nameText.text = playerName;
             nameText.alignment = TextAnchor.MiddleLeft;
-            //charImage.sprite = playerImage;
+            charImage.sprite = playerImage;
             charImage.rectTransform.pivot = new Vector2(1, 0.5f);
         }
     }
