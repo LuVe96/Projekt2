@@ -145,10 +145,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 05f0b8c111419364e97a2dd240b6456a, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 4171318993348085454}
   - component: {fileID: 4171318993348085455}
   m_Layer: 0
-  m_Name: back
+  m_Name: b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 4171318993605041614}
   - component: {fileID: 4171318993605041615}
   m_Layer: 0
-  m_Name: front
+  m_Name: f
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
