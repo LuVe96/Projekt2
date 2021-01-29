@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class NPCDialogHandler : MonoBehaviour
 {
-    public Dialog dialog;
+    public Dialog[] dialogs;
 
-    public void TriggerDialog()
+    public void TriggerDialog(DialogID id)
     {
-        FindObjectOfType<DialogManager>().StartDialog(dialog);
+        foreach (var dialog in dialogs)
+        {
+            if(dialog.dialogID == id)
+            {
+                FindObjectOfType<DialogManager>().StartDialog(dialog);
+                return;
+            }
+        }
+
     }
 }
+
+

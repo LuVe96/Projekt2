@@ -37,6 +37,7 @@ public class DialogManager : MonoBehaviour
         }
 
         dialogPanel.SetActive(true);
+        Time.timeScale =  0;
         DisplayNextSentence();
 
     }
@@ -72,5 +73,6 @@ public class DialogManager : MonoBehaviour
     private void EndDialog()
     {
         dialogPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 }

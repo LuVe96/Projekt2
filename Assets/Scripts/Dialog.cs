@@ -6,6 +6,7 @@ using UnityEngine;
 public class Dialog 
 {
 
+    public DialogID dialogID;
     public string name;
     public Sprite charImage;
     public DialogSentence[] dialogSentences;
@@ -23,4 +24,9 @@ public class DialogSentence
 public enum DialogParticipant
 {
     Player, NPC
+}
+
+public enum DialogID
+{
+    Zwerg_1, Zwerg_2, Zwerg_3,
 }

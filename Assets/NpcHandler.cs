@@ -20,7 +20,7 @@ public class NpcHandler : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            GetComponent<NPCDialogHandler>().TriggerDialog();
+            GetComponent<NPCDialogHandler>().TriggerDialog(DialogID.Zwerg_1);
         }
     }
 }
