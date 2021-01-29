@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class NpcHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public DialogID[] dialogIDs;
+    public string questEndId = "";
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            GetComponent<NPCDialogHandler>().TriggerDialog(DialogID.Zwerg_1);
+            foreach (var dialogID in dialogIDs)
+            {
+                if (FindObjectOfType<QuestManager>().CanQuestStart(dialogID))
+                {
+                    GetComponent<NPCDialogHandler>().TriggerDialog(dialogID);
+                }
+            }
+
+            if(questEndId != "")
+            {
+                FindObjectOfType<QuestManager>().ArchiveEndQuest(questEndId);
+            }
+
         }
     }
 }

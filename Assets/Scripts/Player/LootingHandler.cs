@@ -18,6 +18,10 @@ public class LootingHandler : MonoBehaviour
         {
             looting = true;
             Inventory.Instance.Add(other.gameObject.GetComponent<LootObjectHandler>().item);
+            if(other.GetComponent<LootObjectHandler>().item is QuestItem)
+            {
+
+            }
             Destroy(other.gameObject);
         }
     }

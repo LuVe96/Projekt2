@@ -16,5 +16,6 @@ public abstract class LootItem : ScriptableObject
 
 public enum LootItemType {
     Healing,
-    Scroll
+    Scroll,
+    Quest
 }

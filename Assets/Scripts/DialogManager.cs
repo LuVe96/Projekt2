@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
+
     public GameObject dialogPanel;
     public Text nameText;
     public Text sentencesText;
