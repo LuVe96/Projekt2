@@ -50,11 +50,23 @@ public class QuestManager : MonoBehaviour
     public void EndQuest()
     {
         doneQuests.Add(currentQuest);
+        RunAction(currentQuest.questActions, QuestActionTime.End);
         currentQuest = null;
     }
 
+    public void RunAction(QuestAction[] actions, QuestActionTime time)
+    {
+        foreach (var action in actions)
+        {
+            if( action.actionTime == time)
+            {
+                action.obj.transform.position = action.goalPosition;
+            }
+        }
+    }
 
-    public bool CanQuestStart(DialogID id)
+
+    public bool CanQuestStart(QuestDialogID id)
     {
 
         // check if Quest already done
@@ -79,16 +91,23 @@ public class QuestManager : MonoBehaviour
 
         if(quest == null) { return false; };
 
+        if(quest.requiredQuestDialog == QuestDialogID.None)
+        {
+            currentQuest = quest;
+            RunAction(currentQuest.questActions, QuestActionTime.Start);
+            return true;
+        }
+
         // check if requiredQuest of Quest already done
         foreach (var doneQ in doneQuests)
         {
-            if (doneQ.dialogID == quest.requiredDialog)
+            if (doneQ.dialogID == quest.requiredQuestDialog)
             {
                 currentQuest = quest;
+                RunAction(currentQuest.questActions, QuestActionTime.Start);
                 return true;
             }
         }
-
         return false;
 
     }
@@ -97,8 +116,8 @@ public class QuestManager : MonoBehaviour
 [System.Serializable]
 public class Quest
 {
-    public DialogID dialogID;
-    public DialogID requiredDialog;
+    public QuestDialogID dialogID;
+    public QuestDialogID requiredQuestDialog;
     public string requiredToEndID = null;
     public QuestAction[] questActions;
 }

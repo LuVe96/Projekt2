@@ -6,7 +6,7 @@ public class NPCDialogHandler : MonoBehaviour
 {
     public Dialog[] dialogs;
 
-    public void TriggerDialog(DialogID id)
+    public void TriggerDialog(QuestDialogID id)
     {
         foreach (var dialog in dialogs)
         {

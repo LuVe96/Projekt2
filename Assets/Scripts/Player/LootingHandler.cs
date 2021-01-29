@@ -17,10 +17,11 @@ public class LootingHandler : MonoBehaviour
         if (other.tag == "Loot" && !looting)
         {
             looting = true;
-            Inventory.Instance.Add(other.gameObject.GetComponent<LootObjectHandler>().item);
-            if(other.GetComponent<LootObjectHandler>().item is QuestItem)
+            var item = other.GetComponent<LootObjectHandler>().item;
+            Inventory.Instance.Add(item);
+            if(item is QuestItem)
             {
-
+                FindObjectOfType<QuestManager>().ArchiveEndQuest((item as QuestItem).endQuestId);
             }
             Destroy(other.gameObject);
         }

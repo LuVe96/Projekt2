@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 70
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: 8f2b4c7e882e67a409fa9bf5d01e0ef4, type: 2}

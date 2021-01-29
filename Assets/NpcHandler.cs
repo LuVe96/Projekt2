@@ -5,7 +5,7 @@ using UnityEngine;
 public class NpcHandler : MonoBehaviour
 {
 
-    public DialogID[] dialogIDs;
+    public QuestDialogID[] dialogIDs;
     public string questEndId = "";
 
     private void OnTriggerEnter(Collider other)
