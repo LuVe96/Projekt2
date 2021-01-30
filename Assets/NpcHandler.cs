@@ -5,20 +5,15 @@ using UnityEngine;
 public class NpcHandler : MonoBehaviour
 {
 
-    public QuestDialogID[] dialogIDs;
     public string questEndId = "";
 
     protected virtual void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            foreach (var dialogID in dialogIDs)
-            {
-                if (FindObjectOfType<QuestManager>().CanQuestStart(dialogID))
-                {
-                    GetComponent<NPCDialogHandler>().TriggerDialog(dialogID);
-                }
-            }
+
+            GetComponent<NPCDialogHandler>().TriggerDialog();
+
 
             if(questEndId != "")
             {

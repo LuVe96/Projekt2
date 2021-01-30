@@ -6,11 +6,12 @@ public class NPCDialogHandler : MonoBehaviour
 {
     public Dialog[] dialogs;
 
-    public void TriggerDialog(QuestDialogID id)
+    public void TriggerDialog()
     {
         foreach (var dialog in dialogs)
         {
-            if(dialog.dialogID == id)
+
+            if (FindObjectOfType<QuestManager>().CanQuestStart(dialog.dialogID))
             {
                 FindObjectOfType<DialogManager>().StartDialog(dialog);
                 return;

@@ -117,6 +117,8 @@ public class Quest
         {
             if (action.actionTime == time)
             {
+                Debug.Log("curr Pos: " + action.obj.transform.position);
+                Debug.Log("new Pos: " + action.goalPosition);
                 action.obj.transform.position = action.goalPosition;
             }
         }

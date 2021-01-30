@@ -70,7 +70,7 @@ public abstract class EnemyHandler : MonoBehaviour
                 if (distance <= attackDistance)
                 {
                     attackPeriodeSum += Time.deltaTime;
-                    if (attackPeriodeSum >= attackPause && !freezed && OnSameLevel(player.transform, transform))
+                    if (attackPeriodeSum >= attackPause && !freezed /*&& OnSameLevel(player.transform, transform)*/)
                     {
                         attackPeriodeSum = 0;
 

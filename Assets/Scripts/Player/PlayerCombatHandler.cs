@@ -57,7 +57,7 @@ public class PlayerCombatHandler : MonoBehaviour, IAttackEnemyInterface
             }
         }
 
-        if (!HitsAntiAttackCollider(nearestEnemy) && OnSameLevel(transform, nearestEnemy.transform))
+        if (!HitsAntiAttackCollider(nearestEnemy)/* && OnSameLevel(transform, nearestEnemy.transform)*/)
         {
             MarkFocusedEnemy(nearestEnemy);
 

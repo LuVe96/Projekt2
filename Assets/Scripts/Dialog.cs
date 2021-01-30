@@ -28,5 +28,5 @@ public enum DialogParticipant
 
 public enum QuestDialogID
 {
-    None, Zwerg_1, Zwerg_2, Zwerg_3,
+    None, Zwerg_1, Zwerg_2, Zwerg_3, Zwerg_4
 }
