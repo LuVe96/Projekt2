@@ -8,7 +8,7 @@ public class NpcHandler : MonoBehaviour
     public QuestDialogID[] dialogIDs;
     public string questEndId = "";
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {

@@ -50,19 +50,8 @@ public class QuestManager : MonoBehaviour
     public void EndQuest()
     {
         doneQuests.Add(currentQuest);
-        RunAction(currentQuest.questActions, QuestActionTime.End);
+        currentQuest.RunAction( QuestActionTime.End);
         currentQuest = null;
-    }
-
-    public void RunAction(QuestAction[] actions, QuestActionTime time)
-    {
-        foreach (var action in actions)
-        {
-            if( action.actionTime == time)
-            {
-                action.obj.transform.position = action.goalPosition;
-            }
-        }
     }
 
 
@@ -94,7 +83,7 @@ public class QuestManager : MonoBehaviour
         if(quest.requiredQuestDialog == QuestDialogID.None)
         {
             currentQuest = quest;
-            RunAction(currentQuest.questActions, QuestActionTime.Start);
+            currentQuest.RunAction(QuestActionTime.Start);
             return true;
         }
 
@@ -104,7 +93,7 @@ public class QuestManager : MonoBehaviour
             if (doneQ.dialogID == quest.requiredQuestDialog)
             {
                 currentQuest = quest;
-                RunAction(currentQuest.questActions, QuestActionTime.Start);
+                currentQuest.RunAction(QuestActionTime.Start);
                 return true;
             }
         }
@@ -120,6 +109,26 @@ public class Quest
     public QuestDialogID requiredQuestDialog;
     public string requiredToEndID = null;
     public QuestAction[] questActions;
+    public QuestInventoryAction[] questInventoryActions;
+
+    public void RunAction( QuestActionTime time)
+    {
+        foreach (var action in questActions)
+        {
+            if (action.actionTime == time)
+            {
+                action.obj.transform.position = action.goalPosition;
+            }
+        }
+
+        foreach (var action in questInventoryActions)
+        {
+            if (action.actionTime == time)
+            {
+                Inventory.Instance.Remove(action.item);
+            }
+        }
+    }
 }
 
 [System.Serializable]
@@ -127,6 +136,13 @@ public class QuestAction
 {
     public GameObject obj;
     public Vector3 goalPosition;
+    public QuestActionTime actionTime;
+}
+
+[System.Serializable]
+public class QuestInventoryAction
+{
+    public LootItem item;
     public QuestActionTime actionTime;
 }
 
