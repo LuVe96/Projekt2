@@ -38,19 +38,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture1:
-        m_Texture: {fileID: 2800000, guid: dc36c9cc067aec14e97951da0041a2da, type: 3}
+        m_Texture: {fileID: 2800000, guid: d1ee7a9fa5ae8004a8bb095d600fbef3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture2:
-        m_Texture: {fileID: 2800000, guid: fbc64d5797a0943419ee1540d8ac14b1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4d28f0340007fe74b8b33d84974c938e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture3:
-        m_Texture: {fileID: 2800000, guid: 6d905e04d6c3e39419943cd1f95cdbb8, type: 3}
+        m_Texture: {fileID: 2800000, guid: cdedc5721e8521b47bed102706ddf6e6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture4:
-        m_Texture: {fileID: 2800000, guid: dc36c9cc067aec14e97951da0041a2da, type: 3}
+        m_Texture: {fileID: 2800000, guid: d1ee7a9fa5ae8004a8bb095d600fbef3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:

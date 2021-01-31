@@ -16,6 +16,7 @@ public class EnemyNpcHandler : NpcHandler
             GetComponent<MagicanEnemyHandler>().enabled = true;
             GetComponent<NavMeshAgent>().enabled = true;
             gameObject.tag = "Enemy";
+            GetComponent<NPCDialogHandler>().enabled = false;
             base.enabled = false;
             enabled = false;
 
