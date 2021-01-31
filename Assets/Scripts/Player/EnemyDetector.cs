@@ -32,5 +32,15 @@ public class EnemyDetector : MonoBehaviour
         }
     }
 
+    public void AddEnemyToList(GameObject enemy)
+    {
+
+        if (enemy.tag == "Enemy")
+        {
+            enemys.Add(enemy);
+        }
+        
+    }
+
 
 }

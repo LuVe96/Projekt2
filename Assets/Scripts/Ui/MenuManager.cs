@@ -24,10 +24,4 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void ToggleInventory(bool open)
-    {
-        //transform.Find("TabbedPager").gameObject.SetActive(open);
-        transform.Find("Inventory").gameObject.SetActive(open);
-        Time.timeScale = open ? 0 : 1;
-    }
 }

@@ -26,10 +26,12 @@ public class InventoryUiHandler : MonoBehaviour
         Inventory.Instance.UpdateInventory();
 
     }
-    // Update is called once per frame
-    void Update()
+
+    public void ToggleInventory(bool open)
     {
-        
+        //transform.Find("TabbedPager").gameObject.SetActive(open);
+        transform.Find("Inventory").gameObject.SetActive(open);
+        Time.timeScale = open ? 0 : 1;
     }
 
     void UpdateUI()

@@ -94,7 +94,8 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
         //GetComponent<InventorySlotHandler>().enabled = false;
         GameObject.Find("MenuCanvas").GetComponent<InventoryUiHandler>().UpdateSlots();
 
-        MenuManager.Instance.ToggleInventory(false);
+        //MenuManager.Instance.ToggleInventory(false);
+        FindObjectOfType<InventoryUiHandler>().ToggleInventory(true);
     }
 
     private void OnShortPress()

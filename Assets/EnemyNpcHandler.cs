@@ -16,6 +16,7 @@ public class EnemyNpcHandler : NpcHandler
             GetComponent<MagicanEnemyHandler>().enabled = true;
             GetComponent<NavMeshAgent>().enabled = true;
             gameObject.tag = "Enemy";
+            GameObject.Find("Player").GetComponentInChildren<EnemyDetector>().AddEnemyToList(gameObject);
             GetComponent<NPCDialogHandler>().enabled = false;
             base.enabled = false;
             enabled = false;

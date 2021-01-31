@@ -33,6 +33,7 @@ public class IngameUIManager : MonoBehaviour
 
     public void ObenInventory()
     {
-        MenuManager.Instance.ToggleInventory(true);
+        //MenuManager.Instance.ToggleInventory(true);
+        FindObjectOfType<InventoryUiHandler>().ToggleInventory(true);
     }
 }
