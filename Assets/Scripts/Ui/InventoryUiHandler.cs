@@ -9,6 +9,7 @@ public class InventoryUiHandler : MonoBehaviour
     private Inventory inventory;
     public Transform itemsParent;
     private InventorySlotHandler[] slots;
+    public GameObject Invent;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class InventoryUiHandler : MonoBehaviour
     public void ToggleInventory(bool open)
     {
         //transform.Find("TabbedPager").gameObject.SetActive(open);
-        transform.Find("Inventory").gameObject.SetActive(open);
+        //transform.Find("inventoryObj").transform.Find("Inventory").gameObject.SetActive(open);
+        Invent.SetActive(open);
         Time.timeScale = open ? 0 : 1;
     }
 

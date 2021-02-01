@@ -92,10 +92,11 @@ public class InventorySlotHandler : MonoBehaviour, IPointerDownHandler, IPointer
         GetComponent<DragDrop>().ActivateDragMode();
 
         //GetComponent<InventorySlotHandler>().enabled = false;
-        GameObject.Find("MenuCanvas").GetComponent<InventoryUiHandler>().UpdateSlots();
+        //GameObject.Find("MenuCanvas").GetComponent<InventoryUiHandler>().UpdateSlots();
+        GameObject.Find("MenuCanvasSizeScaled").GetComponent<InventoryUiHandler>().UpdateSlots(); 
 
         //MenuManager.Instance.ToggleInventory(false);
-        FindObjectOfType<InventoryUiHandler>().ToggleInventory(true);
+        FindObjectOfType<InventoryUiHandler>().ToggleInventory(false);
     }
 
     private void OnShortPress()

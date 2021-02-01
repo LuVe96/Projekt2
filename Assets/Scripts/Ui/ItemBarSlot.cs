@@ -28,6 +28,7 @@ public class ItemBarSlot : MonoBehaviour, IDropHandler
             {
                 Destroy(transform.GetChild(i).gameObject);
             }
+            //FindObjectOfType<InventoryUiHandler>().ToggleInventory(true); // reopen Inventory
 
             /// set position of item
             var rect = eventData.pointerDrag.GetComponent<RectTransform>();

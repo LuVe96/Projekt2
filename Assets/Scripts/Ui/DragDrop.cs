@@ -51,6 +51,7 @@ public class DragDrop : MonoBehaviour, IEndDragHandler, IDragHandler
             var slotHander = GetComponent<InventorySlotHandler>();
             if (!slotHander.isEquipped)
             {
+                //FindObjectOfType<InventoryUiHandler>().ToggleInventory(true);
                 Destroy(gameObject);
             }
         }
