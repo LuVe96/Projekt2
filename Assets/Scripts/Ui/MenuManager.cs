@@ -34,6 +34,11 @@ public class MenuManager : MonoBehaviour
         buttonMainMenu.onClick.AddListener(ButtonMainMenuClicked);
     }
 
+    public void OpenPauseMenu()
+    {
+        OpenMenu(MenuType.Pause);
+    }
+
     public void OpenMenu(MenuType menuType)
     {
         menus.SetActive(true);

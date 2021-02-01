@@ -35,12 +35,13 @@ public class GameManager : MonoBehaviour
 
         if (playerIsDead)
         {
-            menuCanvas.transform.Find("LooseScreen").gameObject.SetActive(true);
+            //menuCanvas.transform.Find("LooseScreen").gameObject.SetActive(true);
+            MenuManager.Instance.OpenMenu(MenuManager.MenuType.Loose);
         }
 
-        if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {
-            menuCanvas.transform.Find("WinScreen").gameObject.SetActive(true);
-        }
+        //if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        //{
+        //    menuCanvas.transform.Find("WinScreen").gameObject.SetActive(true);
+        //}
     }
 }
