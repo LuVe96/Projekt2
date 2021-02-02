@@ -53,7 +53,9 @@ public class DialogManager : MonoBehaviour
 
         DialogSentence dialogSentence = dialogSentences.Dequeue();
 
-        sentencesText.text = dialogSentence.sentence;
+        //sentencesText.text = dialogSentence.sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(dialogSentence.sentence));
 
         if(dialogSentence.dialogParticipant == DialogParticipant.NPC)
         {
@@ -68,6 +70,16 @@ public class DialogManager : MonoBehaviour
             nameText.alignment = TextAnchor.MiddleLeft;
             charImage.sprite = playerImage;
             charImage.rectTransform.pivot = new Vector2(1, 0.5f);
+        }
+    }
+
+    IEnumerator TypeSentence(string sentnece)
+    {
+        sentencesText.text = "";
+        foreach (var letter in sentnece.ToCharArray())
+        {
+            sentencesText.text += letter;
+            yield return null;
         }
     }
 
