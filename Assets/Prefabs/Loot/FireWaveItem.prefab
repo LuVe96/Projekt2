@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1097271300147297805}
   - component: {fileID: 1800278554408253046}
   - component: {fileID: 3023742516536313288}
-  m_Layer: 0
-  m_Name: FireWave
+  m_Layer: 11
+  m_Name: FireWaveItem
   m_TagString: Loot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

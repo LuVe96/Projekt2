@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5840430748850611561}
   - component: {fileID: 5840430748850611563}
   - component: {fileID: 5840430748850611562}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: IceParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4784,7 +4784,7 @@ GameObject:
   - component: {fileID: 6591489900001916531}
   - component: {fileID: 2705509523378603944}
   - component: {fileID: 6611054496414165924}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 5992962351920955865}
   - component: {fileID: 7243085712789524092}
   - component: {fileID: 4854998447202646710}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SM_Arrow_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4955,7 +4955,7 @@ GameObject:
   - component: {fileID: 4905219053188523120}
   - component: {fileID: 6865356607664803021}
   - component: {fileID: 6865356607664803020}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArrowIce
   m_TagString: Loot
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1955013298641052505}
   - component: {fileID: 3210575782403714300}
   - component: {fileID: 822670955149383734}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SM_Arrow_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 871458622740383472}
   - component: {fileID: 1678849563741269581}
   - component: {fileID: 1678849563741269580}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArrowPoison
   m_TagString: Loot
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 1401587713220777203}
   - component: {fileID: 7890653094563341608}
   - component: {fileID: 1420308115762448676}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 4215839981498061177}
   - component: {fileID: 4215839981498061174}
   - component: {fileID: 4215839981498061175}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PoisonParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

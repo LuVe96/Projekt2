@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4441934795075841493}
   - component: {fileID: 4463280630561860040}
   - component: {fileID: 4463280630561860041}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SM_Wep_BigOrk_01
   m_TagString: Loot
   m_Icon: {fileID: 0}

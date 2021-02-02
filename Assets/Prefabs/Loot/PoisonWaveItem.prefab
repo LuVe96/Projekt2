@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 273512685058212003}
   - component: {fileID: 273512685058212082}
   - component: {fileID: 273512685058211989}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PoisonWaveItem
   m_TagString: Loot
   m_Icon: {fileID: 0}

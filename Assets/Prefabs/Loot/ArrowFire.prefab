@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 602297683098285905}
   - component: {fileID: 602297683098285918}
   - component: {fileID: 602297683098285919}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FireParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4765,7 +4765,7 @@ GameObject:
   - component: {fileID: 2945589032373582047}
   - component: {fileID: 3725785683564138594}
   - component: {fileID: 3725785683564138595}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArrowFire
   m_TagString: Loot
   m_Icon: {fileID: 0}
@@ -4828,7 +4828,7 @@ GameObject:
   - component: {fileID: 4600783961082797430}
   - component: {fileID: 609849861326017235}
   - component: {fileID: 3427917158178907673}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SM_Arrow_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4908,7 +4908,7 @@ GameObject:
   - component: {fileID: 4002484039945431772}
   - component: {fileID: 5294515383431420679}
   - component: {fileID: 3984889806670640907}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

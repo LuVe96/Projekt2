@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1134884206159167210}
   - component: {fileID: 1134884206159167163}
   - component: {fileID: 1134884206159167196}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: IceWaveItem
   m_TagString: Loot
   m_Icon: {fileID: 0}

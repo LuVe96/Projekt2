@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 439389826508777272}
   - component: {fileID: 2096982839094822638}
   - component: {fileID: 2096982839094822639}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bootle_m
   m_TagString: Loot
   m_Icon: {fileID: 0}
