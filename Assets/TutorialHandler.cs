@@ -20,7 +20,7 @@ public class TutorialHandler : MonoBehaviour
     {
         if(slides.Length > currentSlideIndex + 1)
         {
-            videoPlayer.Stop();
+            videoPlayer.Pause();
             videoPlayer.clip = slides[currentSlideIndex + 1].videoClip;
             videoPlayer.Play();
             textField.text = slides[currentSlideIndex + 1].text;
