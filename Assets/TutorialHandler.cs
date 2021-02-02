@@ -36,6 +36,7 @@ public class TutorialHandler : MonoBehaviour
     private void ExitTutorial()
     {
         tutorialPanlel.SetActive(false);
+        Time.timeScale = 1;
         Destroy(gameObject);
     }
 
@@ -43,6 +44,7 @@ public class TutorialHandler : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Time.timeScale = 0;
             tutorialPanlel.SetActive(true);
             videoPlayer.clip = slides[0].videoClip;
             videoPlayer.Play();

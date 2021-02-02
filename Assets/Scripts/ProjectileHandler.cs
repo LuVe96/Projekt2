@@ -16,19 +16,34 @@ public class ProjectileHandler : MonoBehaviour
     private Vector3 direction;
     private float aliveTimeSum = 0;
     private bool isShooting = false;
+    private Rigidbody _rigidbody;
+
+    private void Start()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (isShooting)
-        {
-            transform.position += direction.normalized * velocity * Time.deltaTime;   
-        }
+        //if (isShooting)
+        //{
+        //    transform.position += direction.normalized * velocity * Time.deltaTime;   
+        //}
 
         aliveTimeSum += Time.deltaTime;
         if(aliveTimeSum >= aliveTime)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (isShooting)
+        {
+            //transform.position += direction.normalized * velocity * Time.deltaTime;
+            _rigidbody.velocity = direction.normalized * velocity;
         }
     }
 
