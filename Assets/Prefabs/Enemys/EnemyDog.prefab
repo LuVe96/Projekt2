@@ -6490,6 +6490,7 @@ MonoBehaviour:
   burnParticle: {fileID: 3987135844450778532}
   freezeParticle: {fileID: 8516123206102808441}
   poisonParticle: {fileID: 7191273844726453606}
+  isAtDieing: 0
   animator: {fileID: 5866666019885141220}
   attackTime: 0.5
   attackSpeed: 5
@@ -6556,7 +6557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHeight: 0.2
-  mainProbability: 70
+  mainProbability: 100
   lootObjects:
   - lootItem: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9, type: 2}
     probability: 50

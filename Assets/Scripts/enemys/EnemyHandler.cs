@@ -59,7 +59,6 @@ public abstract class EnemyHandler : MonoBehaviour
         if (lifeAmount <= 0)
         {
             //GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(transform.Find("Charakter").gameObject);
-            enemyIndicator.setIndicator(false);
             GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(gameObject);
             GetComponent<LootDropper>().DropLoot();
             isDieing();
@@ -120,6 +119,7 @@ public abstract class EnemyHandler : MonoBehaviour
 
     protected virtual void isDieing()
     {
+        enemyIndicator.setIndicator(false);
         Destroy(gameObject);
     }
 

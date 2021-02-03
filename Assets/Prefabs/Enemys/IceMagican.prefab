@@ -14627,14 +14627,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHeight: 0.5
-  mainProbability: 85
+  mainProbability: 100
   lootObjects:
   - lootItem: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9, type: 2}
-    probability: 50
+    probability: 30
   - lootItem: {fileID: 11400000, guid: e08122b0c72a5c94ca2481fe5a443a4d, type: 2}
     probability: 50
   - lootItem: {fileID: 11400000, guid: e5b43a4ea1e79f44f9445ba17d88d42f, type: 2}
-    probability: 20
+    probability: 40
 --- !u!114 &1626253991466020128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14660,6 +14660,7 @@ MonoBehaviour:
   burnParticle: {fileID: 6564235236272858678}
   freezeParticle: {fileID: 6328595493114920549}
   poisonParticle: {fileID: 5757713510000323703}
+  isAtDieing: 0
   animator: {fileID: 8020857672231429669}
   projectilePrfab: {fileID: 4763530573275500323, guid: 4a5f5c894280eb3459f3247fa4494f54,
     type: 3}

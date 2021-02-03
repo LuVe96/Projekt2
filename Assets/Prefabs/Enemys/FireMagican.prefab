@@ -12861,14 +12861,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHeight: 0.5
-  mainProbability: 85
+  mainProbability: 100
   lootObjects:
   - lootItem: {fileID: 11400000, guid: 8a070c8504b1af744b47af1d76d527c9, type: 2}
-    probability: 50
+    probability: 30
   - lootItem: {fileID: 11400000, guid: fa4df7f3027dbf34c8b2279d51ed4ff4, type: 2}
     probability: 50
   - lootItem: {fileID: 11400000, guid: 38b972c6c5799d445aa1369a85ed4720, type: 2}
-    probability: 20
+    probability: 30
 --- !u!114 &753955275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12894,6 +12894,7 @@ MonoBehaviour:
   burnParticle: {fileID: 5587071891294763741}
   freezeParticle: {fileID: 8971624796945265541}
   poisonParticle: {fileID: 8123869746411326391}
+  isAtDieing: 0
   animator: {fileID: 8781547504572758734}
   projectilePrfab: {fileID: 2320759669102018788, guid: bf1a1f444acf06b48ac4ea5d3e3d1b75,
     type: 3}
@@ -13207,7 +13208,7 @@ PrefabInstance:
     - target: {fileID: 4171318993432328289, guid: 7f819bcc120ae104b8a2a3dc812e0ced,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4171318993432328289, guid: 7f819bcc120ae104b8a2a3dc812e0ced,
         type: 3}
