@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MagicanEnemyHandler : EnemyHandler
 {
@@ -17,6 +18,14 @@ public class MagicanEnemyHandler : EnemyHandler
     protected override void AttackPlayer()
     {
         StartCoroutine(ProjectilAttack());  
+    }
+
+    protected override void isDieing()
+    {
+
+        //StopAllCoroutines();
+        Destroy(transform.Find("focus_marker").gameObject);
+        StartCoroutine(Dieing());
     }
 
     IEnumerator ProjectilAttack()
@@ -37,6 +46,22 @@ public class MagicanEnemyHandler : EnemyHandler
         navMeshAgent.speed = stdMoveSpeed;
         animator.SetBool("isShooting", false);
         animator.SetBool("isWalking", true);
+    }
+
+    IEnumerator Dieing()
+    {
+        animator.SetBool("isDieing", true);
+        isAtDieing = true;
+        GetComponent<NavMeshAgent>().enabled = false;
+
+        foreach (var col in GetComponentsInChildren<Collider>())
+        {
+            col.enabled = false;
+        }
+
+        yield return new WaitForSeconds(4f);
+
+        base.isDieing();
     }
 
 }

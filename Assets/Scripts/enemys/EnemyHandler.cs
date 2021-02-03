@@ -32,6 +32,7 @@ public abstract class EnemyHandler : MonoBehaviour
     public ParticleSystem burnParticle;
     public ParticleSystem freezeParticle;
     public ParticleSystem poisonParticle;
+    public bool isAtDieing = false;
 
     public Animator animator;
     private GameObject currentMagicWave;
@@ -52,6 +53,20 @@ public abstract class EnemyHandler : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (isAtDieing) { return; }
+
+        //On Death
+        if (lifeAmount <= 0)
+        {
+            //GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(transform.Find("Charakter").gameObject);
+            enemyIndicator.setIndicator(false);
+            GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(gameObject);
+            GetComponent<LootDropper>().DropLoot();
+            isDieing();
+        }
+
+        if (player.GetComponent<PlayerHandler>().isDieing) { return; }
+
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance <= detectDistance)
         {
@@ -62,8 +77,11 @@ public abstract class EnemyHandler : MonoBehaviour
                 enemyIndicator.setIndicator(true);
 
                 // rotate and move towards player
-                navMeshAgent.SetDestination(player.transform.position);
-
+                if (navMeshAgent.enabled)
+                {
+                    navMeshAgent.SetDestination(player.transform.position);
+                }
+                
                 // walkanimation when moving
                 if (navMeshAgent.speed != 0) animator.SetBool("isWalking", true);
 
@@ -98,15 +116,11 @@ public abstract class EnemyHandler : MonoBehaviour
             }
         }
 
-        //On Death
-        if (lifeAmount <= 0)
-        {
-            //GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(transform.Find("Charakter").gameObject);
-            enemyIndicator.setIndicator(false);
-            GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(gameObject);
-            GetComponent<LootDropper>().DropLoot();
-            Destroy(gameObject);
-        }
+    }
+
+    protected virtual void isDieing()
+    {
+        Destroy(gameObject);
     }
 
     private bool OnSameLevel(Transform player, Transform enemy, float toleranz = 0.5f)

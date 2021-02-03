@@ -30,6 +30,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         button_1.onClick.AddListener(ButtenOneClicked);
         buttonMainMenu.onClick.AddListener(ButtonMainMenuClicked);
     }

@@ -11,6 +11,10 @@ public class PlayerHandler : MonoBehaviour
     public AudioSource hitSound;
     public GameObject uiLifeBarFront;
     private PlayerCombatHandler combatHandler;
+    private Animator animator;
+
+    [HideInInspector]
+    public bool isDieing;
 
     ///Efects
     public ParticleSystem burnEffect;
@@ -24,6 +28,8 @@ public class PlayerHandler : MonoBehaviour
         MaxLifeAmount = lifeAmount;
         combatHandler = GetComponent<PlayerCombatHandler>();
         //uiLifeBar = GameObject.Find("IngameUICanvas").transform.Find("lifeBar/front").gameObject;
+        animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -31,7 +37,8 @@ public class PlayerHandler : MonoBehaviour
     {
         if (lifeAmount <= 0)
         {
-            GameManager.Instance.playerIsDead = true;
+            //GameManager.Instance.playerIsDead = true;
+            StartCoroutine(Dieing());
         }
 
     }
@@ -76,6 +83,20 @@ public class PlayerHandler : MonoBehaviour
             Instantiate(bloodParticles, transform.position, transform.rotation);
             hitSound.Play();
         }
+
+    }
+
+    IEnumerator Dieing()
+    {
+        animator.SetBool("isDieing", true);
+        isDieing = true;
+        GetComponent<PlayerCombatHandler>().enabled = false;
+        GetComponent<PlayerMovement>().enabled = false;
+
+        yield return new WaitForSeconds(6f);
+
+        GameManager.Instance.playerIsDead = true;
+
 
     }
 
