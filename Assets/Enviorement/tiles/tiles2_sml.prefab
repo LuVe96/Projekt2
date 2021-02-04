@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4426866243911168635}
   - component: {fileID: 1912785388186814129}
   - component: {fileID: 6641724235759239163}
+  - component: {fileID: 337519954328074460}
   m_Layer: 0
   m_Name: tiles2_sml
-  m_TagString: Untagged
+  m_TagString: AntiAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111297365192828772}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -7.14, y: 1.0791311, z: -27.618155}
   m_LocalScale: {x: 500, y: 500, z: 100}
   m_Children:
@@ -40,7 +41,7 @@ Transform:
   - {fileID: 5730599576085310148}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &4426866243911168635
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98,10 +99,23 @@ BoxCollider:
   m_GameObject: {fileID: 111297365192828772}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.0050000055, y: 0.005, z: 0.010076887}
   m_Center: {x: -0.000046879057, y: -0.000000047445297, z: -0.0007547998}
+--- !u!65 &337519954328074460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111297365192828772}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0050000055, y: 0.005, z: 0.01751059}
+  m_Center: {x: -0.000046879057, y: -0.000000047445297, z: 0.0029620503}
 --- !u!1001 &303910518689825837
 PrefabInstance:
   m_ObjectHideFlags: 0

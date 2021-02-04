@@ -96,9 +96,10 @@ public class PlayerCombatHandler : MonoBehaviour, IAttackEnemyInterface
         return (player.position.y + toleranz / 2 >= enemy.position.y) && (player.position.y - toleranz / 2 <= enemy.position.y);
     }
 
-    private bool HitsAntiAttackCollider(GameObject enemy)
+    private bool HitsAntiAttackCollider(GameObject enemy, float height = 1.2f) // height = shot height
     {
-        Ray ray = new Ray(transform.position, enemy.transform.position - transform.position);
+        Vector3 heightVector = new Vector3(0, height, 0);
+        Ray ray = new Ray(transform.position + heightVector, enemy.transform.position + heightVector - transform.position + heightVector);
         float distance = Vector3.Distance(transform.position, enemy.transform.position);
         RaycastHit[] hits = Physics.RaycastAll(ray, distance);
 

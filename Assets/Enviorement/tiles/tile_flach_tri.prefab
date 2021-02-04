@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1321361550667814255}
   - component: {fileID: 3869326681411608997}
   - component: {fileID: 570269695317918830}
+  - component: {fileID: 6827389776908383628}
   m_Layer: 0
   m_Name: tile_flach_tri
-  m_TagString: Untagged
+  m_TagString: AntiAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +114,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6827389776908383628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364857895212892272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010000011, y: 0.010000022, z: 0.017567808}
+  m_Center: {x: 0, y: 7.160325e-15, z: 0.0037839}
 --- !u!1001 &821822729450855523
 PrefabInstance:
   m_ObjectHideFlags: 0

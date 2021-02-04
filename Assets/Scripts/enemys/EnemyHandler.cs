@@ -128,9 +128,10 @@ public abstract class EnemyHandler : MonoBehaviour
         return (player.position.y + toleranz / 2 >= enemy.position.y) && (player.position.y - toleranz / 2 <= enemy.position.y);
     }
 
-    private bool HitsAntiAttackCollider(float distance)
+    private bool HitsAntiAttackCollider(float distance, float height = 1.2f)
     {
-        Ray ray = new Ray(transform.position, player.position - transform.position);
+        Vector3 heightVector = new Vector3(0, height, 0);
+        Ray ray = new Ray(transform.position + heightVector, player.position + heightVector - transform.position + heightVector);
         RaycastHit[] hits = Physics.RaycastAll(ray, distance);
 
         foreach(RaycastHit hit in hits) {
