@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1097271300147297805}
   - component: {fileID: 1800278554408253046}
   - component: {fileID: 3023742516536313288}
+  - component: {fileID: 3314295083774096398}
   m_Layer: 11
   m_Name: FireWaveItem
   m_TagString: Loot
@@ -109,3 +110,21 @@ CapsuleCollider:
   m_Height: 0.13569376
   m_Direction: 1
   m_Center: {x: 0.0000376001, y: -0.0011911988, z: 0.000331375}
+--- !u!114 &3314295083774096398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457677674291732440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.15294118, g: 0.8784314, b: 0.5294118, a: 1}
+  outlineWidth: 2.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

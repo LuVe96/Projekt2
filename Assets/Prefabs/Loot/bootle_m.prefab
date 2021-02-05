@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 439389826508777272}
   - component: {fileID: 2096982839094822638}
   - component: {fileID: 2096982839094822639}
+  - component: {fileID: 1157489492}
   m_Layer: 11
   m_Name: bootle_m
   m_TagString: Loot
@@ -109,3 +110,21 @@ CapsuleCollider:
   m_Height: 0.009280821
   m_Direction: 1
   m_Center: {x: 0.0001922965, y: 0.00010538995, z: -0.00044246734}
+--- !u!114 &1157489492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096982839094822637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.15294118, g: 0.8784314, b: 0.5294118, a: 1}
+  outlineWidth: 2.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
