@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1955013298641052505}
   - component: {fileID: 3210575782403714300}
   - component: {fileID: 822670955149383734}
+  - component: {fileID: 963215628}
   m_Layer: 11
   m_Name: SM_Arrow_01
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 38b6983969a48a243b808e3cbfd5b8aa, type: 2}
+  - {fileID: 2100000, guid: 4d756e921326e894680ac548303710c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,6 +80,24 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &963215628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182839835381627363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.15294118, g: 0.8784314, b: 0.5294118, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1678849563741269579
 GameObject:
   m_ObjectHideFlags: 0

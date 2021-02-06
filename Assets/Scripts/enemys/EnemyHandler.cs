@@ -128,7 +128,7 @@ public abstract class EnemyHandler : MonoBehaviour
         return (player.position.y + toleranz / 2 >= enemy.position.y) && (player.position.y - toleranz / 2 <= enemy.position.y);
     }
 
-    private bool HitsAntiAttackCollider(float distance, float height = 1.2f)
+    private bool HitsAntiAttackCollider(float distance, float height = 0.7f)
     {
         Vector3 heightVector = new Vector3(0, height, 0);
         Ray ray = new Ray(transform.position + heightVector, player.position + heightVector - transform.position + heightVector);
@@ -137,10 +137,11 @@ public abstract class EnemyHandler : MonoBehaviour
         foreach(RaycastHit hit in hits) {
             if(hit.collider.tag == "AntiAttackCollider")
             {
+                Debug.Log("AntiAttackCollider");
                 return true;
             }
         }
-
+        Debug.Log("no AntiAttackCollider: "+ (transform.position + heightVector) + (player.position + heightVector));
         return false;
     }
 
