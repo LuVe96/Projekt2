@@ -38,7 +38,7 @@ public class WaveMagicHandler : MonoBehaviour
     {
 
         float timeStamp = Time.time;
-        float duration = 3.5f;
+        float duration = 5f;
         while (Time.time < timeStamp + duration)
         {
             float t = (Time.time - timeStamp) / duration;
