@@ -62,6 +62,7 @@ public abstract class EnemyHandler : MonoBehaviour
             GameObject.Find("EnemyDetection").GetComponent<EnemyDetector>().RemoveFromEnemyList(gameObject);
             GetComponent<LootDropper>().DropLoot();
             isDieing();
+            return;
         }
 
         if (player.GetComponent<PlayerHandler>().isDieing) { return; }
@@ -119,6 +120,7 @@ public abstract class EnemyHandler : MonoBehaviour
 
     protected virtual void isDieing()
     {
+        Debug.Log("Death: " + gameObject.name);
         enemyIndicator.setIndicator(false);
         Destroy(gameObject);
     }
