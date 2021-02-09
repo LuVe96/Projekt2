@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NPCDialogHandler : MonoBehaviour
 {
-    public Dialog[] dialogs;
+    public List<Dialog> dialogs;
+
 
     public void TriggerDialog()
     {
@@ -14,6 +15,7 @@ public class NPCDialogHandler : MonoBehaviour
             if (FindObjectOfType<QuestManager>().CanQuestStart(dialog.dialogID))
             {
                 FindObjectOfType<DialogManager>().StartDialog(dialog);
+                dialogs.Remove(dialog);
                 return;
             }
         }
