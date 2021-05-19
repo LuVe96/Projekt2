@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-444019831203256293
+--- !u!114 &-260764335859189411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 7e1c79fb-90c6-4924-b3ac-de9b992fc4bf
+  uniqueID: 6ced9d15-cd53-4204-aaff-a40794473578
   isPlayerSpeaking: 0
-  text: Hallo Bob
-  children:
-  - 28ed9336-0c20-48dd-88aa-acd588f542fd
+  text: Was geht?
+  children: []
   rect:
     serializedVersion: 2
-    x: 260
-    y: 210
+    x: 600
+    y: 132
     width: 200
     height: 100
   textFieldRect:
@@ -42,11 +41,11 @@ MonoBehaviour:
   m_Name: New Dialogue
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: -444019831203256293}
-  - {fileID: 5895835565494207845}
-  - {fileID: 8102940488772336321}
+  - {fileID: 1858911659934079688}
+  - {fileID: 1137810045565629399}
+  - {fileID: -260764335859189411}
   newNodeOffset: {x: 250, y: 0}
---- !u!114 &5895835565494207845
+--- !u!114 &1137810045565629399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,15 +57,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 28ed9336-0c20-48dd-88aa-acd588f542fd
+  uniqueID: 65aaf813-7255-4cab-a7af-ec50eed9d4cf
   isPlayerSpeaking: 1
-  text: Hallo Frida
+  text: Hallo
   children:
-  - 594a5080-6268-4a35-84df-569f6949e5e2
+  - 6ced9d15-cd53-4204-aaff-a40794473578
   rect:
     serializedVersion: 2
-    x: 510
-    y: 210
+    x: 350
+    y: 132
     width: 200
     height: 100
   textFieldRect:
@@ -75,7 +74,7 @@ MonoBehaviour:
     y: 40
     width: 160
     height: 18
---- !u!114 &8102940488772336321
+--- !u!114 &1858911659934079688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,14 +86,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 594a5080-6268-4a35-84df-569f6949e5e2
+  uniqueID: b4eac512-773a-4df3-8ca8-a64f9428d3f3
   isPlayerSpeaking: 0
-  text: Alles Gut?
-  children: []
+  text: Huhu
+  children:
+  - 65aaf813-7255-4cab-a7af-ec50eed9d4cf
   rect:
     serializedVersion: 2
-    x: 760
-    y: 210
+    x: 100
+    y: 132
     width: 200
     height: 100
   textFieldRect:
