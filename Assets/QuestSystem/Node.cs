@@ -2,64 +2,78 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
-public class Node 
+namespace QuestSystem
 {
-    public Rect rect;
-    public string title;
-    public bool isDragged;
-
-    public GUIStyle style;
-
-    public Node(Vector2 position, float width, float height, GUIStyle nodeStyle)
+    public class Node
     {
-        rect = new Rect(position.x, position.y, width, height);
-        style = nodeStyle;
-    }
+        private Rect rect;
+        private string title;
+        private bool isDragged;
 
-    public void Drag(Vector2 delta)
-    {
-        rect.position += delta;
-    }
+        private GUIStyle style;
 
-    public void Draw()
-    {
-        GUI.Box(rect, title, style);
-    }
+        private NodePort inPort;
+        private NodePort outPort;
 
-    public bool ProcessEvents(Event e)
-    {
-        switch (e.type)
+        public Rect Rect { get => rect; private set => rect = value; }
+
+        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, GUIStyle inPointStyle, GUIStyle outPointStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint)
         {
-            case EventType.MouseDown:
-                if (e.button == 0)
-                {
-                    if (rect.Contains(e.mousePosition))
-                    {
-                        isDragged = true;
-                        GUI.changed = true;
-                    }
-                    else
-                    {
-                        GUI.changed = true;
-                    }
-                }
-                break;
+            Rect = new Rect(position.x, position.y, width, height);
+            style = nodeStyle;
 
-            case EventType.MouseUp:
-                isDragged = false;
-                break;
-
-            case EventType.MouseDrag:
-                if (e.button == 0 && isDragged)
-                {
-                    Drag(e.delta);
-                    e.Use();
-                    return true;
-                }
-                break;
+            inPort = new NodePort(this, ConnectionPointType.In, inPointStyle, OnClickInPoint);
+            outPort = new NodePort(this, ConnectionPointType.Out, outPointStyle, OnClickOutPoint);
         }
 
-        return false;
-    }
+        public void Drag(Vector2 delta)
+        {
+            rect.position += delta;
+        }
+
+        public void Draw()
+        {
+            inPort.Draw();
+            outPort.Draw();
+            GUI.Box(Rect, title, style);
+        }
+
+        public bool ProcessEvents(Event e)
+        {
+            switch (e.type)
+            {
+                case EventType.MouseDown:
+                    if (e.button == 0)
+                    {
+                        if (Rect.Contains(e.mousePosition))
+                        {
+                            isDragged = true;
+                            GUI.changed = true;
+                        }
+                        else
+                        {
+                            GUI.changed = true;
+                        }
+                    }
+                    break;
+
+                case EventType.MouseUp:
+                    isDragged = false;
+                    break;
+
+                case EventType.MouseDrag:
+                    if (e.button == 0 && isDragged)
+                    {
+                        Drag(e.delta);
+                        e.Use();
+                        return true;
+                    }
+                    break;
+            }
+
+            return false;
+        }
+    } 
 }

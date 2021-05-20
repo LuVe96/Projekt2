@@ -11,7 +11,14 @@ namespace QuestSystem.Quest
         static Quest currentQuest = null;
 
         private List<Node> nodes;
+        private List<NodeConnection> connections;
+
         private GUIStyle nodeStyle;
+        private GUIStyle inPointStyle;
+        private GUIStyle outPointStyle;
+
+        private NodePort selectedInPoint;
+        private NodePort selectedOutPoint;
 
         [MenuItem("Tools/QuestWindow")]
         public static void Init()
@@ -32,6 +39,16 @@ namespace QuestSystem.Quest
             nodeStyle = new GUIStyle();
             nodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
             nodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+            inPointStyle = new GUIStyle();
+            inPointStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left.png") as Texture2D;
+            inPointStyle.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left on.png") as Texture2D;
+            inPointStyle.border = new RectOffset(4, 4, 12, 12);
+
+            outPointStyle = new GUIStyle();
+            outPointStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right.png") as Texture2D;
+            outPointStyle.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right on.png") as Texture2D;
+            outPointStyle.border = new RectOffset(4, 4, 12, 12);
         }
 
         private void OnSelectionChanged()
@@ -58,11 +75,23 @@ namespace QuestSystem.Quest
             }
 
             DrawNodes();
+            DrawConnections();
 
             ProcessNodeEvents(Event.current);
             ProccessEvents(Event.current);
 
             if (GUI.changed) Repaint();
+        }
+
+        private void DrawConnections()
+        {
+            if (connections != null)
+            {
+                for (int i = 0; i < connections.Count; i++)
+                {
+                    connections[i].Draw();
+                }
+            }
         }
 
         private void ProcessNodeEvents(Event current)
@@ -108,7 +137,7 @@ namespace QuestSystem.Quest
                 nodes = new List<Node>();
             }
 
-            nodes.Add(new Node(mousePosition, 200, 50, nodeStyle));
+            nodes.Add(new Node(mousePosition, 200, 50, nodeStyle, inPointStyle, outPointStyle, OnClickInPoint, OnClickOutPoint));
         }
 
         private void DrawNodes()
@@ -122,5 +151,66 @@ namespace QuestSystem.Quest
             }
         }
 
-    } 
+        #region NodePorts
+
+        private void OnClickInPoint(NodePort inPoint)
+        {
+            selectedInPoint = inPoint;
+
+            if (selectedOutPoint != null)
+            {
+                if (selectedOutPoint.Node != selectedInPoint.Node)
+                {
+                    CreateConnection();
+                    ClearConnectionSelection();
+                }
+                else
+                {
+                    ClearConnectionSelection();
+                }
+            }
+        }
+
+        private void OnClickOutPoint(NodePort outPoint)
+        {
+            selectedOutPoint = outPoint;
+
+            if (selectedInPoint != null)
+            {
+                if (selectedOutPoint.Node != selectedInPoint.Node)
+                {
+                    CreateConnection();
+                    ClearConnectionSelection();
+                }
+                else
+                {
+                    ClearConnectionSelection();
+                }
+            }
+        }
+
+        private void OnClickRemoveConnection(NodeConnection connection)
+        {
+            connections.Remove(connection);
+        }
+
+        private void CreateConnection()
+        {
+            if (connections == null)
+            {
+                connections = new List<NodeConnection>();
+            }
+
+            connections.Add(new NodeConnection(selectedInPoint, selectedOutPoint, OnClickRemoveConnection));
+        }
+
+        private void ClearConnectionSelection()
+        {
+            selectedInPoint = null;
+            selectedOutPoint = null;
+        }
+
+        #endregion
+
+    }
 }
