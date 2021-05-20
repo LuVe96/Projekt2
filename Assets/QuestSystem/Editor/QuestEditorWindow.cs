@@ -59,9 +59,26 @@ namespace QuestSystem.Quest
 
             DrawNodes();
 
+            ProcessNodeEvents(Event.current);
             ProccessEvents(Event.current);
 
             if (GUI.changed) Repaint();
+        }
+
+        private void ProcessNodeEvents(Event current)
+        {
+            if (nodes != null)
+            {
+                for (int i = nodes.Count - 1; i >= 0; i--)
+                {
+                    bool guiChanged = nodes[i].ProcessEvents(current);
+
+                    if (guiChanged)
+                    {
+                        GUI.changed = true;
+                    }
+                }
+            }
         }
 
         private void ProccessEvents(Event current)
