@@ -6,6 +6,7 @@ using UnityEditor;
 
 namespace QuestSystem
 {
+    [System.Serializable] 
     public class NodeConnection
     {
         NodePort inPoint;
@@ -22,7 +23,7 @@ namespace QuestSystem
         public void Draw()
         {
             Handles.DrawBezier(
-                inPoint.Rect.center,
+                inPoint.Rect.center, 
                 outPoint.Rect.center,
                 inPoint.Rect.center + Vector2.left * 50f,
                 outPoint.Rect.center - Vector2.left * 50f,

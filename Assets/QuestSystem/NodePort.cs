@@ -8,12 +8,13 @@ namespace QuestSystem
 {
     public enum ConnectionPointType { In, Out }
 
+    [System.Serializable]
     public class NodePort
     {
         private Rect rect;
         private float y_position;
-        private ConnectionPointType type;
-        private Node node;
+        private ConnectionPointType type; 
+        [SerializeField] Node node;
         private GUIStyle style;
 
         private Action<NodePort> OnClickNodePort; // delegate function 

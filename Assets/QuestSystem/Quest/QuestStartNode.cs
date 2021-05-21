@@ -8,7 +8,7 @@ namespace QuestSystem.Quest
     [System.Serializable]
     public class QuestStartNode : QuestNode
     {
-        [SerializeField] string[] requieredStates;
+        [SerializeField] public string[] requieredStates;
 
         public override void execute()
         {
@@ -16,3 +16,4 @@ namespace QuestSystem.Quest
         }
     }
 }
+ 
