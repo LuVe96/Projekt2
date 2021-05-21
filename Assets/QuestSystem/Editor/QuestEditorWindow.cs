@@ -27,7 +27,7 @@ namespace QuestSystem.Quest
         internal void Init(QuestEditor questEditor, UnityEngine.Object target)
         {
             Init();
-            currentQuest = (Quest)target;
+            SetupEditor((Quest)target);
         }
 
         private void OnEnable()
@@ -45,9 +45,17 @@ namespace QuestSystem.Quest
             Debug.Log("Selectd: " + Selection.activeGameObject);
             if (quest != null)
             {
-                currentQuest = quest;
+                SetupEditor(quest);
                 Repaint();
             }
+        }
+
+        private void SetupEditor(Quest quest)
+        {
+            currentQuest = quest;
+            nodes = quest.EditorNodes;
+            connections = quest.EditorConnections;
+
         }
 
         private void OnGUI()
@@ -70,7 +78,20 @@ namespace QuestSystem.Quest
             ProcessNodeEvents(Event.current);
             ProccessEvents(Event.current);
 
-            if (GUI.changed) Repaint();
+            if (GUI.changed)
+            {
+                Repaint();
+                SaveToQuest();
+            }
+        }
+
+        private void SaveToQuest()
+        {
+            if(currentQuest != null)
+            {
+                currentQuest.EditorNodes = nodes;
+                currentQuest.EditorConnections = connections;
+            }
         }
 
         private void DrawConnectionLine(Event current)
