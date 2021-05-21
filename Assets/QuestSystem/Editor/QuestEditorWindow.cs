@@ -14,8 +14,6 @@ namespace QuestSystem.Quest
         private List<NodeConnection> connections;
 
         private GUIStyle nodeStyle;
-        private GUIStyle inPointStyle;
-        private GUIStyle outPointStyle;
 
         private NodePort selectedInPoint;
         private NodePort selectedOutPoint;
@@ -39,16 +37,6 @@ namespace QuestSystem.Quest
             nodeStyle = new GUIStyle();
             nodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
             nodeStyle.border = new RectOffset(12, 12, 12, 12);
-
-            inPointStyle = new GUIStyle();
-            inPointStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left.png") as Texture2D;
-            inPointStyle.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left on.png") as Texture2D;
-            inPointStyle.border = new RectOffset(4, 4, 12, 12);
-
-            outPointStyle = new GUIStyle();
-            outPointStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right.png") as Texture2D;
-            outPointStyle.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right on.png") as Texture2D;
-            outPointStyle.border = new RectOffset(4, 4, 12, 12);
         }
 
         private void OnSelectionChanged()
@@ -77,10 +65,45 @@ namespace QuestSystem.Quest
             DrawNodes();
             DrawConnections();
 
+            DrawConnectionLine(Event.current);
+
             ProcessNodeEvents(Event.current);
             ProccessEvents(Event.current);
 
             if (GUI.changed) Repaint();
+        }
+
+        private void DrawConnectionLine(Event current)
+        {
+            if (selectedInPoint != null && selectedOutPoint == null)
+            {
+                Handles.DrawBezier(
+                    selectedInPoint.Rect.center,
+                    current.mousePosition,
+                    selectedInPoint.Rect.center + Vector2.left * 50f,
+                    current.mousePosition - Vector2.left * 50f,
+                    Color.white,
+                    null,
+                    2f
+                );
+
+                GUI.changed = true;
+            }
+
+            if (selectedOutPoint != null && selectedInPoint == null)
+            {
+                Handles.DrawBezier(
+                    selectedOutPoint.Rect.center,
+                    current.mousePosition,
+                    selectedOutPoint.Rect.center - Vector2.left * 50f,
+                    current.mousePosition + Vector2.left * 50f,
+                    Color.white,
+                    null,
+                    2f
+                );
+
+                GUI.changed = true;
+            }
         }
 
         private void DrawConnections()
@@ -137,7 +160,7 @@ namespace QuestSystem.Quest
                 nodes = new List<Node>();
             }
 
-            nodes.Add(new Node(mousePosition, 200, 50, nodeStyle, inPointStyle, outPointStyle, OnClickInPoint, OnClickOutPoint));
+            nodes.Add(new Node(mousePosition, 200, 50, nodeStyle, OnClickInPoint, OnClickOutPoint));
         }
 
         private void DrawNodes()

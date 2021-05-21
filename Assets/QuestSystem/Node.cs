@@ -19,13 +19,13 @@ namespace QuestSystem
 
         public Rect Rect { get => rect; private set => rect = value; }
 
-        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, GUIStyle inPointStyle, GUIStyle outPointStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint)
+        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint)
         {
             Rect = new Rect(position.x, position.y, width, height);
             style = nodeStyle;
 
-            inPort = new NodePort(this, ConnectionPointType.In, inPointStyle, OnClickInPoint);
-            outPort = new NodePort(this, ConnectionPointType.Out, outPointStyle, OnClickOutPoint);
+            inPort = new NodePort(this, ConnectionPointType.In, OnClickInPoint);
+            outPort = new NodePort(this, ConnectionPointType.Out, OnClickOutPoint);
         }
 
         public void Drag(Vector2 delta)

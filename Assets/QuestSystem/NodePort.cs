@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor;
 
 namespace QuestSystem
 {
@@ -17,18 +18,36 @@ namespace QuestSystem
 
         private Action<NodePort> OnClickNodePort; // delegate function 
 
-        public NodePort(Node node, ConnectionPointType type, GUIStyle style, Action<NodePort> OnClickNodePort)
+        public NodePort(Node node, ConnectionPointType type, Action<NodePort> OnClickNodePort )
         {
             this.Node = node;
             this.type = type;
-            this.style = style;
             this.OnClickNodePort = OnClickNodePort;
             Rect = new Rect(0, 0, 10f, 20f);
             this.y_position = (node.Rect.height * 0.5f); //(y_position.HasValue) ? (node.Rect.height * 0.5f) : (float)y_position;
+            StyleNodePort(type);
         }
 
         public Rect Rect { get => rect; private set => rect = value; }
         public Node Node { get => node; private set => node = value; }
+
+        private void StyleNodePort(ConnectionPointType type)
+        {
+            style = new GUIStyle();
+
+            if(type == ConnectionPointType.In)
+            {
+                style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left.png") as Texture2D;
+                style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left on.png") as Texture2D;
+                style.border = new RectOffset(4, 4, 12, 12);
+            } else
+            {
+                style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right.png") as Texture2D;
+                style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right on.png") as Texture2D;
+                style.border = new RectOffset(4, 4, 12, 12);
+            }
+
+        }
 
         public void Draw()
         {
