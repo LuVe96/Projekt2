@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
+using UnityEditor.SceneManagement;
 
 namespace QuestSystem.Quest
 {
@@ -11,7 +12,7 @@ namespace QuestSystem.Quest
         static Quest currentQuest = null;
 
         private List<Node> nodes = new List<Node>();
-        private List<NodeConnection> connections;
+        private List<NodeConnection> connections = new List<NodeConnection>();
 
         private GUIStyle nodeStyle;
 
@@ -55,10 +56,16 @@ namespace QuestSystem.Quest
             currentQuest = quest;
             //nodes = quest.EditorNodes;
             //connections = quest.EditorConnections;
-             
+
+            Debug.Log("BN: " + currentQuest.Nodes);
             foreach (var node in currentQuest.Nodes)
             {
-                nodes.Add(new Node(nodeStyle, OnClickInPoint, OnClickOutPoint, node, NodeHasChanges));
+
+                if(node is QuestStartNode)
+                {
+                    Debug.Log("SN: " + node);
+                    nodes.Add(new StartNode(nodeStyle, OnClickInPoint, OnClickOutPoint, node/*, NodeHasChanges*/));
+                }
             }
         }
 
@@ -85,18 +92,11 @@ namespace QuestSystem.Quest
             if (GUI.changed)
             {
                 Repaint();
-                SaveToQuest();
+                EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene()); // Make Scene Dirty, show that it has to be saved
             }
         }
 
-        private void SaveToQuest()
-        {
-            //if(currentQuest != null)  
-            //{
-            //    currentQuest.EditorNodes = nodes;
-            //    currentQuest.EditorConnections = connections;
-            //}
-        }
+       
 
         private void ProcessNodeEvents(Event current)
         {
@@ -130,26 +130,30 @@ namespace QuestSystem.Quest
         private void ProcessContextMenu(Vector2 mousePosition)
         {
             GenericMenu genericMenu = new GenericMenu();
-            genericMenu.AddItem(new GUIContent("Add node"), false, () => OnClickAddNode(mousePosition));
+            genericMenu.AddItem(new GUIContent("Add start node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StartNode));
             genericMenu.ShowAsContext();
         }
 
-        private void OnClickAddNode(Vector2 mousePosition)
+        private void OnClickAddNode(Vector2 mousePosition, QuestNodeType type)
         {
-            if (nodes == null)
+            QuestNode questdate = currentQuest.CreateNewNode(type);
+            switch (type)
             {
-                nodes = new List<Node>();
+                case QuestNodeType.StartNode:
+                    nodes.Add(new StartNode(mousePosition, 200, 100, nodeStyle, OnClickInPoint, OnClickOutPoint, questdate/*, NodeHasChanges*/));
+                    break;
+                case QuestNodeType.DialogueNode:
+                    break;
+                default:
+                    break;
             }
-
-            QuestNode questdate = currentQuest.CreateNewNode();
-            nodes.Add(new Node(mousePosition, 200, 100, nodeStyle, OnClickInPoint, OnClickOutPoint, questdate, NodeHasChanges));
+            
         }
 
-        private void NodeHasChanges(QuestNode questNode)
-        {
-            currentQuest.UpdateNodeData(questNode);
-            Debug.Log("Update data");
-        }
+        //private void NodeHasChanges(QuestNode questNode)
+        //{
+        //    currentQuest.UpdateNodeData(questNode);
+        //}
 
         private void DrawNodes()
         {

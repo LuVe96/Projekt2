@@ -13,6 +13,8 @@ namespace QuestSystem.Quest
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
+
+
             Quest quest = (Quest)target;
 
             if ( GUILayout.Button("Open Window"))

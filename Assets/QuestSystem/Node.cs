@@ -7,19 +7,19 @@ using QuestSystem.Quest;
 
 namespace QuestSystem
 {
-    [System.Serializable]
-    public class Node
+
+    public abstract class Node : ScriptableObject
     {
-        private QuestNode questdata;
+        protected private QuestNode questdata;
         private Rect rect;
         private bool isDragged;
-        private GUIStyle style;
+        protected GUIStyle style;
 
-        [SerializeField] NodePort inPort;
-        [SerializeField] NodePort outPort;
+        protected NodePort inPort;
+        protected NodePort outPort;
 
-        public delegate void NodeChanged(QuestNode questNode);
-        NodeChanged NodeHasChanges;
+        //public delegate void NodeChanged(QuestNode questNode);
+        //protected NodeChanged NodeHasChanges;
 
         public Rect Rect { get => rect;
             private set {
@@ -27,25 +27,25 @@ namespace QuestSystem
                 if (questdata != null)
                 {
                     questdata.Rect = rect;
-                    NodeHasChanges(questdata);
+                    //NodeHasChanges(questdata);
                 }
 
             }
         }
 
-        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata, NodeChanged _nodeChanged)
+        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata/*, NodeChanged _nodeChanged*/)
         {
-            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata, _nodeChanged, new Rect(position.x, position.y, width, height));
+            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata/*, _nodeChanged*/, new Rect(position.x, position.y, width, height));
         }
 
-        public Node( GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata, NodeChanged _nodeChanged)
+        public Node( GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata/*, NodeChanged _nodeChanged*/)
         {
-            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata, _nodeChanged,  _questdata.Rect);
+            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata/*, _nodeChanged*/ , _questdata.Rect);
         }
 
-        private void Init(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata, NodeChanged _nodeChanged, Rect _rect)
+        private void Init(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata/*, NodeChanged _nodeChanged*/, Rect _rect)
         {
-            NodeHasChanges = new NodeChanged(_nodeChanged);
+            //NodeHasChanges = new NodeChanged(_nodeChanged);
             questdata = _questdata;
 
             Rect = _rect;
@@ -62,22 +62,7 @@ namespace QuestSystem
             Rect = newRect;
         }
 
-        public void Draw()
-        {
-            inPort.Draw();
-            outPort.Draw();
-            GUILayout.BeginArea(Rect, style);
-
-            questdata.testString = EditorGUILayout.TextField(questdata.testString);
-
-            GUILayout.EndArea();
-
-            if (GUI.changed)
-            {
-                NodeHasChanges(questdata);
-            }
-
-        }
+        public abstract void Draw();
 
         public bool ProcessEvents(Event e)
         {

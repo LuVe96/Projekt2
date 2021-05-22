@@ -10,6 +10,9 @@ namespace QuestSystem.Quest
     {
         [SerializeField] public string[] requieredStates;
 
+
+        [SerializeField] public string testStartString = "";
+
         public override void execute()
         {
             Debug.Log("Execute QuestStartNode");
