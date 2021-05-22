@@ -14,15 +14,15 @@ namespace QuestSystem
     {
 
 
-        public StartNode(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata/*, NodeChanged _nodeChanged*/) : base(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata/*, _nodeChanged*/)
+        public StartNode(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata/*, NodeChanged _nodeChanged*/) : base(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata/*, _nodeChanged*/)
         {
         }
 
-        public StartNode(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata/*, NodeChanged _nodeChanged*/) : base(position, width, height, nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata/*, _nodeChanged*/)
+        public StartNode(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata/*, NodeChanged _nodeChanged*/) : base(position, width, height, nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata/*, _nodeChanged*/)
         {
         }
 
-        public QuestStartNode StartNodeData { get => (QuestStartNode) questdata; set { } }
+        public QuestStartNodeData StartNodeData { get => (QuestStartNodeData) questdata; set { } }
 
         public override void Draw()
         {

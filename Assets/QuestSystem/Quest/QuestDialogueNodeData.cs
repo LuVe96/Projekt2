@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace QuestSystem.Quest
 {
-    [CreateAssetMenu(fileName = "New QuestDialogueNode", menuName = "QuestSystem/QuestDialogueNode", order = 0)]
-    public class QuestDialogueNode : QuestNode
+    //[CreateAssetMenu(fileName = "New QuestDialogueNode", menuName = "QuestSystem/QuestDialogueNode", order = 0)]
+    public class QuestDialogueNodeData : QuestNodeData
     {
         [SerializeField] QuestSystem.Dialogue.Dialogue dialogue;
         [SerializeField] NPCDialogueAttacher nPCDialogueAttacher;

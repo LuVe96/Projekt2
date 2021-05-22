@@ -55,13 +55,11 @@ namespace QuestSystem.Quest
         {
             currentQuest = quest;
 
-            Debug.Log("BN: " + currentQuest.Nodes);
             foreach (var node in currentQuest.Nodes)
             {
 
-                if(node is QuestStartNode)
+                if(node is QuestStartNodeData)
                 {
-                    Debug.Log("SN: " + node);
                     nodes.Add(new StartNode(nodeStyle, OnClickInPoint, OnClickOutPoint, node));
                 }
             }
@@ -134,7 +132,7 @@ namespace QuestSystem.Quest
 
         private void OnClickAddNode(Vector2 mousePosition, QuestNodeType type)
         {
-            QuestNode questdate = currentQuest.CreateNewNode(type);
+            QuestNodeData questdate = currentQuest.CreateNewNode(type);
             switch (type)
             {
                 case QuestNodeType.StartNode:

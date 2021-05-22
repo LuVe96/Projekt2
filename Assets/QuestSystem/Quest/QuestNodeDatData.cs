@@ -6,7 +6,7 @@ using UnityEngine;
 namespace QuestSystem.Quest
 {
     [System.Serializable]
-    public abstract class QuestNode
+    public abstract class QuestNodeData
     {
         [SerializeField] string uID;
         [SerializeField] List<string> childrenIDs = new List<string>();

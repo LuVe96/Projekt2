@@ -11,14 +11,14 @@ namespace QuestSystem.Quest
     public class Quest : MonoBehaviour
     {
         public string questName;
-        [SerializeField] List<QuestNode> nodes = new List<QuestNode>();
-        [SerializeField] List<QuestStartNode> startNodes = new List<QuestStartNode>();
+        [SerializeField] List<QuestNodeData> nodes = new List<QuestNodeData>();
+        [SerializeField] List<QuestStartNodeData> startNodes = new List<QuestStartNodeData>();
         [SerializeField] Vector2 newNodeOffset = new Vector2(250, 0);
-        Dictionary<string, QuestNode> nodeLookUp = new Dictionary<string, QuestNode>();
+        Dictionary<string, QuestNodeData> nodeLookUp = new Dictionary<string, QuestNodeData>();
 
-        public List<QuestNode> Nodes { get
+        public List<QuestNodeData> Nodes { get
             {
-                List<QuestNode> allNodes = new List<QuestNode>();
+                List<QuestNodeData> allNodes = new List<QuestNodeData>();
                 foreach (var node in startNodes)
                 {
                     allNodes.Add(node);
@@ -33,12 +33,12 @@ namespace QuestSystem.Quest
             
         }
 
-        public IEnumerable<QuestNode> getAllNodes()
+        public IEnumerable<QuestNodeData> getAllNodes()
         {
             return Nodes;
         }
 
-        public QuestNode CreateNewNode(QuestNodeType type)
+        public QuestNodeData CreateNewNode(QuestNodeType type)
         {
 
             Undo.RecordObject(this, "Create new Node");
@@ -46,7 +46,7 @@ namespace QuestSystem.Quest
             switch (type)
             {
                 case QuestNodeType.StartNode:
-                    QuestStartNode squestdata = new QuestStartNode();
+                    QuestStartNodeData squestdata = new QuestStartNodeData();
                     squestdata.UID = Guid.NewGuid().ToString();
                     startNodes.Add(squestdata);
                     nodeLookUp.Add(squestdata.UID, squestdata);

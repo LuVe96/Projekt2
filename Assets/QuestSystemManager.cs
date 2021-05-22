@@ -12,7 +12,7 @@ public class QuestSystemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (QuestNode item in quests[0].getAllNodes())
+        foreach (QuestNodeData item in quests[0].getAllNodes())
         {
             item.execute();
         } 

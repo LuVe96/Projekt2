@@ -10,7 +10,7 @@ namespace QuestSystem
 
     public abstract class Node : ScriptableObject
     {
-        protected private QuestNode questdata;
+        protected private QuestNodeData questdata;
         private Rect rect;
         private bool isDragged;
         protected GUIStyle style;
@@ -29,17 +29,17 @@ namespace QuestSystem
             }
         }
 
-        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata)
+        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata)
         {
             Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata, new Rect(position.x, position.y, width, height));
         }
 
-        public Node( GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata)
+        public Node( GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata)
         {
             Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata , _questdata.Rect);
         }
 
-        private void Init(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata, Rect _rect)
+        private void Init(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata, Rect _rect)
         {
             questdata = _questdata;
 

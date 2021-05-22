@@ -6,7 +6,7 @@ using UnityEngine;
 namespace QuestSystem.Quest
 {
     [System.Serializable]
-    public class QuestStartNode : QuestNode
+    public class QuestStartNodeData : QuestNodeData
     {
         [SerializeField] public string[] requieredStates;
 
