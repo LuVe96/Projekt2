@@ -38,8 +38,6 @@ namespace QuestSystem
 
             if (GUI.changed)
             {
-                //NodeHasChanges(StartNodeData);
-                //Undo.RecordObject(this, "Update Node");
                
             }
         }

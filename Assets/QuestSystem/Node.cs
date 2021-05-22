@@ -18,34 +18,29 @@ namespace QuestSystem
         protected NodePort inPort;
         protected NodePort outPort;
 
-        //public delegate void NodeChanged(QuestNode questNode);
-        //protected NodeChanged NodeHasChanges;
-
         public Rect Rect { get => rect;
             private set {
                 rect = value;
                 if (questdata != null)
                 {
                     questdata.Rect = rect;
-                    //NodeHasChanges(questdata);
                 }
 
             }
         }
 
-        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata/*, NodeChanged _nodeChanged*/)
+        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata)
         {
-            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata/*, _nodeChanged*/, new Rect(position.x, position.y, width, height));
+            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata, new Rect(position.x, position.y, width, height));
         }
 
-        public Node( GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata/*, NodeChanged _nodeChanged*/)
+        public Node( GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata)
         {
-            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata/*, _nodeChanged*/ , _questdata.Rect);
+            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata , _questdata.Rect);
         }
 
-        private void Init(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata/*, NodeChanged _nodeChanged*/, Rect _rect)
+        private void Init(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNode _questdata, Rect _rect)
         {
-            //NodeHasChanges = new NodeChanged(_nodeChanged);
             questdata = _questdata;
 
             Rect = _rect;

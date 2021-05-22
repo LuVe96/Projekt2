@@ -54,8 +54,6 @@ namespace QuestSystem.Quest
         private void SetupEditor(Quest quest)
         {
             currentQuest = quest;
-            //nodes = quest.EditorNodes;
-            //connections = quest.EditorConnections;
 
             Debug.Log("BN: " + currentQuest.Nodes);
             foreach (var node in currentQuest.Nodes)
@@ -64,7 +62,7 @@ namespace QuestSystem.Quest
                 if(node is QuestStartNode)
                 {
                     Debug.Log("SN: " + node);
-                    nodes.Add(new StartNode(nodeStyle, OnClickInPoint, OnClickOutPoint, node/*, NodeHasChanges*/));
+                    nodes.Add(new StartNode(nodeStyle, OnClickInPoint, OnClickOutPoint, node));
                 }
             }
         }
@@ -140,7 +138,7 @@ namespace QuestSystem.Quest
             switch (type)
             {
                 case QuestNodeType.StartNode:
-                    nodes.Add(new StartNode(mousePosition, 200, 100, nodeStyle, OnClickInPoint, OnClickOutPoint, questdate/*, NodeHasChanges*/));
+                    nodes.Add(new StartNode(mousePosition, 200, 100, nodeStyle, OnClickInPoint, OnClickOutPoint, questdate));
                     break;
                 case QuestNodeType.DialogueNode:
                     break;
@@ -149,11 +147,6 @@ namespace QuestSystem.Quest
             }
             
         }
-
-        //private void NodeHasChanges(QuestNode questNode)
-        //{
-        //    currentQuest.UpdateNodeData(questNode);
-        //}
 
         private void DrawNodes()
         {
