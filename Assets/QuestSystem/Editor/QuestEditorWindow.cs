@@ -15,8 +15,6 @@ namespace QuestSystem.Quest
         private List<NodeConnection> connections = new List<NodeConnection>();
         Dictionary<string, Node> nodeLookUp = new Dictionary<string, Node>();
 
-        private GUIStyle nodeStyle;
-
         private NodePort selectedInPoint;
         private NodePort selectedOutPoint;
 
@@ -34,11 +32,7 @@ namespace QuestSystem.Quest
 
         private void OnEnable()
         {
-            Selection.selectionChanged += OnSelectionChanged;
-
-            nodeStyle = new GUIStyle();
-            nodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
-            nodeStyle.border = new RectOffset(12, 12, 12, 12);
+            Selection.selectionChanged += OnSelectionChanged; 
         }
 
         private void OnSelectionChanged()
@@ -65,7 +59,7 @@ namespace QuestSystem.Quest
 
                 if(node is QuestStartNodeData)
                 {
-                    nodes.Add(new StartNode(nodeStyle, OnClickInPoint, OnClickOutPoint, node));
+                    nodes.Add(new StartNode( OnClickInPoint, OnClickOutPoint, node));
                 }    
             }
 
@@ -159,7 +153,7 @@ namespace QuestSystem.Quest
             switch (type)
             {
                 case QuestNodeType.StartNode:
-                    nodes.Add(new StartNode(mousePosition, 200, 100, nodeStyle, OnClickInPoint, OnClickOutPoint, questdate));
+                    nodes.Add(new StartNode(mousePosition, 200, 100, OnClickInPoint, OnClickOutPoint, questdate));
                     break;
                 case QuestNodeType.DialogueNode:
                     break;

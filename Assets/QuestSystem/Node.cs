@@ -33,25 +33,33 @@ namespace QuestSystem
         public NodePort OutPort { get => outPort; set => outPort = value; }
         public NodePort InPort { get => inPort; set => inPort = value; }
 
-        public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata)
+        public Node(Vector2 position, float width, float height, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata)
         {
-            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata, new Rect(position.x, position.y, width, height));
+            Init( OnClickInPoint, OnClickOutPoint, _questdata, new Rect(position.x, position.y, width, height));
         }
 
-        public Node( GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata)
+        public Node( Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata)
         {
-            Init(nodeStyle, OnClickInPoint, OnClickOutPoint, _questdata , _questdata.Rect);
+            Init(OnClickInPoint, OnClickOutPoint, _questdata , _questdata.Rect);
         }
 
-        private void Init(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata, Rect _rect)
+        private void Init( Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata, Rect _rect)
         {
             Questdata = _questdata;
 
             Rect = _rect;
-            style = nodeStyle;
+            style = UseStyle();
 
             InPort = new NodePort(this, ConnectionPointType.In, OnClickInPoint);
             OutPort = new NodePort(this, ConnectionPointType.Out, OnClickOutPoint);
+        }
+
+        protected virtual GUIStyle UseStyle()
+        {
+            style = new GUIStyle();
+            style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
+            style.border = new RectOffset(12, 12, 12, 12);
+            return style;
         }
 
         public void Drag(Vector2 delta)
