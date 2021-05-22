@@ -34,6 +34,7 @@ namespace QuestSystem
 
             if (Handles.Button((inPoint.Rect.center + outPoint.Rect.center) * 0.5f, Quaternion.identity, 4, 8, Handles.CircleHandleCap))
             {
+                inPoint.Node.Questdata.ChildrenIDs.Remove(outPoint.Node.Questdata.UID); // TODO: schönner!!!
                 if (OnClickRemoveConnection != null)
                 {
                     OnClickRemoveConnection(this);

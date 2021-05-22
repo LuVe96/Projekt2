@@ -22,12 +22,12 @@ namespace QuestSystem
         {
         }
 
-        public QuestStartNodeData StartNodeData { get => (QuestStartNodeData) questdata; set { } }
+        public QuestStartNodeData StartNodeData { get => (QuestStartNodeData) Questdata; set { } }
 
         public override void Draw()
         {
-            inPort.Draw();
-            outPort.Draw();
+            InPort.Draw();
+            OutPort.Draw();
             GUILayout.BeginArea(Rect, style);
 
             GUILayout.Label("StartNodeData");

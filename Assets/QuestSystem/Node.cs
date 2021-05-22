@@ -10,24 +10,28 @@ namespace QuestSystem
 
     public abstract class Node : ScriptableObject
     {
-        protected private QuestNodeData questdata;
+        private QuestNodeData questdata;
         private Rect rect;
         private bool isDragged;
         protected GUIStyle style;
 
-        protected NodePort inPort;
-        protected NodePort outPort;
+        private NodePort inPort;
+        private NodePort outPort;
 
         public Rect Rect { get => rect;
             private set {
                 rect = value;
-                if (questdata != null)
+                if (Questdata != null)
                 {
-                    questdata.Rect = rect;
+                    Questdata.Rect = rect;
                 }
 
             }
         }
+
+        public QuestNodeData Questdata { get => questdata; set => questdata = value; }
+        public NodePort OutPort { get => outPort; set => outPort = value; }
+        public NodePort InPort { get => inPort; set => inPort = value; }
 
         public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata)
         {
@@ -41,13 +45,13 @@ namespace QuestSystem
 
         private void Init(GUIStyle nodeStyle, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata, Rect _rect)
         {
-            questdata = _questdata;
+            Questdata = _questdata;
 
             Rect = _rect;
             style = nodeStyle;
 
-            inPort = new NodePort(this, ConnectionPointType.In, OnClickInPoint);
-            outPort = new NodePort(this, ConnectionPointType.Out, OnClickOutPoint);
+            InPort = new NodePort(this, ConnectionPointType.In, OnClickInPoint);
+            OutPort = new NodePort(this, ConnectionPointType.Out, OnClickOutPoint);
         }
 
         public void Drag(Vector2 delta)

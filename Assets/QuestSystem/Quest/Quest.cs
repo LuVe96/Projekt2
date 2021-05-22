@@ -11,15 +11,14 @@ namespace QuestSystem.Quest
     public class Quest : MonoBehaviour
     {
         public string questName;
-        [SerializeField] List<QuestNodeData> nodes = new List<QuestNodeData>();
-        [SerializeField] List<QuestStartNodeData> startNodes = new List<QuestStartNodeData>();
-        [SerializeField] Vector2 newNodeOffset = new Vector2(250, 0);
-        Dictionary<string, QuestNodeData> nodeLookUp = new Dictionary<string, QuestNodeData>();
+        [SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
+        [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
+        Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
         public List<QuestNodeData> Nodes { get
             {
                 List<QuestNodeData> allNodes = new List<QuestNodeData>();
-                foreach (var node in startNodes)
+                foreach (var node in startNodeDatas)
                 {
                     allNodes.Add(node);
                 }
@@ -48,8 +47,8 @@ namespace QuestSystem.Quest
                 case QuestNodeType.StartNode:
                     QuestStartNodeData squestdata = new QuestStartNodeData();
                     squestdata.UID = Guid.NewGuid().ToString();
-                    startNodes.Add(squestdata);
-                    nodeLookUp.Add(squestdata.UID, squestdata);
+                    startNodeDatas.Add(squestdata);
+                    nodeDataLookUp.Add(squestdata.UID, squestdata);
                     OnValidate();
                     return squestdata;
                     break;
@@ -68,12 +67,11 @@ namespace QuestSystem.Quest
 
         private void OnValidate()
         {
-            //Debug.Log("Nodes: " + nodes);
-            //nodeLookUp.Clear();
-            //foreach (QuestNode _node in Nodes)
-            //{
-            //    nodeLookUp[_node.UID] = _node;
-            //}   
+            nodeDataLookUp.Clear();
+            foreach (QuestNodeData _node in Nodes)
+            {
+                nodeDataLookUp[_node.UID] = _node;
+            }
 
         }
 

@@ -13,6 +13,7 @@ namespace QuestSystem.Quest
 
         private List<Node> nodes = new List<Node>();
         private List<NodeConnection> connections = new List<NodeConnection>();
+        Dictionary<string, Node> nodeLookUp = new Dictionary<string, Node>();
 
         private GUIStyle nodeStyle;
 
@@ -43,7 +44,6 @@ namespace QuestSystem.Quest
         private void OnSelectionChanged()
         {
             Quest quest = Selection.activeGameObject.GetComponent<Quest>() as Quest;
-            Debug.Log("Selectd: " + Selection.activeGameObject);
             if (quest != null)
             {
                 SetupEditor(quest);
@@ -53,14 +53,37 @@ namespace QuestSystem.Quest
 
         private void SetupEditor(Quest quest)
         {
+            nodes.Clear();
+            connections.Clear();
+            selectedInPoint = null;
+            selectedOutPoint = null;
+
             currentQuest = quest;
 
-            foreach (var node in currentQuest.Nodes)
+            foreach (var node in currentQuest.Nodes) // Add nodes with nodeData
             {
 
                 if(node is QuestStartNodeData)
                 {
                     nodes.Add(new StartNode(nodeStyle, OnClickInPoint, OnClickOutPoint, node));
+                }    
+            }
+
+            foreach (Node _node in nodes)
+            {
+                nodeLookUp[_node.Questdata.UID] = _node;
+            }
+
+
+            foreach (var node in nodes) // Add connections 
+            {
+                foreach (var childId in node.Questdata.ChildrenIDs)
+                {
+                    if (nodeLookUp.ContainsKey(childId))
+                    {
+                        connections.Add(new NodeConnection(node.InPort, nodeLookUp[childId].OutPort, OnClickRemoveConnection));
+                    }
+
                 }
             }
         }
@@ -252,6 +275,7 @@ namespace QuestSystem.Quest
             }
 
             connections.Add(new NodeConnection(selectedInPoint, selectedOutPoint, OnClickRemoveConnection));
+            selectedInPoint.Node.Questdata.ChildrenIDs.Add(selectedOutPoint.Node.Questdata.UID);//ToDo: Vershönern
         }
 
         private void ClearConnectionSelection()
