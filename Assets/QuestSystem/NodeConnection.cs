@@ -32,14 +32,26 @@ namespace QuestSystem
                 2f
             );
 
-            if (Handles.Button((inPoint.Rect.center + outPoint.Rect.center) * 0.5f, Quaternion.identity, 4, 8, Handles.CircleHandleCap))
+
+            if(GUI.Button(new Rect((inPoint.Rect.center + outPoint.Rect.center) * 0.5f, new Vector2(15,15)), "x"))
             {
-                inPoint.Node.Questdata.ChildrenIDs.Remove(outPoint.Node.Questdata.UID); // TODO: schönner!!!
+                Debug.Log("Remove");
+                outPoint.Segment.Node.Questdata.ChildrenIDs.Remove(inPoint.Segment.Node.Questdata.UID); // TODO: schönner!!!
                 if (OnClickRemoveConnection != null)
                 {
                     OnClickRemoveConnection(this);
                 }
             }
+
+            //if (Handles.Button((inPoint.Rect.center + outPoint.Rect.center) * 0.5f, Quaternion.identity, 4, 8, Handles.CircleHandleCap))
+            //{
+            //    Debug.Log("Remove");
+            //    inPoint.Segment.Node.Questdata.ChildrenIDs.Remove(outPoint.Segment.Node.Questdata.UID); // TODO: schönner!!!
+            //    if (OnClickRemoveConnection != null)
+            //    {
+            //        OnClickRemoveConnection(this);
+            //    }
+            //}
         }
     }
 

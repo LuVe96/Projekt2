@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using UnityEditor.SceneManagement;
+using System.Linq;
 
 namespace QuestSystem.Quest
 {
@@ -59,7 +60,7 @@ namespace QuestSystem.Quest
 
                 if(node is QuestStartNodeData)
                 {
-                    nodes.Add(new StartNode( OnClickInPoint, OnClickOutPoint, node));
+                    nodes.Add(new StartNode( OnClickNodePort, node));
                 }    
             }
 
@@ -71,16 +72,27 @@ namespace QuestSystem.Quest
 
             foreach (var node in nodes) // Add connections 
             {
+
                 foreach (var childId in node.Questdata.ChildrenIDs)
-                {
+                { 
                     if (nodeLookUp.ContainsKey(childId))
                     {
-                        connections.Add(new NodeConnection(node.InPort, nodeLookUp[childId].OutPort, OnClickRemoveConnection));
+                        foreach (var segment in node.Segments.Where(s => s.Key == SegmentType.MainSegment))
+                        {
+                            foreach (var childSegment in nodeLookUp[childId].Segments.Where(s => s.Key == SegmentType.MainSegment))
+                            {
+                                NodePort outPort = segment.Value.NodePortsDict[ConnectionPointType.Out];
+                                NodePort inPort = childSegment.Value.NodePortsDict[ConnectionPointType.In];
+                                connections.Add(new NodeConnection(inPort, outPort, OnClickRemoveConnection));
+                            }
+
+                        }
+
                     }
 
                 }
             }
-        }
+        } 
 
         private void OnGUI()
         {
@@ -92,15 +104,18 @@ namespace QuestSystem.Quest
             {
                 EditorGUILayout.LabelField("Name: " + currentQuest.questName);
                 currentQuest.questName = EditorGUILayout.TextField("Name: ", currentQuest.questName);
+
+                DrawNodes();
+                DrawConnections();
+
+                DrawConnectionLine(Event.current);
+
+                ProcessNodeEvents(Event.current);
+                ProccessEvents(Event.current);
+
             }
 
-            DrawNodes();
-            DrawConnections();
-
-            DrawConnectionLine(Event.current);
-
-            ProcessNodeEvents(Event.current);
-            ProccessEvents(Event.current);
+            
 
             if (GUI.changed)
             {
@@ -153,7 +168,7 @@ namespace QuestSystem.Quest
             switch (type)
             {
                 case QuestNodeType.StartNode:
-                    nodes.Add(new StartNode(mousePosition, 200, 100, OnClickInPoint, OnClickOutPoint, questdate));
+                    nodes.Add(new StartNode(mousePosition, 200, 100, OnClickNodePort, questdate));
                     break;
                 case QuestNodeType.DialogueNode:
                     break;
@@ -220,13 +235,28 @@ namespace QuestSystem.Quest
             }
         }
 
+        private void OnClickNodePort(NodePort port, ConnectionPointType type)
+        {
+            switch (type)
+            {
+                case ConnectionPointType.In:
+                    OnClickInPoint(port);
+                    break;
+                case ConnectionPointType.Out:
+                    OnClickOutPoint(port);
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void OnClickInPoint(NodePort inPoint)
         {
             selectedInPoint = inPoint;
 
             if (selectedOutPoint != null)
             {
-                if (selectedOutPoint.Node != selectedInPoint.Node)
+                if (selectedOutPoint.Segment != selectedInPoint.Segment)
                 {
                     CreateConnection();
                     ClearConnectionSelection();
@@ -244,7 +274,7 @@ namespace QuestSystem.Quest
 
             if (selectedInPoint != null)
             {
-                if (selectedOutPoint.Node != selectedInPoint.Node)
+                if (selectedOutPoint.Segment != selectedInPoint.Segment)
                 {
                     CreateConnection();
                     ClearConnectionSelection();
@@ -269,7 +299,7 @@ namespace QuestSystem.Quest
             }
 
             connections.Add(new NodeConnection(selectedInPoint, selectedOutPoint, OnClickRemoveConnection));
-            selectedInPoint.Node.Questdata.ChildrenIDs.Add(selectedOutPoint.Node.Questdata.UID);//ToDo: Vershönern
+            selectedOutPoint.Segment.Node.Questdata.ChildrenIDs.Add(selectedInPoint.Segment.Node.Questdata.UID);//ToDo: Vershönern
         }
 
         private void ClearConnectionSelection()

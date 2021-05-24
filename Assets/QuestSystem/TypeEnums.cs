@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace QuestSystem
+{
+
+    public enum QuestNodeType 
+    {
+        StartNode, DialogueNode,
+    }
+
+    public enum ConnectionPointType {
+        In,
+        Out 
+    }
+
+    public enum SegmentType
+    {
+        MainSegment
+    }
+
+}

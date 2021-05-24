@@ -6,7 +6,7 @@ using UnityEditor;
 
 namespace QuestSystem
 {
-    public enum ConnectionPointType { In, Out }
+    public delegate void OnClickNodePortDelegate(NodePort port, ConnectionPointType type);
 
     [System.Serializable]
     public class NodePort
@@ -14,23 +14,25 @@ namespace QuestSystem
         private Rect rect;
         private float y_position;
         private ConnectionPointType type; 
-        [SerializeField] Node node;
+        NodeSegment segment;
         private GUIStyle style;
 
-        private Action<NodePort> OnClickNodePort; // delegate function 
+        //private Action<NodePort> OnClickNodePort; // delegate function 
+        public OnClickNodePortDelegate OnClickNodePort;
 
-        public NodePort(Node node, ConnectionPointType type, Action<NodePort> OnClickNodePort )
+
+        public NodePort(NodeSegment _segment, ConnectionPointType type, OnClickNodePortDelegate OnClickNodePort )
         {
-            this.Node = node;
+            this.Segment = _segment;
             this.type = type;
             this.OnClickNodePort = OnClickNodePort;
             Rect = new Rect(0, 0, 10f, 20f);
-            this.y_position = (node.Rect.height * 0.5f); //(y_position.HasValue) ? (node.Rect.height * 0.5f) : (float)y_position;
+            this.y_position = (_segment.CalcRect.height * 0.5f); //(y_position.HasValue) ? (node.Rect.height * 0.5f) : (float)y_position;
             StyleNodePort(type);
         }
 
         public Rect Rect { get => rect; private set => rect = value; }
-        public Node Node { get => node; private set => node = value; }
+        public NodeSegment Segment { get => segment; private set => segment = value; }
 
         private void StyleNodePort(ConnectionPointType type)
         {
@@ -52,16 +54,16 @@ namespace QuestSystem
 
         public void Draw()
         {
-            rect.y = Node.Rect.y + y_position - Rect.height * 0.5f;
+            rect.y = Segment.CalcRect.y  + segment.CalcRect.height * 0.5f - Rect.height * 0.5f;
 
             switch (type)
             {
                 case ConnectionPointType.In:
-                    rect.x = Node.Rect.x - Rect.width + 8f;
+                    rect.x = Segment.CalcRect.x  - Rect.width - 8f;
                     break;
 
                 case ConnectionPointType.Out:
-                    rect.x = Node.Rect.x + Node.Rect.width - 8f;
+                    rect.x = Segment.CalcRect.x +  Segment.CalcRect.width + 8f;
                     break;
             }
 
@@ -69,7 +71,7 @@ namespace QuestSystem
             {
                 if (OnClickNodePort != null)
                 {
-                    OnClickNodePort(this);
+                    OnClickNodePort(this, type);
                 }
             }
         }

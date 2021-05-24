@@ -14,15 +14,27 @@ namespace QuestSystem
     {
 
 
-        public StartNode( Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata) : base( OnClickInPoint, OnClickOutPoint, _questdata)
+        public StartNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base( _questdata)
         {
+            setupSegments(OnClickNodePort);
         }
 
-        public StartNode(Vector2 position, float width, float height, Action<NodePort> OnClickInPoint, Action<NodePort> OnClickOutPoint, QuestNodeData _questdata) : base(position, width, height, OnClickInPoint, OnClickOutPoint, _questdata)
+        public StartNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(position, width, height, _questdata)
         {
+            setupSegments(OnClickNodePort);
         }
 
-        public QuestStartNodeData StartNodeData { get => (QuestStartNodeData) Questdata; set { } }
+        NodeSegment mainSegment;
+
+        public QuestStartNodeData StartNodeData { get => (QuestStartNodeData)Questdata; set { } }
+
+
+        private void setupSegments(OnClickNodePortDelegate OnClickNodePort)
+        {
+            ConnectionPointType[] types = { ConnectionPointType.In, ConnectionPointType.Out };
+            mainSegment = new NodeSegment(types, OnClickNodePort, this);
+            Segments.Add(new KeyValuePair<SegmentType, NodeSegment>( SegmentType.MainSegment, mainSegment));
+        }
 
 
         protected override GUIStyle UseStyle()
@@ -32,22 +44,25 @@ namespace QuestSystem
 
         public override void Draw()
         {
-            InPort.Draw();
-            OutPort.Draw();
+            //InPort.Draw();
+            //OutPort.Draw();
             GUILayout.BeginArea(Rect, style);
 
             GUILayout.Label("StartNodeData");
+
+            mainSegment.Begin();
             StartNodeData.testString = EditorGUILayout.TextField(StartNodeData.testString);
             StartNodeData.testStartString = EditorGUILayout.TextField(StartNodeData.testStartString);
+            mainSegment.End();
 
             GUILayout.EndArea();
+            mainSegment.DrawPorts();
 
             if (GUI.changed)
             {
                
             }
         }
-
 
     }
 
