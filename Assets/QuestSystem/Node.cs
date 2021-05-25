@@ -24,16 +24,12 @@ namespace QuestSystem
                 {
                     Questdata.Rect = rect;
                 }
-
             }
         }
 
         public QuestNodeData Questdata { get => questdata; set => questdata = value; }
         public List<KeyValuePair<SegmentType, NodeSegment>> Segments { get => segments; set => segments = value; }
 
-
-        //public NodePort OutPort { get => outPort; set => outPort = value; }
-        //public NodePort InPort { get => inPort; set => inPort = value; }
 
         public Node(Vector2 position, float width, float height, QuestNodeData _questdata)
         {
@@ -52,8 +48,6 @@ namespace QuestSystem
             Rect = _rect;
             style = UseStyle();
 
-            //InPort = new NodePort(this, ConnectionPointType.In, OnClickInPoint);
-            //OutPort = new NodePort(this, ConnectionPointType.Out, OnClickOutPoint);
         }
 
         protected virtual GUIStyle UseStyle()
@@ -61,7 +55,7 @@ namespace QuestSystem
             style = new GUIStyle();
             style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
             style.border = new RectOffset(20, 20, 20, 20);
-            style.padding = new RectOffset(15, 15, 15, 15);
+            style.padding = new RectOffset(24, 24, 16, 16);
             return style;
         }
 

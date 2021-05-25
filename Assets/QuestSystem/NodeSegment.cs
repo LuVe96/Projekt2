@@ -37,9 +37,6 @@ namespace QuestSystem
             style.normal.background = Texture2D.linearGrayTexture;
 
             rect = EditorGUILayout.BeginVertical(style);
-           
-
-
         }
 
         public void End()

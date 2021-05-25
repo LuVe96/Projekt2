@@ -12,13 +12,16 @@ namespace QuestSystem
     }
 
     public enum ConnectionPointType {
-        In,
-        Out 
+        MainIn,
+        MainOut,
+        ReqIn,
+        ReqOut
     }
 
     public enum SegmentType
     {
-        MainSegment
+        MainSegment,
+        RequirementSegment
     }
 
 }

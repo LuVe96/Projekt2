@@ -26,7 +26,7 @@ namespace QuestSystem
             this.Segment = _segment;
             this.type = type;
             this.OnClickNodePort = OnClickNodePort;
-            Rect = new Rect(0, 0, 10f, 20f);
+            Rect = new Rect(0, 0, 14f, 14f);
             this.y_position = (_segment.CalcRect.height * 0.5f); //(y_position.HasValue) ? (node.Rect.height * 0.5f) : (float)y_position;
             StyleNodePort(type);
         }
@@ -38,17 +38,21 @@ namespace QuestSystem
         {
             style = new GUIStyle();
 
-            if(type == ConnectionPointType.In)
-            {
-                style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left.png") as Texture2D;
-                style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left on.png") as Texture2D;
-                style.border = new RectOffset(4, 4, 12, 12);
-            } else
-            {
-                style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right.png") as Texture2D;
-                style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right on.png") as Texture2D;
-                style.border = new RectOffset(4, 4, 12, 12);
-            }
+            //if(type == ConnectionPointType.MainIn)
+            //{
+            //    style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left.png") as Texture2D;
+            //    style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left on.png") as Texture2D;
+            //    style.border = new RectOffset(4, 4, 12, 12);
+            //} else
+            //{
+            //    style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right.png") as Texture2D;
+            //    style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right on.png") as Texture2D;
+            //    style.border = new RectOffset(4, 4, 12, 12);
+            //}
+
+            style.normal.background = Resources.Load("port_main") as Texture2D;
+            style.active.background = Resources.Load("port_main_pressed") as Texture2D;
+            //style.border = new RectOffset(10, 10, 10, 10);
 
         }
 
@@ -58,12 +62,12 @@ namespace QuestSystem
 
             switch (type)
             {
-                case ConnectionPointType.In:
-                    rect.x = Segment.CalcRect.x  - Rect.width - 8f;
+                case ConnectionPointType.MainIn:
+                    rect.x = Segment.CalcRect.x  - Rect.width - 1f;
                     break;
 
-                case ConnectionPointType.Out:
-                    rect.x = Segment.CalcRect.x +  Segment.CalcRect.width + 8f;
+                case ConnectionPointType.MainOut:
+                    rect.x = Segment.CalcRect.x +  Segment.CalcRect.width + 1f;
                     break;
             }
 

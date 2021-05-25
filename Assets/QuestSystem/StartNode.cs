@@ -31,7 +31,7 @@ namespace QuestSystem
 
         private void setupSegments(OnClickNodePortDelegate OnClickNodePort)
         {
-            ConnectionPointType[] types = { ConnectionPointType.In, ConnectionPointType.Out };
+            ConnectionPointType[] types = { ConnectionPointType.MainIn, ConnectionPointType.MainOut };
             mainSegment = new NodeSegment(types, OnClickNodePort, this);
             Segments.Add(new KeyValuePair<SegmentType, NodeSegment>( SegmentType.MainSegment, mainSegment));
         }

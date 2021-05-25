@@ -81,8 +81,8 @@ namespace QuestSystem.Quest
                         {
                             foreach (var childSegment in nodeLookUp[childId].Segments.Where(s => s.Key == SegmentType.MainSegment))
                             {
-                                NodePort outPort = segment.Value.NodePortsDict[ConnectionPointType.Out];
-                                NodePort inPort = childSegment.Value.NodePortsDict[ConnectionPointType.In];
+                                NodePort outPort = segment.Value.NodePortsDict[ConnectionPointType.MainOut];
+                                NodePort inPort = childSegment.Value.NodePortsDict[ConnectionPointType.MainIn];
                                 connections.Add(new NodeConnection(inPort, outPort, OnClickRemoveConnection));
                             }
 
@@ -239,10 +239,10 @@ namespace QuestSystem.Quest
         {
             switch (type)
             {
-                case ConnectionPointType.In:
+                case ConnectionPointType.MainIn:
                     OnClickInPoint(port);
                     break;
-                case ConnectionPointType.Out:
+                case ConnectionPointType.MainOut:
                     OnClickOutPoint(port);
                     break;
                 default:
