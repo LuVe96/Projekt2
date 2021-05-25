@@ -46,6 +46,7 @@ namespace QuestSystem.Quest
             }
         }
 
+        //FOR_NEW: Setup with loaded Data
         private void SetupEditor(Quest quest)
         {
             nodes.Clear();
@@ -55,26 +56,38 @@ namespace QuestSystem.Quest
 
             currentQuest = quest;
 
+            SetupNodes();
+            SetupConnections();
+        }
+
+        private void SetupNodes()
+        {
             foreach (var node in currentQuest.Nodes) // Add nodes with nodeData
             {
-
-                if(node is QuestStartNodeData)
+                if (node is QuestStartNodeData)
                 {
-                    nodes.Add(new StartNode( OnClickNodePort, node));
-                }    
+                    nodes.Add(new StartNode(OnClickNodePort, node));
+                }
+                else if (node is RequirementNodeData)
+                {
+                    nodes.Add(new RequirementNode(OnClickNodePort, node));
+                }
             }
 
+            // fill Lookup to get nodes over ID in futher steps
             foreach (Node _node in nodes)
             {
                 nodeLookUp[_node.Questdata.UID] = _node;
             }
+        }
 
-
-            foreach (var node in nodes) // Add connections 
+        private void SetupConnections()
+        {
+            foreach (var node in nodes) // Adds connections 
             {
 
                 foreach (var childId in node.Questdata.ChildrenIDs)
-                { 
+                {
                     if (nodeLookUp.ContainsKey(childId))
                     {
                         foreach (var segment in node.Segments.Where(s => s.Key == SegmentType.MainSegment))
@@ -92,7 +105,7 @@ namespace QuestSystem.Quest
 
                 }
             }
-        } 
+        }
 
         private void OnGUI()
         {
@@ -114,8 +127,7 @@ namespace QuestSystem.Quest
                 ProccessEvents(Event.current);
 
             }
-
-            
+  
 
             if (GUI.changed)
             {
@@ -155,13 +167,15 @@ namespace QuestSystem.Quest
             }
         }
 
+        //FOR_NEW: Add new Node by ContextMenu
         private void ProcessContextMenu(Vector2 mousePosition)
         {
             GenericMenu genericMenu = new GenericMenu();
             genericMenu.AddItem(new GUIContent("Add start node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StartNode));
+            genericMenu.AddItem(new GUIContent("Add Require node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.RequirementNode));
             genericMenu.ShowAsContext();
         }
-
+ 
         private void OnClickAddNode(Vector2 mousePosition, QuestNodeType type)
         {
             QuestNodeData questdate = currentQuest.CreateNewNode(type);
@@ -169,6 +183,9 @@ namespace QuestSystem.Quest
             {
                 case QuestNodeType.StartNode:
                     nodes.Add(new StartNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    break;
+                case QuestNodeType.RequirementNode:
+                    nodes.Add(new RequirementNode(mousePosition, 200, 100, OnClickNodePort, questdate));
                     break;
                 case QuestNodeType.DialogueNode:
                     break;
@@ -240,9 +257,11 @@ namespace QuestSystem.Quest
             switch (type)
             {
                 case ConnectionPointType.MainIn:
+                case ConnectionPointType.ReqIn:
                     OnClickInPoint(port);
                     break;
                 case ConnectionPointType.MainOut:
+                case ConnectionPointType.ReqOut:
                     OnClickOutPoint(port);
                     break;
                 default:

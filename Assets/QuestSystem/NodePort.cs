@@ -14,14 +14,14 @@ namespace QuestSystem
         private Rect rect;
         private float y_position;
         private ConnectionPointType type; 
-        NodeSegment segment;
+        PortSegment segment;
         private GUIStyle style;
 
         //private Action<NodePort> OnClickNodePort; // delegate function 
         public OnClickNodePortDelegate OnClickNodePort;
 
 
-        public NodePort(NodeSegment _segment, ConnectionPointType type, OnClickNodePortDelegate OnClickNodePort )
+        public NodePort(PortSegment _segment, ConnectionPointType type, OnClickNodePortDelegate OnClickNodePort )
         {
             this.Segment = _segment;
             this.type = type;
@@ -32,7 +32,7 @@ namespace QuestSystem
         }
 
         public Rect Rect { get => rect; private set => rect = value; }
-        public NodeSegment Segment { get => segment; private set => segment = value; }
+        public PortSegment Segment { get => segment; private set => segment = value; }
 
         private void StyleNodePort(ConnectionPointType type)
         {
@@ -63,10 +63,11 @@ namespace QuestSystem
             switch (type)
             {
                 case ConnectionPointType.MainIn:
+                case ConnectionPointType.ReqIn:
                     rect.x = Segment.CalcRect.x  - Rect.width - 1f;
                     break;
-
                 case ConnectionPointType.MainOut:
+                case ConnectionPointType.ReqOut:
                     rect.x = Segment.CalcRect.x +  Segment.CalcRect.width + 1f;
                     break;
             }

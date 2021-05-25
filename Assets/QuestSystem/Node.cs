@@ -14,8 +14,9 @@ namespace QuestSystem
         private Rect rect;
         private bool isDragged;
         protected GUIStyle style;
+        private float contentHeight;
 
-        List <KeyValuePair<SegmentType, NodeSegment>> segments = new List<KeyValuePair<SegmentType, NodeSegment>>();
+        List <KeyValuePair<SegmentType, PortSegment>> segments = new List<KeyValuePair<SegmentType, PortSegment>>();
 
         public Rect Rect { get => rect;
             private set {
@@ -28,28 +29,31 @@ namespace QuestSystem
         }
 
         public QuestNodeData Questdata { get => questdata; set => questdata = value; }
-        public List<KeyValuePair<SegmentType, NodeSegment>> Segments { get => segments; set => segments = value; }
+        public List<KeyValuePair<SegmentType, PortSegment>> Segments { get => segments; set => segments = value; }
 
 
-        public Node(Vector2 position, float width, float height, QuestNodeData _questdata)
+        public Node(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata)
         {
-            Init(_questdata, new Rect(position.x, position.y, width, height));
+            Init(_questdata, new Rect(position.x, position.y, width, height), OnClickNodePort);
         }
 
-        public Node( QuestNodeData _questdata)
+        public Node(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata)
         {
-            Init(_questdata , _questdata.Rect);
+            Init(_questdata , _questdata.Rect, OnClickNodePort);
         }
 
-        private void Init(QuestNodeData _questdata, Rect _rect)
+        private void Init(QuestNodeData _questdata, Rect _rect, OnClickNodePortDelegate OnClickNodePort)
         {
             Questdata = _questdata;
 
             Rect = _rect;
             style = UseStyle();
+            SetupSegments(OnClickNodePort, segments);
 
         }
 
+        protected abstract void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments);
+        
         protected virtual GUIStyle UseStyle()
         {
             style = new GUIStyle();
@@ -66,7 +70,35 @@ namespace QuestSystem
             Rect = newRect;
         }
 
-        public abstract void Draw();
+        public void Draw() {
+            GUILayout.BeginArea(Rect, style);
+
+            contentHeight = EditorGUILayout.BeginVertical().height;
+            DrawContent();
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.EndArea();
+            DrawPorts();
+
+            if (contentHeight != Rect.height)
+            {
+                Rect r = Rect;
+                r.height = contentHeight + 35;
+                Rect = r;
+            }
+        }
+
+        protected abstract void DrawContent();
+
+        private void DrawPorts()
+        {
+            foreach (var segment in segments)
+            {
+                segment.Value.DrawPorts();
+            }
+        }
+
+       
 
         public bool ProcessEvents(Event e)
         {

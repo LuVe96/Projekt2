@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace QuestSystem
 {
-    public class NodeSegment 
+    public class PortSegment 
     {
 
         Dictionary<ConnectionPointType, NodePort> nodePortsDict = new Dictionary<ConnectionPointType, NodePort>();
         private Rect rect;
         private Node node;
 
-        public NodeSegment(ConnectionPointType[] nodePorts, OnClickNodePortDelegate onClickNodePort, Node _node )
+        public PortSegment(ConnectionPointType[] nodePorts, OnClickNodePortDelegate onClickNodePort, Node _node )
         {
             Node = _node;
             foreach (ConnectionPointType pointType in nodePorts)
@@ -33,14 +33,15 @@ namespace QuestSystem
 
         public void Begin()
         {
-            GUIStyle style = new GUIStyle();
-            style.normal.background = Texture2D.linearGrayTexture;
+            //GUIStyle style = new GUIStyle();
+            //style.normal.background = Texture2D.linearGrayTexture;
 
-            rect = EditorGUILayout.BeginVertical(style);
+            rect = EditorGUILayout.BeginVertical();
         }
 
         public void End()
         {
+            EditorGUILayout.Space();
             EditorGUILayout.EndVertical();
             
         }

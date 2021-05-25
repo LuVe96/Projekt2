@@ -13,12 +13,18 @@ namespace QuestSystem.Quest
         public string questName;
         [SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
         [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
+        [SerializeField] List<RequirementNodeData> reqireNodeDatas = new List<RequirementNodeData>();
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
+        //FOR_NEW: Make List and add to Node Prop
         public List<QuestNodeData> Nodes { get
             {
                 List<QuestNodeData> allNodes = new List<QuestNodeData>();
                 foreach (var node in startNodeDatas)
+                {
+                    allNodes.Add(node);
+                }
+                foreach (var node in reqireNodeDatas)
                 {
                     allNodes.Add(node);
                 }
@@ -48,10 +54,14 @@ namespace QuestSystem.Quest
                     QuestStartNodeData squestdata = new QuestStartNodeData();
                     squestdata.UID = Guid.NewGuid().ToString();
                     startNodeDatas.Add(squestdata);
-                    nodeDataLookUp.Add(squestdata.UID, squestdata);
                     OnValidate();
                     return squestdata;
-                    break;
+                case QuestNodeType.RequirementNode:
+                    RequirementNodeData rquestdata = new RequirementNodeData();
+                    rquestdata.UID = Guid.NewGuid().ToString();
+                    reqireNodeDatas.Add(rquestdata);
+                    OnValidate();
+                    return rquestdata;
                 case QuestNodeType.DialogueNode:
                     return null;
                     break;

@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace QuestSystem
@@ -13,27 +12,30 @@ namespace QuestSystem
     public class StartNode : Node
     {
 
-
-        public StartNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base( _questdata)
+        public StartNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(OnClickNodePort, _questdata)
         {
-            setupSegments(OnClickNodePort);
         }
 
-        public StartNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(position, width, height, _questdata)
+        public StartNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(position, width, height, OnClickNodePort, _questdata)
         {
-            setupSegments(OnClickNodePort);
         }
 
-        NodeSegment mainSegment;
+        PortSegment mainSegment;
+        PortSegment requirementSegment;
 
         public QuestStartNodeData StartNodeData { get => (QuestStartNodeData)Questdata; set { } }
 
 
-        private void setupSegments(OnClickNodePortDelegate OnClickNodePort)
+        protected override void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments)
         {
-            ConnectionPointType[] types = { ConnectionPointType.MainIn, ConnectionPointType.MainOut };
-            mainSegment = new NodeSegment(types, OnClickNodePort, this);
-            Segments.Add(new KeyValuePair<SegmentType, NodeSegment>( SegmentType.MainSegment, mainSegment));
+
+            ConnectionPointType[] mainTypes = { ConnectionPointType.MainIn, ConnectionPointType.MainOut };
+            mainSegment = new PortSegment(mainTypes, OnClickNodePort, this);
+            segments.Add(new KeyValuePair<SegmentType, PortSegment>( SegmentType.MainSegment, mainSegment));
+
+            ConnectionPointType[] reqTypes = { ConnectionPointType.ReqIn };
+            requirementSegment = new PortSegment(reqTypes, OnClickNodePort, this);
+            segments.Add(new KeyValuePair<SegmentType, PortSegment>( SegmentType.RequirementSegment, requirementSegment));
         }
 
 
@@ -42,27 +44,26 @@ namespace QuestSystem
             return base.UseStyle();
         }
 
-        public override void Draw()
+        protected override void DrawContent()
         {
-            //InPort.Draw();
-            //OutPort.Draw();
-            GUILayout.BeginArea(Rect, style);
-
-            GUILayout.Label("StartNodeData");
-
             mainSegment.Begin();
+            GUILayout.Label("StartNodeData");
             StartNodeData.testString = EditorGUILayout.TextField(StartNodeData.testString);
             StartNodeData.testStartString = EditorGUILayout.TextField(StartNodeData.testStartString);
             mainSegment.End();
 
-            GUILayout.EndArea();
-            mainSegment.DrawPorts();
+            requirementSegment.Begin();
+            EditorGUILayout.LabelField("Requirements");
+            requirementSegment.End();
 
-            if (GUI.changed)
-            {
-               
-            }
+            requirementSegment.Begin();
+            EditorGUILayout.LabelField("Requirements");
+            EditorGUILayout.LabelField("Requirements");
+            EditorGUILayout.LabelField("Requirements");
+            EditorGUILayout.LabelField("Requirements");
+            requirementSegment.End();
         }
+
 
     }
 
