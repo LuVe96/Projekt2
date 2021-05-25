@@ -33,6 +33,7 @@ namespace QuestSystem
 
         public Rect Rect { get => rect; private set => rect = value; }
         public PortSegment Segment { get => segment; private set => segment = value; }
+        public ConnectionPointType Type { get => type;}
 
         private void StyleNodePort(ConnectionPointType type)
         {
@@ -60,7 +61,7 @@ namespace QuestSystem
         {
             rect.y = Segment.CalcRect.y  + segment.CalcRect.height * 0.5f - Rect.height * 0.5f;
 
-            switch (type)
+            switch (Type)
             {
                 case ConnectionPointType.MainIn:
                 case ConnectionPointType.ReqIn:
@@ -76,7 +77,7 @@ namespace QuestSystem
             {
                 if (OnClickNodePort != null)
                 {
-                    OnClickNodePort(this, type);
+                    OnClickNodePort(this, Type);
                 }
             }
         }

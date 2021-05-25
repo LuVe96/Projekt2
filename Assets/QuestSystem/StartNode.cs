@@ -30,12 +30,12 @@ namespace QuestSystem
         {
 
             ConnectionPointType[] mainTypes = { ConnectionPointType.MainIn, ConnectionPointType.MainOut };
-            mainSegment = new PortSegment(mainTypes, OnClickNodePort, this);
-            segments.Add(new KeyValuePair<SegmentType, PortSegment>( SegmentType.MainSegment, mainSegment));
+            mainSegment = new PortSegment(SegmentType.MainSegment, mainTypes, OnClickNodePort, this);
+            segments.Add(new KeyValuePair<SegmentType, PortSegment>( mainSegment.Type, mainSegment));
 
             ConnectionPointType[] reqTypes = { ConnectionPointType.ReqIn };
-            requirementSegment = new PortSegment(reqTypes, OnClickNodePort, this);
-            segments.Add(new KeyValuePair<SegmentType, PortSegment>( SegmentType.RequirementSegment, requirementSegment));
+            requirementSegment = new PortSegment(SegmentType.RequirementSegment, reqTypes, OnClickNodePort, this);
+            segments.Add(new KeyValuePair<SegmentType, PortSegment>(requirementSegment.Type, requirementSegment));
         }
 
 

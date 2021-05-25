@@ -85,26 +85,44 @@ namespace QuestSystem.Quest
         {
             foreach (var node in nodes) // Adds connections 
             {
+                CreateMatchingConnections(node, node.Questdata.ChildrenIDs, SegmentType.MainSegment);
+                CreateMatchingConnections(node, node.Questdata.RequirementIDs, SegmentType.RequirementSegment);
+            }
+        }
 
-                foreach (var childId in node.Questdata.ChildrenIDs)
+        private void CreateMatchingConnections(Node node, List<string> idList, SegmentType segmentType)
+        {
+            foreach (var childId in idList)
+            {
+                if (nodeLookUp.ContainsKey(childId))
                 {
-                    if (nodeLookUp.ContainsKey(childId))
+                    foreach (var segment in node.Segments.Where(s => s.Key == segmentType))
                     {
-                        foreach (var segment in node.Segments.Where(s => s.Key == SegmentType.MainSegment))
+                        foreach (var childSegment in nodeLookUp[childId].Segments.Where(s => s.Key == segmentType))
                         {
-                            foreach (var childSegment in nodeLookUp[childId].Segments.Where(s => s.Key == SegmentType.MainSegment))
+                            switch (segmentType)
                             {
-                                NodePort outPort = segment.Value.NodePortsDict[ConnectionPointType.MainOut];
-                                NodePort inPort = childSegment.Value.NodePortsDict[ConnectionPointType.MainIn];
-                                connections.Add(new NodeConnection(inPort, outPort, OnClickRemoveConnection));
-                            }
-
+                                case SegmentType.MainSegment:
+                                    AddConnection(segment.Value, childSegment.Value, ConnectionPointType.MainIn, ConnectionPointType.MainOut);
+                                    break;
+                                case SegmentType.RequirementSegment:
+                                    AddConnection(segment.Value, childSegment.Value, ConnectionPointType.ReqOut, ConnectionPointType.ReqIn);
+                                    break;
+                                default:
+                                    break;
+                            }   
                         }
-
                     }
-
                 }
             }
+        }
+
+        private void AddConnection( PortSegment segment, PortSegment childSegment, ConnectionPointType inType, ConnectionPointType outType)
+        {
+            NodePort outPort = segment.NodePortsDict[outType];
+            NodePort inPort = childSegment.NodePortsDict[inType];
+            connections.Add(new NodeConnection(inPort, outPort, OnClickRemoveConnection));
+
         }
 
         private void OnGUI()
@@ -252,32 +270,37 @@ namespace QuestSystem.Quest
             }
         }
 
+        //FOR_NEW: Define and Create Connections
         private void OnClickNodePort(NodePort port, ConnectionPointType type)
         {
             switch (type)
             {
                 case ConnectionPointType.MainIn:
-                case ConnectionPointType.ReqIn:
-                    OnClickInPoint(port);
+                    OnClickInPoint(port, ConnectionPointType.MainOut);
                     break;
                 case ConnectionPointType.MainOut:
+                    OnClickOutPoint(port, ConnectionPointType.MainIn);
+                    break;
+                case ConnectionPointType.ReqIn:
+                    OnClickInPoint(port, ConnectionPointType.ReqOut);
+                    break;
                 case ConnectionPointType.ReqOut:
-                    OnClickOutPoint(port);
+                    OnClickOutPoint(port, ConnectionPointType.ReqIn);
                     break;
                 default:
                     break;
             }
         }
 
-        private void OnClickInPoint(NodePort inPoint)
+        private void OnClickInPoint(NodePort inPoint, ConnectionPointType counterpartType)
         {
             selectedInPoint = inPoint;
 
             if (selectedOutPoint != null)
             {
-                if (selectedOutPoint.Segment != selectedInPoint.Segment)
+                if (selectedOutPoint.Segment != selectedInPoint.Segment && selectedOutPoint.Type == counterpartType)
                 {
-                    CreateConnection();
+                    CreateConnection(selectedInPoint.Segment.Type);
                     ClearConnectionSelection();
                 }
                 else
@@ -287,15 +310,15 @@ namespace QuestSystem.Quest
             }
         }
 
-        private void OnClickOutPoint(NodePort outPoint)
+        private void OnClickOutPoint(NodePort outPoint, ConnectionPointType counterpartType)
         {
             selectedOutPoint = outPoint;
 
             if (selectedInPoint != null)
             {
-                if (selectedOutPoint.Segment != selectedInPoint.Segment)
+                if (selectedOutPoint.Segment != selectedInPoint.Segment && selectedInPoint.Type == counterpartType)
                 {
-                    CreateConnection();
+                    CreateConnection(selectedOutPoint.Segment.Type);
                     ClearConnectionSelection();
                 }
                 else
@@ -310,15 +333,23 @@ namespace QuestSystem.Quest
             connections.Remove(connection);
         }
 
-        private void CreateConnection()
+        private void CreateConnection( SegmentType segmentType)
         {
-            if (connections == null)
-            {
-                connections = new List<NodeConnection>();
-            }
 
             connections.Add(new NodeConnection(selectedInPoint, selectedOutPoint, OnClickRemoveConnection));
-            selectedOutPoint.Segment.Node.Questdata.ChildrenIDs.Add(selectedInPoint.Segment.Node.Questdata.UID);//ToDo: Vershönern
+
+            switch (segmentType)
+            {
+                case SegmentType.MainSegment:
+                    selectedOutPoint.Segment.Node.AddChildsToData(selectedInPoint.Segment.Node, segmentType);
+                    break;
+                case SegmentType.RequirementSegment:
+                    selectedInPoint.Segment.Node.AddChildsToData(selectedOutPoint.Segment.Node, segmentType);
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void ClearConnectionSelection()

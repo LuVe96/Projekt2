@@ -11,9 +11,11 @@ namespace QuestSystem
         Dictionary<ConnectionPointType, NodePort> nodePortsDict = new Dictionary<ConnectionPointType, NodePort>();
         private Rect rect;
         private Node node;
+        SegmentType type;
 
-        public PortSegment(ConnectionPointType[] nodePorts, OnClickNodePortDelegate onClickNodePort, Node _node )
+        public PortSegment(SegmentType _type, ConnectionPointType[] nodePorts, OnClickNodePortDelegate onClickNodePort, Node _node )
         {
+            type = _type;
             Node = _node;
             foreach (ConnectionPointType pointType in nodePorts)
             {
@@ -30,6 +32,7 @@ namespace QuestSystem
         }
         public Node Node { get => node; set => node = value; }
         public Dictionary<ConnectionPointType, NodePort> NodePortsDict { get => nodePortsDict; set => nodePortsDict = value; }
+        public SegmentType Type { get => type; }
 
         public void Begin()
         {

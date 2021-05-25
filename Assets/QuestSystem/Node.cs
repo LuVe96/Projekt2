@@ -98,7 +98,35 @@ namespace QuestSystem
             }
         }
 
-       
+        public void AddChildsToData(Node childNode, SegmentType segmentType)
+        {
+            switch (segmentType)
+            {
+                case SegmentType.MainSegment:
+                    Questdata.ChildrenIDs.Add(childNode.Questdata.UID);
+                    break;
+                case SegmentType.RequirementSegment:
+                    Questdata.RequirementIDs.Add(childNode.Questdata.UID);
+                    break;
+                default:
+                    break;
+            } 
+        }
+
+        public void RemoveChildsInData(Node childNode, SegmentType segmentType)
+        {
+            switch (segmentType)
+            {
+                case SegmentType.MainSegment:
+                    Questdata.ChildrenIDs.Remove(childNode.Questdata.UID);
+                    break;
+                case SegmentType.RequirementSegment:
+                    Questdata.RequirementIDs.Remove(childNode.Questdata.UID);
+                    break;
+                default:
+                    break;
+            }
+        }
 
         public bool ProcessEvents(Event e)
         {

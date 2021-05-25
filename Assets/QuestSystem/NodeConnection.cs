@@ -35,9 +35,9 @@ namespace QuestSystem
 
             if(GUI.Button(new Rect((inPoint.Rect.center + outPoint.Rect.center) * 0.5f, new Vector2(15,15)), "x"))
             {
-                Debug.Log("Remove");
-                outPoint.Segment.Node.Questdata.ChildrenIDs.Remove(inPoint.Segment.Node.Questdata.UID); // TODO: schönner!!!
-                if (OnClickRemoveConnection != null)
+
+                //outPoint.Segment.Node.RemoveChildsInData(inPoint.Segment.Node,);
+                if (OnClickRemoveConnection != null) 
                 {
                     OnClickRemoveConnection(this);
                 }

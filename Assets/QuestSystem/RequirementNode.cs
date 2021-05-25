@@ -23,8 +23,8 @@ namespace QuestSystem
         protected override void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments)
         {
             ConnectionPointType[] mainTypes = {  ConnectionPointType.ReqOut };
-            requirementSegment = new PortSegment(mainTypes, OnClickNodePort, this);
-            segments.Add(new KeyValuePair<SegmentType, PortSegment>(SegmentType.RequirementSegment, requirementSegment));
+            requirementSegment = new PortSegment(SegmentType.RequirementSegment,mainTypes, OnClickNodePort, this);
+            segments.Add(new KeyValuePair<SegmentType, PortSegment>(requirementSegment.Type, requirementSegment));
         }
 
         protected override void DrawContent()
