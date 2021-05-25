@@ -22,11 +22,13 @@ namespace QuestSystem
 
         public void Draw()
         {
+            Rect leftPointRect = (outPoint.PortPosition == PortPosition.Left) ? outPoint.Rect : inPoint.Rect;
+            Rect rightPointRect = (outPoint.PortPosition == PortPosition.Right) ? outPoint.Rect : inPoint.Rect;
             Handles.DrawBezier(
-                inPoint.Rect.center, 
-                outPoint.Rect.center,
-                inPoint.Rect.center + Vector2.left * 50f,
-                outPoint.Rect.center - Vector2.left * 50f,
+                leftPointRect.center,
+                rightPointRect.center,
+                leftPointRect.center + Vector2.left * 50f,
+                rightPointRect.center - Vector2.left * 50f,
                 Color.white,
                 null,
                 2f
@@ -36,7 +38,7 @@ namespace QuestSystem
             if(GUI.Button(new Rect((inPoint.Rect.center + outPoint.Rect.center) * 0.5f, new Vector2(15,15)), "x"))
             {
 
-                //outPoint.Segment.Node.RemoveChildsInData(inPoint.Segment.Node,);
+                inPoint.Segment.Node.RemoveChildsInData(outPoint.Segment.Node, inPoint.Segment.Type);
                 if (OnClickRemoveConnection != null) 
                 {
                     OnClickRemoveConnection(this);

@@ -106,7 +106,7 @@ namespace QuestSystem.Quest
                                     AddConnection(segment.Value, childSegment.Value, ConnectionPointType.MainIn, ConnectionPointType.MainOut);
                                     break;
                                 case SegmentType.RequirementSegment:
-                                    AddConnection(segment.Value, childSegment.Value, ConnectionPointType.ReqOut, ConnectionPointType.ReqIn);
+                                    AddConnection(segment.Value, childSegment.Value, ConnectionPointType.ReqIn, ConnectionPointType.ReqOut);
                                     break;
                                 default:
                                     break;
@@ -119,8 +119,8 @@ namespace QuestSystem.Quest
 
         private void AddConnection( PortSegment segment, PortSegment childSegment, ConnectionPointType inType, ConnectionPointType outType)
         {
-            NodePort outPort = segment.NodePortsDict[outType];
-            NodePort inPort = childSegment.NodePortsDict[inType];
+            NodePort inPort = segment.NodePortsDict[inType];
+            NodePort outPort = childSegment.NodePortsDict[outType];
             connections.Add(new NodeConnection(inPort, outPort, OnClickRemoveConnection));
 
         }
@@ -230,33 +230,29 @@ namespace QuestSystem.Quest
         {
             if (selectedInPoint != null && selectedOutPoint == null)
             {
-                Handles.DrawBezier(
-                    selectedInPoint.Rect.center,
-                    current.mousePosition,
-                    selectedInPoint.Rect.center + Vector2.left * 50f,
-                    current.mousePosition - Vector2.left * 50f,
-                    Color.white,
-                    null,
-                    2f
-                );
-
-                GUI.changed = true;
+                DrawHandel(current, selectedInPoint);
             }
 
             if (selectedOutPoint != null && selectedInPoint == null)
             {
-                Handles.DrawBezier(
-                    selectedOutPoint.Rect.center,
-                    current.mousePosition,
-                    selectedOutPoint.Rect.center - Vector2.left * 50f,
-                    current.mousePosition + Vector2.left * 50f,
-                    Color.white,
-                    null,
-                    2f
-                );
-
-                GUI.changed = true;
+                DrawHandel(current, selectedOutPoint);
             }
+        }
+
+        private void DrawHandel(Event current, NodePort selectedPort)
+        {
+            float multiplier = selectedPort.PortPosition == PortPosition.Left ? 1 : -1;
+
+            Handles.DrawBezier(
+                selectedPort.Rect.center,
+                current.mousePosition,
+                selectedPort.Rect.center + Vector2.left * 50f * multiplier,
+                current.mousePosition - Vector2.left * 50f * multiplier,
+                Color.white,
+                null,
+                2f
+            );
+            GUI.changed = true;
         }
 
         private void DrawConnections()
@@ -338,18 +334,7 @@ namespace QuestSystem.Quest
 
             connections.Add(new NodeConnection(selectedInPoint, selectedOutPoint, OnClickRemoveConnection));
 
-            switch (segmentType)
-            {
-                case SegmentType.MainSegment:
-                    selectedOutPoint.Segment.Node.AddChildsToData(selectedInPoint.Segment.Node, segmentType);
-                    break;
-                case SegmentType.RequirementSegment:
-                    selectedInPoint.Segment.Node.AddChildsToData(selectedOutPoint.Segment.Node, segmentType);
-                    break;
-                default:
-                    break;
-            }
-
+            selectedInPoint.Segment.Node.AddChildsToData(selectedOutPoint.Segment.Node, segmentType);
         }
 
         private void ClearConnectionSelection()

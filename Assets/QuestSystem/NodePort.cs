@@ -13,7 +13,8 @@ namespace QuestSystem
     {
         private Rect rect;
         private float y_position;
-        private ConnectionPointType type; 
+        private ConnectionPointType type;
+        PortPosition portPosition;
         PortSegment segment;
         private GUIStyle style;
 
@@ -21,9 +22,10 @@ namespace QuestSystem
         public OnClickNodePortDelegate OnClickNodePort;
 
 
-        public NodePort(PortSegment _segment, ConnectionPointType type, OnClickNodePortDelegate OnClickNodePort )
+        public NodePort(PortSegment _segment, ConnectionPointType type, PortPosition _portPosition, OnClickNodePortDelegate OnClickNodePort )
         {
             this.Segment = _segment;
+            this.portPosition = _portPosition;
             this.type = type;
             this.OnClickNodePort = OnClickNodePort;
             Rect = new Rect(0, 0, 14f, 14f);
@@ -34,6 +36,7 @@ namespace QuestSystem
         public Rect Rect { get => rect; private set => rect = value; }
         public PortSegment Segment { get => segment; private set => segment = value; }
         public ConnectionPointType Type { get => type;}
+        public PortPosition PortPosition { get => portPosition; }
 
         private void StyleNodePort(ConnectionPointType type)
         {
@@ -61,14 +64,13 @@ namespace QuestSystem
         {
             rect.y = Segment.CalcRect.y  + segment.CalcRect.height * 0.5f - Rect.height * 0.5f;
 
-            switch (Type)
+            switch (PortPosition)
             {
-                case ConnectionPointType.MainIn:
-                case ConnectionPointType.ReqIn:
+                case PortPosition.Left:
                     rect.x = Segment.CalcRect.x  - Rect.width - 1f;
                     break;
-                case ConnectionPointType.MainOut:
-                case ConnectionPointType.ReqOut:
+
+                case PortPosition.Right:
                     rect.x = Segment.CalcRect.x +  Segment.CalcRect.width + 1f;
                     break;
             }

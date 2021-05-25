@@ -29,11 +29,11 @@ namespace QuestSystem
         protected override void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments)
         {
 
-            ConnectionPointType[] mainTypes = { ConnectionPointType.MainIn, ConnectionPointType.MainOut };
+            PortProps[] mainTypes = { new PortProps(ConnectionPointType.MainIn, PortPosition.Right), new PortProps(ConnectionPointType.MainOut, PortPosition.Left) };
             mainSegment = new PortSegment(SegmentType.MainSegment, mainTypes, OnClickNodePort, this);
             segments.Add(new KeyValuePair<SegmentType, PortSegment>( mainSegment.Type, mainSegment));
 
-            ConnectionPointType[] reqTypes = { ConnectionPointType.ReqIn };
+            PortProps[] reqTypes = { new PortProps(ConnectionPointType.ReqIn, PortPosition.Left) };
             requirementSegment = new PortSegment(SegmentType.RequirementSegment, reqTypes, OnClickNodePort, this);
             segments.Add(new KeyValuePair<SegmentType, PortSegment>(requirementSegment.Type, requirementSegment));
         }

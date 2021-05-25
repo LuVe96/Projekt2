@@ -22,8 +22,8 @@ namespace QuestSystem
 
         protected override void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments)
         {
-            ConnectionPointType[] mainTypes = {  ConnectionPointType.ReqOut };
-            requirementSegment = new PortSegment(SegmentType.RequirementSegment,mainTypes, OnClickNodePort, this);
+            PortProps[] reqTypes = { new PortProps(ConnectionPointType.ReqOut, PortPosition.Right) };
+            requirementSegment = new PortSegment(SegmentType.RequirementSegment, reqTypes, OnClickNodePort, this);
             segments.Add(new KeyValuePair<SegmentType, PortSegment>(requirementSegment.Type, requirementSegment));
         }
 

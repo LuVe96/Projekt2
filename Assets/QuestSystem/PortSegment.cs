@@ -13,13 +13,13 @@ namespace QuestSystem
         private Node node;
         SegmentType type;
 
-        public PortSegment(SegmentType _type, ConnectionPointType[] nodePorts, OnClickNodePortDelegate onClickNodePort, Node _node )
+        public PortSegment(SegmentType _type, PortProps[] nodePorts, OnClickNodePortDelegate onClickNodePort, Node _node )
         {
             type = _type;
             Node = _node;
-            foreach (ConnectionPointType pointType in nodePorts)
+            foreach (PortProps pointType in nodePorts)
             {
-                NodePortsDict.Add(pointType, new NodePort(this, pointType, onClickNodePort));
+                NodePortsDict.Add(pointType.connectionPointType, new NodePort(this, pointType.connectionPointType, pointType.portPosition, onClickNodePort));
             }
         }
 
