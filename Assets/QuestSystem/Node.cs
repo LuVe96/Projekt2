@@ -80,12 +80,18 @@ namespace QuestSystem
             GUILayout.EndArea();
             DrawPorts();
 
-            if (contentHeight != Rect.height)
+            if(contentHeight != 0)
             {
-                Rect r = Rect;
-                r.height = contentHeight + 35;
-                Rect = r;
+                if ((contentHeight + 35) != Rect.height)
+                {
+                    Debug.Log("Height: " + Rect.height);
+                    Debug.Log("ContentHeight: " + contentHeight);
+                    Rect r = Rect;
+                    r.height = contentHeight + 35;
+                    Rect = r;
+                }
             }
+
         }
 
         protected abstract void DrawContent();
