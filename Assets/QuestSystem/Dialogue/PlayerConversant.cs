@@ -15,16 +15,16 @@ namespace QuestSystem.Dialogue
         [SerializeField] Text sentencesText;
         [SerializeField] Image charImage;
         [SerializeField] Button nextButton;
+        [SerializeField] GameObject choicesPanel;
+        [SerializeField] GameObject choicesPrefab;
 
         [SerializeField] Sprite playerImage;
         [SerializeField] string playerName;
 
-        private Queue<DialogSentence> dialogSentences;
         private string currentNPCname = "";
         private Sprite currentNPCImage;
 
-
-        [SerializeField] Dialogue currentDialogue;
+        Dialogue currentDialogue;
         DialogueNode currentNode = null;
         NPCDialogueAttacher currentNpc = null;
 
@@ -45,6 +45,8 @@ namespace QuestSystem.Dialogue
 
         private void ShowSentence()
         {
+            SetupLayout(false);
+
             if (currentNode.IsPlayerSpeaking)
             {
                 nameText.text = playerName;
@@ -59,13 +61,47 @@ namespace QuestSystem.Dialogue
             sentencesText.text = currentNode.Text;
         }
 
+        private void ShowChoices(DialogueNode[] choices)
+        {
+            SetupLayout(true);
+
+            foreach (DialogueNode choice in choices)
+            {
+                GameObject c = Instantiate(choicesPrefab, choicesPanel.transform);
+                c.GetComponent<Button>().onClick.AddListener(delegate { OnClickChoice(choice.UniqueID); });
+                c.transform.GetChild(0).GetComponent<Text>().text = choice.Text;
+            }
+        }
+
+        private void SetupLayout(bool asChoice)
+        {
+            choicesPanel.SetActive(asChoice);
+            sentencesText.gameObject.SetActive(!asChoice);
+            nextButton.gameObject.SetActive(!asChoice);
+        }
+
+        private void OnClickChoice(string uid)
+        {
+            currentNode = currentDialogue.GetNodeById(uid);
+            Next();
+
+        }
+
         public void Next()
         {
             if (HasNext())
             {
                 DialogueNode[] children = currentDialogue.GetAllChildren(currentNode).ToArray();
-                currentNode = children[0];
-                ShowSentence();
+                if (children.Length > 1)
+                {
+                    ShowChoices(children);
+                } 
+                else
+                {
+                    currentNode = children[0];
+                    ShowSentence();
+                }
+
             } else
             {
                 dialogPanel.SetActive(false);

@@ -98,7 +98,17 @@ namespace QuestSystem.Dialogue
             }
             return result;
         }
-  
+
+        public DialogueNode GetNodeById(string uID)
+        {
+            DialogueNode result = null;
+            if (nodeLookUp.ContainsKey(uID))
+            {
+                result = nodeLookUp[uID];
+            }        
+            return result;
+        }
+
 
         public void OnBeforeSerialize() // called bevore saving
         {
