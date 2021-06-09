@@ -26,33 +26,75 @@ namespace QuestSystem.Dialogue
 
         [SerializeField] Dialogue currentDialogue;
         DialogueNode currentNode = null;
+        NPCDialogueAttacher currentNpc = null;
 
-        private void Awake()
+        private void Start()
         {
-            currentNode = currentDialogue.GetRootNode();
             nextButton.onClick.AddListener(Next);
         }
 
-        public void StartDialogue()
+        public void StartDialogue(Dialogue dialogue, string npcName, Sprite npcImage)
         {
+            currentNPCname = npcName;
+            currentNPCImage = npcImage;
+            currentDialogue = dialogue;
+            currentNode = currentDialogue.GetRootNode();
             dialogPanel.SetActive(true);
+            ShowSentence();
         }
 
-        public string GetText()
+        private void ShowSentence()
         {
-            if (currentDialogue == null) return "";
-            return currentNode.Text;
+            if (currentNode.IsPlayerSpeaking)
+            {
+                nameText.text = playerName;
+                charImage.sprite = playerImage;
+            }
+            else
+            {
+                nameText.text = currentNPCname;
+                charImage.sprite = currentNPCImage;
+            }
+
+            sentencesText.text = currentNode.Text;
         }
 
         public void Next()
         {
-            DialogueNode[] children = currentDialogue.GetAllChildren(currentNode).ToArray();
-            currentNode = children[0];
+            if (HasNext())
+            {
+                DialogueNode[] children = currentDialogue.GetAllChildren(currentNode).ToArray();
+                currentNode = children[0];
+                ShowSentence();
+            } else
+            {
+                dialogPanel.SetActive(false);
+                currentNpc.DialogueHasFinished();
+                currentNpc = null;
+            }
+
         }
 
         public bool HasNext()
         {
             return currentDialogue.GetAllChildren(currentNode).Count() > 0 ;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "NPC")
+            {
+                try
+                {
+                    currentNpc = other.GetComponent<NPCDialogueAttacher>();
+                    StartDialogue(currentNpc.Dialogues[0], currentNpc.npcName, currentNpc.npcImage);
+                }
+                catch (Exception)
+                {
+                    Debug.LogWarning("NO Dialoge found");
+                }
+
+            }
         }
     } 
 }

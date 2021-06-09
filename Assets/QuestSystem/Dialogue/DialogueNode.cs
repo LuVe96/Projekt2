@@ -56,7 +56,7 @@ namespace QuestSystem.Dialogue
             set {
                 textFieldRect = value;
                 //rect.height = stdRect.height + textFieldRect.height;
-                Debug.Log("Rect" + textFieldRect);
+                //Debug.Log("Rect" + textFieldRect);
             }
         }
 

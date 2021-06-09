@@ -3,24 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestSystemManager : MonoBehaviour
+namespace QuestSystem
 {
-
-    [SerializeField] QuestSystem.Quest.Quest[] quests;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class QuestSystemManager : MonoBehaviour
     {
-        foreach (QuestNodeData item in quests[0].getAllNodes())
+
+        private Quest.Quest[] quests;
+        private List<Quest.Quest> availableQuests = new List<Quest.Quest>();
+
+
+        // Start is called before the first frame update
+        void Start()
         {
-            item.execute();
-        } 
-    }
+            quests = FindObjectsOfType<Quest.Quest>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+            foreach (Quest.Quest quest in quests)
+            {
+                // TODO: Chekc if available
+                availableQuests.Add(quest);
+                quest.StartQuest();
+            }
+
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+    } 
 }

@@ -84,8 +84,6 @@ namespace QuestSystem
             {
                 if ((contentHeight + 35) != Rect.height)
                 {
-                    Debug.Log("Height: " + Rect.height);
-                    Debug.Log("ContentHeight: " + contentHeight);
                     Rect r = Rect;
                     r.height = contentHeight + 35;
                     Rect = r;
@@ -109,10 +107,10 @@ namespace QuestSystem
             switch (segmentType)
             {
                 case SegmentType.MainSegment:
-                    Questdata.ChildrenIDs.Add(childNode.Questdata.UID);
+                    (Questdata as MainNodeData).ChildrenIDs.Add(childNode.Questdata.UID);
                     break;
                 case SegmentType.RequirementSegment:
-                    Questdata.RequirementIDs.Add(childNode.Questdata.UID);
+                    (Questdata as MainNodeData).RequirementIDs.Add(childNode.Questdata.UID);
                     break;
                 default:
                     break;
@@ -124,10 +122,10 @@ namespace QuestSystem
             switch (segmentType)
             {
                 case SegmentType.MainSegment:
-                    Questdata.ChildrenIDs.Remove(childNode.Questdata.UID);
+                    (Questdata as MainNodeData).ChildrenIDs.Remove(childNode.Questdata.UID);
                     break;
                 case SegmentType.RequirementSegment:
-                    Questdata.RequirementIDs.Remove(childNode.Questdata.UID);
+                    (Questdata as MainNodeData).RequirementIDs.Remove(childNode.Questdata.UID);
                     break;
                 default:
                     break;

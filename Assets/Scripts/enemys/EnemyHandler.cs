@@ -143,7 +143,7 @@ public abstract class EnemyHandler : MonoBehaviour
                 return true;
             }
         }
-        Debug.Log("no AntiAttackCollider: "+ (transform.position + heightVector) + (player.position + heightVector));
+        //Debug.Log("no AntiAttackCollider: "+ (transform.position + heightVector) + (player.position + heightVector));
         return false;
     }
 

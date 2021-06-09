@@ -5,12 +5,14 @@ using UnityEngine;
 namespace QuestSystem.Quest
 {
     [System.Serializable]
-    public class RequirementNodeData : QuestNodeData
+    public class RequirementNodeData : SubNodeData
     {
-         public string Requirement = ""; 
-        public override void execute()
-        {
-            throw new System.NotImplementedException();
-        }
+         public string Requirement = "";
+
+        //public RequirementNodeData(string id, NodeHasFinished nodeHasFinished) : base(id, nodeHasFinished)
+        //{
+        //}
+
+       
     }
 }

@@ -13,8 +13,11 @@ namespace QuestSystem.Quest
         public string questName;
         [SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
         [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
+        [SerializeField] List<QuestDialogueNodeData> dialogNodeDatas = new List<QuestDialogueNodeData>();
         [SerializeField] List<RequirementNodeData> reqireNodeDatas = new List<RequirementNodeData>();
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
+
+        QuestNodeData aktiveNodeData;
 
         //FOR_NEW: Make List and add to Node Prop
         public List<QuestNodeData> Nodes { get
@@ -28,14 +31,57 @@ namespace QuestSystem.Quest
                 {
                     allNodes.Add(node);
                 }
+                foreach (var node in dialogNodeDatas)
+                {
+                    allNodes.Add(node);
+                }
 
                 return allNodes;
             }
         }
 
+        public Dialogue.Dialogue dia1;
+        public NPCDialogueAttacher nPCDialogueAttacher1;
+
         private void Start()
         {
-            
+            QuestStartNodeData squestdata = new QuestStartNodeData("Start_1", ContinueNodes);
+            squestdata.ChildrenIDs.Add("Dialog_1");
+            startNodeDatas.Add(squestdata);
+
+            QuestDialogueNodeData qqdata = new QuestDialogueNodeData("Dialog_1", ContinueNodes);
+            qqdata.Dialogue = dia1;
+            qqdata.NPCDialogueAttacher = nPCDialogueAttacher1;
+            dialogNodeDatas.Add(qqdata);
+        }
+
+        public void StartQuest()
+        {
+            OnValidate();
+            if (Nodes.Count > 0)
+            {
+                aktiveNodeData = Nodes[0];
+                (aktiveNodeData as MainNodeData).execute();
+
+            }
+        }
+
+        void ContinueNodes(int nextChildIndex)
+        {
+            aktiveNodeData = GetChildOfActive(nextChildIndex);
+            (aktiveNodeData as MainNodeData).execute();
+        }
+
+        private QuestNodeData GetChildOfActive(int index)
+        {
+            QuestNodeData n = null;
+            string id = (aktiveNodeData as MainNodeData).ChildrenIDs[index];
+            if (nodeDataLookUp.ContainsKey(id))
+            {
+                n = nodeDataLookUp[id];
+            }
+
+            return n;
         }
 
         public IEnumerable<QuestNodeData> getAllNodes()
@@ -47,29 +93,29 @@ namespace QuestSystem.Quest
         {
 
             Undo.RecordObject(this, "Create new Node");
- 
-            switch (type)
-            {
-                case QuestNodeType.StartNode:
-                    QuestStartNodeData squestdata = new QuestStartNodeData();
-                    squestdata.UID = Guid.NewGuid().ToString();
-                    startNodeDatas.Add(squestdata);
-                    OnValidate();
-                    return squestdata;
-                case QuestNodeType.RequirementNode:
-                    RequirementNodeData rquestdata = new RequirementNodeData();
-                    rquestdata.UID = Guid.NewGuid().ToString();
-                    reqireNodeDatas.Add(rquestdata);
-                    OnValidate();
-                    return rquestdata;
-                case QuestNodeType.DialogueNode:
-                    return null;
-                    break;
-                default:
-                    return null;
-                    break;
-            }
-           
+
+            //switch (type)
+            //{
+            //    case QuestNodeType.StartNode:
+            //        QuestStartNodeData squestdata = new QuestStartNodeData();
+            //        squestdata.UID = Guid.NewGuid().ToString();
+            //        startNodeDatas.Add(squestdata);
+            //        OnValidate();
+            //        return squestdata;
+            //    case QuestNodeType.RequirementNode:
+            //        RequirementNodeData rquestdata = new RequirementNodeData();
+            //        rquestdata.UID = Guid.NewGuid().ToString();
+            //        reqireNodeDatas.Add(rquestdata);
+            //        OnValidate();
+            //        return rquestdata;
+            //    case QuestNodeType.DialogueNode:
+            //        return null;
+            //        break;
+            //    default:
+            return null;
+            //        break;
+            //}
+
 
         }
 

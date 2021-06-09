@@ -21,7 +21,6 @@ namespace QuestSystem.Quest
             {
                 QuestEditorWindow window = (QuestEditorWindow)EditorWindow.GetWindow(typeof(QuestEditorWindow), false, "Quest Editor");
                 window.Init(this, target);
-                Debug.Log("Name: " + quest.questName);
             }
         }
 

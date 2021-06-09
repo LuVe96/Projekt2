@@ -85,8 +85,12 @@ namespace QuestSystem.Quest
         {
             foreach (var node in nodes) // Adds connections 
             {
-                CreateMatchingConnections(node, node.Questdata.ChildrenIDs, SegmentType.MainSegment);
-                CreateMatchingConnections(node, node.Questdata.RequirementIDs, SegmentType.RequirementSegment);
+                if(node.Questdata is MainNodeData)
+                {
+                    CreateMatchingConnections(node, (node.Questdata as MainNodeData).ChildrenIDs, SegmentType.MainSegment);
+                    CreateMatchingConnections(node, (node.Questdata as MainNodeData).RequirementIDs, SegmentType.RequirementSegment);
+                }
+
             }
         }
 
