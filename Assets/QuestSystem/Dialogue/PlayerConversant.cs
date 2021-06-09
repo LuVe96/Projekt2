@@ -64,6 +64,10 @@ namespace QuestSystem.Dialogue
         private void ShowChoices(DialogueNode[] choices)
         {
             SetupLayout(true);
+            for (int i = 0; i < choicesPanel.transform.childCount; i++)
+            {
+                Destroy(choicesPanel.transform.GetChild(i).gameObject);
+            } 
 
             foreach (DialogueNode choice in choices)
             {

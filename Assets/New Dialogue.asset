@@ -1,5 +1,92 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9182009173568766074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: bb291c87-d041-4628-bcb0-d316862536e6
+  isPlayerSpeaking: 1
+  text: 'Ne keine Lust '
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 889
+    y: 341
+    width: 200
+    height: 100
+  textFieldRect:
+    serializedVersion: 2
+    x: 20
+    y: 40
+    width: 160
+    height: 18
+--- !u!114 &-7612938031897875142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 5ddcc5d0-bf5f-40c0-bde5-68085163c24b
+  isPlayerSpeaking: 1
+  text: Na Was denn?
+  children:
+  - 6ced9d15-cd53-4204-aaff-a40794473578
+  rect:
+    serializedVersion: 2
+    x: 890
+    y: 206
+    width: 200
+    height: 100
+  textFieldRect:
+    serializedVersion: 2
+    x: 20
+    y: 40
+    width: 160
+    height: 18
+--- !u!114 &-5991962916919118088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: b364a7e2-4679-4ace-8b1e-ffbdf7dab1f1
+  isPlayerSpeaking: 0
+  text: Wollte nur etwas fragen?
+  children:
+  - 5ddcc5d0-bf5f-40c0-bde5-68085163c24b
+  - bb291c87-d041-4628-bcb0-d316862536e6
+  rect:
+    serializedVersion: 2
+    x: 644
+    y: 248
+    width: 200
+    height: 100
+  textFieldRect:
+    serializedVersion: 2
+    x: 20
+    y: 40
+    width: 160
+    height: 18
 --- !u!114 &-5498264197526857260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16,11 +103,11 @@ MonoBehaviour:
   isPlayerSpeaking: 1
   text: Was soll das?
   children:
-  - 6ced9d15-cd53-4204-aaff-a40794473578
+  - b364a7e2-4679-4ace-8b1e-ffbdf7dab1f1
   rect:
     serializedVersion: 2
-    x: 350
-    y: 217
+    x: 372
+    y: 253
     width: 200
     height: 100
   textFieldRect:
@@ -47,8 +134,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 739
-    y: 130
+    x: 1168
+    y: 90
     width: 200
     height: 100
   textFieldRect:
@@ -74,6 +161,9 @@ MonoBehaviour:
   - {fileID: 1137810045565629399}
   - {fileID: -260764335859189411}
   - {fileID: -5498264197526857260}
+  - {fileID: -5991962916919118088}
+  - {fileID: -7612938031897875142}
+  - {fileID: -9182009173568766074}
   newNodeOffset: {x: 250, y: 0}
 --- !u!114 &1137810045565629399
 MonoBehaviour:
