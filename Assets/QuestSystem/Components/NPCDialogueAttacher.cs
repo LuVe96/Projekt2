@@ -1,45 +1,56 @@
 ﻿using QuestSystem.Dialogue;
+using QuestSystem.Quest;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCDialogueAttacher : MonoBehaviour
+namespace QuestSystem
 {
-    List<Dialogue> dialogues = new List<Dialogue>() ;
-    PlayerConversant dialogManager;
-
-    public Sprite npcImage;
-    public string npcName;
-
-    public List<Dialogue> Dialogues { get => dialogues; }
-
-    // Start is called before the first frame update
-    void Start()
+    public class NPCDialogueAttacher : MonoBehaviour
     {
-        dialogManager = FindObjectOfType<PlayerConversant>();
-    }
+        List<DialogueContainer> dialogues = new List<DialogueContainer>();
+        PlayerConversant dialogManager;
 
-    public void AddDialogue(Dialogue dialogue)
-    {
-        Dialogues.Add(dialogue);
-        //foreach (DialogueNode item in dialogue.GetAllNodes())
+        public Sprite npcImage;
+        public string npcName;
+
+        public List<DialogueContainer> Dialogues { get => dialogues; }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            dialogManager = FindObjectOfType<PlayerConversant>();
+        }
+
+        public void AddDialogue(DialogueContainer dialogue)
+        {
+            Dialogues.Add(dialogue);
+            //foreach (DialogueNode item in dialogue.GetAllNodes())
+            //{
+            //    Debug.Log("Dia: " + item.Text);
+            //}
+        }
+
+        internal void DialogueHasFinished(string name)
+        {
+            foreach (DialogueContainer container in dialogues)
+            {
+                if(container.dialogue.name == name)
+                {
+                    container.dialogueHasFinished(3);
+                }
+            }
+        }
+
+        //private void OnTriggerEnter(Collider other)
         //{
-        //    Debug.Log("Dia: " + item.Text);
+        //    if(other.tag == "Player")
+        //    {
+        //        dialogManager.StartDialogue(dialogues[0], npcName, npcImage);
+        //    }
         //}
-    }
 
-    internal void DialogueHasFinished()
-    {
-        throw new NotImplementedException();
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.tag == "Player")
-    //    {
-    //        dialogManager.StartDialogue(dialogues[0], npcName, npcImage);
-    //    }
-    //}
 
 }

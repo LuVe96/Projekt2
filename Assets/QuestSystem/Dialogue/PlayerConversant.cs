@@ -69,7 +69,7 @@ namespace QuestSystem.Dialogue
             } else
             {
                 dialogPanel.SetActive(false);
-                currentNpc.DialogueHasFinished();
+                currentNpc.DialogueHasFinished(currentDialogue.name);
                 currentNpc = null;
             }
 
@@ -87,7 +87,7 @@ namespace QuestSystem.Dialogue
                 try
                 {
                     currentNpc = other.GetComponent<NPCDialogueAttacher>();
-                    StartDialogue(currentNpc.Dialogues[0], currentNpc.npcName, currentNpc.npcImage);
+                    StartDialogue(currentNpc.Dialogues[0].dialogue, currentNpc.npcName, currentNpc.npcImage);
                 }
                 catch (Exception)
                 {

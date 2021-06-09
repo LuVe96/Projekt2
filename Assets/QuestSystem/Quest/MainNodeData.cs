@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace QuestSystem.Quest
 {
+
+    public delegate void NodeHasFinished(int nextChildIndex);
+
     public abstract class MainNodeData : QuestNodeData
     {
 

@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace QuestSystem.Quest
 {
-    public delegate void NodeHasFinished(int nextChildIndex);
 
     [System.Serializable]
     public abstract class QuestNodeData

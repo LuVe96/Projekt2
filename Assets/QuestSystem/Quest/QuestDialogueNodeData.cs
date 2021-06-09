@@ -21,11 +21,31 @@ namespace QuestSystem.Quest
         public override void execute()
         {
             Debug.Log("Execute QuestDialogueNode");
-            nPCDialogueAttacher.AddDialogue(dialogue);
+            DialogueContainer container = new DialogueContainer(dialogue, DialogueHasFinished);
+            nPCDialogueAttacher.AddDialogue(container);
+        }
+
+        private void DialogueHasFinished(int nextChildIndex)
+        {
+            Debug.Log("Dialoge Has finished: " + nextChildIndex);
         }
 
         private void OnEnable()
         {
+        }
+    }
+
+    public delegate void DialogueHasFinished(int nextChildIndex);
+
+    public class DialogueContainer
+    {
+        public Dialogue.Dialogue dialogue;
+        public DialogueHasFinished dialogueHasFinished;
+
+        public DialogueContainer(Dialogue.Dialogue dialogue, DialogueHasFinished dialogueHasFinished)
+        {
+            this.dialogue = dialogue;
+            this.dialogueHasFinished = dialogueHasFinished;
         }
     }
 }
