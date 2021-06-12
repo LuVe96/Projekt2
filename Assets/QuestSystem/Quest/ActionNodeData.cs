@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace QuestSystem.Quest
 {
-    public abstract class ActionNode : QuestNodeData
+    public abstract class ActionNodeData : QuestNodeData
     {
 
         public  abstract void executeAction();

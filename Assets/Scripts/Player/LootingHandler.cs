@@ -19,10 +19,10 @@ public class LootingHandler : MonoBehaviour
             looting = true;
             var item = other.GetComponent<LootObjectHandler>().item;
             Inventory.Instance.Add(item);
-            if(item is QuestItem)
-            {
-                FindObjectOfType<QuestManager>().ArchiveEndQuest((item as QuestItem).endQuestId);
-            }
+            //if(item is QuestItem)
+            //{
+            //    FindObjectOfType<QuestManager>().ArchiveEndQuest((item as QuestItem).endQuestId);
+            //}
             Destroy(other.gameObject);
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace QuestSystem.Quest
 {
     [System.Serializable]
-    public class EnableActionData : ActionNode
+    public class EnableActionData : ActionNodeData
     {
         GameObject gObject;
         bool disable = false;

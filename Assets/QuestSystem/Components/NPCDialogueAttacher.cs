@@ -32,15 +32,29 @@ namespace QuestSystem
             //}
         }
 
-        internal void DialogueHasFinished(string name)
+        public void RemoveDialogue(DialogueContainer dialogue)
         {
-            foreach (DialogueContainer container in dialogues)
-            {
-                if(container.dialogue.name == name)
-                {
-                    container.dialogueHasFinished(3);
-                }
-            }
+            Dialogues.Remove(dialogue);
+        }
+
+            internal void DialogueHasFinished(string name)
+        {
+            //List<DialogueContainer> dialoguesToRemove = new List<DialogueContainer>();
+            //foreach (DialogueContainer container in dialogues)
+            //{
+            //    if(container.dialogue.name == name)
+            //    {
+            //        container.dialogueHasFinished(0);
+            //        dialoguesToRemove.Add(container);
+            //    }
+            //}
+
+            //foreach (DialogueContainer item in dialoguesToRemove)
+            //{
+            //    dialogues.Remove(item);
+            //}
+
+            dialogues.Find(item => item.dialogue.name == name).dialogueHasFinished(0);
         }
 
         //private void OnTriggerEnter(Collider other)

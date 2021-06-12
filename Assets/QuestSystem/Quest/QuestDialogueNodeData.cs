@@ -11,6 +11,7 @@ namespace QuestSystem.Quest
     {
         [SerializeField] Dialogue.Dialogue dialogue;
         [SerializeField] NPCDialogueAttacher nPCDialogueAttacher;
+        DialogueContainer container;
 
         public QuestDialogueNodeData(string id, NodeHasFinished nodeHasFinished, GetNodeByID getNodeByID) : base(id, nodeHasFinished, getNodeByID)
         {
@@ -22,18 +23,20 @@ namespace QuestSystem.Quest
         public override void execute()
         {
             Debug.Log("Execute QuestDialogueNode");
-            DialogueContainer container = new DialogueContainer(dialogue, DialogueHasFinished);
+            container = new DialogueContainer(dialogue, DialogueHasFinished);
             nPCDialogueAttacher.AddDialogue(container);
         }
 
         private void DialogueHasFinished(int nextChildIndex)
         {
             Debug.Log("Dialoge Has finished: " + nextChildIndex);
+            nPCDialogueAttacher.RemoveDialogue(container);
+
             foreach (string actionID in ActionIDs)
             {
                 try
                 {
-                    (GetNodeByID(actionID) as ActionNode).executeAction();
+                    (GetNodeByID(actionID) as ActionNodeData).executeAction();
                 }
                 catch (System.Exception)
                 {

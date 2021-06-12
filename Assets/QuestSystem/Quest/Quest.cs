@@ -11,11 +11,14 @@ namespace QuestSystem.Quest
     public class Quest : MonoBehaviour
     {
         public string questName;
-        [SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
+        //[SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
         [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
         [SerializeField] List<QuestDialogueNodeData> dialogNodeDatas = new List<QuestDialogueNodeData>();
         [SerializeField] List<RequirementNodeData> reqireNodeDatas = new List<RequirementNodeData>();
         [SerializeField] List<EnableActionData> enableActionDatas = new List<EnableActionData>();
+        [SerializeField] List<InventoryActionData> inventoryActionDatas = new List<InventoryActionData>();
+
+
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
         QuestNodeData aktiveNodeData;
@@ -24,46 +27,55 @@ namespace QuestSystem.Quest
         public List<QuestNodeData> Nodes { get
             {
                 List<QuestNodeData> allNodes = new List<QuestNodeData>();
-                foreach (var node in startNodeDatas)
-                {
-                    allNodes.Add(node);
-                }
-                foreach (var node in reqireNodeDatas)
-                {
-                    allNodes.Add(node);
-                }
-                foreach (var node in dialogNodeDatas)
-                {
-                    allNodes.Add(node);
-                }
-                foreach (var node in enableActionDatas)
-                {
-                    allNodes.Add(node);
-                }
+               allNodes = AddToAllNodes(startNodeDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(dialogNodeDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(enableActionDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(inventoryActionDatas.ToArray(), allNodes);
 
-                //return allNodes;
-                return nodeDatas;
+                return allNodes;
             }
+        }
+
+        private List<QuestNodeData> AddToAllNodes(QuestNodeData[] nodes, List<QuestNodeData> allNodes )
+        {
+            foreach (var node in nodes)
+            {
+                allNodes.Add(node);
+            }
+            return allNodes;
         }
 
         public Dialogue.Dialogue dia1;
         public NPCDialogueAttacher nPCDialogueAttacher1;
         public GameObject axt;
 
+        public LootItem lootItem;
+
         private void Start()
         {
             QuestStartNodeData squestdata = new QuestStartNodeData("Start_1", ContinueNodes, GetNodeByID);
             squestdata.ChildrenIDs.Add("Dialog_1");
-            nodeDatas.Add(squestdata);
+            startNodeDatas.Add(squestdata);
 
             QuestDialogueNodeData qqdata = new QuestDialogueNodeData("Dialog_1", ContinueNodes, GetNodeByID);
             qqdata.Dialogue = dia1;
             qqdata.NPCDialogueAttacher = nPCDialogueAttacher1;
             qqdata.ActionIDs.Add("Enable_1");
-            nodeDatas.Add(qqdata);
+            qqdata.ActionIDs.Add("Inventory_1");
+            qqdata.ChildrenIDs.Add("Dialog_2");
+            dialogNodeDatas.Add(qqdata);
 
             EnableActionData enData = new EnableActionData("Enable_1", axt);
-            nodeDatas.Add(enData);
+            enableActionDatas.Add(enData);
+
+            QuestDialogueNodeData qqdata2 = new QuestDialogueNodeData("Dialog_2", ContinueNodes, GetNodeByID);
+            qqdata2.Dialogue = dia1;
+            qqdata2.NPCDialogueAttacher = nPCDialogueAttacher1;
+            qqdata2.ActionIDs.Add("Inventory_1");
+            dialogNodeDatas.Add(qqdata2);
+
+            InventoryActionData inData = new InventoryActionData("Inventory_1", InventorySelectionType.Remove, lootItem, 1);
+            inventoryActionDatas.Add(inData);
         }
 
         public void StartQuest()
@@ -79,7 +91,14 @@ namespace QuestSystem.Quest
 
         void ContinueNodes(int nextChildIndex)
         {
-            aktiveNodeData = GetChildOfActive(nextChildIndex);
+            try
+            {
+                aktiveNodeData = GetChildOfActive(nextChildIndex);
+            }
+            catch (Exception)
+            {
+                Debug.Log("No Cilds found");
+            }
             (aktiveNodeData as MainNodeData).execute();
         }
 
