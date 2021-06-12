@@ -6,12 +6,13 @@ using UnityEngine;
 namespace QuestSystem.Quest
 {
     //[CreateAssetMenu(fileName = "New QuestDialogueNode", menuName = "QuestSystem/QuestDialogueNode", order = 0)]
+    [System.Serializable]
     public class QuestDialogueNodeData : MainNodeData
     {
         [SerializeField] Dialogue.Dialogue dialogue;
         [SerializeField] NPCDialogueAttacher nPCDialogueAttacher;
 
-        public QuestDialogueNodeData(string id, NodeHasFinished nodeHasFinished) : base(id, nodeHasFinished)
+        public QuestDialogueNodeData(string id, NodeHasFinished nodeHasFinished, GetNodeByID getNodeByID) : base(id, nodeHasFinished, getNodeByID)
         {
         }
 
@@ -28,6 +29,19 @@ namespace QuestSystem.Quest
         private void DialogueHasFinished(int nextChildIndex)
         {
             Debug.Log("Dialoge Has finished: " + nextChildIndex);
+            foreach (string actionID in ActionIDs)
+            {
+                try
+                {
+                    (GetNodeByID(actionID) as ActionNode).executeAction();
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+            }
+            NodeHasFinished(nextChildIndex);
         }
 
         private void OnEnable()

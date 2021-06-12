@@ -5,7 +5,7 @@ using UnityEngine;
 namespace QuestSystem.Quest
 {
     [System.Serializable]
-    public class RequirementNodeData : SubNodeData
+    public class RequirementNodeData : QuestNodeData
     {
          public string Requirement = "";
 

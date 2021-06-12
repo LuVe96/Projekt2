@@ -12,7 +12,7 @@ namespace QuestSystem.Quest
 
         [SerializeField] public string testStartString = "";
 
-        public QuestStartNodeData(string id, NodeHasFinished nodeHasFinished) : base(id, nodeHasFinished)
+        public QuestStartNodeData(string id, NodeHasFinished nodeHasFinished, GetNodeByID getNodeByID) : base(id, nodeHasFinished, getNodeByID)
         {
         }
 

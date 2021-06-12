@@ -15,6 +15,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
         [SerializeField] List<QuestDialogueNodeData> dialogNodeDatas = new List<QuestDialogueNodeData>();
         [SerializeField] List<RequirementNodeData> reqireNodeDatas = new List<RequirementNodeData>();
+        [SerializeField] List<EnableActionData> enableActionDatas = new List<EnableActionData>();
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
         QuestNodeData aktiveNodeData;
@@ -35,24 +36,34 @@ namespace QuestSystem.Quest
                 {
                     allNodes.Add(node);
                 }
+                foreach (var node in enableActionDatas)
+                {
+                    allNodes.Add(node);
+                }
 
-                return allNodes;
+                //return allNodes;
+                return nodeDatas;
             }
         }
 
         public Dialogue.Dialogue dia1;
         public NPCDialogueAttacher nPCDialogueAttacher1;
+        public GameObject axt;
 
         private void Start()
         {
-            QuestStartNodeData squestdata = new QuestStartNodeData("Start_1", ContinueNodes);
+            QuestStartNodeData squestdata = new QuestStartNodeData("Start_1", ContinueNodes, GetNodeByID);
             squestdata.ChildrenIDs.Add("Dialog_1");
-            startNodeDatas.Add(squestdata);
+            nodeDatas.Add(squestdata);
 
-            QuestDialogueNodeData qqdata = new QuestDialogueNodeData("Dialog_1", ContinueNodes);
+            QuestDialogueNodeData qqdata = new QuestDialogueNodeData("Dialog_1", ContinueNodes, GetNodeByID);
             qqdata.Dialogue = dia1;
             qqdata.NPCDialogueAttacher = nPCDialogueAttacher1;
-            dialogNodeDatas.Add(qqdata);
+            qqdata.ActionIDs.Add("Enable_1");
+            nodeDatas.Add(qqdata);
+
+            EnableActionData enData = new EnableActionData("Enable_1", axt);
+            nodeDatas.Add(enData);
         }
 
         public void StartQuest()
@@ -76,6 +87,17 @@ namespace QuestSystem.Quest
         {
             QuestNodeData n = null;
             string id = (aktiveNodeData as MainNodeData).ChildrenIDs[index];
+            if (nodeDataLookUp.ContainsKey(id))
+            {
+                n = nodeDataLookUp[id];
+            }
+
+            return n;
+        }
+
+        private QuestNodeData GetNodeByID(string id)
+        {
+            QuestNodeData n = null;
             if (nodeDataLookUp.ContainsKey(id))
             {
                 n = nodeDataLookUp[id];
