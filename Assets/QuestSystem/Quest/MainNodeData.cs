@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ namespace QuestSystem.Quest
         public List<string> RequirementIDs { get => requirementIDs; set => requirementIDs = value; }
         public List<string> ActionIDs { get => actionIDs; set => actionIDs = value; }
 
+        bool isActive = false;
+
         protected NodeHasFinished NodeHasFinished;
         protected GetNodeByID GetNodeByID;
 
@@ -30,7 +33,67 @@ namespace QuestSystem.Quest
             GetNodeByID = getNodeByID;
         }
 
-        public abstract void execute();
+        public void execute()
+        {
+            isActive = true;
+            if (CheckRequirements())
+            {
+                executeNode();
+            } else
+            {
+                // UNEXECUTE
+            }
 
+        }
+
+        private void executeByRequirement()
+        {
+            if (isActive)
+            {
+                execute();
+            }
+        }
+
+        private bool CheckRequirements()
+        {
+            foreach (string reqId in requirementIDs)
+            {
+                try
+                {
+                   if( !(GetNodeByID(reqId) as RequirementNodeData).CheckRequirement(executeByRequirement))
+                    {
+                        return false;
+                    }
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+            }
+            return true;
+        }
+
+        protected abstract void executeNode();
+
+
+        protected void FinishNode(int nextChildIndex)
+        {
+            foreach (string actionID in ActionIDs)
+            {
+                try
+                {
+                    (GetNodeByID(actionID) as ActionNodeData).executeAction();
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+            }
+            //TODO: unsubscribe Requirements über Interface?
+            isActive = false;
+            NodeHasFinished(nextChildIndex);
+        }
     } 
 }

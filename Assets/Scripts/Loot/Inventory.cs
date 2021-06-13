@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,8 +22,23 @@ public class Inventory : MonoBehaviour
 
     public List<GroupedItems> items = new List<GroupedItems>();
 
+    internal bool CheckForItem(LootItem lootItem, int count)
+    {
+        GroupedItems item = items.Find(it => it.id == lootItem.id);
+        if (item != null)
+        {
+            if(item.items.Count >= count)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
+
+    public static event Action OnInventoryChanged;
 
     public void Add(LootItem item) {
 
@@ -42,9 +58,8 @@ public class Inventory : MonoBehaviour
         {
             items.Add(new GroupedItems(item));
         }
-        
-        if(onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
+
+        UpdateInventory();
     }
 
     public void Remove(LootItem item)
@@ -71,14 +86,15 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if (onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
+        UpdateInventory();
     }
 
     public void UpdateInventory()
     {
         if (onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
+        if (OnInventoryChanged != null)
+            OnInventoryChanged.Invoke();
     }
 
     public void SetEquippedSlot(LootItem item, InventorySlotHandler equippedSlot)
@@ -93,7 +109,7 @@ public class Inventory : MonoBehaviour
     }
 }
 
-public struct GroupedItems
+public class GroupedItems
 {
     public string id;
     public List<LootItem> items;

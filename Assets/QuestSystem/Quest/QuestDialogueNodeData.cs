@@ -20,7 +20,7 @@ namespace QuestSystem.Quest
         public Dialogue.Dialogue Dialogue { get => dialogue; set => dialogue = value; }
         public NPCDialogueAttacher NPCDialogueAttacher { get => nPCDialogueAttacher; set => nPCDialogueAttacher = value; }
 
-        public override void execute()
+        protected override void executeNode()
         {
             Debug.Log("Execute QuestDialogueNode");
             container = new DialogueContainer(dialogue, DialogueHasFinished);
@@ -31,20 +31,8 @@ namespace QuestSystem.Quest
         {
             Debug.Log("Dialoge Has finished: " + nextChildIndex);
             nPCDialogueAttacher.RemoveDialogue(container);
+            FinishNode(nextChildIndex);
 
-            foreach (string actionID in ActionIDs)
-            {
-                try
-                {
-                    (GetNodeByID(actionID) as ActionNodeData).executeAction();
-                }
-                catch (System.Exception)
-                {
-
-                    throw;
-                }
-            }
-            NodeHasFinished(nextChildIndex);
         }
 
         private void OnEnable()

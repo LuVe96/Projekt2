@@ -16,10 +16,10 @@ namespace QuestSystem.Quest
         {
         }
 
-        public override void execute()
+        protected override void executeNode()
         {
             Debug.Log("Execute QuestStartNode");
-            NodeHasFinished(0);
+            FinishNode(0);
         }
     }
 

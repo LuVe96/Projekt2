@@ -14,9 +14,9 @@ namespace QuestSystem.Quest
         //[SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
         [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
         [SerializeField] List<QuestDialogueNodeData> dialogNodeDatas = new List<QuestDialogueNodeData>();
-        [SerializeField] List<RequirementNodeData> reqireNodeDatas = new List<RequirementNodeData>();
         [SerializeField] List<EnableActionData> enableActionDatas = new List<EnableActionData>();
         [SerializeField] List<InventoryActionData> inventoryActionDatas = new List<InventoryActionData>();
+        [SerializeField] List<InventoryRequireData> inventoryReqireNodeDatas = new List<InventoryRequireData>();
 
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
@@ -31,6 +31,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(dialogNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(enableActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(inventoryActionDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(inventoryReqireNodeDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -61,7 +62,6 @@ namespace QuestSystem.Quest
             qqdata.Dialogue = dia1;
             qqdata.NPCDialogueAttacher = nPCDialogueAttacher1;
             qqdata.ActionIDs.Add("Enable_1");
-            qqdata.ActionIDs.Add("Inventory_1");
             qqdata.ChildrenIDs.Add("Dialog_2");
             dialogNodeDatas.Add(qqdata);
 
@@ -71,11 +71,15 @@ namespace QuestSystem.Quest
             QuestDialogueNodeData qqdata2 = new QuestDialogueNodeData("Dialog_2", ContinueNodes, GetNodeByID);
             qqdata2.Dialogue = dia1;
             qqdata2.NPCDialogueAttacher = nPCDialogueAttacher1;
+            qqdata2.RequirementIDs.Add( "InventReq_1");
             qqdata2.ActionIDs.Add("Inventory_1");
             dialogNodeDatas.Add(qqdata2);
 
             InventoryActionData inData = new InventoryActionData("Inventory_1", InventorySelectionType.Remove, lootItem, 1);
             inventoryActionDatas.Add(inData);
+
+            InventoryRequireData inReData = new InventoryRequireData("InventReq_1", lootItem, 1);
+            inventoryReqireNodeDatas.Add(inReData);
         }
 
         public void StartQuest()
