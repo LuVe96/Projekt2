@@ -46,40 +46,40 @@ namespace QuestSystem.Quest
             return allNodes;
         }
 
-        public Dialogue.Dialogue dia1;
-        public NPCDialogueAttacher nPCDialogueAttacher1;
-        public GameObject axt;
+        //public Dialogue.Dialogue dia1;
+        //public NPCDialogueAttacher nPCDialogueAttacher1;
+        //public GameObject axt;
 
-        public LootItem lootItem;
+        //public LootItem lootItem;
 
         private void Start()
         {
-            QuestStartNodeData squestdata = new QuestStartNodeData("Start_1", ContinueNodes, GetNodeByID);
-            squestdata.ChildrenIDs.Add("Dialog_1");
-            startNodeDatas.Add(squestdata);
+            //QuestStartNodeData squestdata = new QuestStartNodeData("Start_1", ContinueNodes, GetNodeByID);
+            //squestdata.ChildrenIDs.Add("Dialog_1");
+            //startNodeDatas.Add(squestdata);
 
-            QuestDialogueNodeData qqdata = new QuestDialogueNodeData("Dialog_1", ContinueNodes, GetNodeByID);
-            qqdata.Dialogue = dia1;
-            qqdata.NPCDialogueAttacher = nPCDialogueAttacher1;
-            qqdata.ActionIDs.Add("Enable_1");
-            qqdata.ChildrenIDs.Add("Dialog_2");
-            dialogNodeDatas.Add(qqdata);
+            //QuestDialogueNodeData qqdata = new QuestDialogueNodeData("Dialog_1", ContinueNodes, GetNodeByID);
+            //qqdata.Dialogue = dia1;
+            //qqdata.NPCDialogueAttacher = nPCDialogueAttacher1;
+            //qqdata.ActionIDs.Add("Enable_1");
+            //qqdata.ChildrenIDs.Add("Dialog_2");
+            //dialogNodeDatas.Add(qqdata);
 
-            EnableActionData enData = new EnableActionData("Enable_1", axt);
-            enableActionDatas.Add(enData);
+            //EnableActionData enData = new EnableActionData("Enable_1", axt);
+            //enableActionDatas.Add(enData);
 
-            QuestDialogueNodeData qqdata2 = new QuestDialogueNodeData("Dialog_2", ContinueNodes, GetNodeByID);
-            qqdata2.Dialogue = dia1;
-            qqdata2.NPCDialogueAttacher = nPCDialogueAttacher1;
-            qqdata2.RequirementIDs.Add( "InventReq_1");
-            qqdata2.ActionIDs.Add("Inventory_1");
-            dialogNodeDatas.Add(qqdata2);
+            //QuestDialogueNodeData qqdata2 = new QuestDialogueNodeData("Dialog_2", ContinueNodes, GetNodeByID);
+            //qqdata2.Dialogue = dia1;
+            //qqdata2.NPCDialogueAttacher = nPCDialogueAttacher1;
+            //qqdata2.RequirementIDs.Add( "InventReq_1");
+            //qqdata2.ActionIDs.Add("Inventory_1");
+            //dialogNodeDatas.Add(qqdata2);
 
-            InventoryActionData inData = new InventoryActionData("Inventory_1", InventorySelectionType.Remove, lootItem, 1);
-            inventoryActionDatas.Add(inData);
+            //InventoryActionData inData = new InventoryActionData("Inventory_1", InventorySelectionType.Remove, lootItem, 1);
+            //inventoryActionDatas.Add(inData);
 
-            InventoryRequireData inReData = new InventoryRequireData("InventReq_1", lootItem, 1);
-            inventoryReqireNodeDatas.Add(inReData);
+            //InventoryRequireData inReData = new InventoryRequireData("InventReq_1", lootItem, 1);
+            //inventoryReqireNodeDatas.Add(inReData);
         }
 
         public void StartQuest()
@@ -139,27 +139,25 @@ namespace QuestSystem.Quest
 
             Undo.RecordObject(this, "Create new Node");
 
-            //switch (type)
-            //{
-            //    case QuestNodeType.StartNode:
-            //        QuestStartNodeData squestdata = new QuestStartNodeData();
-            //        squestdata.UID = Guid.NewGuid().ToString();
-            //        startNodeDatas.Add(squestdata);
-            //        OnValidate();
-            //        return squestdata;
-            //    case QuestNodeType.RequirementNode:
-            //        RequirementNodeData rquestdata = new RequirementNodeData();
-            //        rquestdata.UID = Guid.NewGuid().ToString();
-            //        reqireNodeDatas.Add(rquestdata);
-            //        OnValidate();
-            //        return rquestdata;
-            //    case QuestNodeType.DialogueNode:
-            //        return null;
-            //        break;
-            //    default:
-            return null;
-            //        break;
-            //}
+            switch (type)
+            {
+                case QuestNodeType.StartNode:
+                    QuestStartNodeData startData = new QuestStartNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
+                    startNodeDatas.Add(startData);
+                    return startData;
+                case QuestNodeType.RequirementNode:
+                    //RequirementNodeData rquestdata = new RequirementNodeData();
+                    //rquestdata.UID = Guid.NewGuid().ToString();
+                    //reqireNodeDatas.Add(rquestdata);
+                    //OnValidate();
+                    return null;
+                case QuestNodeType.DialogueNode:
+                    QuestDialogueNodeData dialogueData = new QuestDialogueNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
+                    dialogNodeDatas.Add(dialogueData);
+                    return dialogueData;
+                default:
+                    return null;
+            }
 
 
         }

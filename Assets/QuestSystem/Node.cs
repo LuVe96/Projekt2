@@ -112,6 +112,9 @@ namespace QuestSystem
                 case SegmentType.RequirementSegment:
                     (Questdata as MainNodeData).RequirementIDs.Add(childNode.Questdata.UID);
                     break;
+                case SegmentType.ActionSegment:
+                    (Questdata as MainNodeData).ActionIDs.Add(childNode.Questdata.UID);
+                    break;
                 default:
                     break;
             } 
@@ -126,6 +129,9 @@ namespace QuestSystem
                     break;
                 case SegmentType.RequirementSegment:
                     (Questdata as MainNodeData).RequirementIDs.Remove(childNode.Questdata.UID);
+                    break;
+                case SegmentType.ActionSegment:
+                    (Questdata as MainNodeData).ActionIDs.Remove(childNode.Questdata.UID);
                     break;
                 default:
                     break;

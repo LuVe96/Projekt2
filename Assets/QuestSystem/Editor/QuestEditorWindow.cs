@@ -72,6 +72,10 @@ namespace QuestSystem.Quest
                 {
                     nodes.Add(new RequirementNode(OnClickNodePort, node));
                 }
+                else if (node is QuestDialogueNodeData)
+                {
+                    nodes.Add(new DialogueNode(OnClickNodePort, node));
+                }
             }
 
             // fill Lookup to get nodes over ID in futher steps
@@ -89,6 +93,7 @@ namespace QuestSystem.Quest
                 {
                     CreateMatchingConnections(node, (node.Questdata as MainNodeData).ChildrenIDs, SegmentType.MainSegment);
                     CreateMatchingConnections(node, (node.Questdata as MainNodeData).RequirementIDs, SegmentType.RequirementSegment);
+                    CreateMatchingConnections(node, (node.Questdata as MainNodeData).ActionIDs, SegmentType.ActionSegment);
                 }
 
             }
@@ -111,6 +116,9 @@ namespace QuestSystem.Quest
                                     break;
                                 case SegmentType.RequirementSegment:
                                     AddConnection(segment.Value, childSegment.Value, ConnectionPointType.ReqIn, ConnectionPointType.ReqOut);
+                                    break;
+                                case SegmentType.ActionSegment:
+                                    AddConnection(segment.Value, childSegment.Value, ConnectionPointType.ActIn, ConnectionPointType.ActOut);
                                     break;
                                 default:
                                     break;
@@ -195,6 +203,7 @@ namespace QuestSystem.Quest
             GenericMenu genericMenu = new GenericMenu();
             genericMenu.AddItem(new GUIContent("Add start node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StartNode));
             genericMenu.AddItem(new GUIContent("Add Require node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.RequirementNode));
+            genericMenu.AddItem(new GUIContent("Add Dialogue node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.DialogueNode));
             genericMenu.ShowAsContext();
         }
  
@@ -210,6 +219,7 @@ namespace QuestSystem.Quest
                     nodes.Add(new RequirementNode(mousePosition, 200, 100, OnClickNodePort, questdate));
                     break;
                 case QuestNodeType.DialogueNode:
+                    nodes.Add(new DialogueNode(mousePosition, 200, 100, OnClickNodePort, questdate));
                     break;
                 default:
                     break;
@@ -286,6 +296,12 @@ namespace QuestSystem.Quest
                     break;
                 case ConnectionPointType.ReqOut:
                     OnClickOutPoint(port, ConnectionPointType.ReqIn);
+                    break;
+                case ConnectionPointType.ActIn:
+                    OnClickInPoint(port, ConnectionPointType.ActOut);
+                    break;
+                case ConnectionPointType.ActOut:
+                    OnClickOutPoint(port, ConnectionPointType.ActIn);
                     break;
                 default:
                     break;

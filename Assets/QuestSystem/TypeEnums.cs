@@ -15,7 +15,9 @@ namespace QuestSystem
         MainIn,
         MainOut,
         ReqIn,
-        ReqOut
+        ReqOut,
+        ActIn,
+        ActOut,
     }
 
     public enum PortPosition
@@ -26,7 +28,8 @@ namespace QuestSystem
     public enum SegmentType
     {
         MainSegment,
-        RequirementSegment
+        RequirementSegment,
+        ActionSegment
     }
 
     public struct PortProps
