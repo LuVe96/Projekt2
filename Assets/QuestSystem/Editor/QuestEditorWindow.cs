@@ -18,6 +18,13 @@ namespace QuestSystem.Quest
 
         private NodePort selectedInPoint;
         private NodePort selectedOutPoint;
+        Vector2 scrollPosition;
+        [NonSerialized]
+        bool draggingCanvas = false;
+        [NonSerialized]
+        Vector2 draggingCanvasOffset;
+
+        public Vector2 canvasSize = new Vector2(4000, 2000);
 
         [MenuItem("Tools/QuestWindow")]
         public static void Init()
@@ -154,13 +161,18 @@ namespace QuestSystem.Quest
             }
             else
             {
-                EditorGUILayout.LabelField("Name: " + currentQuest.questName);
-                currentQuest.questName = EditorGUILayout.TextField("Name: ", currentQuest.questName);
+                scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+                Rect canvas = GUILayoutUtility.GetRect(canvasSize.x, canvasSize.y);
+                Texture2D texture = Resources.Load("background") as Texture2D;
+                Rect textCoords = new Rect(0, 0, canvasSize.x / texture.width, canvasSize.y / texture.height);
+                GUI.DrawTextureWithTexCoords(canvas, texture, textCoords);
 
                 DrawNodes();
                 DrawConnections();
 
                 DrawConnectionLine(Event.current);
+
+                EditorGUILayout.EndScrollView();
 
                 ProcessNodeEvents(Event.current);
                 ProccessEvents(Event.current);
@@ -175,7 +187,19 @@ namespace QuestSystem.Quest
             }
         }
 
-       
+   
+
+        private bool IsNodeAtPoint(Vector2 point)
+        {
+            foreach (Node node in nodes)
+            {
+                if (node.Rect.Contains(point))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         private void ProcessNodeEvents(Event current)
         {
@@ -183,7 +207,7 @@ namespace QuestSystem.Quest
             {
                 for (int i = nodes.Count - 1; i >= 0; i--)
                 {
-                    bool guiChanged = nodes[i].ProcessEvents(current);
+                    bool guiChanged = nodes[i].ProcessEvents(current, scrollPosition);
 
                     if (guiChanged)
                     {
@@ -195,14 +219,30 @@ namespace QuestSystem.Quest
 
         private void ProccessEvents(Event current)
         {
-            switch (current.type)
+           
+            if (current.type == EventType.MouseDown)
             {
-                case EventType.MouseDown:
-                    if (current.button == 1)
-                    {
-                        ProcessContextMenu(current.mousePosition);
-                    }
-                    break;
+                // Open PopupMenu
+                if (current.button == 1)
+                {
+                    ProcessContextMenu(current.mousePosition);
+                }
+               
+                if (current.button == 0 && !IsNodeAtPoint(current.mousePosition + scrollPosition))
+                {
+                    draggingCanvas = true;
+                    draggingCanvasOffset = Event.current.mousePosition + scrollPosition;
+                }
+            }
+            else if (current.type == EventType.MouseDrag && draggingCanvas && current.button == 0)
+            {
+                scrollPosition = draggingCanvasOffset - Event.current.mousePosition;
+                GUI.changed = true;
+
+            }
+            else if (Event.current.type == EventType.MouseUp && draggingCanvas)
+            {
+                draggingCanvas = false;
             }
         }
 

@@ -138,14 +138,14 @@ namespace QuestSystem
             }
         }
 
-        public bool ProcessEvents(Event e)
+        public bool ProcessEvents(Event e, Vector2 scrollPosition)
         {
             switch (e.type)
             {
                 case EventType.MouseDown:
                     if (e.button == 0)
                     {
-                        if (Rect.Contains(e.mousePosition))
+                        if (Rect.Contains(e.mousePosition + scrollPosition))
                         {
                             isDragged = true;
                             GUI.changed = true;
