@@ -50,8 +50,9 @@ namespace QuestSystem
 
         protected override void DrawContent()
         {
-            mainSegment.Begin();
             GUILayout.Label("Dialogue Node");
+
+            mainSegment.Begin();
             GUILayout.Space(20);
             GUILayout.Label("Dialogue:");
             DialogueNodeData.Dialogue = (Dialogue.Dialogue)EditorGUILayout.ObjectField(DialogueNodeData.Dialogue, typeof(Dialogue.Dialogue),false);

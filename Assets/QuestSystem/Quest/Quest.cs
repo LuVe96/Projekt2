@@ -23,7 +23,7 @@ namespace QuestSystem.Quest
 
         QuestNodeData aktiveNodeData;
 
-        //FOR_NEW: Make List and add to Node Prop
+        //FOR_NEW: 04 Make List and add to Node Prop
         public List<QuestNodeData> Nodes { get
             {
                 List<QuestNodeData> allNodes = new List<QuestNodeData>();
@@ -134,6 +134,7 @@ namespace QuestSystem.Quest
             return Nodes;
         }
 
+        //FOR_NEW: 05 Create new Data Instance
         public QuestNodeData CreateNewNode(QuestNodeType type)
         {
 
@@ -144,17 +145,15 @@ namespace QuestSystem.Quest
                 case QuestNodeType.StartNode:
                     QuestStartNodeData startData = new QuestStartNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
                     startNodeDatas.Add(startData);
-                    return startData;
-                case QuestNodeType.RequirementNode:
-                    //RequirementNodeData rquestdata = new RequirementNodeData();
-                    //rquestdata.UID = Guid.NewGuid().ToString();
-                    //reqireNodeDatas.Add(rquestdata);
-                    //OnValidate();
-                    return null;
+                    return startData;     
                 case QuestNodeType.DialogueNode:
                     QuestDialogueNodeData dialogueData = new QuestDialogueNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
                     dialogNodeDatas.Add(dialogueData);
                     return dialogueData;
+                case QuestNodeType.InventoryRequirementNode:
+                    InventoryRequireData invReqData = new InventoryRequireData(Guid.NewGuid().ToString());
+                    inventoryReqireNodeDatas.Add(invReqData);
+                    return invReqData;
                 default:
                     return null;
             }

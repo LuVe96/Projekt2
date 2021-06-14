@@ -46,7 +46,7 @@ namespace QuestSystem.Quest
             }
         }
 
-        //FOR_NEW: Setup with loaded Data
+        //FOR_NEW: 02 Setup with loaded Data
         private void SetupEditor(Quest quest)
         {
             nodes.Clear();
@@ -64,17 +64,31 @@ namespace QuestSystem.Quest
         {
             foreach (var node in currentQuest.Nodes) // Add nodes with nodeData
             {
-                if (node is QuestStartNodeData)
+                //if (node is QuestStartNodeData)
+                //{
+                //    nodes.Add(new StartNode(OnClickNodePort, node));
+                //}
+                //else if (node is RequirementNodeData)
+                //{
+                //    nodes.Add(new RequirementNode(OnClickNodePort, node));
+                //}
+                //else if (node is QuestDialogueNodeData)
+                //{
+                //    nodes.Add(new DialogueNode(OnClickNodePort, node));
+                //}
+
+                switch (node)
                 {
-                    nodes.Add(new StartNode(OnClickNodePort, node));
-                }
-                else if (node is RequirementNodeData)
-                {
-                    nodes.Add(new RequirementNode(OnClickNodePort, node));
-                }
-                else if (node is QuestDialogueNodeData)
-                {
-                    nodes.Add(new DialogueNode(OnClickNodePort, node));
+                    case QuestStartNodeData n:
+                        nodes.Add(new StartNode(OnClickNodePort, n));
+                        break;
+                    case QuestDialogueNodeData n:
+                        nodes.Add(new DialogueNode(OnClickNodePort, n));
+                        break;
+                    case InventoryRequireData n:
+                        nodes.Add(new InventoryRequirementNode(OnClickNodePort, n)); break;
+                    default:
+                        break;
                 }
             }
 
@@ -197,13 +211,13 @@ namespace QuestSystem.Quest
             }
         }
 
-        //FOR_NEW: Add new Node by ContextMenu
+        //FOR_NEW: 01 Add new Node by ContextMenu
         private void ProcessContextMenu(Vector2 mousePosition)
         {
             GenericMenu genericMenu = new GenericMenu();
             genericMenu.AddItem(new GUIContent("Add start node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StartNode));
-            genericMenu.AddItem(new GUIContent("Add Require node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.RequirementNode));
             genericMenu.AddItem(new GUIContent("Add Dialogue node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.DialogueNode));
+            genericMenu.AddItem(new GUIContent("Add Invnetory Requirement node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryRequirementNode));
             genericMenu.ShowAsContext();
         }
  
@@ -215,11 +229,11 @@ namespace QuestSystem.Quest
                 case QuestNodeType.StartNode:
                     nodes.Add(new StartNode(mousePosition, 200, 100, OnClickNodePort, questdate));
                     break;
-                case QuestNodeType.RequirementNode:
-                    nodes.Add(new RequirementNode(mousePosition, 200, 100, OnClickNodePort, questdate));
-                    break;
                 case QuestNodeType.DialogueNode:
                     nodes.Add(new DialogueNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    break;
+                case QuestNodeType.InventoryRequirementNode:
+                    nodes.Add(new InventoryRequirementNode(mousePosition, 200, 100, OnClickNodePort, questdate));
                     break;
                 default:
                     break;

@@ -13,16 +13,17 @@ namespace QuestSystem.Quest
     {
 
         LootItem lootItem;
-        int count = 0;
+        int count = 1;
 
         bool addedAsObserver = false;
 
-        public InventoryRequireData(string id, LootItem lootItem, int count)
+        public InventoryRequireData(string id)
         {
             this.uID = id;
-            this.lootItem = lootItem;
-            this.count = count;
         }
+
+        public LootItem LootItem { get => lootItem; set => lootItem = value; }
+        public int Count { get => count; set => count = value; }
 
         public override bool CheckRequirementNode()
         {
@@ -32,7 +33,7 @@ namespace QuestSystem.Quest
                 Inventory.OnInventoryChanged += InventoryHasChanged;
                 addedAsObserver = true;
             }
-            return Inventory.Instance.CheckForItem(lootItem, count);
+            return Inventory.Instance.CheckForItem(LootItem, Count);
         }
 
         public void UnsubscribeEvent()
@@ -42,7 +43,7 @@ namespace QuestSystem.Quest
 
         private void InventoryHasChanged()
         {
-            if(Inventory.Instance.CheckForItem(lootItem, count))
+            if(Inventory.Instance.CheckForItem(LootItem, Count))
             {
                 OnRequirementCheckPassed();
             }
