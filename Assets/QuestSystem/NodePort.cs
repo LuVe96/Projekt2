@@ -42,21 +42,27 @@ namespace QuestSystem
         {
             style = new GUIStyle();
 
-            //if(type == ConnectionPointType.MainIn)
-            //{
-            //    style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left.png") as Texture2D;
-            //    style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn left on.png") as Texture2D;
-            //    style.border = new RectOffset(4, 4, 12, 12);
-            //} else
-            //{
-            //    style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right.png") as Texture2D;
-            //    style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right on.png") as Texture2D;
-            //    style.border = new RectOffset(4, 4, 12, 12);
-            //}
+            switch (type)
+            {
+                case ConnectionPointType.MainIn:
+                case ConnectionPointType.MainOut:
+                    style.normal.background = Resources.Load("port_main") as Texture2D;
+                    style.active.background = Resources.Load("port_main_pressed") as Texture2D;
+                    break;
+                case ConnectionPointType.ReqIn:
+                case ConnectionPointType.ReqOut:
+                    style.normal.background = Resources.Load("port_requirement") as Texture2D;
+                    style.active.background = Resources.Load("port_requirement_pressed") as Texture2D;
+                    break;
+                case ConnectionPointType.ActIn:
+                case ConnectionPointType.ActOut:
+                    style.normal.background = Resources.Load("port_action") as Texture2D;
+                    style.active.background = Resources.Load("port_action_pressed") as Texture2D;
+                    break;
+                default:
+                    break;
+            }
 
-            style.normal.background = Resources.Load("port_main") as Texture2D;
-            style.active.background = Resources.Load("port_main_pressed") as Texture2D;
-            //style.border = new RectOffset(10, 10, 10, 10);
 
         }
 

@@ -38,6 +38,8 @@ namespace QuestSystem.Quest
 
         private void OnSelectionChanged()
         {
+            if (Selection.activeGameObject.GetComponent<Quest>() == null) return;
+
             Quest quest = Selection.activeGameObject.GetComponent<Quest>() as Quest;
             if (quest != null)
             {
