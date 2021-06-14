@@ -27,7 +27,7 @@ namespace QuestSystem.Quest
         public List<QuestNodeData> Nodes { get
             {
                 List<QuestNodeData> allNodes = new List<QuestNodeData>();
-               allNodes = AddToAllNodes(startNodeDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(startNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(dialogNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(enableActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(inventoryActionDatas.ToArray(), allNodes);
@@ -145,7 +145,7 @@ namespace QuestSystem.Quest
                 case QuestNodeType.StartNode:
                     QuestStartNodeData startData = new QuestStartNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
                     startNodeDatas.Add(startData);
-                    return startData;     
+                    return startData;
                 case QuestNodeType.DialogueNode:
                     QuestDialogueNodeData dialogueData = new QuestDialogueNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
                     dialogNodeDatas.Add(dialogueData);
@@ -154,6 +154,14 @@ namespace QuestSystem.Quest
                     InventoryRequireData invReqData = new InventoryRequireData(Guid.NewGuid().ToString());
                     inventoryReqireNodeDatas.Add(invReqData);
                     return invReqData;
+                case QuestNodeType.InventoryActionNode:
+                    InventoryActionData invActData = new InventoryActionData(Guid.NewGuid().ToString());
+                    inventoryActionDatas.Add(invActData);
+                    return invActData;
+                case QuestNodeType.EnableActionNode:
+                    EnableActionData enActData = new EnableActionData(Guid.NewGuid().ToString());
+                    enableActionDatas.Add(enActData);
+                    return enActData;
                 default:
                     return null;
             }
@@ -161,7 +169,7 @@ namespace QuestSystem.Quest
 
         }
 
-      
+
 
         private void OnValidate()
         {

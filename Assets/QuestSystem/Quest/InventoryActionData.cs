@@ -10,26 +10,27 @@ namespace QuestSystem.Quest
     {
         InventorySelectionType inventoryAction = InventorySelectionType.Add;
         LootItem lootItem;
-        int count;
+        int count = 1;
 
-        public InventoryActionData(string id, InventorySelectionType inventoryAction, LootItem lootItem, int count)
+        public InventoryActionData(string id)
         {
             this.uID = id;
-            this.inventoryAction = inventoryAction;
-            this.lootItem = lootItem;
-            this.count = count;
         }
+
+        public InventorySelectionType InventoryAction { get => inventoryAction; set => inventoryAction = value; }
+        public LootItem LootItem { get => lootItem; set => lootItem = value; }
+        public int Count { get => count; set => count = value; }
 
         public override void executeAction()
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Count; i++)
             {
-                if(inventoryAction == InventorySelectionType.Add)
+                if(InventoryAction == InventorySelectionType.Add)
                 {
-                    Inventory.Instance.Add(lootItem);
+                    Inventory.Instance.Add(LootItem);
                 } else
                 {
-                    Inventory.Instance.Remove(lootItem);
+                    Inventory.Instance.Remove(LootItem);
                 }
                
             }

@@ -10,20 +10,21 @@ namespace QuestSystem.Quest
         GameObject gObject;
         bool disable = false;
 
-        public EnableActionData(string id, GameObject gObject, bool disable = false)
+        public EnableActionData(string id)
         {
-            this.gObject = gObject;
-            this.disable = disable;
             this.uID = id;
         }
+
+        public GameObject GObject { get => gObject; set => gObject = value; }
+        public bool Disable { get => disable; set => disable = value; }
 
         public override void executeAction()
         {
             Debug.Log("Execute Enable Action");
 
-            if(gObject != null)
+            if(GObject != null)
             {
-                gObject.SetActive(!disable);
+                GObject.SetActive(!Disable);
             }
             else
             {

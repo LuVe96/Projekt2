@@ -46,7 +46,6 @@ namespace QuestSystem.Quest
             }
         }
 
-        //FOR_NEW: 02 Setup with loaded Data
         private void SetupEditor(Quest quest)
         {
             nodes.Clear();
@@ -60,6 +59,7 @@ namespace QuestSystem.Quest
             SetupConnections();
         }
 
+        //FOR_NEW: 02 Setup with loaded Data
         private void SetupNodes()
         {
             foreach (var node in currentQuest.Nodes) // Add nodes with nodeData
@@ -87,6 +87,10 @@ namespace QuestSystem.Quest
                         break;
                     case InventoryRequireData n:
                         nodes.Add(new InventoryRequirementNode(OnClickNodePort, n)); break;
+                    case InventoryActionData n:
+                        nodes.Add(new InventoryActionNode(OnClickNodePort, n)); break;
+                    case EnableActionData n:
+                        nodes.Add(new EnableActionNode(OnClickNodePort, n)); break;
                     default:
                         break;
                 }
@@ -218,6 +222,8 @@ namespace QuestSystem.Quest
             genericMenu.AddItem(new GUIContent("Add start node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StartNode));
             genericMenu.AddItem(new GUIContent("Add Dialogue node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.DialogueNode));
             genericMenu.AddItem(new GUIContent("Add Invnetory Requirement node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryRequirementNode));
+            genericMenu.AddItem(new GUIContent("Add Invnetory Action node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryActionNode));
+            genericMenu.AddItem(new GUIContent("Add Enable Action node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode));
             genericMenu.ShowAsContext();
         }
  
@@ -235,10 +241,16 @@ namespace QuestSystem.Quest
                 case QuestNodeType.InventoryRequirementNode:
                     nodes.Add(new InventoryRequirementNode(mousePosition, 200, 100, OnClickNodePort, questdate));
                     break;
+                case QuestNodeType.InventoryActionNode:
+                    nodes.Add(new InventoryActionNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    break;
+                case QuestNodeType.EnableActionNode:
+                    nodes.Add(new EnableActionNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    break;
                 default:
                     break;
             }
-            
+
         }
 
         private void DrawNodes()
