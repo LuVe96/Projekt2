@@ -14,6 +14,7 @@ namespace QuestSystem.Quest
         //[SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
         [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
         [SerializeField] List<QuestDialogueNodeData> dialogNodeDatas = new List<QuestDialogueNodeData>();
+        [SerializeField] List<StandartNodeData> standartNodeDatas = new List<StandartNodeData>();
         [SerializeField] List<EnableActionData> enableActionDatas = new List<EnableActionData>();
         [SerializeField] List<InventoryActionData> inventoryActionDatas = new List<InventoryActionData>();
         [SerializeField] List<InventoryRequireData> inventoryReqireNodeDatas = new List<InventoryRequireData>();
@@ -32,6 +33,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(enableActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(inventoryActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(inventoryReqireNodeDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(standartNodeDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -162,6 +164,10 @@ namespace QuestSystem.Quest
                     EnableActionData enActData = new EnableActionData(Guid.NewGuid().ToString());
                     enableActionDatas.Add(enActData);
                     return enActData;
+                case QuestNodeType.StandartNode:
+                    StandartNodeData stdData = new StandartNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
+                    standartNodeDatas.Add(stdData);
+                    return stdData;
                 default:
                     return null;
             }

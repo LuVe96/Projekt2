@@ -4,18 +4,17 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace QuestSystem
 {
 
-    public class DialogueNode : Node
+    public class StandartNode : Node
     {
 
-        public DialogueNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(OnClickNodePort, _questdata)
+        public StandartNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(OnClickNodePort, _questdata)
         {
         }
 
-        public DialogueNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(position, width, height, OnClickNodePort, _questdata)
+        public StandartNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(position, width, height, OnClickNodePort, _questdata)
         {
         }
 
@@ -23,7 +22,7 @@ namespace QuestSystem
         PortSegment requirementSegment;
         PortSegment actionSegment;
 
-        public QuestDialogueNodeData DialogueNodeData { get => (QuestDialogueNodeData)Questdata; set { } }
+        public StandartNodeData StandartNodeData { get => (StandartNodeData)Questdata; set { } }
 
 
         protected override void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments)
@@ -50,19 +49,12 @@ namespace QuestSystem
 
         protected override void DrawContent()
         {
-            GUILayout.Label("Dialogue Node");
+            GUILayout.Label("Standart Node");
             mainSegment.Begin();
             mainSegment.End();
             GUILayout.Space(20);
 
-            GUILayout.Label("Dialogue:");
-            DialogueNodeData.Dialogue = (Dialogue.Dialogue)EditorGUILayout.ObjectField(DialogueNodeData.Dialogue, typeof(Dialogue.Dialogue),false);
-            GUILayout.Space(20);
-            GUILayout.Label("NPC:");
-            DialogueNodeData.NPCDialogueAttacher = (NPCDialogueAttacher)EditorGUILayout.ObjectField(DialogueNodeData.NPCDialogueAttacher, typeof(NPCDialogueAttacher), true);
-
-
-            requirementSegment.Begin(); 
+            requirementSegment.Begin();
             EditorGUILayout.LabelField("Requirements");
             requirementSegment.End();
 

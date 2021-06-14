@@ -64,19 +64,6 @@ namespace QuestSystem.Quest
         {
             foreach (var node in currentQuest.Nodes) // Add nodes with nodeData
             {
-                //if (node is QuestStartNodeData)
-                //{
-                //    nodes.Add(new StartNode(OnClickNodePort, node));
-                //}
-                //else if (node is RequirementNodeData)
-                //{
-                //    nodes.Add(new RequirementNode(OnClickNodePort, node));
-                //}
-                //else if (node is QuestDialogueNodeData)
-                //{
-                //    nodes.Add(new DialogueNode(OnClickNodePort, node));
-                //}
-
                 switch (node)
                 {
                     case QuestStartNodeData n:
@@ -91,6 +78,8 @@ namespace QuestSystem.Quest
                         nodes.Add(new InventoryActionNode(OnClickNodePort, n)); break;
                     case EnableActionData n:
                         nodes.Add(new EnableActionNode(OnClickNodePort, n)); break;
+                    case StandartNodeData n:
+                        nodes.Add(new StandartNode(OnClickNodePort, n)); break;
                     default:
                         break;
                 }
@@ -219,11 +208,12 @@ namespace QuestSystem.Quest
         private void ProcessContextMenu(Vector2 mousePosition)
         {
             GenericMenu genericMenu = new GenericMenu();
+            genericMenu.AddItem(new GUIContent("Add Standart node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StandartNode));
             genericMenu.AddItem(new GUIContent("Add start node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StartNode));
             genericMenu.AddItem(new GUIContent("Add Dialogue node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.DialogueNode));
             genericMenu.AddItem(new GUIContent("Add Invnetory Requirement node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryRequirementNode));
             genericMenu.AddItem(new GUIContent("Add Invnetory Action node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryActionNode));
-            genericMenu.AddItem(new GUIContent("Add Enable Action node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode));
+            genericMenu.AddItem(new GUIContent("Add Enable Action node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode));;
             genericMenu.ShowAsContext();
         }
  
@@ -246,6 +236,9 @@ namespace QuestSystem.Quest
                     break;
                 case QuestNodeType.EnableActionNode:
                     nodes.Add(new EnableActionNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    break;
+                case QuestNodeType.StandartNode:
+                    nodes.Add(new StandartNode(mousePosition, 200, 100, OnClickNodePort, questdate));
                     break;
                 default:
                     break;

@@ -8,7 +8,7 @@ namespace QuestSystem
 
     public enum QuestNodeType 
     {
-        StartNode, DialogueNode, 
+        StartNode, DialogueNode, StandartNode,
         InventoryRequirementNode, 
         InventoryActionNode, EnableActionNode
     }
