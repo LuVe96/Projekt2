@@ -91,7 +91,16 @@ namespace QuestSystem.Quest
                     throw;
                 }
             }
+
             //TODO: unsubscribe Requirements über Interface?
+            foreach (string reqId in requirementIDs)
+            {
+                RequirementNodeData rnd = (GetNodeByID(reqId) as RequirementNodeData);
+                if(rnd is IUnsubscribeEvent)
+                {
+                    (rnd as IUnsubscribeEvent).UnsubscribeEvent();
+                }
+            }
             isActive = false;
             NodeHasFinished(nextChildIndex);
         }

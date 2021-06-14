@@ -3,8 +3,13 @@ using UnityEngine;
 
 namespace QuestSystem.Quest
 {
+    public interface IUnsubscribeEvent
+    {
+        void UnsubscribeEvent();
+    }
+
     [Serializable]
-    public class InventoryRequireData : RequirementNodeData
+    public class InventoryRequireData : RequirementNodeData, IUnsubscribeEvent
     {
 
         LootItem lootItem;
@@ -28,6 +33,11 @@ namespace QuestSystem.Quest
                 addedAsObserver = true;
             }
             return Inventory.Instance.CheckForItem(lootItem, count);
+        }
+
+        public void UnsubscribeEvent()
+        {
+            Inventory.OnInventoryChanged -= InventoryHasChanged;
         }
 
         private void InventoryHasChanged()
