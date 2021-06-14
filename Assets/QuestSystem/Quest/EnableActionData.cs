@@ -7,8 +7,8 @@ namespace QuestSystem.Quest
     [System.Serializable]
     public class EnableActionData : ActionNodeData
     {
-        GameObject gObject;
-        bool disable = false;
+        [SerializeField] GameObject gObject;
+        [SerializeField] bool disable = false;
 
         public EnableActionData(string id)
         {

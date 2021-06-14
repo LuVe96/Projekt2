@@ -8,9 +8,9 @@ namespace QuestSystem.Quest
     [System.Serializable]
     public class InventoryActionData : ActionNodeData
     {
-        InventorySelectionType inventoryAction = InventorySelectionType.Add;
-        LootItem lootItem;
-        int count = 1;
+        [SerializeField] InventorySelectionType inventoryAction = InventorySelectionType.Add;
+        [SerializeField]  LootItem lootItem;
+        [SerializeField]  int count = 1;
 
         public InventoryActionData(string id)
         {

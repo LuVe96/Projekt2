@@ -225,7 +225,7 @@ namespace QuestSystem.Quest
                 // Open PopupMenu
                 if (current.button == 1)
                 {
-                    ProcessContextMenu(current.mousePosition);
+                    ProcessContextMenu(current.mousePosition + scrollPosition);
                 }
                
                 if (current.button == 0 && !IsNodeAtPoint(current.mousePosition + scrollPosition))

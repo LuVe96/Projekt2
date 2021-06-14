@@ -90,7 +90,7 @@ namespace QuestSystem.Quest
             if (Nodes.Count > 0)
             {
                 aktiveNodeData = Nodes[0];
-                (aktiveNodeData as MainNodeData).execute();
+                (aktiveNodeData as MainNodeData).execute(ContinueNodes, GetNodeByID);
 
             }
         }
@@ -105,7 +105,7 @@ namespace QuestSystem.Quest
             {
                 Debug.Log("No Cilds found");
             }
-            (aktiveNodeData as MainNodeData).execute();
+            (aktiveNodeData as MainNodeData).execute(ContinueNodes, GetNodeByID);
         }
 
         private QuestNodeData GetChildOfActive(int index)
@@ -145,11 +145,11 @@ namespace QuestSystem.Quest
             switch (type)
             {
                 case QuestNodeType.StartNode:
-                    QuestStartNodeData startData = new QuestStartNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
+                    QuestStartNodeData startData = new QuestStartNodeData(Guid.NewGuid().ToString());
                     startNodeDatas.Add(startData);
                     return startData;
                 case QuestNodeType.DialogueNode:
-                    QuestDialogueNodeData dialogueData = new QuestDialogueNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
+                    QuestDialogueNodeData dialogueData = new QuestDialogueNodeData(Guid.NewGuid().ToString());
                     dialogNodeDatas.Add(dialogueData);
                     return dialogueData;
                 case QuestNodeType.InventoryRequirementNode:
@@ -165,7 +165,7 @@ namespace QuestSystem.Quest
                     enableActionDatas.Add(enActData);
                     return enActData;
                 case QuestNodeType.StandartNode:
-                    StandartNodeData stdData = new StandartNodeData(Guid.NewGuid().ToString(), ContinueNodes, GetNodeByID);
+                    StandartNodeData stdData = new StandartNodeData(Guid.NewGuid().ToString());
                     standartNodeDatas.Add(stdData);
                     return stdData;
                 default:

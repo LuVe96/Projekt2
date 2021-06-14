@@ -11,7 +11,7 @@ namespace QuestSystem.Quest
     {
 
 
-        public StandartNodeData(string id, NodeHasFinished nodeHasFinished, GetNodeByID getNodeByID) : base(id, nodeHasFinished, getNodeByID)
+        public StandartNodeData(string id) : base(id)
         {
         }
 

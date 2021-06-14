@@ -12,8 +12,8 @@ namespace QuestSystem.Quest
     public class InventoryRequireData : RequirementNodeData, IUnsubscribeEvent
     {
 
-        LootItem lootItem;
-        int count = 1;
+        [SerializeField] LootItem lootItem;
+        [SerializeField] int count = 1;
 
         bool addedAsObserver = false;
 

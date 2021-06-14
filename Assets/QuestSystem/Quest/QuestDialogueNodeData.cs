@@ -13,7 +13,7 @@ namespace QuestSystem.Quest
         [SerializeField] NPCDialogueAttacher nPCDialogueAttacher;
         DialogueContainer container;
 
-        public QuestDialogueNodeData(string id, NodeHasFinished nodeHasFinished, GetNodeByID getNodeByID) : base(id, nodeHasFinished, getNodeByID)
+        public QuestDialogueNodeData(string id) : base(id)
         {
         }
 

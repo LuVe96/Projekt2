@@ -23,14 +23,19 @@ namespace QuestSystem.Quest
 
         bool isActive = false;
 
-        protected NodeHasFinished NodeHasFinished;
-        protected GetNodeByID GetNodeByID;
+        [SerializeField]  protected NodeHasFinished NodeHasFinished;
+        [SerializeField] protected GetNodeByID GetNodeByID;
 
-        public MainNodeData(string uID, NodeHasFinished nodeHasFinished, GetNodeByID getNodeByID)
+        public MainNodeData(string uID)
         {
             this.uID = uID;
+        }
+
+        public void execute(NodeHasFinished nodeHasFinished, GetNodeByID getNodeByID)
+        {
             NodeHasFinished = nodeHasFinished;
             GetNodeByID = getNodeByID;
+            execute();
         }
 
         public void execute()
