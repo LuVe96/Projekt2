@@ -87,6 +87,7 @@ namespace QuestSystem
                     Rect r = Rect;
                     r.height = contentHeight + 35;
                     Rect = r;
+
                 }
             }
 
@@ -102,9 +103,9 @@ namespace QuestSystem
             }
         }
 
-        public void AddChildsToData(Node childNode, SegmentType segmentType)
+        public void AddChildsToData(Node childNode, PortSegment segment)
         {
-            switch (segmentType)
+            switch (segment.Type)
             {
                 case SegmentType.MainSegment:
                     (Questdata as MainNodeData).ChildrenIDs.Add(childNode.Questdata.UID);
@@ -115,14 +116,17 @@ namespace QuestSystem
                 case SegmentType.ActionSegment:
                     (Questdata as MainNodeData).ActionIDs.Add(childNode.Questdata.UID);
                     break;
+                case SegmentType.DialogueEndPointSegment:
+                    (Questdata as QuestDialogueNodeData).AddDialogueEndPoint((segment as EndPortSegment).EndPortId ,childNode.Questdata.UID);
+                    break;
                 default:
                     break;
-            } 
+            }
         }
 
-        public void RemoveChildsInData(Node childNode, SegmentType segmentType)
+        public void RemoveChildsInData(Node childNode, PortSegment segment)
         {
-            switch (segmentType)
+            switch (segment.Type)
             {
                 case SegmentType.MainSegment:
                     (Questdata as MainNodeData).ChildrenIDs.Remove(childNode.Questdata.UID);
@@ -132,6 +136,9 @@ namespace QuestSystem
                     break;
                 case SegmentType.ActionSegment:
                     (Questdata as MainNodeData).ActionIDs.Remove(childNode.Questdata.UID);
+                    break;
+                case SegmentType.DialogueEndPointSegment:
+                    (Questdata as QuestDialogueNodeData).RemoveDialogueEndPoint((segment as EndPortSegment).EndPortId, childNode.Questdata.UID);
                     break;
                 default:
                     break;
@@ -173,5 +180,5 @@ namespace QuestSystem
 
             return false;
         }
-    } 
+    }
 }

@@ -12,6 +12,7 @@ namespace QuestSystem.Quest
         [SerializeField] Dialogue.Dialogue dialogue;
         [SerializeField] NPCDialogueAttacher nPCDialogueAttacher;
         DialogueContainer container;
+        [SerializeField] List<DialogueEndPointContainer> dialogueEndPointContainer = new List<DialogueEndPointContainer>();
 
         public QuestDialogueNodeData(string id) : base(id)
         {
@@ -19,6 +20,7 @@ namespace QuestSystem.Quest
 
         public Dialogue.Dialogue Dialogue { get => dialogue; set => dialogue = value; }
         public NPCDialogueAttacher NPCDialogueAttacher { get => nPCDialogueAttacher; set => nPCDialogueAttacher = value; }
+        public List<DialogueEndPointContainer> DialogueEndPointContainer { get => dialogueEndPointContainer; set => dialogueEndPointContainer = value; }
 
         protected override void executeNode()
         {
@@ -35,12 +37,59 @@ namespace QuestSystem.Quest
 
         }
 
-        private void OnEnable()
+        public void AddDialogueEndPoint(string endPointId,string childId)
         {
+            bool endPointExists = false;
+            foreach (DialogueEndPointContainer container in dialogueEndPointContainer)
+            {
+                if(container.id == endPointId)
+                {
+                    container.endPointChilds.Add(childId);
+                    endPointExists = true;
+                }
+            }
+            if (!endPointExists)
+            {
+                dialogueEndPointContainer.Add(new DialogueEndPointContainer(endPointId, childId));
+            }
+        }
+
+        public void RemoveDialogueEndPoint(string endPointId, string childId)
+        {
+            DialogueEndPointContainer toDelete = null;
+            foreach (DialogueEndPointContainer container in dialogueEndPointContainer)
+            {
+                if (container.id == endPointId)
+                {
+                    container.endPointChilds.Remove(childId);
+                    if(container.endPointChilds.Count <= 0)
+                    {
+                        toDelete = container;
+                    }
+                }
+            }
+            if (toDelete != null)
+            {
+                dialogueEndPointContainer.Remove(toDelete);
+            }
         }
     }
 
     public delegate void DialogueHasFinished(int nextChildIndex);
+
+    [System.Serializable]
+    public class DialogueEndPointContainer
+    {
+        public string id;
+        public List<string> endPointChilds = new List<string>();
+
+        public DialogueEndPointContainer(string id, string endPointChild = null)
+        {
+            this.id = id;
+            if(endPointChilds!= null)
+                this.endPointChilds.Add(endPointChild);
+        }
+    }
 
     public class DialogueContainer
     {

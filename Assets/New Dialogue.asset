@@ -18,8 +18,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 889
-    y: 341
+    x: 904
+    y: 343
     width: 200
     height: 100
   textFieldRect:
@@ -28,6 +28,8 @@ MonoBehaviour:
     y: 40
     width: 160
     height: 18
+  isEndPoint: 1
+  endPointDescription: End1
 --- !u!114 &-7612938031897875142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +59,8 @@ MonoBehaviour:
     y: 40
     width: 160
     height: 18
+  isEndPoint: 0
+  endPointDescription: 
 --- !u!114 &-5991962916919118088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +91,8 @@ MonoBehaviour:
     y: 40
     width: 160
     height: 18
+  isEndPoint: 0
+  endPointDescription: 
 --- !u!114 &-5498264197526857260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +122,8 @@ MonoBehaviour:
     y: 40
     width: 160
     height: 18
+  isEndPoint: 0
+  endPointDescription: 
 --- !u!114 &-260764335859189411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,8 +142,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1168
-    y: 90
+    x: 1150
+    y: 92
     width: 200
     height: 100
   textFieldRect:
@@ -144,6 +152,8 @@ MonoBehaviour:
     y: 40
     width: 160
     height: 18
+  isEndPoint: 1
+  endPointDescription: End 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +204,8 @@ MonoBehaviour:
     y: 40
     width: 160
     height: 18
+  isEndPoint: 0
+  endPointDescription: 
 --- !u!114 &1858911659934079688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,8 +226,8 @@ MonoBehaviour:
   - b7ecabca-b53f-4d87-a7d3-a169d93f9467
   rect:
     serializedVersion: 2
-    x: 100
-    y: 132
+    x: 72
+    y: 124
     width: 200
     height: 100
   textFieldRect:
@@ -224,3 +236,5 @@ MonoBehaviour:
     y: 40
     width: 160
     height: 18
+  isEndPoint: 0
+  endPointDescription: 

@@ -29,9 +29,11 @@ namespace QuestSystem
 
     public enum SegmentType
     {
+        undefined,
         MainSegment,
         RequirementSegment,
-        ActionSegment
+        ActionSegment,
+        DialogueEndPointSegment
     }
 
     public struct PortProps

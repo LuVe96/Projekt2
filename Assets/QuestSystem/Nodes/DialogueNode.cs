@@ -1,4 +1,5 @@
-﻿using QuestSystem.Quest;
+﻿using QuestSystem.Dialogue;
+using QuestSystem.Quest;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -13,15 +14,22 @@ namespace QuestSystem
 
         public DialogueNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(OnClickNodePort, _questdata)
         {
+            this.OnClickNodePort = OnClickNodePort;
+            DrawDialogueEndPorts(DialogueNodeData.Dialogue);
         }
 
         public DialogueNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(position, width, height, OnClickNodePort, _questdata)
         {
+            this.OnClickNodePort = OnClickNodePort;
         }
 
+        OnClickNodePortDelegate OnClickNodePort;
         PortSegment mainSegment;
         PortSegment requirementSegment;
         PortSegment actionSegment;
+        List<KeyValuePair<SegmentType, PortSegment>> dialogueEndPointSegments = new List<KeyValuePair<SegmentType, PortSegment>>();
+
+        Dialogue.Dialogue currentDialogue = null;
 
         public QuestDialogueNodeData DialogueNodeData { get => (QuestDialogueNodeData)Questdata; set { } }
 
@@ -40,6 +48,10 @@ namespace QuestSystem
             PortProps[] actionTypes = { new PortProps(ConnectionPointType.ActIn, PortPosition.Right) };
             actionSegment = new PortSegment(SegmentType.ActionSegment, actionTypes, OnClickNodePort, this);
             segments.Add(new KeyValuePair<SegmentType, PortSegment>(actionSegment.Type, actionSegment));
+
+            //PortProps[] endPointTypes = { new PortProps(ConnectionPointType.MainIn, PortPosition.Right) };
+            //dialogueEndPointSegment = new PortSegment(SegmentType.DialogueEndPointSegment, endPointTypes, OnClickNodePort, this);
+            //segments.Add(new KeyValuePair<SegmentType, PortSegment>(dialogueEndPointSegment.Type, dialogueEndPointSegment));
         }
 
 
@@ -56,13 +68,15 @@ namespace QuestSystem
             GUILayout.Space(20);
 
             GUILayout.Label("Dialogue:");
-            DialogueNodeData.Dialogue = (Dialogue.Dialogue)EditorGUILayout.ObjectField(DialogueNodeData.Dialogue, typeof(Dialogue.Dialogue),false);
+            DialogueNodeData.Dialogue = (Dialogue.Dialogue)EditorGUILayout.ObjectField(DialogueNodeData.Dialogue, typeof(Dialogue.Dialogue), false);
             GUILayout.Space(20);
             GUILayout.Label("NPC:");
             DialogueNodeData.NPCDialogueAttacher = (NPCDialogueAttacher)EditorGUILayout.ObjectField(DialogueNodeData.NPCDialogueAttacher, typeof(NPCDialogueAttacher), true);
+            GUILayout.Label("EndPoints:");
+            DrawDialogueEndPorts(DialogueNodeData.Dialogue);
 
-
-            requirementSegment.Begin(); 
+            GUILayout.Space(20);
+            requirementSegment.Begin();
             EditorGUILayout.LabelField("Requirements");
             requirementSegment.End();
 
@@ -71,7 +85,43 @@ namespace QuestSystem
             actionSegment.End();
         }
 
+        private void DrawDialogueEndPorts(Dialogue.Dialogue dialogue)
+        {
+            foreach (KeyValuePair<SegmentType, PortSegment> item in dialogueEndPointSegments)
+            {
+                item.Value.Begin();
+                EditorGUILayout.LabelField((item.Value as EndPortSegment).EndPortDescription);
+                item.Value.End();
+            }
 
+            if (currentDialogue == dialogue) return;
+
+            foreach (KeyValuePair<SegmentType, PortSegment> item in dialogueEndPointSegments)
+            {
+                Segments.Remove(item);
+            }
+            dialogueEndPointSegments.Clear();
+
+            if (dialogue == null)
+            {
+                currentDialogue = null;
+                return;
+            }
+
+            PortProps[] endPointTypes = { new PortProps(ConnectionPointType.MainIn, PortPosition.Right) };
+            foreach (DialogueEndPoint item in dialogue.GetEndPoints())
+            {
+                EndPortSegment segment = new EndPortSegment(item.id, item.description, endPointTypes, OnClickNodePort, this);
+                dialogueEndPointSegments.Add(new KeyValuePair<SegmentType, PortSegment>(segment.Type, segment));
+            }
+
+            foreach (KeyValuePair<SegmentType, PortSegment> item in dialogueEndPointSegments)
+            {
+                Segments.Add(item);
+            }
+
+            currentDialogue = dialogue;
+        }
     }
 
 }

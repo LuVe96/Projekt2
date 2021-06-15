@@ -52,6 +52,7 @@ namespace QuestSystem.Quest
             {
                 SetupEditor(quest);
                 Repaint();
+                Repaint();
             }
         }
 
@@ -111,19 +112,31 @@ namespace QuestSystem.Quest
                     CreateMatchingConnections(node, (node.Questdata as MainNodeData).RequirementIDs, SegmentType.RequirementSegment);
                     CreateMatchingConnections(node, (node.Questdata as MainNodeData).ActionIDs, SegmentType.ActionSegment);
                 }
+                if(node.Questdata is QuestDialogueNodeData)
+                {
+                    foreach (DialogueEndPointContainer container in (node.Questdata as QuestDialogueNodeData).DialogueEndPointContainer)
+                    {
+                        CreateMatchingConnections(node, container.endPointChilds, SegmentType.DialogueEndPointSegment, SegmentType.MainSegment, container.id);
+                    }
+                }
 
             }
         }
 
-        private void CreateMatchingConnections(Node node, List<string> idList, SegmentType segmentType)
+        private void CreateMatchingConnections(Node node, List<string> idList, SegmentType segmentType, 
+            SegmentType goalSegmentType = SegmentType.undefined, string endPortId = null)
         {
+
+            if (goalSegmentType == SegmentType.undefined)
+                goalSegmentType = segmentType;
+
             foreach (var childId in idList)
             {
                 if (nodeLookUp.ContainsKey(childId))
                 {
                     foreach (var segment in node.Segments.Where(s => s.Key == segmentType))
                     {
-                        foreach (var childSegment in nodeLookUp[childId].Segments.Where(s => s.Key == segmentType))
+                        foreach (var childSegment in nodeLookUp[childId].Segments.Where(s => s.Key == goalSegmentType))
                         {
                             switch (segmentType)
                             {
@@ -136,9 +149,13 @@ namespace QuestSystem.Quest
                                 case SegmentType.ActionSegment:
                                     AddConnection(segment.Value, childSegment.Value, ConnectionPointType.ActIn, ConnectionPointType.ActOut);
                                     break;
+                                case SegmentType.DialogueEndPointSegment:
+                                    if((segment.Value as EndPortSegment).EndPortId == endPortId)
+                                        AddConnection(segment.Value, childSegment.Value, ConnectionPointType.MainIn, ConnectionPointType.MainOut);
+                                    break;
                                 default:
                                     break;
-                            }   
+                            }
                         }
                     }
                 }
@@ -377,7 +394,7 @@ namespace QuestSystem.Quest
             {
                 if (selectedOutPoint.Segment != selectedInPoint.Segment && selectedOutPoint.Type == counterpartType)
                 {
-                    CreateConnection(selectedInPoint.Segment.Type);
+                    CreateConnection(selectedInPoint.Segment);
                     ClearConnectionSelection();
                 }
                 else
@@ -395,7 +412,7 @@ namespace QuestSystem.Quest
             {
                 if (selectedOutPoint.Segment != selectedInPoint.Segment && selectedInPoint.Type == counterpartType)
                 {
-                    CreateConnection(selectedOutPoint.Segment.Type);
+                    CreateConnection(selectedInPoint.Segment);
                     ClearConnectionSelection();
                 }
                 else
@@ -410,12 +427,12 @@ namespace QuestSystem.Quest
             connections.Remove(connection);
         }
 
-        private void CreateConnection( SegmentType segmentType)
+        private void CreateConnection( PortSegment segment)
         {
 
             connections.Add(new NodeConnection(selectedInPoint, selectedOutPoint, OnClickRemoveConnection));
 
-            selectedInPoint.Segment.Node.AddChildsToData(selectedOutPoint.Segment.Node, segmentType);
+            selectedInPoint.Segment.Node.AddChildsToData(selectedOutPoint.Segment.Node, segment);
         }
 
         private void ClearConnectionSelection()
