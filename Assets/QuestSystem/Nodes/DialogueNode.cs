@@ -12,13 +12,15 @@ namespace QuestSystem
     public class DialogueNode : Node
     {
 
-        public DialogueNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(OnClickNodePort, _questdata)
+        public DialogueNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate) 
+            : base(OnClickNodePort, _questdata, repaintEditorDelegate)
         {
             this.OnClickNodePort = OnClickNodePort;
             DrawDialogueEndPorts(DialogueNodeData.Dialogue);
         }
 
-        public DialogueNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(position, width, height, OnClickNodePort, _questdata)
+        public DialogueNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
+            : base(position, width, height, OnClickNodePort, _questdata, repaintEditorDelegate)
         {
             this.OnClickNodePort = OnClickNodePort;
         }
@@ -96,10 +98,18 @@ namespace QuestSystem
 
             if (currentDialogue == dialogue) return;
 
+            bool removed = false;
             foreach (KeyValuePair<SegmentType, PortSegment> item in dialogueEndPointSegments)
             {
+                RemoveChildsInData(null, item.Value);
                 Segments.Remove(item);
+                removed = true;
             }
+            if (removed)
+            {
+                RepaintEditor(true);
+            }
+  
             dialogueEndPointSegments.Clear();
 
             if (dialogue == null)
@@ -121,6 +131,7 @@ namespace QuestSystem
             }
 
             currentDialogue = dialogue;
+
         }
     }
 

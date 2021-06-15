@@ -61,7 +61,14 @@ namespace QuestSystem.Quest
             {
                 if (container.id == endPointId)
                 {
-                    container.endPointChilds.Remove(childId);
+                    if(childId != null)
+                    {
+                        container.endPointChilds.Remove(childId);
+                    } else
+                    {
+                        container.endPointChilds.Clear();
+                    }
+
                     if(container.endPointChilds.Count <= 0)
                     {
                         toDelete = container;

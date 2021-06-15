@@ -8,6 +8,8 @@ using QuestSystem.Quest;
 namespace QuestSystem
 {
 
+    public delegate void RepaintEditorDelegate(bool resetup);
+
     public abstract class Node : ScriptableObject
     {
         private QuestNodeData questdata;
@@ -31,20 +33,23 @@ namespace QuestSystem
         public QuestNodeData Questdata { get => questdata; set => questdata = value; }
         public List<KeyValuePair<SegmentType, PortSegment>> Segments { get => segments; set => segments = value; }
 
+        protected RepaintEditorDelegate RepaintEditor;
 
-        public Node(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata)
+
+        public Node(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
         {
-            Init(_questdata, new Rect(position.x, position.y, width, height), OnClickNodePort);
+            Init(_questdata, new Rect(position.x, position.y, width, height), OnClickNodePort, repaintEditorDelegate);
         }
 
-        public Node(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata)
+        public Node(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
         {
-            Init(_questdata , _questdata.Rect, OnClickNodePort);
+            Init(_questdata , _questdata.Rect, OnClickNodePort, repaintEditorDelegate);
         }
 
-        private void Init(QuestNodeData _questdata, Rect _rect, OnClickNodePortDelegate OnClickNodePort)
+        private void Init(QuestNodeData _questdata, Rect _rect, OnClickNodePortDelegate OnClickNodePort, RepaintEditorDelegate repaintEditorDelegate)
         {
             Questdata = _questdata;
+            RepaintEditor = repaintEditorDelegate;
 
             Rect = _rect;
             style = UseStyle();
@@ -87,7 +92,7 @@ namespace QuestSystem
                     Rect r = Rect;
                     r.height = contentHeight + 35;
                     Rect = r;
-
+                    RepaintEditor(false);
                 }
             }
 
@@ -138,7 +143,14 @@ namespace QuestSystem
                     (Questdata as MainNodeData).ActionIDs.Remove(childNode.Questdata.UID);
                     break;
                 case SegmentType.DialogueEndPointSegment:
-                    (Questdata as QuestDialogueNodeData).RemoveDialogueEndPoint((segment as EndPortSegment).EndPortId, childNode.Questdata.UID);
+                    if(childNode != null)
+                    {
+                        (Questdata as QuestDialogueNodeData).RemoveDialogueEndPoint((segment as EndPortSegment).EndPortId, childNode.Questdata.UID);
+                    } else
+                    {
+                        (Questdata as QuestDialogueNodeData).RemoveDialogueEndPoint((segment as EndPortSegment).EndPortId, null);
+                    }
+                   
                     break;
                 default:
                     break;

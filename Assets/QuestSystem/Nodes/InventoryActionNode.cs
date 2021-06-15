@@ -10,11 +10,13 @@ namespace QuestSystem
 {
     public class InventoryActionNode : Node
     {
-        public InventoryActionNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(OnClickNodePort, _questdata)
+        public InventoryActionNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate) 
+            : base(OnClickNodePort, _questdata, repaintEditorDelegate)
         {
         }
 
-        public InventoryActionNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata) : base(position, width, height, OnClickNodePort, _questdata)
+        public InventoryActionNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate) 
+            : base(position, width, height, OnClickNodePort, _questdata, repaintEditorDelegate)
         {
         }
 

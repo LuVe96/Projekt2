@@ -56,6 +56,15 @@ namespace QuestSystem.Quest
             }
         }
 
+        private void RepaintEditor(bool resetup)
+        {
+            if (resetup)
+            {
+                SetupEditor(currentQuest);
+            }
+            Repaint();
+        }
+
         private void SetupEditor(Quest quest)
         {
             nodes.Clear();
@@ -77,19 +86,19 @@ namespace QuestSystem.Quest
                 switch (node)
                 {
                     case QuestStartNodeData n:
-                        nodes.Add(new StartNode(OnClickNodePort, n));
+                        nodes.Add(new StartNode(OnClickNodePort, n, RepaintEditor));
                         break;
                     case QuestDialogueNodeData n:
-                        nodes.Add(new DialogueNode(OnClickNodePort, n));
+                        nodes.Add(new DialogueNode(OnClickNodePort, n, RepaintEditor));
                         break;
                     case InventoryRequireData n:
-                        nodes.Add(new InventoryRequirementNode(OnClickNodePort, n)); break;
+                        nodes.Add(new InventoryRequirementNode(OnClickNodePort, n, RepaintEditor)); break;
                     case InventoryActionData n:
-                        nodes.Add(new InventoryActionNode(OnClickNodePort, n)); break;
+                        nodes.Add(new InventoryActionNode(OnClickNodePort, n, RepaintEditor)); break;
                     case EnableActionData n:
-                        nodes.Add(new EnableActionNode(OnClickNodePort, n)); break;
+                        nodes.Add(new EnableActionNode(OnClickNodePort, n, RepaintEditor)); break;
                     case StandartNodeData n:
-                        nodes.Add(new StandartNode(OnClickNodePort, n)); break;
+                        nodes.Add(new StandartNode(OnClickNodePort, n, RepaintEditor)); break;
                     default:
                         break;
                 }
@@ -282,22 +291,22 @@ namespace QuestSystem.Quest
             switch (type)
             {
                 case QuestNodeType.StartNode:
-                    nodes.Add(new StartNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    nodes.Add(new StartNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 case QuestNodeType.DialogueNode:
-                    nodes.Add(new DialogueNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    nodes.Add(new DialogueNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 case QuestNodeType.InventoryRequirementNode:
-                    nodes.Add(new InventoryRequirementNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    nodes.Add(new InventoryRequirementNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 case QuestNodeType.InventoryActionNode:
-                    nodes.Add(new InventoryActionNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    nodes.Add(new InventoryActionNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 case QuestNodeType.EnableActionNode:
-                    nodes.Add(new EnableActionNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    nodes.Add(new EnableActionNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 case QuestNodeType.StandartNode:
-                    nodes.Add(new StandartNode(mousePosition, 200, 100, OnClickNodePort, questdate));
+                    nodes.Add(new StandartNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 default:
                     break;
