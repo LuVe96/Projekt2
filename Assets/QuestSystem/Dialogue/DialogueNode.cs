@@ -23,6 +23,13 @@ namespace QuestSystem.Dialogue
         [SerializeField]
         Rect textFieldRect = new Rect(0, 0, 160, 18);
 
+        [HideInInspector]
+        [SerializeField]
+        bool isEndPoint = false;
+        [HideInInspector]
+        [SerializeField]
+        string endPointDescription;
+
         //private Rect stdRect = new Rect(0, 0, 200, 100-18);
 
         public Rect Rect { get => rect; set => rect = value; }
@@ -60,6 +67,9 @@ namespace QuestSystem.Dialogue
             }
         }
 
+        public bool IsEndPoint { get => isEndPoint; set => isEndPoint = value; }
+        public string EndPointDescription { get => endPointDescription; set => endPointDescription = value; }
+
         public Rect GetTextFieldRectWithOffset()
         {  
             return new Rect(textFieldRect.x + rect.x, textFieldRect.y + rect.y, textFieldRect.width, textFieldRect.height);
@@ -95,4 +105,40 @@ namespace QuestSystem.Dialogue
         }
 #endif
     }
+
+    [System.Serializable]
+    public class DialogueEndPoint
+    {
+        public string id;
+        public string description;
+
+        public DialogueEndPoint(string id, string description)
+        {
+            this.id = id;
+            this.description = description;
+        }
+    }
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(DialogueNode))]
+    public class DialogueNode_Editor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector(); // for other non-HideInInspector fields
+
+            DialogueNode script = (DialogueNode)target;
+
+            if(script.Children.Count == 0)
+            {
+                script.IsEndPoint = EditorGUILayout.Toggle("Is End Point", script.IsEndPoint);
+            }
+
+            if (script.IsEndPoint)
+            {
+                script.EndPointDescription = EditorGUILayout.TextField("EndPointDescription: ", script.EndPointDescription);
+            }
+        }
+    }
+#endif
 }

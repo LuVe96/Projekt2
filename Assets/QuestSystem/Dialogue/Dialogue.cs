@@ -109,6 +109,19 @@ namespace QuestSystem.Dialogue
             return result;
         }
 
+        public DialogueEndPoint[] GetEndPoints()
+        {
+            List<DialogueEndPoint> result = new List<DialogueEndPoint>();
+            foreach (DialogueNode node in nodes)
+            {
+                if (node.IsEndPoint)
+                {
+                    result.Add(new DialogueEndPoint(node.UniqueID, node.EndPointDescription));
+                }
+            }
+            return result.ToArray();
+        }
+
 
         public void OnBeforeSerialize() // called bevore saving
         {

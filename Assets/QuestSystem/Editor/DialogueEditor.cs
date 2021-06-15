@@ -216,12 +216,16 @@ namespace QuestSystem.Dialogue.Editor
             {
                 deletingNode = node;
             }
-            DrawLinkButton(node);
-
-            if (GUILayout.Button("Add"))
+            if (!node.IsEndPoint)
             {
-                creatingNode = node;
+                DrawLinkButton(node);
+
+                if (GUILayout.Button("Add"))
+                {
+                    creatingNode = node;
+                }
             }
+          
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }
