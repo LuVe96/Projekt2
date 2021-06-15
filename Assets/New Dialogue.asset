@@ -220,14 +220,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: b4eac512-773a-4df3-8ca8-a64f9428d3f3
   isPlayerSpeaking: 0
-  text: Huhu
+  text: Hallo Fremder!
   children:
   - 65aaf813-7255-4cab-a7af-ec50eed9d4cf
   - b7ecabca-b53f-4d87-a7d3-a169d93f9467
   rect:
     serializedVersion: 2
-    x: 72
-    y: 124
+    x: 50
+    y: 136
     width: 200
     height: 100
   textFieldRect:

@@ -100,12 +100,13 @@ namespace QuestSystem.Quest
             try
             {
                 aktiveNodeData = GetChildOfActive(nextChildIndex);
+                (aktiveNodeData as MainNodeData).execute(ContinueNodes, GetNodeByID);
             }
             catch (Exception)
             {
                 Debug.Log("No Cilds found");
             }
-            (aktiveNodeData as MainNodeData).execute(ContinueNodes, GetNodeByID);
+
         }
 
         private QuestNodeData GetChildOfActive(int index)

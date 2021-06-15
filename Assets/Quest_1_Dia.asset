@@ -1,0 +1,208 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6832253683690873715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 72fbfbd0-7144-46a8-a719-671ca0f75452
+  isPlayerSpeaking: 0
+  text: Hallo Fremder! Ich habe meine Axt verloren
+  children:
+  - 238841df-7dc9-4cbf-a9ea-bf7fd870ff59
+  rect:
+    serializedVersion: 2
+    x: 115
+    y: 237
+    width: 200
+    height: 100
+  textFieldRect:
+    serializedVersion: 2
+    x: 20
+    y: 40
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &-6556771489931139063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 238841df-7dc9-4cbf-a9ea-bf7fd870ff59
+  isPlayerSpeaking: 1
+  text: Und nun soll ich sie dir wiederbringen, nicht wahr?
+  children:
+  - dd971fdf-721d-42f2-bafb-51debe4a360a
+  rect:
+    serializedVersion: 2
+    x: 365
+    y: 237
+    width: 200
+    height: 100
+  textFieldRect:
+    serializedVersion: 2
+    x: 20
+    y: 40
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &-6182497682963397026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: efd056c9-4db2-4233-b80a-888f26e21627
+  isPlayerSpeaking: 0
+  text: Nichts !
+  children:
+  - b901c7fe-345b-414e-b514-7e79e0a01a4c
+  rect:
+    serializedVersion: 2
+    x: 1136
+    y: 128
+    width: 200
+    height: 100
+  textFieldRect:
+    serializedVersion: 2
+    x: 20
+    y: 40
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &-3356502463749010460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 39f0d678-40e9-47aa-a6a9-85fd2822d55e
+  isPlayerSpeaking: 1
+  text: "Und was Bekomme ich daf\xFCr?"
+  children:
+  - efd056c9-4db2-4233-b80a-888f26e21627
+  rect:
+    serializedVersion: 2
+    x: 886
+    y: 128
+    width: 200
+    height: 100
+  textFieldRect:
+    serializedVersion: 2
+    x: 20
+    y: 40
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &-759698238082010479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: dd971fdf-721d-42f2-bafb-51debe4a360a
+  isPlayerSpeaking: 0
+  text: Genau !
+  children:
+  - 39f0d678-40e9-47aa-a6a9-85fd2822d55e
+  - b901c7fe-345b-414e-b514-7e79e0a01a4c
+  rect:
+    serializedVersion: 2
+    x: 615
+    y: 237
+    width: 200
+    height: 100
+  textFieldRect:
+    serializedVersion: 2
+    x: 20
+    y: 40
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: Quest_1_Dia
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -6832253683690873715}
+  - {fileID: -6556771489931139063}
+  - {fileID: -759698238082010479}
+  - {fileID: -3356502463749010460}
+  - {fileID: 2074541303539210175}
+  - {fileID: -6182497682963397026}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &2074541303539210175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: b901c7fe-345b-414e-b514-7e79e0a01a4c
+  isPlayerSpeaking: 1
+  text: Na gut, ich Halte die Augen Offen
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1439
+    y: 399
+    width: 200
+    height: 100
+  textFieldRect:
+    serializedVersion: 2
+    x: 20
+    y: 40
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 

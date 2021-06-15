@@ -17,7 +17,7 @@ namespace QuestSystem.Quest
 
         protected override void executeNode()
         {
-            Debug.Log("Execute StandartNode");
+
             FinishNode(0);
         }
 
