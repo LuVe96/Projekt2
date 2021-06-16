@@ -44,24 +44,24 @@ namespace QuestSystem
         }
 
 
-        protected override GUIStyle UseStyle()
+        protected override GUIStyle UseNodeStyle()
         {
-            return base.UseStyle();
+            return base.UseNodeStyle();
         }
 
         protected override void DrawContent()
         {
-            GUILayout.Label("Standart Node");
+            GUILayout.Label("Standart Node", headerTextStyle);
             mainSegment.Begin();
             mainSegment.End();
             GUILayout.Space(20);
 
             requirementSegment.Begin();
-            EditorGUILayout.LabelField("Requirements");
+            EditorGUILayout.LabelField("Requirements", leftPortTextStyle);
             requirementSegment.End();
 
             actionSegment.Begin();
-            EditorGUILayout.LabelField("Actions");
+            EditorGUILayout.LabelField("Actions", rightPortTextStyle);
             actionSegment.End();
         }
 

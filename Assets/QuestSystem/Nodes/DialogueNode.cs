@@ -57,33 +57,34 @@ namespace QuestSystem
         }
 
 
-        protected override GUIStyle UseStyle()
+        protected override GUIStyle UseNodeStyle()
         {
-            return base.UseStyle();
+            return base.UseNodeStyle();
         }
 
         protected override void DrawContent()
         {
-            GUILayout.Label("Dialogue Node");
+            GUILayout.Label("Dialogue Node", headerTextStyle);
             mainSegment.Begin();
             mainSegment.End();
             GUILayout.Space(20);
 
             GUILayout.Label("Dialogue:");
             DialogueNodeData.Dialogue = (Dialogue.Dialogue)EditorGUILayout.ObjectField(DialogueNodeData.Dialogue, typeof(Dialogue.Dialogue), false);
-            GUILayout.Space(20);
+            GUILayout.Space(10);
             GUILayout.Label("NPC:");
             DialogueNodeData.NPCDialogueAttacher = (NPCDialogueAttacher)EditorGUILayout.ObjectField(DialogueNodeData.NPCDialogueAttacher, typeof(NPCDialogueAttacher), true);
+            GUILayout.Space(10);
             GUILayout.Label("EndPoints:");
             DrawDialogueEndPorts(DialogueNodeData.Dialogue);
 
             GUILayout.Space(20);
             requirementSegment.Begin();
-            EditorGUILayout.LabelField("Requirements");
+            EditorGUILayout.LabelField("Requirements", leftPortTextStyle);
             requirementSegment.End();
 
             actionSegment.Begin();
-            EditorGUILayout.LabelField("Actions");
+            EditorGUILayout.LabelField("Actions", rightPortTextStyle);
             actionSegment.End();
         }
 
@@ -92,7 +93,7 @@ namespace QuestSystem
             foreach (KeyValuePair<SegmentType, PortSegment> item in dialogueEndPointSegments)
             {
                 item.Value.Begin();
-                EditorGUILayout.LabelField((item.Value as EndPortSegment).EndPortDescription);
+                EditorGUILayout.LabelField((item.Value as EndPortSegment).EndPortDescription, rightPortTextStyle);
                 item.Value.End();
             }
 

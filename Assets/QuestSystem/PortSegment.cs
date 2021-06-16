@@ -44,7 +44,7 @@ namespace QuestSystem
 
         public void End()
         {
-            EditorGUILayout.Space();
+            //EditorGUILayout.Space();
             EditorGUILayout.EndVertical();
             
         }

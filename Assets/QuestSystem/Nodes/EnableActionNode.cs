@@ -32,7 +32,7 @@ namespace QuestSystem
 
         protected override void DrawContent()
         {
-            EditorGUILayout.LabelField("Enable Action");
+            EditorGUILayout.LabelField("Enable Action", headerTextStyle);
             actionSegment.Begin();
             actionSegment.End();
 

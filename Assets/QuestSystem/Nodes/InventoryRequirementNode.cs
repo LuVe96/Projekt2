@@ -34,14 +34,14 @@ namespace QuestSystem
         }
 
 
-        protected override GUIStyle UseStyle()
+        protected override GUIStyle UseNodeStyle()
         {
-            return base.UseStyle();
+            return base.UseNodeStyle();
         }
 
         protected override void DrawContent()
         {
-            GUILayout.Label("Invnetory Requirement");
+            GUILayout.Label("Invnetory Requirement", headerTextStyle);
             requirementSegment.Begin();
             requirementSegment.End();
 

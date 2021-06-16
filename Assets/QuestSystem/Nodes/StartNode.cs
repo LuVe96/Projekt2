@@ -41,21 +41,21 @@ namespace QuestSystem
         }
 
 
-        protected override GUIStyle UseStyle()
+        protected override GUIStyle UseNodeStyle()
         {
-            return base.UseStyle();
+            return base.UseNodeStyle();
         }
 
         protected override void DrawContent()
         {
             mainSegment.Begin();
-            GUILayout.Label("StartNodeData");
+            GUILayout.Label("StartNodeData", headerTextStyle);
             StartNodeData.testString = EditorGUILayout.TextField(StartNodeData.testString);
             StartNodeData.testStartString = EditorGUILayout.TextField(StartNodeData.testStartString);
             mainSegment.End();
 
             actionSegment.Begin();
-            EditorGUILayout.LabelField("Actions");
+            EditorGUILayout.LabelField("Actions", rightPortTextStyle);
             actionSegment.End();
         }
 

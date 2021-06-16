@@ -33,7 +33,7 @@ namespace QuestSystem
 
         protected override void DrawContent()
         {
-            EditorGUILayout.LabelField("Invnetory Action");
+            EditorGUILayout.LabelField("Invnetory Action", headerTextStyle);
             actionSegment.Begin();
             actionSegment.End();
 

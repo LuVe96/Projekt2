@@ -18,6 +18,10 @@ namespace QuestSystem
         protected GUIStyle style;
         private float contentHeight;
 
+        protected GUIStyle rightPortTextStyle;
+        protected GUIStyle leftPortTextStyle;
+        protected GUIStyle headerTextStyle;
+
         List <KeyValuePair<SegmentType, PortSegment>> segments = new List<KeyValuePair<SegmentType, PortSegment>>();
 
         public Rect Rect { get => rect;
@@ -52,14 +56,28 @@ namespace QuestSystem
             RepaintEditor = repaintEditorDelegate;
 
             Rect = _rect;
-            style = UseStyle();
+            style = UseNodeStyle();
+            SetupStyles();
             SetupSegments(OnClickNodePort, segments);
 
         }
 
+        private void SetupStyles()
+        {
+            leftPortTextStyle = new GUIStyle();
+            leftPortTextStyle.normal.textColor = Color.white;
+
+            rightPortTextStyle = new GUIStyle(leftPortTextStyle);
+            rightPortTextStyle.alignment = TextAnchor.MiddleRight;
+
+            headerTextStyle = new GUIStyle();
+            headerTextStyle.normal.textColor = Color.white;
+            headerTextStyle.fontStyle = FontStyle.Bold;
+        }
+
         protected abstract void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments);
         
-        protected virtual GUIStyle UseStyle()
+        protected virtual GUIStyle UseNodeStyle()
         {
             style = new GUIStyle();
             style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;

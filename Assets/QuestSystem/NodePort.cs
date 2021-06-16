@@ -73,11 +73,11 @@ namespace QuestSystem
             switch (PortPosition)
             {
                 case PortPosition.Left:
-                    rect.x = Segment.CalcRect.x  - Rect.width - 1f;
+                    rect.x = Segment.CalcRect.x  - Rect.width - 3f;
                     break;
 
                 case PortPosition.Right:
-                    rect.x = Segment.CalcRect.x +  Segment.CalcRect.width + 1f;
+                    rect.x = Segment.CalcRect.x +  Segment.CalcRect.width + 3f;
                     break;
             }
 
