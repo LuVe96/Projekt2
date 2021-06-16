@@ -215,16 +215,16 @@ namespace QuestSystem.Quest
 
    
 
-        private bool IsNodeAtPoint(Vector2 point)
+        private Node GetNodeAtPoint(Vector2 point)
         {
             foreach (Node node in nodes)
             {
                 if (node.Rect.Contains(point))
                 {
-                    return true;
+                    return node;
                 }
             }
-            return false;
+            return null;
         }
 
         private void ProcessNodeEvents(Event current)
@@ -251,10 +251,26 @@ namespace QuestSystem.Quest
                 // Open PopupMenu
                 if (current.button == 1)
                 {
-                    ProcessContextMenu(current.mousePosition + scrollPosition);
+                    Node node = GetNodeAtPoint(current.mousePosition + scrollPosition);
+                    if (node)
+                    {
+                        GenericMenu genericMenu = new GenericMenu();
+                        genericMenu.AddItem(new GUIContent("Delete node"), false, () =>
+                        {
+                            currentQuest.DeleteNode(node.Questdata);
+                            RepaintEditor(true);
+
+                        });
+                        genericMenu.ShowAsContext();
+                    }
+                    else
+                    {
+                        ProcessContextMenu(current.mousePosition + scrollPosition);
+                    }
+
                 }
                
-                if (current.button == 0 && !IsNodeAtPoint(current.mousePosition + scrollPosition))
+                if (current.button == 0 && (GetNodeAtPoint(current.mousePosition + scrollPosition) == null))
                 {
                     draggingCanvas = true;
                     draggingCanvasOffset = Event.current.mousePosition + scrollPosition;

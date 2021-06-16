@@ -193,11 +193,92 @@ namespace QuestSystem.Quest
                 default:
                     return null;
             }
-
-
         }
 
+        //FOR_NEW: 06 Delete Data in List
+        public void DeleteNode(QuestNodeData node)
+        {
+            DeleteAsChild(node);
 
+            switch (node)
+            {
+                case QuestStartNodeData n:
+                    startNodeDatas.Remove(n);
+                    break;
+                case QuestDialogueNodeData n:
+                    dialogNodeDatas.Remove(n);
+                    break;
+                case InventoryRequireData n:
+                    inventoryReqireNodeDatas.Remove(n);
+                    break;
+                case InventoryActionData n:
+                    inventoryActionDatas.Remove(n);
+                    break;
+                case EnableActionData n:
+                    enableActionDatas.Remove(n);
+                    break; 
+                case StandartNodeData n:
+                    standartNodeDatas.Remove(n);
+                    break;
+                default:
+                    return;
+            }
+        }
+
+        private void DeleteAsChild(QuestNodeData node)
+        {
+            switch (node)
+            {
+                case MainNodeData n:
+                    foreach (QuestNodeData nodeData in Nodes)
+                    {
+                        if (!(nodeData is MainNodeData)) continue;
+                        MainNodeData nData = (nodeData as MainNodeData);
+                        if (nData.ChildrenIDs.Contains(node.UID))
+                        {
+                            nData.ChildrenIDs.Remove(node.UID);
+                        }
+
+                        if(nodeData is QuestDialogueNodeData)
+                        {
+                            foreach (DialogueEndPointContainer eP in (nodeData as QuestDialogueNodeData).DialogueEndPointContainer)
+                            {
+                                if (eP.endPointChilds.Contains(node.UID))
+                                {
+                                    (nodeData as QuestDialogueNodeData).RemoveDialogueEndPoint(eP.id, node.UID);
+                                }                            
+                            }                          
+                        }
+                    }
+                    break;
+                case RequirementNodeData n:
+                    foreach (QuestNodeData nodeData in Nodes)
+                    {
+                        if (!(nodeData is MainNodeData)) continue;
+                        MainNodeData nData = (nodeData as MainNodeData);
+                        if (nData.RequirementIDs.Contains(node.UID))
+                        {
+                            nData.RequirementIDs.Remove(node.UID);
+                        }
+                    }
+                    break;
+                case ActionNodeData n:
+                    foreach (QuestNodeData nodeData in Nodes)
+                    {
+                        if (!(nodeData is MainNodeData)) continue;
+                        MainNodeData nData = (nodeData as MainNodeData);
+                        if (nData.ActionIDs.Contains(node.UID))
+                        {
+                            nData.ActionIDs.Remove(node.UID);
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
 
         private void OnValidate()
         {
@@ -208,7 +289,6 @@ namespace QuestSystem.Quest
             }
 
         }
-
     }
 
 }
