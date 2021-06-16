@@ -37,7 +37,7 @@ namespace QuestSystem
             Dialogues.Remove(dialogue);
         }
 
-            internal void DialogueHasFinished(string name)
+        internal void DialogueHasFinished(string name, string endPointid)
         {
             //List<DialogueContainer> dialoguesToRemove = new List<DialogueContainer>();
             //foreach (DialogueContainer container in dialogues)
@@ -54,7 +54,7 @@ namespace QuestSystem
             //    dialogues.Remove(item);
             //}
 
-            dialogues.Find(item => item.dialogue.name == name).dialogueHasFinished(0);
+            dialogues.Find(item => item.dialogue.name == name).dialogueHasFinished(endPointid);
         }
 
         //private void OnTriggerEnter(Collider other)

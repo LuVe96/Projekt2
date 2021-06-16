@@ -29,11 +29,20 @@ namespace QuestSystem.Quest
             nPCDialogueAttacher.AddDialogue(container);
         }
 
-        private void DialogueHasFinished(int nextChildIndex)
+        private void DialogueHasFinished(string endPointId)
         {
-            Debug.Log("Dialoge Has finished: " + nextChildIndex);
+            Debug.Log("Dialoge Has finished: ");
             nPCDialogueAttacher.RemoveDialogue(container);
-            FinishNode(nextChildIndex);
+
+            DialogueEndPointContainer endPointContainer = null;
+            foreach (DialogueEndPointContainer endPoint in dialogueEndPointContainer)
+            {
+                if(endPoint.id == endPointId)
+                {
+                    endPointContainer = endPoint;
+                }
+            }
+            FinishNode(endPointContainer);
 
         }
 
@@ -82,7 +91,7 @@ namespace QuestSystem.Quest
         }
     }
 
-    public delegate void DialogueHasFinished(int nextChildIndex);
+    public delegate void DialogueHasFinished(string endPointId);
 
     [System.Serializable]
     public class DialogueEndPointContainer

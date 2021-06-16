@@ -12,7 +12,7 @@ namespace QuestSystem.Quest
         
         public override void OnInspectorGUI()
         {
-            base.OnInspectorGUI();
+            //base.OnInspectorGUI();
 
 
             Quest quest = (Quest)target;

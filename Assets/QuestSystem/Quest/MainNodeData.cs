@@ -6,7 +6,7 @@ using UnityEngine;
 namespace QuestSystem.Quest
 {
 
-    public delegate void NodeHasFinished(int nextChildIndex);
+    public delegate void NodeHasFinished(MainNodeData parentNode, DialogueEndPointContainer endPoint = null);
     public delegate QuestNodeData GetNodeByID(string id);
 
     [System.Serializable]
@@ -82,7 +82,7 @@ namespace QuestSystem.Quest
         protected abstract void executeNode();
 
 
-        protected void FinishNode(int nextChildIndex)
+        protected void FinishNode(DialogueEndPointContainer endPoint = null)
         {
             foreach (string actionID in ActionIDs)
             {
@@ -107,7 +107,7 @@ namespace QuestSystem.Quest
                 }
             }
             isActive = false;
-            NodeHasFinished(nextChildIndex);
+            NodeHasFinished(this, endPoint);
         }
     } 
 }

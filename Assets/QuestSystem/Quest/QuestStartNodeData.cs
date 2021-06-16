@@ -19,7 +19,7 @@ namespace QuestSystem.Quest
         protected override void executeNode()
         {
             Debug.Log("Execute QuestStartNode");
-            FinishNode(0);
+            FinishNode();
         }
     }
 

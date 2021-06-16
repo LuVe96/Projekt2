@@ -109,7 +109,7 @@ namespace QuestSystem.Dialogue
             } else
             {
                 dialogPanel.SetActive(false);
-                currentNpc.DialogueHasFinished(currentDialogue.name);
+                currentNpc.DialogueHasFinished(currentDialogue.name, currentNode.UniqueID);
                 currentNpc = null;
             }
 

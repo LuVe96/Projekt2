@@ -26,10 +26,10 @@ MonoBehaviour:
     height: 100
   textFieldRect:
     serializedVersion: 2
-    x: 20
-    y: 40
-    width: 160
-    height: 18
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   isEndPoint: 0
   endPointDescription: 
 --- !u!114 &-972759760052585621
@@ -50,16 +50,16 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 764
-    y: 254
+    x: 438
+    y: 259
     width: 200
     height: 100
   textFieldRect:
     serializedVersion: 2
-    x: 20
-    y: 40
-    width: 160
-    height: 18
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   isEndPoint: 1
   endPointDescription: "f\xFCr 0 Gold"
 --- !u!114 &-394347549048744509
@@ -81,16 +81,16 @@ MonoBehaviour:
   - 741cb36a-64bb-4375-9f48-3720a6e7e8d2
   rect:
     serializedVersion: 2
-    x: 422
-    y: 438
+    x: 423
+    y: 439
     width: 200
     height: 100
   textFieldRect:
     serializedVersion: 2
-    x: 20
-    y: 40
-    width: 160
-    height: 18
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   isEndPoint: 0
   endPointDescription: 
 --- !u!114 &11400000
@@ -129,15 +129,15 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 740
-    y: 425
+    x: 723
+    y: 405
     width: 200
     height: 100
   textFieldRect:
     serializedVersion: 2
-    x: 20
-    y: 40
-    width: 160
-    height: 18
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   isEndPoint: 1
   endPointDescription: "f\xFCr 20 Gold"

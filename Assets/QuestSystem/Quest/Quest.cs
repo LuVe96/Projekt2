@@ -22,7 +22,7 @@ namespace QuestSystem.Quest
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
-        QuestNodeData aktiveNodeData;
+        List<QuestNodeData> aktiveNodeDatas = new List<QuestNodeData>();
 
         //FOR_NEW: 04 Make List and add to Node Prop
         public List<QuestNodeData> Nodes { get
@@ -89,18 +89,23 @@ namespace QuestSystem.Quest
             OnValidate();
             if (Nodes.Count > 0)
             {
-                aktiveNodeData = Nodes[0];
-                (aktiveNodeData as MainNodeData).execute(ContinueNodes, GetNodeByID);
+                aktiveNodeDatas.Add(Nodes[0]);
+                (Nodes[0] as MainNodeData).execute(ContinueNodes, GetNodeByID);
 
             }
         }
 
-        void ContinueNodes(int nextChildIndex)
+        void ContinueNodes(MainNodeData parentNode, DialogueEndPointContainer endPoint = null)
         {
             try
             {
-                aktiveNodeData = GetChildOfActive(nextChildIndex);
-                (aktiveNodeData as MainNodeData).execute(ContinueNodes, GetNodeByID);
+                aktiveNodeDatas.Remove(parentNode);
+                foreach (MainNodeData nodeData in GetChildsOfActive(parentNode, endPoint))
+                {
+                    aktiveNodeDatas.Add(nodeData);
+                    nodeData.execute(ContinueNodes, GetNodeByID);
+                } 
+
             }
             catch (Exception)
             {
@@ -109,14 +114,30 @@ namespace QuestSystem.Quest
 
         }
 
-        private QuestNodeData GetChildOfActive(int index)
+        private List<QuestNodeData> GetChildsOfActive(MainNodeData parentNode, DialogueEndPointContainer endPoint = null)
         {
-            QuestNodeData n = null;
-            string id = (aktiveNodeData as MainNodeData).ChildrenIDs[index];
-            if (nodeDataLookUp.ContainsKey(id))
+            List<QuestNodeData> n = new List<QuestNodeData>();
+
+            // getting childNodes
+            foreach (string id in parentNode.ChildrenIDs)
             {
-                n = nodeDataLookUp[id];
+                if (nodeDataLookUp.ContainsKey(id))
+                {
+                    n.Add(nodeDataLookUp[id]);
+                }
             }
+
+            // getting endpointNodes
+            if (endPoint != null)
+            {
+                foreach (string id in endPoint.endPointChilds)
+                {
+                    if (nodeDataLookUp.ContainsKey(id))
+                    {
+                        n.Add(nodeDataLookUp[id]);
+                    }
+                }
+            }   
 
             return n;
         }

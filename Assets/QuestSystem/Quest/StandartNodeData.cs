@@ -18,7 +18,7 @@ namespace QuestSystem.Quest
         protected override void executeNode()
         {
 
-            FinishNode(0);
+            FinishNode();
         }
 
     }
