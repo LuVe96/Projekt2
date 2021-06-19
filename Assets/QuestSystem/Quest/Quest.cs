@@ -11,6 +11,7 @@ namespace QuestSystem.Quest
     public class Quest : MonoBehaviour
     {
         [SerializeField] string questName;
+        [SerializeField] QuestState questState = QuestState.Inactive;
         //[SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
         [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
         [SerializeField] List<QuestDialogueNodeData> dialogNodeDatas = new List<QuestDialogueNodeData>();
@@ -18,6 +19,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<EnableActionData> enableActionDatas = new List<EnableActionData>();
         [SerializeField] List<InventoryActionData> inventoryActionDatas = new List<InventoryActionData>();
         [SerializeField] List<InventoryRequireData> inventoryReqireNodeDatas = new List<InventoryRequireData>();
+        [SerializeField] List<QuestEndNodeData> endNodeDatas = new List<QuestEndNodeData>();
 
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
@@ -34,12 +36,24 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(inventoryActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(inventoryReqireNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(standartNodeDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(endNodeDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
         }
 
         public string QuestName { get => questName; set => questName = value; }
+        public QuestState QuestState { get => questState; set => questState = value; }
+
+        private Quest()
+        {
+            if(Nodes.Count <= 0)
+            {
+                QuestStartNodeData startData = new QuestStartNodeData(Guid.NewGuid().ToString());
+                startData.Rect = new Rect(50, 50, 200, 100);
+                startNodeDatas.Add(startData);
+            }
+        }
 
         private List<QuestNodeData> AddToAllNodes(QuestNodeData[] nodes, List<QuestNodeData> allNodes )
         {
@@ -50,42 +64,6 @@ namespace QuestSystem.Quest
             return allNodes;
         }
 
-        //public Dialogue.Dialogue dia1;
-        //public NPCDialogueAttacher nPCDialogueAttacher1;
-        //public GameObject axt;
-
-        //public LootItem lootItem;
-
-        private void Start()
-        {
-            //QuestStartNodeData squestdata = new QuestStartNodeData("Start_1", ContinueNodes, GetNodeByID);
-            //squestdata.ChildrenIDs.Add("Dialog_1");
-            //startNodeDatas.Add(squestdata);
-
-            //QuestDialogueNodeData qqdata = new QuestDialogueNodeData("Dialog_1", ContinueNodes, GetNodeByID);
-            //qqdata.Dialogue = dia1;
-            //qqdata.NPCDialogueAttacher = nPCDialogueAttacher1;
-            //qqdata.ActionIDs.Add("Enable_1");
-            //qqdata.ChildrenIDs.Add("Dialog_2");
-            //dialogNodeDatas.Add(qqdata);
-
-            //EnableActionData enData = new EnableActionData("Enable_1", axt);
-            //enableActionDatas.Add(enData);
-
-            //QuestDialogueNodeData qqdata2 = new QuestDialogueNodeData("Dialog_2", ContinueNodes, GetNodeByID);
-            //qqdata2.Dialogue = dia1;
-            //qqdata2.NPCDialogueAttacher = nPCDialogueAttacher1;
-            //qqdata2.RequirementIDs.Add( "InventReq_1");
-            //qqdata2.ActionIDs.Add("Inventory_1");
-            //dialogNodeDatas.Add(qqdata2);
-
-            //InventoryActionData inData = new InventoryActionData("Inventory_1", InventorySelectionType.Remove, lootItem, 1);
-            //inventoryActionDatas.Add(inData);
-
-            //InventoryRequireData inReData = new InventoryRequireData("InventReq_1", lootItem, 1);
-            //inventoryReqireNodeDatas.Add(inReData);
-        }
-
         public void StartQuest()
         {
             OnValidate();
@@ -93,8 +71,9 @@ namespace QuestSystem.Quest
             {
                 aktiveNodeDatas.Add(Nodes[0]);
                 (Nodes[0] as MainNodeData).execute(ContinueNodes, GetNodeByID);
-
             }
+
+            QuestState = QuestState.Active;
         }
 
         void ContinueNodes(MainNodeData parentNode, DialogueEndPointContainer endPoint = null)
@@ -105,6 +84,10 @@ namespace QuestSystem.Quest
                 foreach (MainNodeData nodeData in GetChildsOfActive(parentNode, endPoint))
                 {
                     aktiveNodeDatas.Add(nodeData);
+                    if( nodeData is QuestEndNodeData)
+                    {
+                        (nodeData as QuestEndNodeData).setQuestEndDelegate(EndQuest); 
+                    }
                     nodeData.execute(ContinueNodes, GetNodeByID);
                 } 
 
@@ -160,6 +143,28 @@ namespace QuestSystem.Quest
             return Nodes;
         }
 
+        void EndQuest(QuestEndType endType)
+        {
+            switch (endType)
+            {
+                case QuestEndType.Passed:
+                    QuestState = QuestState.Passed;
+                    break;
+                case QuestEndType.Failed:
+                    QuestState = QuestState.Failed;
+                    break;
+                default:
+                    break;
+            }
+
+            // Destroy Nodes
+            for (int i = 0; i < Nodes.Count; i++)
+            {
+                Nodes[i] = null;
+            }
+            QuestSystemManager.Instance.UpdateQuestState();
+        }
+
         //FOR_NEW: 05 Create new Data Instance
         public QuestNodeData CreateNewNode(QuestNodeType type)
         {
@@ -192,6 +197,10 @@ namespace QuestSystem.Quest
                     StandartNodeData stdData = new StandartNodeData(Guid.NewGuid().ToString());
                     standartNodeDatas.Add(stdData);
                     return stdData;
+                case QuestNodeType.EndNode:
+                    QuestEndNodeData endData = new QuestEndNodeData(Guid.NewGuid().ToString());
+                    endNodeDatas.Add(endData);
+                    return endData;
                 default:
                     return null;
             }
@@ -221,6 +230,9 @@ namespace QuestSystem.Quest
                     break; 
                 case StandartNodeData n:
                     standartNodeDatas.Remove(n);
+                    break;
+                case QuestEndNodeData n:
+                    endNodeDatas.Remove(n);
                     break;
                 default:
                     return;
@@ -293,4 +305,8 @@ namespace QuestSystem.Quest
         }
     }
 
+    public enum QuestState
+    {
+        Inactive, Active, Failed, Passed
+    }
 }

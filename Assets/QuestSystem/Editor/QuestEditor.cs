@@ -21,8 +21,6 @@ namespace QuestSystem.Quest
 
             QuestStateObject qso = Resources.Load("QuestStateData") as QuestStateObject;
 
-
-
             string[] choices = qso.GetAllQuestNames().ToArray();
             int selectedIndex = -1;
             if(name != "" && !showAddName)

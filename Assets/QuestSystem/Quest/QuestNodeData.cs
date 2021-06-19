@@ -12,8 +12,6 @@ namespace QuestSystem.Quest
         [SerializeField] protected string uID;
         [SerializeField] Rect rect;
 
-        [SerializeField] public string testString = "";
-
         public Rect Rect { get => rect; set => rect = value; }
         public string UID { get => uID; set => uID = value; }
 

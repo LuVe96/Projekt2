@@ -99,6 +99,8 @@ namespace QuestSystem.Quest
                         nodes.Add(new EnableActionNode(OnClickNodePort, n, RepaintEditor)); break;
                     case StandartNodeData n:
                         nodes.Add(new StandartNode(OnClickNodePort, n, RepaintEditor)); break;
+                    case QuestEndNodeData n:
+                        nodes.Add(new QuestEndNode(OnClickNodePort, n, RepaintEditor)); break;
                     default:
                         break;
                 }
@@ -295,7 +297,7 @@ namespace QuestSystem.Quest
         {
             GenericMenu genericMenu = new GenericMenu();
             genericMenu.AddItem(new GUIContent("Add Standart node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StandartNode));
-            genericMenu.AddItem(new GUIContent("Add start node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StartNode));
+            genericMenu.AddItem(new GUIContent("Add End node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EndNode));
             genericMenu.AddItem(new GUIContent("Add Dialogue node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.DialogueNode));
             genericMenu.AddItem(new GUIContent("Add Invnetory Requirement node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryRequirementNode));
             genericMenu.AddItem(new GUIContent("Add Invnetory Action node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryActionNode));
@@ -326,6 +328,9 @@ namespace QuestSystem.Quest
                 case QuestNodeType.StandartNode:
                     nodes.Add(new StandartNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
+                case QuestNodeType.EndNode:
+                    nodes.Add(new QuestEndNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
+                    break; ;
                 default:
                     break;
             }

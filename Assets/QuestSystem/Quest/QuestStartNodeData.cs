@@ -8,13 +8,13 @@ namespace QuestSystem.Quest
     [System.Serializable]
     public class QuestStartNodeData : MainNodeData
     {
-        [SerializeField] public string[] requieredStates;
-
-        [SerializeField] public string testStartString = "";
+        [SerializeField] string activeAfter = "";
 
         public QuestStartNodeData(string id) : base(id)
         {
         }
+
+        public string ActiveAfter { get => activeAfter; set => activeAfter = value; }
 
         protected override void executeNode()
         {
