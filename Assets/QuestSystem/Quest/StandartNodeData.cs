@@ -21,6 +21,9 @@ namespace QuestSystem.Quest
             FinishNode();
         }
 
+        protected override void resetNode()
+        {
+        }
     }
 
 }

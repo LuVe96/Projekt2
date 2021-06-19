@@ -89,6 +89,14 @@ namespace QuestSystem.Quest
                 dialogueEndPointContainer.Remove(toDelete);
             }
         }
+
+        protected override void resetNode()
+        {
+            if(container != null)
+            {
+                nPCDialogueAttacher.RemoveDialogue(container);
+            }
+        }
     }
 
     public delegate void DialogueHasFinished(string endPointId);

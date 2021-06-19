@@ -21,6 +21,10 @@ namespace QuestSystem.Quest
             Debug.Log("Execute QuestStartNode");
             FinishNode();
         }
+
+        protected override void resetNode()
+        {
+        }
     }
 
 

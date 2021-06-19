@@ -46,7 +46,7 @@ namespace QuestSystem.Quest
                 executeNode();
             } else
             {
-                // UNEXECUTE
+                resetNode();
             }
 
         }
@@ -80,7 +80,7 @@ namespace QuestSystem.Quest
         }
 
         protected abstract void executeNode();
-
+        protected abstract void resetNode();
 
         protected void FinishNode(DialogueEndPointContainer endPoint = null)
         {
