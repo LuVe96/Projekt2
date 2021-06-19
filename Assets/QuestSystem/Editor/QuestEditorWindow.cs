@@ -243,9 +243,11 @@ namespace QuestSystem.Quest
             }
         }
 
+        Vector2 curPos = new Vector2(100,100);
+        float zoomScale = 1;
         private void ProccessEvents(Event current)
         {
-           
+
             if (current.type == EventType.MouseDown)
             {
                 // Open PopupMenu

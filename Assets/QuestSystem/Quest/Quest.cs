@@ -10,7 +10,7 @@ namespace QuestSystem.Quest
     //[CreateAssetMenu(fileName = "New Quest", menuName = "QuestSystem/Quest", order = 0)]
     public class Quest : MonoBehaviour
     {
-        public string questName;
+        [SerializeField] string questName;
         //[SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
         [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
         [SerializeField] List<QuestDialogueNodeData> dialogNodeDatas = new List<QuestDialogueNodeData>();
@@ -38,6 +38,8 @@ namespace QuestSystem.Quest
                 return allNodes;
             }
         }
+
+        public string QuestName { get => questName; set => questName = value; }
 
         private List<QuestNodeData> AddToAllNodes(QuestNodeData[] nodes, List<QuestNodeData> allNodes )
         {
