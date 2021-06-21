@@ -28,6 +28,10 @@ namespace QuestSystem.Quest
                 FinishNode();
                 QuestHasFinished(EndType);
             }
+
+        protected override void resetNode()
+        {
+        }
     }
 
     [System.Serializable]

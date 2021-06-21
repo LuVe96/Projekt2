@@ -16,7 +16,7 @@ namespace QuestSystem.Quest
         private List<NodeConnection> connections = new List<NodeConnection>();
         Dictionary<string, Node> nodeLookUp = new Dictionary<string, Node>();
 
-        private NodePort selectedInPoint;
+        private NodePort selectedInPoint = null;
         private NodePort selectedOutPoint;
         Vector2 scrollPosition;
         [NonSerialized]
@@ -24,7 +24,8 @@ namespace QuestSystem.Quest
         [NonSerialized]
         Vector2 draggingCanvasOffset;
 
-        public Vector2 canvasSize = new Vector2(4000, 2000);
+        private Vector2 canvasSize = new Vector2(4000, 2000);
+        private QuestVariableTemplate newQuestVaraible = null;
 
         [MenuItem("Tools/QuestWindow")]
         public static void Init()
@@ -183,6 +184,7 @@ namespace QuestSystem.Quest
 
         private void OnGUI()
         {
+            DrawVariableArea();
             if(currentQuest == null)
             {
                 EditorGUILayout.LabelField("Select A Quest");
@@ -215,7 +217,35 @@ namespace QuestSystem.Quest
             }
         }
 
-   
+        private void DrawVariableArea()
+        {
+            GUILayout.BeginHorizontal(GUILayout.Width(100));
+            EditorGUILayout.LabelField("Quest Variables:");
+            if (GUILayout.Button("+", GUILayout.Width(30)))
+            {
+                newQuestVaraible = new QuestVariableTemplate(); ;
+            }
+            GUILayout.EndHorizontal();
+
+            if (newQuestVaraible != null)
+            {
+                GUILayout.BeginHorizontal(GUILayout.Width(300));
+                newQuestVaraible.Title = EditorGUILayout.TextField(newQuestVaraible.Title);
+                newQuestVaraible.Type = (QuestVariableType)EditorGUILayout.EnumPopup(newQuestVaraible.Type);
+                if (GUILayout.Button("✓", GUILayout.Width(30)))
+                {
+                    QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
+                    qvo.AddQuestVarialbe(newQuestVaraible);
+                    newQuestVaraible = null;
+                }
+                if (GUILayout.Button("X", GUILayout.Width(30)))
+                {
+                    newQuestVaraible = null;
+                }
+                GUILayout.EndHorizontal();
+            }
+
+        }
 
         private Node GetNodeAtPoint(Vector2 point)
         {
@@ -296,14 +326,17 @@ namespace QuestSystem.Quest
         private void ProcessContextMenu(Vector2 mousePosition)
         {
             GenericMenu genericMenu = new GenericMenu();
-            genericMenu.AddItem(new GUIContent("Add Standart node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StandartNode));
-            genericMenu.AddItem(new GUIContent("Add End node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EndNode));
-            genericMenu.AddItem(new GUIContent("Add Dialogue node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.DialogueNode));
-            genericMenu.AddItem(new GUIContent("Add Invnetory Requirement node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryRequirementNode));
-            genericMenu.AddItem(new GUIContent("Add Invnetory Action node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryActionNode));
-            genericMenu.AddItem(new GUIContent("Add Enable Action node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode));;
+            genericMenu.AddItem(new GUIContent("Main Nodes / Standart Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StandartNode));
+            genericMenu.AddItem(new GUIContent("Main Nodes / End Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EndNode));
+            genericMenu.AddItem(new GUIContent("Main Nodes / Dialogue Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.DialogueNode));
+            genericMenu.AddItem(new GUIContent("Requirement Nodes / Invnetory Requirement Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryRequirementNode));
+            genericMenu.AddItem(new GUIContent("Action Nodes / Invnetory Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryActionNode));
+            genericMenu.AddItem(new GUIContent("Action Nodes / Enable Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode)); ;
+
             genericMenu.ShowAsContext();
         }
+
+     
  
         private void OnClickAddNode(Vector2 mousePosition, QuestNodeType type)
         {
@@ -475,5 +508,17 @@ namespace QuestSystem.Quest
 
         #endregion
 
+    }
+
+     struct ContextMenuItem
+    {
+        public string text;
+        public QuestNodeType type;
+
+        public ContextMenuItem(string text, QuestNodeType type)
+        {
+            this.text = text;
+            this.type = type;
+        }
     }
 }
