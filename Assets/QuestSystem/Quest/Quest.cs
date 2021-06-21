@@ -20,6 +20,8 @@ namespace QuestSystem.Quest
         [SerializeField] List<InventoryActionData> inventoryActionDatas = new List<InventoryActionData>();
         [SerializeField] List<InventoryRequireData> inventoryReqireNodeDatas = new List<InventoryRequireData>();
         [SerializeField] List<QuestEndNodeData> endNodeDatas = new List<QuestEndNodeData>();
+        [SerializeField] List<VariableActionData> variableActionDatas = new List<VariableActionData>();
+        [SerializeField] List<VariableRequireData> varaibleRequireDatas = new List<VariableRequireData>();
 
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
@@ -37,13 +39,16 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(inventoryReqireNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(standartNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(endNodeDatas.ToArray(), allNodes);
-
+                allNodes = AddToAllNodes(variableActionDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(VaraibleRequireDatas.ToArray(), allNodes);
                 return allNodes;
             }
         }
 
         public string QuestName { get => questName; set => questName = value; }
         public QuestState QuestState { get => questState; set => questState = value; }
+        public List<VariableActionData> VariableActionDatas { get => variableActionDatas; set => variableActionDatas = value; }
+        public List<VariableRequireData> VaraibleRequireDatas { get => varaibleRequireDatas; set => varaibleRequireDatas = value; }
 
         private Quest()
         {
@@ -201,6 +206,14 @@ namespace QuestSystem.Quest
                     QuestEndNodeData endData = new QuestEndNodeData(Guid.NewGuid().ToString());
                     endNodeDatas.Add(endData);
                     return endData;
+                case QuestNodeType.VariableRequirementNode:
+                    VariableRequireData varRegData = new VariableRequireData(Guid.NewGuid().ToString());
+                    varaibleRequireDatas.Add(varRegData);
+                    return varRegData;
+                case QuestNodeType.VariableActionNode:
+                    VariableActionData varActData = new VariableActionData(Guid.NewGuid().ToString());
+                    variableActionDatas.Add(varActData);
+                    return varActData;
                 default:
                     return null;
             }
@@ -233,6 +246,12 @@ namespace QuestSystem.Quest
                     break;
                 case QuestEndNodeData n:
                     endNodeDatas.Remove(n);
+                    break;
+                case VariableActionData n:
+                    variableActionDatas.Remove(n);
+                    break;
+                case VariableRequireData n:
+                    varaibleRequireDatas.Remove(n);
                     break;
                 default:
                     return;

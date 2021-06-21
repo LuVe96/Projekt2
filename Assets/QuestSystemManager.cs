@@ -26,6 +26,9 @@ namespace QuestSystem
         private Quest.Quest[] quests;
         Dictionary<string, QuestState> questsLookUp = new Dictionary<string, QuestState>();
 
+        private List<QuestVariable> questVariables = new List<QuestVariable>();
+        Dictionary<string, QuestVariable> questVariablesLookUp = new Dictionary<string, QuestVariable>();
+
 
 
         // Start is called before the first frame update
@@ -39,8 +42,38 @@ namespace QuestSystem
                 if ((quest.Nodes[0] as QuestStartNodeData).ActiveAfter == "None")
                     quest.StartQuest();
             }
+        }
 
+        public void setQuestVariable(string title, string value)
+        {
 
+            if (questVariablesLookUp.ContainsKey(title))
+            {
+                questVariablesLookUp[title].value = value;
+            }else
+            {
+                questVariables.Add(new QuestVariable(title, value));
+            }
+
+            questsLookUp.Clear();
+            foreach (QuestVariable var in questVariables)
+            {
+                questVariablesLookUp.Add(var.title, var);
+
+            }
+
+        }
+
+        public string getQuestVariableValue(string title)
+        {
+            if (questVariablesLookUp.ContainsKey(title))
+            {
+                return questVariablesLookUp[title].value;
+            }
+            else
+            {
+                return null;
+            }  
         }
 
         // Update is called once per frame
@@ -70,4 +103,16 @@ namespace QuestSystem
             }
         }
     } 
+
+    public class QuestVariable
+    {
+        public string title;
+        public string value;
+
+        public QuestVariable(string title, string value)
+        {
+            this.title = title;
+            this.value = value;
+        }
+    }
 }

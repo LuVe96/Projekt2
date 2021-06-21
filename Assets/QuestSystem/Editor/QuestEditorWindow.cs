@@ -102,9 +102,13 @@ namespace QuestSystem.Quest
                         nodes.Add(new StandartNode(OnClickNodePort, n, RepaintEditor)); break;
                     case QuestEndNodeData n:
                         nodes.Add(new QuestEndNode(OnClickNodePort, n, RepaintEditor)); break;
+                    case VariableActionData n:
+                        nodes.Add(new VariableActionNode(OnClickNodePort, n, RepaintEditor)); break;
+                    case VariableRequireData n:
+                        nodes.Add(new VariableRequireNode(OnClickNodePort, n, RepaintEditor)); break;
                     default:
                         break;
-                }
+                } 
             }
 
             // fill Lookup to get nodes over ID in futher steps
@@ -330,8 +334,10 @@ namespace QuestSystem.Quest
             genericMenu.AddItem(new GUIContent("Main Nodes / End Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EndNode));
             genericMenu.AddItem(new GUIContent("Main Nodes / Dialogue Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.DialogueNode));
             genericMenu.AddItem(new GUIContent("Requirement Nodes / Invnetory Requirement Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryRequirementNode));
+            genericMenu.AddItem(new GUIContent("Requirement Nodes / Varaible Requirement Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.VariableRequirementNode));
             genericMenu.AddItem(new GUIContent("Action Nodes / Invnetory Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryActionNode));
-            genericMenu.AddItem(new GUIContent("Action Nodes / Enable Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode)); ;
+            genericMenu.AddItem(new GUIContent("Action Nodes / Enable Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode));
+            genericMenu.AddItem(new GUIContent("Action Nodes / Varaible Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.VariableActionNode));
 
             genericMenu.ShowAsContext();
         }
@@ -364,6 +370,12 @@ namespace QuestSystem.Quest
                 case QuestNodeType.EndNode:
                     nodes.Add(new QuestEndNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break; ;
+                case QuestNodeType.VariableRequirementNode:
+                    nodes.Add(new VariableRequireNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
+                    break;
+                case QuestNodeType.VariableActionNode:
+                    nodes.Add(new VariableActionNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
+                    break;
                 default:
                     break;
             }
@@ -510,7 +522,7 @@ namespace QuestSystem.Quest
 
     }
 
-     struct ContextMenuItem
+    struct ContextMenuItem
     {
         public string text;
         public QuestNodeType type;
