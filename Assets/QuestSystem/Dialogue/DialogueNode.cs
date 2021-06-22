@@ -18,7 +18,7 @@ namespace QuestSystem.Dialogue
         [SerializeField]
         List<string> children = new List<string>();
         [SerializeField]
-        Rect rect = new Rect(0,0,200,100);
+        Rect rect = new Rect(0,0,200,140);
         [HideInInspector]
         [SerializeField]
         Rect textFieldRect = new Rect(0, 0, 160, 18);

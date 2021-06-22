@@ -85,9 +85,7 @@ namespace QuestSystem.Dialogue.Editor
             }
             else
             {
-                EditorGUILayout.LabelField(selectedDialogue.name);       
-                
-                ProcessEvent();
+                EditorGUILayout.LabelField(selectedDialogue.name);              
 
                 scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
                 Rect canvas = GUILayoutUtility.GetRect(canvasSize.x, canvasSize.y);
@@ -116,6 +114,7 @@ namespace QuestSystem.Dialogue.Editor
                     selectedDialogue.DeleteNode(deletingNode);
                     deletingNode = null;
                 }
+                ProcessEvent();
 
             }   
         }
@@ -196,16 +195,8 @@ namespace QuestSystem.Dialogue.Editor
             //EditorGUI.BeginChangeCheck();
             EditorGUILayout.LabelField("Node:", EditorStyles.whiteLabel);
 
-            //GUIStyle style2 = new GUIStyle(EditorStyles.textArea);
-            //style2.wordWrap = true;
-            //style2.fixedHeight = 0;
-            //style2.fixedHeight = style2.CalcHeight(new GUIContent(node.Text), node.TextFieldRect.width);
-            //GUILayoutOption[] op = { GUILayout.ExpandHeight(true), GUILayout.Height(style2.fixedHeight) };
-            //node.Text = EditorGUILayout.TextArea( node.Text, style2, op);
-            Rect contentRect = (Rect)EditorGUILayout.BeginVertical();
-            node.Text = EditorGUILayout.TextField(node.Text);
-            EditorGUILayout.EndVertical();
-            node.TextFieldRect = contentRect;
+            node.Text = EditorGUILayout.TextArea(node.Text, GUILayout.Height(50));
+
             //node.TextFieldRect = GUILayoutUtility.GetLastRect();
 
             //if (EditorGUI.EndChangeCheck())  // is true, when there are changes
