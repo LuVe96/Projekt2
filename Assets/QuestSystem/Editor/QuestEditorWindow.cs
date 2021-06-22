@@ -225,9 +225,19 @@ namespace QuestSystem.Quest
         {
             GUILayout.BeginHorizontal(GUILayout.Width(100));
             EditorGUILayout.LabelField("Quest Variables:");
-            if (GUILayout.Button("+", GUILayout.Width(30)))
+            if(newQuestVaraible == null)
             {
-                newQuestVaraible = new QuestVariableTemplate(); ;
+                if (GUILayout.Button("+", GUILayout.Width(30)))
+                {
+                    newQuestVaraible = new QuestVariableTemplate(); ;
+                }
+            }
+            else
+            {
+                if (GUILayout.Button("x", GUILayout.Width(30)))
+                {
+                    newQuestVaraible = null;
+                }
             }
             GUILayout.EndHorizontal();
 
@@ -240,10 +250,6 @@ namespace QuestSystem.Quest
                 {
                     QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
                     qvo.AddQuestVarialbe(newQuestVaraible);
-                    newQuestVaraible = null;
-                }
-                if (GUILayout.Button("X", GUILayout.Width(30)))
-                {
                     newQuestVaraible = null;
                 }
                 GUILayout.EndHorizontal();

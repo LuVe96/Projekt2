@@ -21,6 +21,9 @@ namespace QuestSystem
         protected GUIStyle rightPortTextStyle;
         protected GUIStyle leftPortTextStyle;
         protected GUIStyle headerTextStyle;
+        protected GUIStyle headerButtonStyle;
+
+        protected bool headerButtonPressed = false;
 
         List <KeyValuePair<SegmentType, PortSegment>> segments = new List<KeyValuePair<SegmentType, PortSegment>>();
 
@@ -73,6 +76,15 @@ namespace QuestSystem
             headerTextStyle = new GUIStyle();
             headerTextStyle.normal.textColor = Color.white;
             headerTextStyle.fontStyle = FontStyle.Bold;
+
+            headerButtonStyle = new GUIStyle(headerTextStyle);
+            var b = headerButtonStyle.border;
+            b.left = 0;
+            b.right = 0;
+            b.top = 0;
+            b.bottom = 0;
+            headerButtonStyle.border = b;
+
         }
 
         protected abstract void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments);
@@ -117,6 +129,30 @@ namespace QuestSystem
         }
 
         protected abstract void DrawContent();
+
+
+        protected void DrawHeader(string defaultTilte)
+        {
+            MainNodeData data = Questdata as MainNodeData;
+
+            if (!headerButtonPressed)
+            {
+                if (GUILayout.Button(data.Title != null ? data.Title : defaultTilte, headerTextStyle))
+                {
+                    headerButtonPressed = true;
+                }
+            }
+            else
+            {
+                GUILayout.BeginHorizontal();
+                data.Title = GUILayout.TextField(data.Title != null ? data.Title : defaultTilte);
+                if (GUILayout.Button("✓", GUILayout.Width(25)))
+                {
+                    headerButtonPressed = false;
+                }
+                GUILayout.EndHorizontal();
+            }
+        }
 
         private void DrawPorts()
         {

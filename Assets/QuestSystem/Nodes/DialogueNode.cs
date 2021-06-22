@@ -64,7 +64,7 @@ namespace QuestSystem
 
         protected override void DrawContent()
         {
-            GUILayout.Label("Dialogue Node", headerTextStyle);
+            DrawHeader("Dialogue Node");
             mainSegment.Begin();
             mainSegment.End();
             GUILayout.Space(20);

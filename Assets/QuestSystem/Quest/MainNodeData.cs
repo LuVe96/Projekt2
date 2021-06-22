@@ -16,10 +16,12 @@ namespace QuestSystem.Quest
         [SerializeField] List<string> childrenIDs = new List<string>();
         [SerializeField] List<string> requirementIDs = new List<string>();
         [SerializeField] List<string> actionIDs = new List<string>();
+        [SerializeField] string title = null;
 
         public List<string> ChildrenIDs { get => childrenIDs; set => childrenIDs = value; }
         public List<string> RequirementIDs { get => requirementIDs; set => requirementIDs = value; }
         public List<string> ActionIDs { get => actionIDs; set => actionIDs = value; }
+        public string Title { get => title; set => title = value; }
 
         bool isActive = false;
 
