@@ -23,6 +23,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<VariableActionData> variableActionDatas = new List<VariableActionData>();
         [SerializeField] List<VariableRequireData> varaibleRequireDatas = new List<VariableRequireData>();
         [SerializeField] List<NoteNodeData> noteNodeDatas = new List<NoteNodeData>();
+        [SerializeField] List<BranchNodeData> branchNodeDatas = new List<BranchNodeData>();
 
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
@@ -43,6 +44,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(variableActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(varaibleRequireDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(noteNodeDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(branchNodeDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -84,7 +86,7 @@ namespace QuestSystem.Quest
             QuestState = QuestState.Active;
         }
 
-        void ContinueNodes(MainNodeData parentNode, DialogueEndPointContainer endPoint = null)
+        void ContinueNodes(MainNodeData parentNode, EndPointContainer endPoint = null)
         {
             try
             {
@@ -107,7 +109,7 @@ namespace QuestSystem.Quest
 
         }
 
-        private List<QuestNodeData> GetChildsOfActive(MainNodeData parentNode, DialogueEndPointContainer endPoint = null)
+        private List<QuestNodeData> GetChildsOfActive(MainNodeData parentNode, EndPointContainer endPoint = null)
         {
             List<QuestNodeData> n = new List<QuestNodeData>();
 
@@ -221,6 +223,10 @@ namespace QuestSystem.Quest
                     NoteNodeData noteNodeData = new NoteNodeData(Guid.NewGuid().ToString());
                     noteNodeDatas.Add(noteNodeData);
                     return noteNodeData;
+                case QuestNodeType.BranchNode:
+                    BranchNodeData branchNodeData = new BranchNodeData(Guid.NewGuid().ToString());
+                    branchNodeDatas.Add(branchNodeData);
+                    return branchNodeData;
                 default:
                     return null;
             }
@@ -263,6 +269,9 @@ namespace QuestSystem.Quest
                 case NoteNodeData n:
                     noteNodeDatas.Remove(n);
                     break;
+                case BranchNodeData n:
+                    branchNodeDatas.Remove(n);
+                    break;
                 default:
                     return;
             }
@@ -282,13 +291,13 @@ namespace QuestSystem.Quest
                             nData.ChildrenIDs.Remove(node.UID);
                         }
 
-                        if(nodeData is QuestDialogueNodeData)
+                        if(nodeData is EndpointMainNodeData)
                         {
-                            foreach (DialogueEndPointContainer eP in (nodeData as QuestDialogueNodeData).DialogueEndPointContainer)
+                            foreach (EndPointContainer eP in (nodeData as EndpointMainNodeData).EndPointContainer)
                             {
                                 if (eP.endPointChilds.Contains(node.UID))
                                 {
-                                    (nodeData as QuestDialogueNodeData).RemoveDialogueEndPoint(eP.id, node.UID);
+                                    (nodeData as EndpointMainNodeData).RemoveChildToFromPoint(eP.id, node.UID);
                                 }                            
                             }                          
                         }

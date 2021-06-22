@@ -7,12 +7,12 @@ namespace QuestSystem.Quest
 {
     //[CreateAssetMenu(fileName = "New QuestDialogueNode", menuName = "QuestSystem/QuestDialogueNode", order = 0)]
     [System.Serializable]
-    public class QuestDialogueNodeData : MainNodeData
+    public class QuestDialogueNodeData : EndpointMainNodeData
     {
         [SerializeField] Dialogue.Dialogue dialogue;
         [SerializeField] NPCDialogueAttacher nPCDialogueAttacher;
         DialogueContainer container;
-        [SerializeField] List<DialogueEndPointContainer> dialogueEndPointContainer = new List<DialogueEndPointContainer>();
+       
 
         public QuestDialogueNodeData(string id) : base(id)
         {
@@ -20,8 +20,7 @@ namespace QuestSystem.Quest
 
         public Dialogue.Dialogue Dialogue { get => dialogue; set => dialogue = value; }
         public NPCDialogueAttacher NPCDialogueAttacher { get => nPCDialogueAttacher; set => nPCDialogueAttacher = value; }
-        public List<DialogueEndPointContainer> DialogueEndPointContainer { get => dialogueEndPointContainer; set => dialogueEndPointContainer = value; }
-
+      
         protected override void executeNode()
         {
             Debug.Log("Execute QuestDialogueNode");
@@ -34,8 +33,8 @@ namespace QuestSystem.Quest
             Debug.Log("Dialoge Has finished: ");
             nPCDialogueAttacher.RemoveDialogue(container);
 
-            DialogueEndPointContainer endPointContainer = null;
-            foreach (DialogueEndPointContainer endPoint in dialogueEndPointContainer)
+            EndPointContainer endPointContainer = null;
+            foreach (EndPointContainer endPoint in EndPointContainer)
             {
                 if(endPoint.id == endPointId)
                 {
@@ -46,12 +45,12 @@ namespace QuestSystem.Quest
 
         }
 
-        public void AddDialogueEndPoint(string endPointId,string childId)
+        public override void AddChildToEndPoint(string endPointId, string childId)
         {
             bool endPointExists = false;
-            foreach (DialogueEndPointContainer container in dialogueEndPointContainer)
+            foreach (EndPointContainer container in EndPointContainer)
             {
-                if(container.id == endPointId)
+                if (container.id == endPointId)
                 {
                     container.endPointChilds.Add(childId);
                     endPointExists = true;
@@ -59,26 +58,27 @@ namespace QuestSystem.Quest
             }
             if (!endPointExists)
             {
-                dialogueEndPointContainer.Add(new DialogueEndPointContainer(endPointId, childId));
+                EndPointContainer.Add(new EndPointContainer(endPointId, childId));
             }
         }
 
-        public void RemoveDialogueEndPoint(string endPointId, string childId)
+        public override void RemoveChildToFromPoint(string endPointId, string childId)
         {
-            DialogueEndPointContainer toDelete = null;
-            foreach (DialogueEndPointContainer container in dialogueEndPointContainer)
+            EndPointContainer toDelete = null;
+            foreach (EndPointContainer container in EndPointContainer)
             {
                 if (container.id == endPointId)
                 {
-                    if(childId != null)
+                    if (childId != null)
                     {
                         container.endPointChilds.Remove(childId);
-                    } else
+                    }
+                    else
                     {
                         container.endPointChilds.Clear();
                     }
 
-                    if(container.endPointChilds.Count <= 0)
+                    if (container.endPointChilds.Count <= 0)
                     {
                         toDelete = container;
                     }
@@ -86,7 +86,7 @@ namespace QuestSystem.Quest
             }
             if (toDelete != null)
             {
-                dialogueEndPointContainer.Remove(toDelete);
+                EndPointContainer.Remove(toDelete);
             }
         }
 
@@ -97,17 +97,19 @@ namespace QuestSystem.Quest
                 nPCDialogueAttacher.RemoveDialogue(container);
             }
         }
+
+      
     }
 
     public delegate void DialogueHasFinished(string endPointId);
 
     [System.Serializable]
-    public class DialogueEndPointContainer
+    public class EndPointContainer
     {
         public string id;
         public List<string> endPointChilds = new List<string>();
 
-        public DialogueEndPointContainer(string id, string endPointChild = null)
+        public EndPointContainer(string id, string endPointChild = null)
         {
             this.id = id;
             if(endPointChilds!= null)

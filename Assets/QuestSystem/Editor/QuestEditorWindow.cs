@@ -108,6 +108,8 @@ namespace QuestSystem.Quest
                         nodes.Add(new VariableRequireNode(OnClickNodePort, n, RepaintEditor)); break;
                     case NoteNodeData n:
                         nodes.Add(new NoteNode(OnClickNodePort, n, RepaintEditor)); break;
+                    case BranchNodeData n:
+                        nodes.Add(new BranchNode(OnClickNodePort, n, RepaintEditor)); break;
                     default:
                         break;
                 } 
@@ -132,10 +134,16 @@ namespace QuestSystem.Quest
                 }
                 if(node.Questdata is QuestDialogueNodeData)
                 {
-                    foreach (DialogueEndPointContainer container in (node.Questdata as QuestDialogueNodeData).DialogueEndPointContainer)
+                    foreach (EndPointContainer container in (node.Questdata as QuestDialogueNodeData).EndPointContainer)
                     {
                         CreateMatchingConnections(node, container.endPointChilds, SegmentType.DialogueEndPointSegment, SegmentType.MainSegment, container.id);
                     }
+                }
+                if (node.Questdata is BranchNodeData)
+                {
+                    BranchNodeData data = node.Questdata as BranchNodeData;
+                    CreateMatchingConnections(node, data.TrueEndPoint.endPointChilds, SegmentType.DialogueEndPointSegment, SegmentType.MainSegment, data.TrueEndPoint.id);
+                    CreateMatchingConnections(node, data.FalseEndPoint.endPointChilds, SegmentType.DialogueEndPointSegment, SegmentType.MainSegment, data.FalseEndPoint.id);
                 }
 
             }
@@ -348,6 +356,7 @@ namespace QuestSystem.Quest
             genericMenu.AddItem(new GUIContent("Action Nodes / Varaible Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.VariableActionNode));
 
             genericMenu.AddItem(new GUIContent("Other / Note Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.NoteNode));
+            genericMenu.AddItem(new GUIContent("Other / Branch Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.BranchNode));
             genericMenu.ShowAsContext();
         }
 
@@ -387,6 +396,9 @@ namespace QuestSystem.Quest
                     break;
                 case QuestNodeType.NoteNode:
                     nodes.Add(new NoteNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
+                    break;
+                case QuestNodeType.BranchNode:
+                    nodes.Add(new BranchNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 default:
                     break;

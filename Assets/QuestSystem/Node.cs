@@ -176,7 +176,7 @@ namespace QuestSystem
                     (Questdata as MainNodeData).ActionIDs.Add(childNode.Questdata.UID);
                     break;
                 case SegmentType.DialogueEndPointSegment:
-                    (Questdata as QuestDialogueNodeData).AddDialogueEndPoint((segment as EndPortSegment).EndPortId ,childNode.Questdata.UID);
+                    (Questdata as EndpointMainNodeData).AddChildToEndPoint((segment as EndPortSegment).EndPortId, childNode.Questdata.UID);
                     break;
                 default:
                     break;
@@ -199,10 +199,10 @@ namespace QuestSystem
                 case SegmentType.DialogueEndPointSegment:
                     if(childNode != null)
                     {
-                        (Questdata as QuestDialogueNodeData).RemoveDialogueEndPoint((segment as EndPortSegment).EndPortId, childNode.Questdata.UID);
+                        (Questdata as QuestDialogueNodeData).RemoveChildToFromPoint((segment as EndPortSegment).EndPortId, childNode.Questdata.UID);
                     } else
                     {
-                        (Questdata as QuestDialogueNodeData).RemoveDialogueEndPoint((segment as EndPortSegment).EndPortId, null);
+                        (Questdata as QuestDialogueNodeData).RemoveChildToFromPoint((segment as EndPortSegment).EndPortId, null);
                     }
                    
                     break;

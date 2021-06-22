@@ -6,7 +6,7 @@ using UnityEngine;
 namespace QuestSystem.Quest
 {
 
-    public delegate void NodeHasFinished(MainNodeData parentNode, DialogueEndPointContainer endPoint = null);
+    public delegate void NodeHasFinished(MainNodeData parentNode, EndPointContainer endPoint = null);
     public delegate QuestNodeData GetNodeByID(string id);
 
     [System.Serializable]
@@ -40,7 +40,7 @@ namespace QuestSystem.Quest
             execute();
         }
 
-        public void execute()
+        protected virtual void execute()
         {
             isActive = true;
             if (CheckRequirements())
@@ -61,7 +61,7 @@ namespace QuestSystem.Quest
             }
         }
 
-        private bool CheckRequirements()
+        protected bool CheckRequirements()
         {
             foreach (string reqId in requirementIDs)
             {
@@ -82,9 +82,9 @@ namespace QuestSystem.Quest
         }
 
         protected abstract void executeNode();
-        protected abstract void resetNode();
+        protected virtual void resetNode(){}
 
-        protected void FinishNode(DialogueEndPointContainer endPoint = null)
+        protected void FinishNode(EndPointContainer endPoint = null)
         {
             foreach (string actionID in ActionIDs)
             {
