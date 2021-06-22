@@ -22,6 +22,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<QuestEndNodeData> endNodeDatas = new List<QuestEndNodeData>();
         [SerializeField] List<VariableActionData> variableActionDatas = new List<VariableActionData>();
         [SerializeField] List<VariableRequireData> varaibleRequireDatas = new List<VariableRequireData>();
+        [SerializeField] List<NoteNodeData> noteNodeDatas = new List<NoteNodeData>();
 
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
@@ -40,7 +41,9 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(standartNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(endNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(variableActionDatas.ToArray(), allNodes);
-                allNodes = AddToAllNodes(VaraibleRequireDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(varaibleRequireDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(noteNodeDatas.ToArray(), allNodes);
+
                 return allNodes;
             }
         }
@@ -214,6 +217,10 @@ namespace QuestSystem.Quest
                     VariableActionData varActData = new VariableActionData(Guid.NewGuid().ToString());
                     variableActionDatas.Add(varActData);
                     return varActData;
+                case QuestNodeType.NoteNode:
+                    NoteNodeData noteNodeData = new NoteNodeData(Guid.NewGuid().ToString());
+                    noteNodeDatas.Add(noteNodeData);
+                    return noteNodeData;
                 default:
                     return null;
             }
@@ -252,6 +259,9 @@ namespace QuestSystem.Quest
                     break;
                 case VariableRequireData n:
                     varaibleRequireDatas.Remove(n);
+                    break;
+                case NoteNodeData n:
+                    noteNodeDatas.Remove(n);
                     break;
                 default:
                     return;

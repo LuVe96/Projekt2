@@ -50,8 +50,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 438
-    y: 259
+    x: 465
+    y: 232
     width: 200
     height: 140
   textFieldRect:

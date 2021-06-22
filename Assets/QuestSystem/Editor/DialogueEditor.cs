@@ -195,7 +195,10 @@ namespace QuestSystem.Dialogue.Editor
             //EditorGUI.BeginChangeCheck();
             EditorGUILayout.LabelField("Node:", EditorStyles.whiteLabel);
 
-            node.Text = EditorGUILayout.TextArea(node.Text, GUILayout.Height(50));
+            GUIStyle textFieldStyle = EditorStyles.textArea;
+            textFieldStyle.wordWrap = true;
+
+            node.Text = EditorGUILayout.TextArea(node.Text, textFieldStyle,  GUILayout.Height(50));
 
             //node.TextFieldRect = GUILayoutUtility.GetLastRect();
 

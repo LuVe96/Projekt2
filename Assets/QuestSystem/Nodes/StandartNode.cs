@@ -51,7 +51,7 @@ namespace QuestSystem
 
         protected override void DrawContent()
         {
-            GUILayout.Label("Standart Node", headerTextStyle);
+            DrawHeader("Standart Node");
             mainSegment.Begin();
             mainSegment.End();
             GUILayout.Space(20);

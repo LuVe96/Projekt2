@@ -11,6 +11,7 @@ namespace QuestSystem
         StartNode, EndNode, DialogueNode, StandartNode,
         InventoryRequirementNode, VariableRequirementNode,
         InventoryActionNode, EnableActionNode, VariableActionNode,
+        NoteNode,
     }
 
     public enum ConnectionPointType {

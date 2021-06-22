@@ -106,6 +106,8 @@ namespace QuestSystem.Quest
                         nodes.Add(new VariableActionNode(OnClickNodePort, n, RepaintEditor)); break;
                     case VariableRequireData n:
                         nodes.Add(new VariableRequireNode(OnClickNodePort, n, RepaintEditor)); break;
+                    case NoteNodeData n:
+                        nodes.Add(new NoteNode(OnClickNodePort, n, RepaintEditor)); break;
                     default:
                         break;
                 } 
@@ -345,6 +347,7 @@ namespace QuestSystem.Quest
             genericMenu.AddItem(new GUIContent("Action Nodes / Enable Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode));
             genericMenu.AddItem(new GUIContent("Action Nodes / Varaible Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.VariableActionNode));
 
+            genericMenu.AddItem(new GUIContent("Other / Note Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.NoteNode));
             genericMenu.ShowAsContext();
         }
 
@@ -381,6 +384,9 @@ namespace QuestSystem.Quest
                     break;
                 case QuestNodeType.VariableActionNode:
                     nodes.Add(new VariableActionNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
+                    break;
+                case QuestNodeType.NoteNode:
+                    nodes.Add(new NoteNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 default:
                     break;
