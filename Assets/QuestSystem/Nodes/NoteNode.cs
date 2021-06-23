@@ -11,11 +11,13 @@ namespace QuestSystem
         public NoteNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
           : base(OnClickNodePort, _questdata, repaintEditorDelegate)
         {
+            drawHeader = false;
         }
 
         public NoteNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
             : base(position, width, height, OnClickNodePort, _questdata, repaintEditorDelegate)
         {
+            drawHeader = false;
         }
 
         GUIStyle textStyle;
@@ -26,6 +28,10 @@ namespace QuestSystem
         protected override void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments)
         {
            // No Segemnt needed
+        }
+
+        protected override void DrawNodeHeader()
+        {
         }
 
         protected override GUIStyle UseNodeStyle()

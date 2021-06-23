@@ -42,12 +42,16 @@ namespace QuestSystem
             return style;
         }
 
+        protected override void DrawNodeHeader()
+        {
+            EditorGUILayout.LabelField("Variable Requirement", headerTextStyle);
+            GUILayout.Space(10);
+            requirementSegment.Begin();
+            requirementSegment.End();
+        }
 
         protected override void DrawContent()
         {
-            EditorGUILayout.LabelField("Variable Requirement", headerTextStyle);
-            requirementSegment.Begin();
-            requirementSegment.End();
 
             QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
             List<QuestVariableTemplate> variables = qvo.GetAllQuestVariableTemplates();
@@ -77,6 +81,8 @@ namespace QuestSystem
 
             GUILayout.EndHorizontal();
         }
+
+       
     }
 
 }

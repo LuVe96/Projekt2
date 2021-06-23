@@ -46,12 +46,17 @@ namespace QuestSystem
             return base.UseNodeStyle();
         }
 
-        protected override void DrawContent()
+        protected override void DrawNodeHeader()
         {
-            DrawHeader("StartNodeData");
+            DrawEditabelHeader("StartNodeData");
+            GUILayout.Space(10);
             mainSegment.Begin();
             mainSegment.End();
-            GUILayout.Space(20);
+        }
+
+        protected override void DrawContent()
+        {
+         
 
             QuestStateObject qso = Resources.Load("QuestStateData") as QuestStateObject;
             string[] choices = qso.GetAllQuestNames().ToArray();
@@ -67,7 +72,7 @@ namespace QuestSystem
             actionSegment.End();
         }
 
-
+       
     }
 
 } 

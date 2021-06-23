@@ -26,6 +26,7 @@ namespace QuestSystem.Quest
 
         private Vector2 canvasSize = new Vector2(4000, 2000);
         private QuestVariableTemplate newQuestVaraible = null;
+        private Vector2 variableAreaOffset = new Vector2(0,0);
 
         [MenuItem("Tools/QuestWindow")]
         public static void Init()
@@ -199,7 +200,7 @@ namespace QuestSystem.Quest
         private void OnGUI()
         {
             DrawVariableArea();
-            if(currentQuest == null)
+            if (currentQuest == null)
             {
                 EditorGUILayout.LabelField("Select A Quest");
             }
@@ -233,6 +234,7 @@ namespace QuestSystem.Quest
 
         private void DrawVariableArea()
         {
+            float height = EditorGUILayout.BeginVertical().height;
             GUILayout.BeginHorizontal(GUILayout.Width(100));
             EditorGUILayout.LabelField("Quest Variables:");
             if(newQuestVaraible == null)
@@ -265,6 +267,13 @@ namespace QuestSystem.Quest
                 GUILayout.EndHorizontal();
             }
 
+            EditorGUILayout.EndVertical();
+
+            if(height != 0)
+            {
+                variableAreaOffset.y = height * -1;
+            }
+
         }
 
         private Node GetNodeAtPoint(Vector2 point)
@@ -285,7 +294,7 @@ namespace QuestSystem.Quest
             {
                 for (int i = nodes.Count - 1; i >= 0; i--)
                 {
-                    bool guiChanged = nodes[i].ProcessEvents(current, scrollPosition);
+                    bool guiChanged = nodes[i].ProcessEvents(current, scrollPosition + variableAreaOffset);
 
                     if (guiChanged)
                     {
@@ -297,6 +306,8 @@ namespace QuestSystem.Quest
 
         Vector2 curPos = new Vector2(100,100);
         float zoomScale = 1;
+
+
         private void ProccessEvents(Event current)
         {
 
@@ -305,7 +316,7 @@ namespace QuestSystem.Quest
                 // Open PopupMenu
                 if (current.button == 1)
                 {
-                    Node node = GetNodeAtPoint(current.mousePosition + scrollPosition);
+                    Node node = GetNodeAtPoint(current.mousePosition + scrollPosition + variableAreaOffset);
                     if (node)
                     {
                         GenericMenu genericMenu = new GenericMenu();
@@ -324,10 +335,10 @@ namespace QuestSystem.Quest
 
                 }
                
-                if (current.button == 0 && (GetNodeAtPoint(current.mousePosition + scrollPosition) == null))
+                if (current.button == 0 && (GetNodeAtPoint(current.mousePosition + scrollPosition + variableAreaOffset) == null))
                 {
                     draggingCanvas = true;
-                    draggingCanvasOffset = Event.current.mousePosition + scrollPosition;
+                    draggingCanvasOffset = Event.current.mousePosition + scrollPosition + variableAreaOffset;
                 }
             }
             else if (current.type == EventType.MouseDrag && draggingCanvas && current.button == 0)

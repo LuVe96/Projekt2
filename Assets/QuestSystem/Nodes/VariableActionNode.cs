@@ -41,6 +41,13 @@ namespace QuestSystem
             return style;
         }
 
+        protected override void DrawNodeHeader()
+        {
+            EditorGUILayout.LabelField("Variable Action", headerTextStyle);
+            GUILayout.Space(10);
+            actionSegment.Begin();
+            actionSegment.End();
+        }
 
         protected override void DrawContent()
         {

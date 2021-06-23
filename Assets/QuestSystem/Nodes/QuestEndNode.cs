@@ -44,12 +44,17 @@ namespace QuestSystem
             return base.UseNodeStyle();
         }
 
-        protected override void DrawContent()
+        protected override void DrawNodeHeader()
         {
-            DrawHeader("End Node");
+            DrawEditabelHeader("End Node");
+            GUILayout.Space(10);
             mainSegment.Begin();
             mainSegment.End();
-            GUILayout.Space(20);
+        }
+
+        protected override void DrawContent()
+        {
+         
 
             GUILayout.Label("End Node Type:");
             EndNodeData.EndType = (QuestEndType) EditorGUILayout.EnumPopup(EndNodeData.EndType);

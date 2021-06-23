@@ -38,12 +38,17 @@ namespace QuestSystem
             style.padding = new RectOffset(24, 24, 16, 16);
             return style;
         }
+        protected override void DrawNodeHeader()
+        {
+            GUILayout.Label("Enable Action", headerTextStyle);
+            GUILayout.Space(10);
+            actionSegment.Begin();
+            actionSegment.End();
+        }
 
         protected override void DrawContent()
         {
-            EditorGUILayout.LabelField("Enable Action", headerTextStyle);
-            actionSegment.Begin();
-            actionSegment.End();
+           
 
             GUILayout.Label("GameObject:");
             EnableActionData.GObject = (GameObject)EditorGUILayout.ObjectField(EnableActionData.GObject, typeof(GameObject), true);

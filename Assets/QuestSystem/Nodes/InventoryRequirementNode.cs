@@ -42,14 +42,18 @@ namespace QuestSystem
             style.padding = new RectOffset(24, 24, 16, 16);
             return style;
         }
-
-        protected override void DrawContent()
+        protected override void DrawNodeHeader()
         {
             GUILayout.Label("Invnetory Requirement", headerTextStyle);
+            GUILayout.Space(10);
             requirementSegment.Begin();
             requirementSegment.End();
 
-            GUILayout.Space(20);
+        }
+
+        protected override void DrawContent()
+        {
+          
 
 
             GUILayout.Label("Item:");

@@ -62,13 +62,17 @@ namespace QuestSystem
             return base.UseNodeStyle();
         }
 
-        protected override void DrawContent()
+        protected override void DrawNodeHeader()
         {
-            DrawHeader("Dialogue Node");
+            DrawEditabelHeader("Dialogue Node");
+            GUILayout.Space(10);
+
             mainSegment.Begin();
             mainSegment.End();
-            GUILayout.Space(20);
+       }
 
+        protected override void DrawContent()
+        {
             GUILayout.Label("Dialogue:");
             DialogueNodeData.Dialogue = (Dialogue.Dialogue)EditorGUILayout.ObjectField(DialogueNodeData.Dialogue, typeof(Dialogue.Dialogue), false);
             GUILayout.Space(10);

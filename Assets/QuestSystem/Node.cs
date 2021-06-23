@@ -18,6 +18,9 @@ namespace QuestSystem
         protected GUIStyle style;
         private float contentHeight;
 
+        private GUIStyle headerStyle;
+        private Rect headerRect;
+
         protected GUIStyle rightPortTextStyle;
         protected GUIStyle leftPortTextStyle;
         protected GUIStyle headerTextStyle;
@@ -30,6 +33,7 @@ namespace QuestSystem
         public Rect Rect { get => rect;
             private set {
                 rect = value;
+                headerRect.position = value.position;
                 if (Questdata != null)
                 {
                     Questdata.Rect = rect;
@@ -41,7 +45,7 @@ namespace QuestSystem
         public List<KeyValuePair<SegmentType, PortSegment>> Segments { get => segments; set => segments = value; }
 
         protected RepaintEditorDelegate RepaintEditor;
-
+        protected bool drawHeader = true;
 
         public Node(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
         {
@@ -59,6 +63,8 @@ namespace QuestSystem
             RepaintEditor = repaintEditorDelegate;
 
             Rect = _rect;
+            _rect.height = 0;
+            headerRect = _rect;
             style = UseNodeStyle();
             SetupStyles();
             SetupSegments(OnClickNodePort, segments);
@@ -85,6 +91,11 @@ namespace QuestSystem
             b.bottom = 0;
             headerButtonStyle.border = b;
 
+            headerStyle = new GUIStyle();
+            headerStyle.normal.background = Resources.Load("node_header") as Texture2D;
+            headerStyle.border = new RectOffset(20, 20, 20, 20);
+            headerStyle.padding = new RectOffset(24, 24, 16, 16);
+
         }
 
         protected abstract void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments);
@@ -108,16 +119,22 @@ namespace QuestSystem
 
         public void Draw() {
             GUILayout.BeginArea(Rect, style);
-
             contentHeight = EditorGUILayout.BeginVertical().height;
+            GUILayout.Space(headerRect.height);
             DrawContent();
             EditorGUILayout.EndHorizontal();
 
             GUILayout.EndArea();
+            if (drawHeader)
+            {
+                DrawHeader();
+            }
+
             DrawPorts();
 
-            if(contentHeight != 0)
+            if (contentHeight != 0)
             {
+
                 if ((contentHeight + 35) != Rect.height)
                 {
                     Rect r = Rect;
@@ -126,13 +143,37 @@ namespace QuestSystem
                     RepaintEditor(false);
                 }
             }
+        }
 
+        private void DrawHeader()
+        {
+            GUILayout.BeginArea(headerRect, headerStyle);
+
+            float headerHeight = EditorGUILayout.BeginVertical().height;
+            DrawNodeHeader();
+            GUILayout.Space(30);
+
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.EndArea();
+
+            if (headerHeight != 0)
+            {
+                if ((headerHeight) != headerRect.height)
+                {
+                    Rect r = headerRect;
+                    r.height = headerHeight;
+                    headerRect = r;
+                    RepaintEditor(false);
+                }
+            }
         }
 
         protected abstract void DrawContent();
+        protected abstract void DrawNodeHeader();
 
 
-        protected void DrawHeader(string defaultTilte)
+        protected void DrawEditabelHeader(string defaultTilte)
         {
             MainNodeData data = Questdata as MainNodeData;
 

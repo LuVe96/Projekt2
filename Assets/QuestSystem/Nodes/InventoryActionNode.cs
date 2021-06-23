@@ -39,11 +39,17 @@ namespace QuestSystem
             return style;
         }
 
-        protected override void DrawContent()
+        protected override void DrawNodeHeader()
         {
-            EditorGUILayout.LabelField("Invnetory Action", headerTextStyle);
+            GUILayout.Label("Invnetory Action", headerTextStyle);
+            GUILayout.Space(10);
             actionSegment.Begin();
             actionSegment.End();
+        }
+
+        protected override void DrawContent()
+        {
+
 
             GUILayout.Label("Action:");
             InventoryActionData.InventoryAction = (InventorySelectionType)EditorGUILayout.EnumPopup(InventoryActionData.InventoryAction);
@@ -56,6 +62,7 @@ namespace QuestSystem
             GUILayout.EndHorizontal();
         }
 
+     
     }
     
 }

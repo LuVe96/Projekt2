@@ -55,12 +55,16 @@ namespace QuestSystem
             return base.UseNodeStyle(); 
         }
 
-        protected override void DrawContent()
+        protected override void DrawNodeHeader()
         {
-            DrawHeader("Branch Node");
+            DrawEditabelHeader("Branch Node");
+            GUILayout.Space(10);
             mainSegment.Begin();
             mainSegment.End();
-            GUILayout.Space(20);
+        }
+
+        protected override void DrawContent()
+        {
 
             trueEndPointSegment.Begin();
             EditorGUILayout.LabelField(trueEndPointSegment.EndPortDescription, rightPortTextStyle);
@@ -75,6 +79,7 @@ namespace QuestSystem
             EditorGUILayout.LabelField("Requirements", leftPortTextStyle);
             requirementSegment.End();
 
-        }    
+        }
+
     }
 }
