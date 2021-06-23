@@ -36,7 +36,11 @@ namespace QuestSystem
 
         protected override GUIStyle UseNodeStyle()
         {
-            return base.UseNodeStyle();
+            style = new GUIStyle();
+            style.normal.background = Resources.Load("node_red") as Texture2D;
+            style.border = new RectOffset(20, 20, 20, 20);
+            style.padding = new RectOffset(24, 24, 16, 16);
+            return style;
         }
 
         protected override void DrawContent()

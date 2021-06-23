@@ -435,13 +435,14 @@ namespace QuestSystem.Quest
         private void DrawHandel(Event current, NodePort selectedPort)
         {
             float multiplier = selectedPort.PortPosition == PortPosition.Left ? 1 : -1;
+            Color color = selectedPort.Segment.LineColor;
 
             Handles.DrawBezier(
                 selectedPort.Rect.center,
                 current.mousePosition,
                 selectedPort.Rect.center + Vector2.left * 50f * multiplier,
                 current.mousePosition - Vector2.left * 50f * multiplier,
-                Color.white,
+                color,
                 null,
                 2f
             );

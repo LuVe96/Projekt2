@@ -92,7 +92,8 @@ namespace QuestSystem
         protected virtual GUIStyle UseNodeStyle()
         {
             style = new GUIStyle();
-            style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
+            //style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
+            style.normal.background = Resources.Load("node_blue") as Texture2D;
             style.border = new RectOffset(20, 20, 20, 20);
             style.padding = new RectOffset(24, 24, 16, 16);
             return style;

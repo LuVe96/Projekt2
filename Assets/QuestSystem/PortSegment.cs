@@ -33,6 +33,27 @@ namespace QuestSystem
         public Node Node { get => node; set => node = value; }
         public Dictionary<ConnectionPointType, NodePort> NodePortsDict { get => nodePortsDict; set => nodePortsDict = value; }
         public SegmentType Type { get => type; }
+        public Color LineColor { get
+            {
+                Color color = Color.white;
+                switch (type)
+                {
+
+                    case SegmentType.DialogueEndPointSegment:
+                    case SegmentType.MainSegment:
+                        ColorUtility.TryParseHtmlString("#55C6F2", out color);
+                        return color;
+                    case SegmentType.RequirementSegment:
+                        ColorUtility.TryParseHtmlString("#F2B979", out color);
+                        return color;
+                    case SegmentType.ActionSegment:
+                        ColorUtility.TryParseHtmlString("#85F297", out color);
+                        return color;
+                    default:
+                        return color;
+                }
+            }
+        }
 
         public void Begin()
         {

@@ -37,7 +37,7 @@ namespace QuestSystem
             textFieldStyle.wordWrap = true;
 
             style = new GUIStyle();
-            style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node2.png") as Texture2D;
+            style.normal.background = Resources.Load("node_yellow") as Texture2D;
             style.border = new RectOffset(20, 20, 20, 20);
             style.padding = new RectOffset(24, 24, 16, 16);
             return style;

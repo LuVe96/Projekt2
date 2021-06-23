@@ -24,14 +24,16 @@ namespace QuestSystem
         {
             Rect leftPointRect = (outPoint.PortPosition == PortPosition.Left) ? outPoint.Rect : inPoint.Rect;
             Rect rightPointRect = (outPoint.PortPosition == PortPosition.Right) ? outPoint.Rect : inPoint.Rect;
+            Color color = inPoint.Segment.LineColor;
+
             Handles.DrawBezier(
                 leftPointRect.center,
                 rightPointRect.center,
                 leftPointRect.center + Vector2.left * 50f,
                 rightPointRect.center - Vector2.left * 50f,
-                Color.white,
+                color,
                 null,
-                2f
+                3f
             );
 
 

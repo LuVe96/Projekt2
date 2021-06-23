@@ -30,6 +30,15 @@ namespace QuestSystem
             segments.Add(new KeyValuePair<SegmentType, PortSegment>(actionSegment.Type, actionSegment));
         }
 
+        protected override GUIStyle UseNodeStyle()
+        {
+            style = new GUIStyle();
+            style.normal.background = Resources.Load("node_green") as Texture2D;
+            style.border = new RectOffset(20, 20, 20, 20);
+            style.padding = new RectOffset(24, 24, 16, 16);
+            return style;
+        }
+
         protected override void DrawContent()
         {
             EditorGUILayout.LabelField("Enable Action", headerTextStyle);
