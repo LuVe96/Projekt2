@@ -45,7 +45,6 @@ namespace QuestSystem
         protected override void DrawNodeHeader()
         {
             GUILayout.Label("Invnetory Requirement", headerTextStyle);
-            GUILayout.Space(10);
             requirementSegment.Begin();
             requirementSegment.End();
 
@@ -56,7 +55,7 @@ namespace QuestSystem
           
 
 
-            GUILayout.Label("Item:");
+            GUILayout.Label("Item:", textStyle);
             GUILayout.BeginHorizontal();
             InventoryRequirementData.LootItem = (LootItem)EditorGUILayout.ObjectField(InventoryRequirementData.LootItem, typeof(LootItem), false);
             EditorGUILayout.Space(10);

@@ -21,6 +21,7 @@ namespace QuestSystem
         private GUIStyle headerStyle;
         private Rect headerRect;
 
+        protected GUIStyle textStyle;
         protected GUIStyle rightPortTextStyle;
         protected GUIStyle leftPortTextStyle;
         protected GUIStyle headerTextStyle;
@@ -73,14 +74,18 @@ namespace QuestSystem
 
         private void SetupStyles()
         {
-            leftPortTextStyle = new GUIStyle();
-            leftPortTextStyle.normal.textColor = Color.white;
+            textStyle = new GUIStyle();
+            textStyle.normal.textColor = Color.white;
+            textStyle.padding = new RectOffset(5, 0, 0, 5);
+            textStyle.wordWrap = true;
+
+            leftPortTextStyle = new GUIStyle(textStyle);
+            leftPortTextStyle.fontStyle = FontStyle.Italic;
 
             rightPortTextStyle = new GUIStyle(leftPortTextStyle);
             rightPortTextStyle.alignment = TextAnchor.MiddleRight;
 
-            headerTextStyle = new GUIStyle();
-            headerTextStyle.normal.textColor = Color.white;
+            headerTextStyle = new GUIStyle(textStyle);
             headerTextStyle.fontStyle = FontStyle.Bold;
 
             headerButtonStyle = new GUIStyle(headerTextStyle);

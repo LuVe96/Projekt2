@@ -52,7 +52,6 @@ namespace QuestSystem
         protected override void DrawNodeHeader()
         {
             DrawEditabelHeader("Standart Node");
-            GUILayout.Space(10);
             mainSegment.Begin();
             mainSegment.End();
         }

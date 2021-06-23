@@ -49,7 +49,6 @@ namespace QuestSystem
         protected override void DrawNodeHeader()
         {
             DrawEditabelHeader("StartNodeData");
-            GUILayout.Space(10);
             mainSegment.Begin();
             mainSegment.End();
         }
@@ -61,7 +60,7 @@ namespace QuestSystem
             QuestStateObject qso = Resources.Load("QuestStateData") as QuestStateObject;
             string[] choices = qso.GetAllQuestNames().ToArray();
             int selectedIndex = qso.GetAllQuestNames().IndexOf(StartNodeData.ActiveAfter);
-            GUILayout.Label("Start After Quest: ");
+            GUILayout.Label("Start After Quest: ", textStyle);
             selectedIndex = EditorGUILayout.Popup(selectedIndex != -1 ? selectedIndex : 0, choices);
             StartNodeData.ActiveAfter = choices[selectedIndex];
 

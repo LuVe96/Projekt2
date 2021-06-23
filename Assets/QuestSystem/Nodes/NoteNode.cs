@@ -20,7 +20,6 @@ namespace QuestSystem
             drawHeader = false;
         }
 
-        GUIStyle textStyle;
         GUIStyle textFieldStyle;
 
         public NoteNodeData NoteNodeData { get => (NoteNodeData)Questdata; set { } }
@@ -36,14 +35,12 @@ namespace QuestSystem
 
         protected override GUIStyle UseNodeStyle()
         {
-            textStyle = EditorStyles.label;
-            textStyle.wordWrap = true;
 
             textFieldStyle = EditorStyles.textField;
             textFieldStyle.wordWrap = true;
 
             style = new GUIStyle();
-            style.normal.background = Resources.Load("node_yellow") as Texture2D;
+            style.normal.background = Resources.Load("node_gray") as Texture2D;
             style.border = new RectOffset(20, 20, 20, 20);
             style.padding = new RectOffset(24, 24, 16, 16);
             return style;

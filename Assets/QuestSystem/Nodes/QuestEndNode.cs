@@ -47,7 +47,6 @@ namespace QuestSystem
         protected override void DrawNodeHeader()
         {
             DrawEditabelHeader("End Node");
-            GUILayout.Space(10);
             mainSegment.Begin();
             mainSegment.End();
         }
@@ -56,7 +55,7 @@ namespace QuestSystem
         {
          
 
-            GUILayout.Label("End Node Type:");
+            GUILayout.Label("End Node Type:", textStyle);
             EndNodeData.EndType = (QuestEndType) EditorGUILayout.EnumPopup(EndNodeData.EndType);
 
             GUILayout.Space(20);

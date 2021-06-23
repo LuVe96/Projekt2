@@ -65,7 +65,6 @@ namespace QuestSystem
         protected override void DrawNodeHeader()
         {
             DrawEditabelHeader("Dialogue Node");
-            GUILayout.Space(10);
 
             mainSegment.Begin();
             mainSegment.End();
@@ -73,13 +72,13 @@ namespace QuestSystem
 
         protected override void DrawContent()
         {
-            GUILayout.Label("Dialogue:");
+            GUILayout.Label("Dialogue:", textStyle);
             DialogueNodeData.Dialogue = (Dialogue.Dialogue)EditorGUILayout.ObjectField(DialogueNodeData.Dialogue, typeof(Dialogue.Dialogue), false);
             GUILayout.Space(10);
-            GUILayout.Label("NPC:");
+            GUILayout.Label("NPC:", textStyle);
             DialogueNodeData.NPCDialogueAttacher = (NPCDialogueAttacher)EditorGUILayout.ObjectField(DialogueNodeData.NPCDialogueAttacher, typeof(NPCDialogueAttacher), true);
             GUILayout.Space(10);
-            GUILayout.Label("EndPoints:");
+            GUILayout.Label("EndPoints:", textStyle);
             DrawDialogueEndPorts(DialogueNodeData.Dialogue);
 
             GUILayout.Space(20);

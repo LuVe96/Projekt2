@@ -45,7 +45,6 @@ namespace QuestSystem
         protected override void DrawNodeHeader()
         {
             EditorGUILayout.LabelField("Variable Requirement", headerTextStyle);
-            GUILayout.Space(10);
             requirementSegment.Begin();
             requirementSegment.End();
         }
@@ -59,11 +58,11 @@ namespace QuestSystem
 
             if (variables.Count <= 0)
             {
-                EditorGUILayout.LabelField("No Variables available");
+                GUILayout.Label("No Variables available", textStyle);
             }
             else
             {
-                GUILayout.Label("Check Variable:");
+                GUILayout.Label("Check Variable:", textStyle);
                 GUILayout.BeginHorizontal();
                 varIndex = EditorGUILayout.Popup(varIndex != -1 ? varIndex : 0, variables.Select(x => x.Title).ToArray());
                 selectedVariable = variables[varIndex];

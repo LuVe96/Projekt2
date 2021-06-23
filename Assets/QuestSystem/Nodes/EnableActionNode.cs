@@ -41,7 +41,6 @@ namespace QuestSystem
         protected override void DrawNodeHeader()
         {
             GUILayout.Label("Enable Action", headerTextStyle);
-            GUILayout.Space(10);
             actionSegment.Begin();
             actionSegment.End();
         }
@@ -50,10 +49,10 @@ namespace QuestSystem
         {
            
 
-            GUILayout.Label("GameObject:");
+            GUILayout.Label("GameObject:", textStyle);
             EnableActionData.GObject = (GameObject)EditorGUILayout.ObjectField(EnableActionData.GObject, typeof(GameObject), true);
 
-            GUILayout.Label("Disable:");
+            GUILayout.Label("Disable:", textStyle);
             EnableActionData.Disable = EditorGUILayout.Toggle(EnableActionData.Disable);
         }
 
