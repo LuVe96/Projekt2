@@ -337,9 +337,11 @@ namespace QuestSystem.Quest
                
                 if (current.button == 0 && (GetNodeAtPoint(current.mousePosition + scrollPosition + variableAreaOffset) == null))
                 {
+                    ClearConnectionSelection();
                     draggingCanvas = true;
                     draggingCanvasOffset = Event.current.mousePosition + scrollPosition + variableAreaOffset;
                 }
+              
             }
             else if (current.type == EventType.MouseDrag && draggingCanvas && current.button == 0)
             {
@@ -455,7 +457,7 @@ namespace QuestSystem.Quest
                 current.mousePosition - Vector2.left * 50f * multiplier,
                 color,
                 null,
-                2f
+                3f
             );
             GUI.changed = true;
         }

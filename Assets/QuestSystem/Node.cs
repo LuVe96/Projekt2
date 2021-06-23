@@ -184,7 +184,7 @@ namespace QuestSystem
 
             if (!headerButtonPressed)
             {
-                if (GUILayout.Button(data.Title != null ? data.Title : defaultTilte, headerTextStyle))
+                if (GUILayout.Button((data.Title != null && data.Title != "") ? data.Title : defaultTilte, headerTextStyle))
                 {
                     headerButtonPressed = true;
                 }

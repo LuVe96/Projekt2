@@ -235,6 +235,8 @@ namespace QuestSystem.Quest
         //FOR_NEW: 06 Delete Data in List
         public void DeleteNode(QuestNodeData node)
         {
+
+            Undo.RecordObject(this, "Delete Node");
             DeleteAsChild(node);
 
             switch (node)
