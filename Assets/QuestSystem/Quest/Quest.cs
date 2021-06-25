@@ -25,6 +25,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<NoteNodeData> noteNodeDatas = new List<NoteNodeData>();
         [SerializeField] List<BranchNodeData> branchNodeDatas = new List<BranchNodeData>();
         [SerializeField] List<TriggerRequirementNodeData> triggerRequirementNodeDatas = new List<TriggerRequirementNodeData>();
+        [SerializeField] List<EventActionData> eventActionDatas = new List<EventActionData>();
 
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
@@ -47,6 +48,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(noteNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(branchNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(triggerRequirementNodeDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(eventActionDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -65,7 +67,10 @@ namespace QuestSystem.Quest
                 startData.Rect = new Rect(50, 50, 200, 100);
                 startNodeDatas.Add(startData);
             }
+            
         }
+
+     
 
         private List<QuestNodeData> AddToAllNodes(QuestNodeData[] nodes, List<QuestNodeData> allNodes )
         {
@@ -233,6 +238,10 @@ namespace QuestSystem.Quest
                     TriggerRequirementNodeData trData = new TriggerRequirementNodeData(Guid.NewGuid().ToString());
                     triggerRequirementNodeDatas.Add(trData);
                     return trData;
+                case QuestNodeType.EventActionNode:
+                    EventActionData eventData = new EventActionData(Guid.NewGuid().ToString());
+                    eventActionDatas.Add(eventData);
+                    return eventData;
                 default:
                     return null;
             }
@@ -281,8 +290,9 @@ namespace QuestSystem.Quest
                     branchNodeDatas.Remove(n);
                     break;
                 case TriggerRequirementNodeData n:
-                    triggerRequirementNodeDatas.Remove(n);
-                    break;
+                    triggerRequirementNodeDatas.Remove(n); break;
+                case EventActionData n:
+                    eventActionDatas.Remove(n); break;
                 default:
                     return;
             }

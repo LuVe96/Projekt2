@@ -10,11 +10,16 @@ namespace QuestSystem
         [SerializeField] string onTriggerTag = "Player";
         bool isTriggerd = false;
 
-        public static event Action OnTriggerChanged;
+        public event Action OnTriggerChanged;
 
         public bool CheckTriggerState()
         {
             return isTriggerd;
+        }
+
+        public void Check()
+        {
+            Debug.Log("Event check");
         }
 
         private void OnTriggerEnter(Collider other)

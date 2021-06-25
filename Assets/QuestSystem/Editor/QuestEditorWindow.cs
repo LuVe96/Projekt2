@@ -113,6 +113,8 @@ namespace QuestSystem.Quest
                         nodes.Add(new BranchNode(OnClickNodePort, n, RepaintEditor)); break;
                     case TriggerRequirementNodeData n:
                         nodes.Add(new TriggerRequirementNode(OnClickNodePort, n, RepaintEditor)); break;
+                    case EventActionData n:
+                        nodes.Add(new EventActionNode(OnClickNodePort, n, RepaintEditor)); break;
                     default:
                         break;
                 } 
@@ -372,6 +374,7 @@ namespace QuestSystem.Quest
             genericMenu.AddItem(new GUIContent("Action Nodes / Invnetory Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryActionNode));
             genericMenu.AddItem(new GUIContent("Action Nodes / Enable Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode));
             genericMenu.AddItem(new GUIContent("Action Nodes / Varaible Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.VariableActionNode));
+            genericMenu.AddItem(new GUIContent("Action Nodes / Event Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EventActionNode));
 
             genericMenu.AddItem(new GUIContent("Other / Note Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.NoteNode));
             genericMenu.AddItem(new GUIContent("Other / Branch Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.BranchNode));
@@ -420,6 +423,9 @@ namespace QuestSystem.Quest
                     break;
                 case QuestNodeType.TriggerRequirementNode:
                     nodes.Add(new TriggerRequirementNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
+                    break;
+                case QuestNodeType.EventActionNode:
+                    nodes.Add(new EventActionNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 default:
                     break;

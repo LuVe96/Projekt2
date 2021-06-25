@@ -74,7 +74,7 @@ namespace QuestSystem.Quest
                 }
                 catch (System.Exception)
                 {
-
+                    Debug.Log("Requirement Check Fialed");
                     throw;
                 }
             }
@@ -94,7 +94,7 @@ namespace QuestSystem.Quest
                 }
                 catch (System.Exception)
                 {
-
+                    Debug.Log("Action Execution Failed");
                     throw;
                 }
             }

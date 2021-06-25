@@ -10,7 +10,7 @@ namespace QuestSystem
     {
         StartNode, EndNode, DialogueNode, StandartNode,
         InventoryRequirementNode, VariableRequirementNode, TriggerRequirementNode,
-        InventoryActionNode, EnableActionNode, VariableActionNode,
+        InventoryActionNode, EnableActionNode, VariableActionNode, EventActionNode,
         NoteNode,BranchNode,
     }
 
