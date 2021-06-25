@@ -7,22 +7,22 @@ using UnityEngine;
 namespace QuestSystem
 {
 
-    public class InventoryRequirementNode : Node
+    public class TriggerRequirementNode : Node
     {
 
-        public InventoryRequirementNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
+        public TriggerRequirementNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
             : base(OnClickNodePort, _questdata, repaintEditorDelegate)
         {
         }
 
-        public InventoryRequirementNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate) 
+        public TriggerRequirementNode(Vector2 position, float width, float height, OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
             : base(position, width, height, OnClickNodePort, _questdata, repaintEditorDelegate)
         {
         }
 
         PortSegment requirementSegment;
 
-        public InventoryRequireData InventoryRequirementData { get => (InventoryRequireData)Questdata; set { } }
+        public TriggerRequirementNodeData TriggerRequirementData { get => (TriggerRequirementNodeData)Questdata; set { } }
 
 
         protected override void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments)
@@ -42,9 +42,10 @@ namespace QuestSystem
             style.padding = new RectOffset(24, 24, 16, 16);
             return style;
         }
+
         protected override void DrawNodeHeader()
         {
-            GUILayout.Label("Invnetory Requirement", headerTextStyle);
+            GUILayout.Label("Trigger Requirement", headerTextStyle);
             requirementSegment.Begin();
             requirementSegment.End();
 
@@ -52,13 +53,9 @@ namespace QuestSystem
 
         protected override void DrawContent()
         {
-         
-            GUILayout.Label("Item:", textStyle);
-            GUILayout.BeginHorizontal();
-            InventoryRequirementData.LootItem = (LootItem)EditorGUILayout.ObjectField(InventoryRequirementData.LootItem, typeof(LootItem), false);
-            EditorGUILayout.Space(10);
-            InventoryRequirementData.Count = EditorGUILayout.IntField(InventoryRequirementData.Count, GUILayout.Width(25));
-            GUILayout.EndHorizontal();
+
+            GUILayout.Label("Trigger:", textStyle);
+            TriggerRequirementData.QuestTrigger = (QuestTrigger)EditorGUILayout.ObjectField(TriggerRequirementData.QuestTrigger, typeof(QuestTrigger), true);
 
         }
 

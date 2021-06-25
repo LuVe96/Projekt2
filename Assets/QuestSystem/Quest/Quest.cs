@@ -24,6 +24,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<VariableRequireData> varaibleRequireDatas = new List<VariableRequireData>();
         [SerializeField] List<NoteNodeData> noteNodeDatas = new List<NoteNodeData>();
         [SerializeField] List<BranchNodeData> branchNodeDatas = new List<BranchNodeData>();
+        [SerializeField] List<TriggerRequirementNodeData> triggerRequirementNodeDatas = new List<TriggerRequirementNodeData>();
 
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
@@ -45,6 +46,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(varaibleRequireDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(noteNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(branchNodeDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(triggerRequirementNodeDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -227,6 +229,10 @@ namespace QuestSystem.Quest
                     BranchNodeData branchNodeData = new BranchNodeData(Guid.NewGuid().ToString());
                     branchNodeDatas.Add(branchNodeData);
                     return branchNodeData;
+                case QuestNodeType.TriggerRequirementNode:
+                    TriggerRequirementNodeData trData = new TriggerRequirementNodeData(Guid.NewGuid().ToString());
+                    triggerRequirementNodeDatas.Add(trData);
+                    return trData;
                 default:
                     return null;
             }
@@ -273,6 +279,9 @@ namespace QuestSystem.Quest
                     break;
                 case BranchNodeData n:
                     branchNodeDatas.Remove(n);
+                    break;
+                case TriggerRequirementNodeData n:
+                    triggerRequirementNodeDatas.Remove(n);
                     break;
                 default:
                     return;

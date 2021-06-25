@@ -111,6 +111,8 @@ namespace QuestSystem.Quest
                         nodes.Add(new NoteNode(OnClickNodePort, n, RepaintEditor)); break;
                     case BranchNodeData n:
                         nodes.Add(new BranchNode(OnClickNodePort, n, RepaintEditor)); break;
+                    case TriggerRequirementNodeData n:
+                        nodes.Add(new TriggerRequirementNode(OnClickNodePort, n, RepaintEditor)); break;
                     default:
                         break;
                 } 
@@ -362,8 +364,11 @@ namespace QuestSystem.Quest
             genericMenu.AddItem(new GUIContent("Main Nodes / Standart Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.StandartNode));
             genericMenu.AddItem(new GUIContent("Main Nodes / End Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EndNode));
             genericMenu.AddItem(new GUIContent("Main Nodes / Dialogue Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.DialogueNode));
+
             genericMenu.AddItem(new GUIContent("Requirement Nodes / Invnetory Requirement Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryRequirementNode));
             genericMenu.AddItem(new GUIContent("Requirement Nodes / Varaible Requirement Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.VariableRequirementNode));
+            genericMenu.AddItem(new GUIContent("Requirement Nodes / Trigger Requirement Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.TriggerRequirementNode));
+
             genericMenu.AddItem(new GUIContent("Action Nodes / Invnetory Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.InventoryActionNode));
             genericMenu.AddItem(new GUIContent("Action Nodes / Enable Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.EnableActionNode));
             genericMenu.AddItem(new GUIContent("Action Nodes / Varaible Action Node"), false, () => OnClickAddNode(mousePosition, QuestNodeType.VariableActionNode));
@@ -412,6 +417,9 @@ namespace QuestSystem.Quest
                     break;
                 case QuestNodeType.BranchNode:
                     nodes.Add(new BranchNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
+                    break;
+                case QuestNodeType.TriggerRequirementNode:
+                    nodes.Add(new TriggerRequirementNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 default:
                     break;
