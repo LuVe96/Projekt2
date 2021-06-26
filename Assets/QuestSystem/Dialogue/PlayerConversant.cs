@@ -95,7 +95,7 @@ namespace QuestSystem.Dialogue
         {
             if (HasNext())
             {
-                DialogueNode[] children = currentDialogue.GetAllChildren(currentNode).ToArray();
+                DialogueNode[] children = currentDialogue.GetAllValideChildren(currentNode).ToArray();
                 if (children.Length > 1)
                 {
                     ShowChoices(children);
@@ -117,7 +117,7 @@ namespace QuestSystem.Dialogue
 
         public bool HasNext()
         {
-            return currentDialogue.GetAllChildren(currentNode).Count() > 0 ;
+            return currentDialogue.GetAllValideChildren(currentNode).Count() > 0 ;
         }
 
         private void OnTriggerEnter(Collider other)

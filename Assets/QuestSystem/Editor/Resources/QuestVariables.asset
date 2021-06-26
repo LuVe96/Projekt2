@@ -12,3 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2a3c962d45d9e4a83d7db603c0c72b, type: 3}
   m_Name: QuestVariables
   m_EditorClassIdentifier: 
+  questVariableTemplates:
+  - title: Is_new
+    type: 0
+    datas:
+    - True
+    - False
+  - title: wasdasd
+    type: 0
+    datas:
+    - True
+    - False

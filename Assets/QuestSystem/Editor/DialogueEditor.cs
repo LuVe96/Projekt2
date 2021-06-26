@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -55,14 +56,15 @@ namespace QuestSystem.Dialogue.Editor
         {
             Selection.selectionChanged += OnSelectionChanged;
 
-            SetupNodeStyle(nodeStyle, "node0");
-            SetupNodeStyle(playerNodeStyle, "node1");
+            SetupNodeStyle(nodeStyle, "node_red");
+            SetupNodeStyle(playerNodeStyle, "node_blue");
         }
 
         private void SetupNodeStyle(GUIStyle gUIStyle, string bg)
         {
             //gUIStyle = new GUIStyle();
-            gUIStyle.normal.background = EditorGUIUtility.Load(bg) as Texture2D;
+            //gUIStyle.normal.background = EditorGUIUtility.Load(bg) as Texture2D; node0 / node1
+            gUIStyle.normal.background = Resources.Load(bg) as Texture2D;
             gUIStyle.padding = new RectOffset(20, 20, 20, 20);
             gUIStyle.border = new RectOffset(12, 12, 12, 12);
         }
@@ -192,7 +194,7 @@ namespace QuestSystem.Dialogue.Editor
         {
             GUIStyle style = node.IsPlayerSpeaking ? playerNodeStyle : nodeStyle;
             GUILayout.BeginArea(node.Rect, style);
-            //EditorGUI.BeginChangeCheck();
+            node.contentHeight = EditorGUILayout.BeginVertical().height;
             EditorGUILayout.LabelField("Node:", EditorStyles.whiteLabel);
             GUIStyle textFieldStyle = EditorStyles.textArea;
             textFieldStyle.wordWrap = true;
@@ -218,9 +220,57 @@ namespace QuestSystem.Dialogue.Editor
                     creatingNode = node;
                 }
             }
-          
             GUILayout.EndHorizontal();
+
+            DrawVariableArea(node);
+            EditorGUILayout.EndVertical();
             GUILayout.EndArea();
+
+
+            if (node.contentHeight != 0)
+            {
+                if ((node.contentHeight + 40) != node.Rect.height)
+                {
+                    Rect r = node.Rect;
+                    r.height = node.contentHeight + 40;
+                    node.Rect = r;
+                    Repaint();
+                }
+            }
+        }
+
+        private void DrawVariableArea(DialogueNode node)
+        {
+            GUILayout.Space(20);
+            node.IsUsingCondition = GUILayout.Toggle( node.IsUsingCondition, "Use Conditions ");
+            if (!node.IsUsingCondition) return;
+
+            GUILayout.Space(10);
+            QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
+            List<QuestVariableTemplate> variables = qvo.GetAllQuestVariableTemplates();
+            int varIndex = variables.IndexOf(node.SelectedVariable);
+
+            if (variables.Count <= 0)
+            {
+                GUILayout.Label("No Variables available");
+            }
+            else
+            {
+                GUILayout.Label("Check Variable:");
+                GUILayout.BeginHorizontal();
+                varIndex = EditorGUILayout.Popup(varIndex != -1 ? varIndex : 0, variables.Select(x => x.Title).ToArray());
+                node.SelectedVariable = variables[varIndex];
+
+                if (node.SelectedVariable != null)
+                {
+                    node.SelectedOptionIndex = node.SelectedVariable.Datas.IndexOf(node.RequiredVarialbeValue);
+                    node.SelectedOptionIndex = EditorGUILayout.Popup(node.SelectedOptionIndex != -1 ? node.SelectedOptionIndex : 0, node.SelectedVariable.Datas.ToArray());
+                    node.RequiredVarialbeValue = node.SelectedVariable.Datas[node.SelectedOptionIndex];
+                    node.SelectedOptionIndex = 0;
+                }
+                GUILayout.EndHorizontal();
+            }
+
         }
 
         private void DrawLinkButton(DialogueNode node)

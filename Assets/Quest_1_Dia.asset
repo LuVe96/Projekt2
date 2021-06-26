@@ -22,7 +22,7 @@ MonoBehaviour:
     x: 115
     y: 237
     width: 200
-    height: 140
+    height: 168
   textFieldRect:
     serializedVersion: 2
     x: 20
@@ -48,12 +48,13 @@ MonoBehaviour:
   text: Und nun soll ich sie dir wiederbringen, nicht wahr?
   children:
   - dd971fdf-721d-42f2-bafb-51debe4a360a
+  - 01532b50-f079-4f8f-9ded-4c53bd943831
   rect:
     serializedVersion: 2
     x: 365
     y: 237
     width: 200
-    height: 140
+    height: 168
   textFieldRect:
     serializedVersion: 2
     x: 20
@@ -81,10 +82,10 @@ MonoBehaviour:
   - b901c7fe-345b-414e-b514-7e79e0a01a4c
   rect:
     serializedVersion: 2
-    x: 1136
-    y: 128
+    x: 1199
+    y: 352
     width: 200
-    height: 140
+    height: 168
   textFieldRect:
     serializedVersion: 2
     x: 20
@@ -112,10 +113,10 @@ MonoBehaviour:
   - efd056c9-4db2-4233-b80a-888f26e21627
   rect:
     serializedVersion: 2
-    x: 886
-    y: 128
+    x: 900
+    y: 354
     width: 200
-    height: 140
+    height: 168
   textFieldRect:
     serializedVersion: 2
     x: 20
@@ -138,16 +139,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: dd971fdf-721d-42f2-bafb-51debe4a360a
   isPlayerSpeaking: 0
-  text: Genau !
+  text: Genau ! Bitte Helfe!
   children:
   - 39f0d678-40e9-47aa-a6a9-85fd2822d55e
   - b901c7fe-345b-414e-b514-7e79e0a01a4c
   rect:
     serializedVersion: 2
-    x: 615
-    y: 237
+    x: 634
+    y: 203
     width: 200
-    height: 140
+    height: 217
   textFieldRect:
     serializedVersion: 2
     x: 20
@@ -175,6 +176,7 @@ MonoBehaviour:
   - {fileID: -3356502463749010460}
   - {fileID: 2074541303539210175}
   - {fileID: -6182497682963397026}
+  - {fileID: 5979180022714959858}
   newNodeOffset: {x: 250, y: 0}
 --- !u!114 &2074541303539210175
 MonoBehaviour:
@@ -194,14 +196,46 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1410
-    y: 363
+    x: 1438
+    y: 223
     width: 200
-    height: 140
+    height: 168
   textFieldRect:
     serializedVersion: 2
     x: 20
     y: 40
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &5979180022714959858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 01532b50-f079-4f8f-9ded-4c53bd943831
+  isPlayerSpeaking: 0
+  text: Genau !  MAch hinne!
+  children:
+  - 39f0d678-40e9-47aa-a6a9-85fd2822d55e
+  - b901c7fe-345b-414e-b514-7e79e0a01a4c
+  rect:
+    serializedVersion: 2
+    x: 642
+    y: 455
+    width: 200
+    height: 217
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
     width: 160
     height: 18
   isEndPoint: 0

@@ -268,6 +268,7 @@ namespace QuestSystem.Quest
                 {
                     QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
                     qvo.AddQuestVarialbe(newQuestVaraible);
+                    EditorUtility.SetDirty(qvo);
                     newQuestVaraible = null;
                 }
                 GUILayout.EndHorizontal();

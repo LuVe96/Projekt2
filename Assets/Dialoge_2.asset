@@ -23,7 +23,7 @@ MonoBehaviour:
     x: 105
     y: 315
     width: 200
-    height: 140
+    height: 168
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -50,10 +50,10 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 465
-    y: 232
+    x: 461
+    y: 145
     width: 200
-    height: 140
+    height: 168
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -81,10 +81,10 @@ MonoBehaviour:
   - 741cb36a-64bb-4375-9f48-3720a6e7e8d2
   rect:
     serializedVersion: 2
-    x: 448
-    y: 444
+    x: 462
+    y: 358
     width: 200
-    height: 140
+    height: 168
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
     x: 880
     y: 349
     width: 200
-    height: 140
+    height: 168
   textFieldRect:
     serializedVersion: 2
     x: 0

@@ -72,7 +72,7 @@ namespace QuestSystem
             }
             else
             {
-                return null;
+                return "False";
             }  
         }
 

@@ -99,6 +99,35 @@ namespace QuestSystem.Dialogue
             return result;
         }
 
+        // Checked for Conditions/Variable
+        public IEnumerable<DialogueNode> GetAllValideChildren(DialogueNode parentNode)
+        {
+            List<DialogueNode> result = new List<DialogueNode>();
+
+            foreach (string childId in parentNode.Children)
+            {
+                if (nodeLookUp.ContainsKey(childId))
+                {
+                    DialogueNode n = nodeLookUp[childId];
+                    if (n.IsUsingCondition)
+                    {
+                        // Check Condition
+                        if (QuestSystemManager.Instance.getQuestVariableValue(n.SelectedVariable.Title) == n.RequiredVarialbeValue)
+                        {
+                            result.Add(n);
+                        }
+                    }
+                    else
+                    {
+                        result.Add(n);
+                    }
+
+
+                }
+            }
+            return result;
+        }
+
         public DialogueNode GetNodeById(string uID)
         {
             DialogueNode result = null;

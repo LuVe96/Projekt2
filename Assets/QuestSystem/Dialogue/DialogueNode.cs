@@ -69,6 +69,11 @@ namespace QuestSystem.Dialogue
 
         public bool IsEndPoint { get => isEndPoint; set => isEndPoint = value; }
         public string EndPointDescription { get => endPointDescription; set => endPointDescription = value; }
+        public float contentHeight { get; set; }
+        [SerializeField] public QuestVariableTemplate SelectedVariable { get; set; } = null;
+        [SerializeField] public int SelectedOptionIndex { get; set; } = 0;
+        [SerializeField] public string RequiredVarialbeValue { get; set; }
+        [SerializeField] public bool IsUsingCondition { get; set; } = false;
 
         public Rect GetTextFieldRectWithOffset()
         {  

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -34,7 +35,7 @@ namespace QuestSystem
         [SerializeField] List<string> datas = new List<string>();
 
         public QuestVariableTemplate()
-        {
+        { 
         }
 
         public string Title { get => title; set => title = value; }
