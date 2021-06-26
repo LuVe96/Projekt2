@@ -1,0 +1,406 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5412407996596247868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 7d49a9ec-bd98-45d5-af43-d47336c2a4c8
+  isPlayerSpeaking: 1
+  text: "Geht das nicht g\xFCnstiger?"
+  children:
+  - 13c9641d-9c10-4280-a205-fa86a6f03fa1
+  - 56693a4a-e59c-4348-98bd-4fd668862890
+  rect:
+    serializedVersion: 2
+    x: 952
+    y: 369
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &-4566053051112447195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: c31052aa-bb0b-4fef-8448-b132e170f073
+  isPlayerSpeaking: 0
+  text: '[Tauscht Linse] Hier hast du es. Funktioniert einwandfrei.'
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1813
+    y: 651
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: "f\xFCr 20"
+--- !u!114 &-4160383796471650468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 13c9641d-9c10-4280-a205-fa86a6f03fa1
+  isPlayerSpeaking: 0
+  text: "G\xFCnstiger kann ich es leider nicht machen. Die Linsen sind teuer."
+  children:
+  - 1d7b0eec-fe00-43b0-bf2a-0e20779a08bb
+  - d1552566-22c9-426c-88f5-b488648d7a83
+  rect:
+    serializedVersion: 2
+    x: 1259
+    y: 211
+    width: 200
+    height: 217
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &-3110794850034999286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: b8222da4-4d84-4202-977b-44a0bfefc207
+  isPlayerSpeaking: 1
+  text: "Das Microscop schein kaupt zu sein, k\xF6nntest es eventuel Reparieren?"
+  children:
+  - 5f02671d-73ee-447a-ae85-a22b55f25fa3
+  rect:
+    serializedVersion: 2
+    x: 37
+    y: 338
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: hq2_bruno-mic_kaputt
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -3110794850034999286}
+  - {fileID: 3603429479075572574}
+  - {fileID: 1608778162678902449}
+  - {fileID: 8356527826442687079}
+  - {fileID: 4387855156247748621}
+  - {fileID: 4272928221468908241}
+  - {fileID: -5412407996596247868}
+  - {fileID: -4160383796471650468}
+  - {fileID: 1992721080821927437}
+  - {fileID: 668884442387242019}
+  - {fileID: 5139009998060582367}
+  - {fileID: -4566053051112447195}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &668884442387242019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: d1552566-22c9-426c-88f5-b488648d7a83
+  isPlayerSpeaking: 1
+  text: "Das kann ich nicht Zahlen. Ich komme sp\xE4ter wieder."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1650
+    y: 366
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: "sp\xE4ter zahlen"
+--- !u!114 &1608778162678902449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 2b1dc2d6-5901-4801-bc90-6adbcc7e14a2
+  isPlayerSpeaking: 0
+  text: "Du hast mir geholfen. DAs danke ich dir. Ich mache es dir Billiger. F\xFCr
+    10 Silberm\xFCnzen mach ichs."
+  children:
+  - 1d7b0eec-fe00-43b0-bf2a-0e20779a08bb
+  - 7d49a9ec-bd98-45d5-af43-d47336c2a4c8
+  rect:
+    serializedVersion: 2
+    x: 632
+    y: 221
+    width: 200
+    height: 217
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &1992721080821927437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 56693a4a-e59c-4348-98bd-4fd668862890
+  isPlayerSpeaking: 0
+  text: "Nein.. auf keinen fall! Du hast mir nicht geholfen. Da will ich auch anst\xE4ndig
+    bezahlt werden. Also 200 oder eben nicht!"
+  children:
+  - 32a2bcfe-e866-4cb2-9d16-d5bd53f893ea
+  - d1552566-22c9-426c-88f5-b488648d7a83
+  rect:
+    serializedVersion: 2
+    x: 1258
+    y: 446
+    width: 200
+    height: 217
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &3603429479075572574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 5f02671d-73ee-447a-ae85-a22b55f25fa3
+  isPlayerSpeaking: 0
+  text: "Geb mal her!... [schaut sich Lichtmikroskop an]\r\ndie Linse ist kauptt.
+    Ich k\xF6nnte dir eine neue Reinmachen."
+  children:
+  - 2b1dc2d6-5901-4801-bc90-6adbcc7e14a2
+  - cfd71e11-6592-4630-99f8-42b02de58032
+  rect:
+    serializedVersion: 2
+    x: 352
+    y: 335
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &4272928221468908241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 32a2bcfe-e866-4cb2-9d16-d5bd53f893ea
+  isPlayerSpeaking: 1
+  text: Okey, Hier hast du das Geld!
+  children:
+  - c31052aa-bb0b-4fef-8448-b132e170f073
+  rect:
+    serializedVersion: 2
+    x: 1563
+    y: 651
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: "f\xFCr 20"
+--- !u!114 &4387855156247748621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 1d7b0eec-fe00-43b0-bf2a-0e20779a08bb
+  isPlayerSpeaking: 1
+  text: Okey, Hier hast du das Geld!
+  children:
+  - 33fbe979-2ecb-4a12-867a-f3ce327b1c94
+  rect:
+    serializedVersion: 2
+    x: 1535
+    y: 85
+    width: 200
+    height: 217
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: "f\xFCr 10"
+--- !u!114 &5139009998060582367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 33fbe979-2ecb-4a12-867a-f3ce327b1c94
+  isPlayerSpeaking: 0
+  text: '[Tauscht Linse] Hier hast du es. Funktioniert einwandfrei.'
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1785
+    y: 107
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: "f\xFCr 10"
+--- !u!114 &8356527826442687079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: cfd71e11-6592-4630-99f8-42b02de58032
+  isPlayerSpeaking: 0
+  text: "F\xFCr 20 Silber m\xFCnsen mache ich es."
+  children:
+  - 32a2bcfe-e866-4cb2-9d16-d5bd53f893ea
+  - 7d49a9ec-bd98-45d5-af43-d47336c2a4c8
+  rect:
+    serializedVersion: 2
+    x: 632
+    y: 487
+    width: 200
+    height: 217
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 

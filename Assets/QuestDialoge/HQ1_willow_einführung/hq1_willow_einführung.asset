@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: "hq1_willow_einf\xFChrung"
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 5555657658491044530}
+  - {fileID: 8143934195845623524}
+  - {fileID: 1115222021766855451}
+  - {fileID: 1043724792024177603}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &1043724792024177603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: b63a8fd4-e9bd-4d38-9bd1-c1ad52f4843d
+  isPlayerSpeaking: 0
+  text: "Hier ein paar Heilfl\xE4schen, die ich bei den Leichen gefunden habe. \nICh
+    mache mich auf, nach Lugos. KOmm doch mal vorbei."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 875
+    y: 304
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &1115222021766855451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 87137ad0-a881-4986-b80a-46282600a162
+  isPlayerSpeaking: 0
+  text: Info Info Info
+  children:
+  - b63a8fd4-e9bd-4d38-9bd1-c1ad52f4843d
+  rect:
+    serializedVersion: 2
+    x: 625
+    y: 304
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &5555657658491044530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 41d1bde3-3aed-4455-9841-70ec7e6e3ec7
+  isPlayerSpeaking: 0
+  text: Hallo Fremder, was treibt dich hier her?
+  children:
+  - d70b020f-c7b5-4a16-84b7-87a00b99d37b
+  rect:
+    serializedVersion: 2
+    x: 74
+    y: 270
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &8143934195845623524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: d70b020f-c7b5-4a16-84b7-87a00b99d37b
+  isPlayerSpeaking: 1
+  text: "Ich bin Theodon! \nIch suche mein Schwester."
+  children:
+  - 87137ad0-a881-4986-b80a-46282600a162
+  rect:
+    serializedVersion: 2
+    x: 375
+    y: 304
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 

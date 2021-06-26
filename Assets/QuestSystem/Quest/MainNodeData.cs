@@ -24,6 +24,7 @@ namespace QuestSystem.Quest
         public string Title { get => title; set => title = value; }
 
         bool isActive = false;
+        bool isExecuted = false;
 
         [SerializeField]  protected NodeHasFinished NodeHasFinished;
         [SerializeField] protected GetNodeByID GetNodeByID;
@@ -45,7 +46,10 @@ namespace QuestSystem.Quest
             isActive = true;
             if (CheckRequirements())
             {
-                executeNode();
+                if(!isExecuted){
+                    executeNode();
+                }
+                isExecuted = true;
             } else
             {
                 resetNode();
@@ -82,7 +86,10 @@ namespace QuestSystem.Quest
         }
 
         protected abstract void executeNode();
-        protected virtual void resetNode(){}
+        public virtual void resetNode()
+        {
+            isExecuted = false;
+        }
 
         protected void FinishNode(EndPointContainer endPoint = null)
         {

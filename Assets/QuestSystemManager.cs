@@ -36,6 +36,7 @@ namespace QuestSystem
         {
             quests = FindObjectsOfType<Quest.Quest>();
 
+            questsLookUp.Clear();
             foreach (Quest.Quest quest in quests)
             {
                 questsLookUp.Add(quest.QuestName, quest.QuestState);
@@ -55,7 +56,7 @@ namespace QuestSystem
                 questVariables.Add(new QuestVariable(title, value));
             }
 
-            questsLookUp.Clear();
+            questVariablesLookUp.Clear();
             foreach (QuestVariable var in questVariables)
             {
                 questVariablesLookUp.Add(var.title, var);

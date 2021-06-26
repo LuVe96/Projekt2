@@ -90,8 +90,9 @@ namespace QuestSystem.Quest
             }
         }
 
-        protected override void resetNode()
+        public override void resetNode()
         {
+            base.resetNode();
             if(container != null)
             {
                 nPCDialogueAttacher.RemoveDialogue(container);

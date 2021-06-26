@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: Q_bruno_Help2
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 3771643774368539328}
+  - {fileID: 6401097715122544041}
+  - {fileID: 2089211686644494173}
+  - {fileID: 6450768606452015380}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &2089211686644494173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: c8ce8e78-122a-42c9-8b65-a3f52373a403
+  isPlayerSpeaking: 0
+  text: Vielen Dank, das werde ich dir nicht vergessen!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 660
+    y: 245
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: helped
+--- !u!114 &3771643774368539328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 8610068e-2742-43ad-92fe-ba8a1691d0da
+  isPlayerSpeaking: 0
+  text: Hast du einen Heiltrank gefunden?
+  children:
+  - 6194eeaf-cea4-438d-805e-a112f0954a88
+  - d27f9be8-d12a-4f8a-9dae-278e2fac12f7
+  rect:
+    serializedVersion: 2
+    x: 118
+    y: 349
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &6401097715122544041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 6194eeaf-cea4-438d-805e-a112f0954a88
+  isPlayerSpeaking: 1
+  text: Ja hier nimm! (Heiltrank geben)
+  children:
+  - c8ce8e78-122a-42c9-8b65-a3f52373a403
+  rect:
+    serializedVersion: 2
+    x: 410
+    y: 245
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &6450768606452015380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: d27f9be8-d12a-4f8a-9dae-278e2fac12f7
+  isPlayerSpeaking: 1
+  text: "Ja, aber ich ben\xF6tige ihn selbst! (Ende)"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 404
+    y: 457
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: no help

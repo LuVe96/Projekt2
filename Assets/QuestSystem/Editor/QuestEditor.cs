@@ -49,6 +49,7 @@ namespace QuestSystem.Quest
                 if (GUILayout.Button("✓", GUILayout.Width(30)))
                 {
                     qso.AddQuestName(name);
+                    EditorUtility.SetDirty(qso);
                     showAddName = false;                    
                 }
                 GUILayout.EndHorizontal();

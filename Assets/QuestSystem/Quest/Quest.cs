@@ -65,7 +65,7 @@ namespace QuestSystem.Quest
             if(Nodes.Count <= 0)
             {
                 QuestStartNodeData startData = new QuestStartNodeData(Guid.NewGuid().ToString());
-                startData.Rect = new Rect(50, 50, 200, 100);
+                startData.Rect = new Rect(50, 250, 200, 100);
                 startNodeDatas.Add(startData);
             }
             
@@ -178,6 +178,10 @@ namespace QuestSystem.Quest
             // Destroy Nodes
             for (int i = 0; i < Nodes.Count; i++)
             {
+                if(Nodes[i] is MainNodeData)
+                {
+                    (Nodes[i] as MainNodeData).resetNode();
+                }
                 Nodes[i] = null;
             }
             QuestSystemManager.Instance.UpdateQuestState();

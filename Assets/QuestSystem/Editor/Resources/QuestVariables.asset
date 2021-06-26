@@ -23,3 +23,13 @@ MonoBehaviour:
     datas:
     - True
     - False
+  - title: Helped_Bruno
+    type: 0
+    datas:
+    - True
+    - False
+  - title: Bruno_is_in_Logos
+    type: 0
+    datas:
+    - True
+    - False

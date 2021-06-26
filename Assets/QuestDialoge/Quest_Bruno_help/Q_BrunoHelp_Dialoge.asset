@@ -1,0 +1,240 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9181034009567886089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: d59a2185-f34e-4e74-b7f6-c10ca8e4b22d
+  isPlayerSpeaking: 1
+  text: Warum sollte ich das tun?
+  children:
+  - 6fee6cf7-9161-4d31-b9ff-cfe8086569fd
+  rect:
+    serializedVersion: 2
+    x: 469
+    y: 365
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &-8845979243908571697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 065c8b94-0830-4639-b1ea-7ccdeba71c55
+  isPlayerSpeaking: 1
+  text: Ich hole dir einen Heildrank, warte hier.
+  children:
+  - c1e5111a-1300-426e-ae17-46a4536db503
+  rect:
+    serializedVersion: 2
+    x: 977
+    y: 309
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &-8420159436937734795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: c8e32289-f3b9-43b9-81a0-676be10877b3
+  isPlayerSpeaking: 1
+  text: Ich glaube nicht das ich dire helfen kann! (Gehen)
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 984
+    y: 106
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: not helped
+--- !u!114 &-7267864064854251378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 4e91de64-2adc-4d45-8187-a73a7e6cc4bc
+  isPlayerSpeaking: 0
+  text: B..iitte, h..helf mir. Bi..bitte..
+  children:
+  - 744d3d2e-3c8c-419f-b732-314e4f6d97fc
+  - d59a2185-f34e-4e74-b7f6-c10ca8e4b22d
+  rect:
+    serializedVersion: 2
+    x: 195
+    y: 246
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &-6217759082962360000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: c1e5111a-1300-426e-ae17-46a4536db503
+  isPlayerSpeaking: 0
+  text: Ich.. , ich danke Dir!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1227
+    y: 309
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: Wann help Bruno
+--- !u!114 &-4477736041365372410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 744d3d2e-3c8c-419f-b732-314e4f6d97fc
+  isPlayerSpeaking: 1
+  text: Was ist den los?
+  children:
+  - 6fee6cf7-9161-4d31-b9ff-cfe8086569fd
+  rect:
+    serializedVersion: 2
+    x: 472
+    y: 161
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: Q_BrunoHelp_Dialoge
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -7267864064854251378}
+  - {fileID: -4477736041365372410}
+  - {fileID: -9181034009567886089}
+  - {fileID: 1637881389400117741}
+  - {fileID: -8420159436937734795}
+  - {fileID: -8845979243908571697}
+  - {fileID: -6217759082962360000}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &1637881389400117741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 6fee6cf7-9161-4d31-b9ff-cfe8086569fd
+  isPlayerSpeaking: 0
+  text: I..ich, w..weis nicht wohin? Mir tut alles weh.
+  children:
+  - c8e32289-f3b9-43b9-81a0-676be10877b3
+  - 065c8b94-0830-4639-b1ea-7ccdeba71c55
+  rect:
+    serializedVersion: 2
+    x: 722
+    y: 161
+    width: 200
+    height: 168
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
