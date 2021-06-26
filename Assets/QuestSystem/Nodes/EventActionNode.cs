@@ -10,7 +10,7 @@ namespace QuestSystem
 {
 
         
-        public class EventActionNode : Node
+    public class EventActionNode : Node
     {
         public EventActionNode(OnClickNodePortDelegate OnClickNodePort, QuestNodeData _questdata, RepaintEditorDelegate repaintEditorDelegate)
             : base(OnClickNodePort, _questdata, repaintEditorDelegate)

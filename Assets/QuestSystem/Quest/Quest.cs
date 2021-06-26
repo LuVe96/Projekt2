@@ -26,7 +26,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<BranchNodeData> branchNodeDatas = new List<BranchNodeData>();
         [SerializeField] List<TriggerRequirementNodeData> triggerRequirementNodeDatas = new List<TriggerRequirementNodeData>();
         [SerializeField] List<EventActionData> eventActionDatas = new List<EventActionData>();
-
+        [SerializeField] List<PositionActionData> positionActionDatas = new List<PositionActionData>();
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
@@ -49,6 +49,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(branchNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(triggerRequirementNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(eventActionDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(positionActionDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -242,6 +243,10 @@ namespace QuestSystem.Quest
                     EventActionData eventData = new EventActionData(Guid.NewGuid().ToString());
                     eventActionDatas.Add(eventData);
                     return eventData;
+                case QuestNodeType.PostionActionNode:
+                    PositionActionData posActData = new PositionActionData(Guid.NewGuid().ToString());
+                    positionActionDatas.Add(posActData);
+                    return posActData;
                 default:
                     return null;
             }
@@ -257,42 +262,33 @@ namespace QuestSystem.Quest
             switch (node)
             {
                 case QuestStartNodeData n:
-                    startNodeDatas.Remove(n);
-                    break;
+                    startNodeDatas.Remove(n); break;
                 case QuestDialogueNodeData n:
-                    dialogNodeDatas.Remove(n);
-                    break;
+                    dialogNodeDatas.Remove(n); break;
                 case InventoryRequireData n:
-                    inventoryReqireNodeDatas.Remove(n);
-                    break;
+                    inventoryReqireNodeDatas.Remove(n); break;
                 case InventoryActionData n:
-                    inventoryActionDatas.Remove(n);
-                    break;
+                    inventoryActionDatas.Remove(n); break;
                 case EnableActionData n:
-                    enableActionDatas.Remove(n);
-                    break; 
+                    enableActionDatas.Remove(n); break; 
                 case StandartNodeData n:
-                    standartNodeDatas.Remove(n);
-                    break;
+                    standartNodeDatas.Remove(n); break;
                 case QuestEndNodeData n:
-                    endNodeDatas.Remove(n);
-                    break;
+                    endNodeDatas.Remove(n); break;
                 case VariableActionData n:
-                    variableActionDatas.Remove(n);
-                    break;
+                    variableActionDatas.Remove(n); break;
                 case VariableRequireData n:
-                    varaibleRequireDatas.Remove(n);
-                    break;
+                    varaibleRequireDatas.Remove(n); break;
                 case NoteNodeData n:
-                    noteNodeDatas.Remove(n);
-                    break;
+                    noteNodeDatas.Remove(n); break;
                 case BranchNodeData n:
-                    branchNodeDatas.Remove(n);
-                    break;
+                    branchNodeDatas.Remove(n); break;
                 case TriggerRequirementNodeData n:
                     triggerRequirementNodeDatas.Remove(n); break;
                 case EventActionData n:
                     eventActionDatas.Remove(n); break;
+                case PositionActionData n:
+                    positionActionDatas.Remove(n); break;
                 default:
                     return;
             }
