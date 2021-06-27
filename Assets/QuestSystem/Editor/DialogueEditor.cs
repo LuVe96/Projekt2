@@ -223,6 +223,7 @@ namespace QuestSystem.Dialogue.Editor
             GUILayout.EndHorizontal();
 
             DrawVariableArea(node);
+            DrawCheckInventoryArea(node);
             EditorGUILayout.EndVertical();
             GUILayout.EndArea();
 
@@ -239,13 +240,28 @@ namespace QuestSystem.Dialogue.Editor
             }
         }
 
+        private void DrawCheckInventoryArea(DialogueNode node)
+        {
+            GUILayout.Space(20);
+            node.CheckInventory = GUILayout.Toggle(node.CheckInventory, "Check Inventory: ");
+            if (!node.CheckInventory) return;
+
+            GUILayout.Space(5);
+            GUILayout.Label("Item:");
+            GUILayout.BeginHorizontal();
+            node.LootItem = (LootItem)EditorGUILayout.ObjectField(node.LootItem, typeof(LootItem), false);
+            EditorGUILayout.Space(10);
+            node.RequiredLootCount = EditorGUILayout.IntField(node.RequiredLootCount, GUILayout.Width(25));
+            GUILayout.EndHorizontal();
+        }
+
         private void DrawVariableArea(DialogueNode node)
         {
             GUILayout.Space(20);
             node.IsUsingCondition = GUILayout.Toggle( node.IsUsingCondition, "Use Conditions ");
             if (!node.IsUsingCondition) return;
 
-            GUILayout.Space(10);
+            GUILayout.Space(5);
             QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
             List<QuestVariableTemplate> variables = qvo.GetAllQuestVariableTemplates();
             int varIndex = variables.IndexOf(variables.Find(v => v.Title == node.SelectedVariable.Title));

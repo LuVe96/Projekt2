@@ -22,7 +22,7 @@ MonoBehaviour:
     x: 469
     y: 365
     width: 200
-    height: 168
+    height: 249
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -31,6 +31,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 1
+  lootItem: {fileID: 11400000, guid: d3a98a8937ef9b6479cdeeab97626ec4, type: 2}
+  requiredLootCount: 2
 --- !u!114 &-8845979243908571697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,7 +63,7 @@ MonoBehaviour:
     x: 977
     y: 309
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -62,6 +72,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &-8420159436937734795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,7 +103,7 @@ MonoBehaviour:
     x: 984
     y: 106
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -92,6 +112,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 1
   endPointDescription: not helped
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &-7267864064854251378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +145,7 @@ MonoBehaviour:
     x: 195
     y: 246
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -124,6 +154,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &-6217759082962360000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +185,7 @@ MonoBehaviour:
     x: 1227
     y: 309
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -154,6 +194,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 1
   endPointDescription: Wann help Bruno
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &-4477736041365372410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,9 +224,9 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 472
-    y: 161
+    y: 126
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -185,6 +235,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 6fee6cf7-9161-4d31-b9ff-cfe8086569fd
   isPlayerSpeaking: 0
-  text: I..ich, w..weis nicht wohin? Mir tut alles weh.
+  text: I..ich, w..weis nicht wohin? Und, und..  Mir tut alles weh.
   children:
   - c8e32289-f3b9-43b9-81a0-676be10877b3
   - 065c8b94-0830-4639-b1ea-7ccdeba71c55
@@ -229,7 +289,7 @@ MonoBehaviour:
     x: 722
     y: 161
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -238,3 +298,15 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: Is_new
+    type: 0
+    datas:
+    - True
+    - False
+  selectedOptionIndex: 0
+  requiredVarialbeValue: True
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0

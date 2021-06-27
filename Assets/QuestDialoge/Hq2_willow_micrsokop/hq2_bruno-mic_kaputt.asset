@@ -23,7 +23,7 @@ MonoBehaviour:
     x: 952
     y: 369
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -32,6 +32,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &-4566053051112447195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,7 +63,7 @@ MonoBehaviour:
     x: 1813
     y: 651
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -62,6 +72,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 1
   endPointDescription: "f\xFCr 20"
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &-4160383796471650468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +105,7 @@ MonoBehaviour:
     x: 1259
     y: 211
     width: 200
-    height: 217
+    height: 249
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -94,6 +114,18 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: Helped_Bruno
+    type: 0
+    datas:
+    - True
+    - False
+  selectedOptionIndex: 0
+  requiredVarialbeValue: True
+  isUsingCondition: 1
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &-3110794850034999286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +148,7 @@ MonoBehaviour:
     x: 37
     y: 338
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -125,6 +157,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +214,7 @@ MonoBehaviour:
     x: 1650
     y: 366
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -181,6 +223,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 1
   endPointDescription: "sp\xE4ter zahlen"
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &1608778162678902449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +257,7 @@ MonoBehaviour:
     x: 632
     y: 221
     width: 200
-    height: 217
+    height: 249
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -214,6 +266,18 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: Helped_Bruno
+    type: 0
+    datas:
+    - True
+    - False
+  selectedOptionIndex: 0
+  requiredVarialbeValue: True
+  isUsingCondition: 1
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &1992721080821927437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +302,7 @@ MonoBehaviour:
     x: 1258
     y: 446
     width: 200
-    height: 217
+    height: 249
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -247,6 +311,18 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: Helped_Bruno
+    type: 0
+    datas:
+    - True
+    - False
+  selectedOptionIndex: 0
+  requiredVarialbeValue: False
+  isUsingCondition: 1
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &3603429479075572574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +347,7 @@ MonoBehaviour:
     x: 352
     y: 335
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -280,6 +356,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &4272928221468908241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +388,7 @@ MonoBehaviour:
     x: 1563
     y: 651
     width: 200
-    height: 168
+    height: 249
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -311,6 +397,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: "f\xFCr 20"
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 1
+  lootItem: {fileID: 11400000, guid: d3a98a8937ef9b6479cdeeab97626ec4, type: 2}
+  requiredLootCount: 20
 --- !u!114 &4387855156247748621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,10 +426,10 @@ MonoBehaviour:
   - 33fbe979-2ecb-4a12-867a-f3ce327b1c94
   rect:
     serializedVersion: 2
-    x: 1535
-    y: 85
+    x: 1528
+    y: 57
     width: 200
-    height: 217
+    height: 249
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -342,6 +438,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: "f\xFCr 10"
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 1
+  lootItem: {fileID: 11400000, guid: d3a98a8937ef9b6479cdeeab97626ec4, type: 2}
+  requiredLootCount: 10
 --- !u!114 &5139009998060582367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,10 +466,10 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1785
-    y: 107
+    x: 1780
+    y: 79
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -372,6 +478,16 @@ MonoBehaviour:
     height: 18
   isEndPoint: 1
   endPointDescription: "f\xFCr 10"
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &8356527826442687079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +511,7 @@ MonoBehaviour:
     x: 632
     y: 487
     width: 200
-    height: 217
+    height: 249
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -404,3 +520,15 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: Helped_Bruno
+    type: 0
+    datas:
+    - True
+    - False
+  selectedOptionIndex: 0
+  requiredVarialbeValue: False
+  isUsingCondition: 1
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0

@@ -35,6 +35,10 @@ namespace QuestSystem.Dialogue
         [SerializeField] string requiredVarialbeValue;
         [SerializeField]  bool isUsingCondition = false;
 
+        [SerializeField] bool checkInventory = false;
+        [SerializeField] LootItem lootItem;
+        [SerializeField] int requiredLootCount = 0;
+
         public Rect Rect { get => rect; set => rect = value; }
         public List<string> Children { get => children; private set => children = value; }
         public string UniqueID { get => uniqueID; set => uniqueID = value; }
@@ -77,12 +81,22 @@ namespace QuestSystem.Dialogue
         public int SelectedOptionIndex { get => selectedOptionIndex; set => selectedOptionIndex = value; }
         public string RequiredVarialbeValue { get => requiredVarialbeValue; set => requiredVarialbeValue = value; }
         public bool IsUsingCondition { get => isUsingCondition; set => isUsingCondition = value; }
+        public bool CheckInventory { get => checkInventory; set => checkInventory = value; }
+        public LootItem LootItem { get => lootItem; set => lootItem = value; }
+        public int RequiredLootCount { get => requiredLootCount; set => requiredLootCount = value; }
 
         public Rect GetTextFieldRectWithOffset()
         {  
             return new Rect(textFieldRect.x + rect.x, textFieldRect.y + rect.y, textFieldRect.width, textFieldRect.height);
         }
 
+
+        public bool IsInventoyValid()
+        {
+            if (!CheckInventory) return true;
+
+            return  Inventory.Instance.CheckForItem(lootItem, requiredLootCount, false);
+        }
 #if UNITY_EDITOR
 
         //private void Awake()

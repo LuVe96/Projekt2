@@ -28,6 +28,7 @@ namespace QuestSystem
             if(other.tag == onTriggerTag)
             {
                 isTriggerd = true;
+                if(OnTriggerChanged != null)
                 OnTriggerChanged.Invoke();
             }
 

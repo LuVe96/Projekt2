@@ -63,6 +63,7 @@ namespace QuestSystem.Dialogue
                 GameObject c = Instantiate(choicesPrefab, choicesPanel.transform);
                 c.GetComponent<Button>().onClick.AddListener(delegate { OnClickChoice(choice.UniqueID); });
                 c.transform.GetChild(0).GetComponent<Text>().text = choice.Text;
+                c.GetComponent<Button>().interactable = choice.IsInventoyValid();
             }
         }
 

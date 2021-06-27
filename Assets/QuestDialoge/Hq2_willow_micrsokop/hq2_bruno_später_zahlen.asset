@@ -19,9 +19,9 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 1083
-    y: 613
+    y: 643
     width: 200
-    height: 217
+    height: 293
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -39,6 +39,9 @@ MonoBehaviour:
   selectedOptionIndex: 0
   requiredVarialbeValue: False
   isUsingCondition: 1
+  checkInventory: 1
+  lootItem: {fileID: 11400000, guid: d3a98a8937ef9b6479cdeeab97626ec4, type: 2}
+  requiredLootCount: 20
 --- !u!114 &-1691332571472595275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +65,7 @@ MonoBehaviour:
     x: 314
     y: 384
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -78,6 +81,9 @@ MonoBehaviour:
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +127,7 @@ MonoBehaviour:
     x: 783
     y: 437
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -137,6 +143,9 @@ MonoBehaviour:
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &3291574002377764589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +168,7 @@ MonoBehaviour:
     x: 64
     y: 384
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -175,6 +184,9 @@ MonoBehaviour:
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &7364330247018233088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +208,7 @@ MonoBehaviour:
     x: 1080
     y: 115
     width: 200
-    height: 168
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -212,6 +224,9 @@ MonoBehaviour:
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &8701514917919131648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +248,7 @@ MonoBehaviour:
     x: 1084
     y: 334
     width: 200
-    height: 217
+    height: 293
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -251,3 +266,6 @@ MonoBehaviour:
   selectedOptionIndex: 0
   requiredVarialbeValue: True
   isUsingCondition: 1
+  checkInventory: 1
+  lootItem: {fileID: 11400000, guid: d3a98a8937ef9b6479cdeeab97626ec4, type: 2}
+  requiredLootCount: 10
