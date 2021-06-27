@@ -54,13 +54,13 @@ namespace QuestSystem
 
             QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
             List<QuestVariableTemplate> variables = qvo.GetAllQuestVariableTemplates();
-            int varIndex = variables.IndexOf(selectedVariable);
+            int varIndex = variables.IndexOf(variables.Find(v => v.Title == VariableRequireData.VariableName));
 
             if (variables.Count <= 0)
             {
                 GUILayout.Label("No Variables available", textStyle);
             }
-            else
+            else 
             {
                 GUILayout.Label("Check Variable:", textStyle);
                 GUILayout.BeginHorizontal();

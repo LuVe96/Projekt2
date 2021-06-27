@@ -91,6 +91,21 @@ namespace QuestSystem.Quest
             isExecuted = false;
         }
 
+        public void DisableNode()
+        {
+            resetNode();
+            //TODO: unsubscribe Requirements über Interface?
+            foreach (string reqId in requirementIDs)
+            {
+                RequirementNodeData rnd = (GetNodeByID(reqId) as RequirementNodeData);
+                if (rnd is IUnsubscribeEvent)
+                {
+                    (rnd as IUnsubscribeEvent).UnsubscribeEvent();
+                }
+            }
+            isActive = false;
+        }
+
         protected void FinishNode(EndPointContainer endPoint = null)
         {
             foreach (string actionID in ActionIDs)
@@ -106,16 +121,7 @@ namespace QuestSystem.Quest
                 }
             }
 
-            //TODO: unsubscribe Requirements über Interface?
-            foreach (string reqId in requirementIDs)
-            {
-                RequirementNodeData rnd = (GetNodeByID(reqId) as RequirementNodeData);
-                if(rnd is IUnsubscribeEvent)
-                {
-                    (rnd as IUnsubscribeEvent).UnsubscribeEvent();
-                }
-            }
-            isActive = false;
+            DisableNode();
             NodeHasFinished(this, endPoint);
         }
     } 

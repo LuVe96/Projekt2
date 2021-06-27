@@ -43,26 +43,24 @@ namespace QuestSystem
 
         protected override void DrawNodeHeader()
         {
-            EditorGUILayout.LabelField("Variable Action", headerTextStyle);
+            GUILayout.Label("Variable Action", headerTextStyle);
             actionSegment.Begin();
             actionSegment.End();
         }
 
         protected override void DrawContent()
         {
-            EditorGUILayout.LabelField("Variable Action", headerTextStyle);
-            actionSegment.Begin();
-            actionSegment.End();
+
 
             QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
             List<QuestVariableTemplate> variables = qvo.GetAllQuestVariableTemplates();
-            int varIndex = variables.IndexOf(selectedVariable);
+            int varIndex = variables.IndexOf(variables.Find(v => v.Title == VariableActionData.VariableName));
 
             if(variables.Count <= 0)
             {
                 GUILayout.Label("No Variables available", textStyle);
             }
-            else
+            else 
             {
                 GUILayout.Label("Set Variable:", textStyle);
                 GUILayout.BeginHorizontal();

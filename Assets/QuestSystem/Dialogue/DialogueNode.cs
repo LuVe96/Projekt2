@@ -30,7 +30,10 @@ namespace QuestSystem.Dialogue
         [SerializeField]
         string endPointDescription;
 
-        //private Rect stdRect = new Rect(0, 0, 200, 100-18);
+        [SerializeField]  QuestVariableTemplate selectedVariable = null;
+        [SerializeField]  int selectedOptionIndex = 0;
+        [SerializeField] string requiredVarialbeValue;
+        [SerializeField]  bool isUsingCondition = false;
 
         public Rect Rect { get => rect; set => rect = value; }
         public List<string> Children { get => children; private set => children = value; }
@@ -70,10 +73,10 @@ namespace QuestSystem.Dialogue
         public bool IsEndPoint { get => isEndPoint; set => isEndPoint = value; }
         public string EndPointDescription { get => endPointDescription; set => endPointDescription = value; }
         public float contentHeight { get; set; }
-        [SerializeField] public QuestVariableTemplate SelectedVariable { get; set; } = null;
-        [SerializeField] public int SelectedOptionIndex { get; set; } = 0;
-        [SerializeField] public string RequiredVarialbeValue { get; set; }
-        [SerializeField] public bool IsUsingCondition { get; set; } = false;
+        public QuestVariableTemplate SelectedVariable { get => selectedVariable; set => selectedVariable = value; }
+        public int SelectedOptionIndex { get => selectedOptionIndex; set => selectedOptionIndex = value; }
+        public string RequiredVarialbeValue { get => requiredVarialbeValue; set => requiredVarialbeValue = value; }
+        public bool IsUsingCondition { get => isUsingCondition; set => isUsingCondition = value; }
 
         public Rect GetTextFieldRectWithOffset()
         {  

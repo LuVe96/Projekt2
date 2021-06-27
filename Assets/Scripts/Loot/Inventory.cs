@@ -22,15 +22,29 @@ public class Inventory : MonoBehaviour
 
     public List<GroupedItems> items = new List<GroupedItems>();
 
-    internal bool CheckForItem(LootItem lootItem, int count)
+    internal bool CheckForItem(LootItem lootItem, int count, bool exact)
     {
         GroupedItems item = items.Find(it => it.id == lootItem.id);
         if (item != null)
         {
-            if(item.items.Count >= count)
+            if (exact)
             {
-                return true;
+                if (item.items.Count == count)
+                {
+                    return true;
+                }
             }
+            else
+            {
+                if (item.items.Count >= count)
+                {
+                    return true;
+                }
+            }
+        }
+        else if (exact && count == 0)
+        {
+            return true;
         }
         return false;
     }
@@ -38,7 +52,7 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-    public static event Action OnInventoryChanged;
+    public event Action OnInventoryChanged;
 
     public void Add(LootItem item) {
 

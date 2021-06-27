@@ -248,14 +248,14 @@ namespace QuestSystem.Dialogue.Editor
             GUILayout.Space(10);
             QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
             List<QuestVariableTemplate> variables = qvo.GetAllQuestVariableTemplates();
-            int varIndex = variables.IndexOf(node.SelectedVariable);
+            int varIndex = variables.IndexOf(variables.Find(v => v.Title == node.SelectedVariable.Title));
 
             if (variables.Count <= 0)
             {
-                GUILayout.Label("No Variables available");
+                GUILayout.Label("No Variables available"); 
             }
             else
-            {
+            { 
                 GUILayout.Label("Check Variable:");
                 GUILayout.BeginHorizontal();
                 varIndex = EditorGUILayout.Popup(varIndex != -1 ? varIndex : 0, variables.Select(x => x.Title).ToArray());

@@ -59,6 +59,7 @@ namespace QuestSystem
             EditorGUILayout.Space(10);
             InventoryRequirementData.Count = EditorGUILayout.IntField(InventoryRequirementData.Count, GUILayout.Width(25));
             GUILayout.EndHorizontal();
+            InventoryRequirementData.Exact = GUILayout.Toggle(InventoryRequirementData.Exact, "exact: ");
 
         }
 

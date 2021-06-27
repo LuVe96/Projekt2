@@ -27,6 +27,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<TriggerRequirementNodeData> triggerRequirementNodeDatas = new List<TriggerRequirementNodeData>();
         [SerializeField] List<EventActionData> eventActionDatas = new List<EventActionData>();
         [SerializeField] List<PositionActionData> positionActionDatas = new List<PositionActionData>();
+        [SerializeField] List<OtherQuestEndActionData> otherQuestEndActionDatas = new List<OtherQuestEndActionData>();
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
@@ -50,6 +51,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(triggerRequirementNodeDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(eventActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(positionActionDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(otherQuestEndActionDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -161,30 +163,34 @@ namespace QuestSystem.Quest
             return Nodes;
         }
 
-        void EndQuest(QuestEndType endType)
+        public void EndQuest(QuestEndType endType)
         {
-            switch (endType)
+            if(QuestState == QuestState.Active)
             {
-                case QuestEndType.Passed:
-                    QuestState = QuestState.Passed;
-                    break;
-                case QuestEndType.Failed:
-                    QuestState = QuestState.Failed;
-                    break;
-                default:
-                    break;
-            }
-
-            // Destroy Nodes
-            for (int i = 0; i < Nodes.Count; i++)
-            {
-                if(Nodes[i] is MainNodeData)
+                switch (endType)
                 {
-                    (Nodes[i] as MainNodeData).resetNode();
+                    case QuestEndType.Passed:
+                        QuestState = QuestState.Passed;
+                        break;
+                    case QuestEndType.Failed:
+                        QuestState = QuestState.Failed;
+                        break;
+                    default:
+                        break;
                 }
-                Nodes[i] = null;
+
+                // Destroy Nodes
+                for (int i = 0; i < Nodes.Count; i++)
+                {
+                    if (Nodes[i] is MainNodeData)
+                    {
+                        (Nodes[i] as MainNodeData).DisableNode();
+                    }
+                    Nodes[i] = null;
+                }
+                QuestSystemManager.Instance.UpdateQuestState();
             }
-            QuestSystemManager.Instance.UpdateQuestState();
+           
         }
 
         //FOR_NEW: 05 Create new Data Instance
@@ -251,6 +257,10 @@ namespace QuestSystem.Quest
                     PositionActionData posActData = new PositionActionData(Guid.NewGuid().ToString());
                     positionActionDatas.Add(posActData);
                     return posActData;
+                case QuestNodeType.OtherQuestEndActionNode:
+                    OtherQuestEndActionData othEndData = new OtherQuestEndActionData(Guid.NewGuid().ToString());
+                    otherQuestEndActionDatas.Add(othEndData);
+                    return othEndData;
                 default:
                     return null;
             }
@@ -293,6 +303,8 @@ namespace QuestSystem.Quest
                     eventActionDatas.Remove(n); break;
                 case PositionActionData n:
                     positionActionDatas.Remove(n); break;
+                case OtherQuestEndActionData n:
+                    otherQuestEndActionDatas.Remove(n); break;
                 default:
                     return;
             }

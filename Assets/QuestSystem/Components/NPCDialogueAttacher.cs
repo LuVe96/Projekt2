@@ -51,7 +51,7 @@ namespace QuestSystem
 
             //foreach (DialogueContainer item in dialoguesToRemove)
             //{
-            //    dialogues.Remove(item);
+            //    dialogues.Remove(item); 
             //}
 
             dialogues.Find(item => item.dialogue.name == name).dialogueHasFinished(endPointid);

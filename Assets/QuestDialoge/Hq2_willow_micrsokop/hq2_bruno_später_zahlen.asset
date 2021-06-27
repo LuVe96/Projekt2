@@ -18,8 +18,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1082
-    y: 567
+    x: 1083
+    y: 613
     width: 200
     height: 217
   textFieldRect:
@@ -30,6 +30,15 @@ MonoBehaviour:
     height: 18
   isEndPoint: 1
   endPointDescription: "f\xFCr 20"
+  selectedVariable:
+    title: Helped_Bruno
+    type: 0
+    datas:
+    - True
+    - False
+  selectedOptionIndex: 0
+  requiredVarialbeValue: False
+  isUsingCondition: 1
 --- !u!114 &-1691332571472595275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +71,13 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +130,13 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
 --- !u!114 &3291574002377764589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +168,13 @@ MonoBehaviour:
     height: 18
   isEndPoint: 0
   endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
 --- !u!114 &7364330247018233088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +205,13 @@ MonoBehaviour:
     height: 18
   isEndPoint: 1
   endPointDescription: "sp\xE4ter bezahlen"
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
 --- !u!114 &8701514917919131648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,3 +242,12 @@ MonoBehaviour:
     height: 18
   isEndPoint: 1
   endPointDescription: "f\xFCr 10"
+  selectedVariable:
+    title: Helped_Bruno
+    type: 0
+    datas:
+    - True
+    - False
+  selectedOptionIndex: 0
+  requiredVarialbeValue: True
+  isUsingCondition: 1
