@@ -11,6 +11,7 @@ namespace QuestSystem.Quest
     {
         [SerializeField] Dialogue.Dialogue dialogue;
         [SerializeField] NPCDialogueAttacher nPCDialogueAttacher;
+        [SerializeField] bool startInstant = false;
         DialogueContainer container;
        
 
@@ -20,11 +21,12 @@ namespace QuestSystem.Quest
 
         public Dialogue.Dialogue Dialogue { get => dialogue; set => dialogue = value; }
         public NPCDialogueAttacher NPCDialogueAttacher { get => nPCDialogueAttacher; set => nPCDialogueAttacher = value; }
-      
+        public bool StartInstant { get => startInstant; set => startInstant = value; }
+
         protected override void executeNode()
         {
             Debug.Log("Execute QuestDialogueNode");
-            container = new DialogueContainer(dialogue, DialogueHasFinished);
+            container = new DialogueContainer(dialogue, DialogueHasFinished, startInstant);
             nPCDialogueAttacher.AddDialogue(container);
         }
 
@@ -122,11 +124,13 @@ namespace QuestSystem.Quest
     {
         public Dialogue.Dialogue dialogue;
         public DialogueHasFinished dialogueHasFinished;
+        public bool startInstant;
 
-        public DialogueContainer(Dialogue.Dialogue dialogue, DialogueHasFinished dialogueHasFinished)
+        public DialogueContainer(Dialogue.Dialogue dialogue, DialogueHasFinished dialogueHasFinished, bool startInstant)
         {
             this.dialogue = dialogue;
             this.dialogueHasFinished = dialogueHasFinished;
+            this.startInstant = startInstant;
         }
     }
 }

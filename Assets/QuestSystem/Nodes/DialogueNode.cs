@@ -72,6 +72,11 @@ namespace QuestSystem
 
         protected override void DrawContent()
         {
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Start instant:", textStyle);
+            DialogueNodeData.StartInstant = GUILayout.Toggle(DialogueNodeData.StartInstant, "");
+            GUILayout.EndHorizontal();
+
             GUILayout.Label("Dialogue:", textStyle);
             DialogueNodeData.Dialogue = (Dialogue.Dialogue)EditorGUILayout.ObjectField(DialogueNodeData.Dialogue, typeof(Dialogue.Dialogue), false);
             GUILayout.Space(10);

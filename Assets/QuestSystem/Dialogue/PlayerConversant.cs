@@ -115,6 +115,7 @@ namespace QuestSystem.Dialogue
             {
                 dialogPanel.SetActive(false);
                 currentNpc.DialogueHasFinished(currentDialogue.name, currentNode.UniqueID);
+                QuestButton.Instance.HideQuestButton();
                 currentNpc = null;
             }
 
@@ -132,7 +133,14 @@ namespace QuestSystem.Dialogue
                 try
                 {
                     currentNpc = other.GetComponent<NPCDialogueAttacher>();
-                    StartDialogue(currentNpc.Dialogues[0].dialogue, currentNpc.npcName, currentNpc.npcImage);
+                    if (currentNpc.Dialogues[0].startInstant)
+                    {
+                        StartDialogue();
+                    } else
+                    {
+                        QuestButton.Instance.showButtonAsType(QuestButtonType.Talk, StartDialogue);
+                    }
+                    
                 }
                 catch (Exception)
                 {
@@ -140,6 +148,20 @@ namespace QuestSystem.Dialogue
                 }
 
             }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.tag == "NPC")
+            {
+                QuestButton.Instance.HideQuestButton();
+                currentNpc = null;
+            }
+        }
+
+        private void StartDialogue()
+        {
+            StartDialogue(currentNpc.Dialogues[0].dialogue, currentNpc.npcName, currentNpc.npcImage);
         }
     } 
 }
