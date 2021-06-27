@@ -45,18 +45,7 @@ namespace QuestSystem.Dialogue
 
         private void ShowSentence()
         {
-            SetupLayout(false);
-
-            if (currentNode.IsPlayerSpeaking)
-            {
-                nameText.text = playerName;
-                charImage.sprite = playerImage;
-            }
-            else
-            {
-                nameText.text = currentNPCname;
-                charImage.sprite = currentNPCImage;
-            }
+            SetupLayout(false);  
 
             sentencesText.text = currentNode.Text;
         }
@@ -82,6 +71,21 @@ namespace QuestSystem.Dialogue
             choicesPanel.SetActive(asChoice);
             sentencesText.gameObject.SetActive(!asChoice);
             nextButton.gameObject.SetActive(!asChoice);
+
+            if (currentNode.IsPlayerSpeaking)
+            {
+                nameText.text = playerName;
+                nameText.alignment = TextAnchor.MiddleLeft;
+                charImage.sprite = playerImage;
+                charImage.rectTransform.pivot = new Vector2(1, 0.5f);
+            }
+            else
+            {
+                nameText.text = currentNPCname;
+                nameText.alignment = TextAnchor.MiddleRight;
+                charImage.sprite = currentNPCImage;
+                charImage.rectTransform.pivot = new Vector2(0, 0.5f);
+            }
         }
 
         private void OnClickChoice(string uid)
@@ -98,6 +102,7 @@ namespace QuestSystem.Dialogue
                 DialogueNode[] children = currentDialogue.GetAllValideChildren(currentNode).ToArray();
                 if (children.Length > 1)
                 {
+                    currentNode = children[0];
                     ShowChoices(children);
                 } 
                 else
