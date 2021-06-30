@@ -28,7 +28,7 @@ namespace QuestSystem
         {
            // No Segemnt needed
         }
-
+#if UNITY_EDITOR
         protected override void DrawNodeHeader()
         {
         }
@@ -71,6 +71,6 @@ namespace QuestSystem
             }
             GUILayout.Space(10);
         }
-
+#endif
     }
 }

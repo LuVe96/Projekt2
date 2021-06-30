@@ -43,7 +43,7 @@ namespace QuestSystem
         {
             return base.UseNodeStyle();
         }
-
+#if UNITY_EDITOR
         protected override void DrawNodeHeader()
         {
             DrawEditabelHeader("End Node");
@@ -64,6 +64,6 @@ namespace QuestSystem
             EditorGUILayout.LabelField("Actions", rightPortTextStyle);
             actionSegment.End();
         }
+#endif
     }
-
 }

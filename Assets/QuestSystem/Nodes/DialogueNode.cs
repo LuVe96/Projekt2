@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace QuestSystem
 {
-
+#if UNITY_EDITOR
     public class DialogueNode : Node
     {
 
@@ -16,6 +16,7 @@ namespace QuestSystem
             : base(OnClickNodePort, _questdata, repaintEditorDelegate)
         {
             this.OnClickNodePort = OnClickNodePort;
+
             DrawDialogueEndPorts(DialogueNodeData.Dialogue);
         }
 
@@ -143,5 +144,5 @@ namespace QuestSystem
 
         }
     }
-
+#endif
 }

@@ -19,7 +19,7 @@ namespace QuestSystem
             this.outPoint = outPoint;
             this.OnClickRemoveConnection = OnClickRemoveConnection;
         }
-
+#if UNITY_EDITOR
         public void Draw()
         {
             Rect leftPointRect = (outPoint.PortPosition == PortPosition.Left) ? outPoint.Rect : inPoint.Rect;
@@ -57,6 +57,7 @@ namespace QuestSystem
             //    }
             //}
         }
+#endif
     }
 
 }

@@ -45,7 +45,7 @@ namespace QuestSystem
         {
             return base.UseNodeStyle();
         }
-
+#if UNITY_EDITOR
         protected override void DrawNodeHeader()
         {
             DrawEditabelHeader("StartNodeData");
@@ -70,8 +70,8 @@ namespace QuestSystem
             EditorGUILayout.LabelField("Actions", rightPortTextStyle);
             actionSegment.End();
         }
+#endif
 
-       
     }
 
 } 

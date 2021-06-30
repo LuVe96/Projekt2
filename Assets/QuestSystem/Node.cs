@@ -122,6 +122,7 @@ namespace QuestSystem
             Rect = newRect;
         }
 
+#if UNITY_EDITOR
         public void Draw() {
             GUILayout.BeginArea(Rect, style);
             contentHeight = EditorGUILayout.BeginVertical().height;
@@ -293,5 +294,6 @@ namespace QuestSystem
 
             return false;
         }
+#endif
     }
 }

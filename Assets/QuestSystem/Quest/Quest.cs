@@ -193,6 +193,7 @@ namespace QuestSystem.Quest
            
         }
 
+#if UNITY_EDITOR
         //FOR_NEW: 05 Create new Data Instance
         public QuestNodeData CreateNewNode(QuestNodeType type)
         {
@@ -309,6 +310,7 @@ namespace QuestSystem.Quest
                     return;
             }
         }
+#endif
 
         private void DeleteAsChild(QuestNodeData node)
         {

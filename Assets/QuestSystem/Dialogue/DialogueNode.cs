@@ -48,9 +48,11 @@ namespace QuestSystem.Dialogue
                 if (text != value)
                 {
                     //EditorUtility.SetDirty(selectedDialogue);   // update the Scriptable Object on Save
+#if UNITY_EDITOR
                     Undo.RecordObject(this, "Update Dialog Text"); // automaticaly marks Scriptable Object  as dirty, records step for undo
                     text = value;
                     EditorUtility.SetDirty(this);// When Scriptable Object is in Asset file "setDirty" musst call seperated
+#endif
                 }
             }
         }
@@ -60,9 +62,11 @@ namespace QuestSystem.Dialogue
             get => isPlayerSpeaking;
             set
             {
+#if UNITY_EDITOR
                 Undo.RecordObject(this, "Change Dialogue Speaker");
                 isPlayerSpeaking = value;
                 EditorUtility.SetDirty(this);
+#endif
             }
         }
 

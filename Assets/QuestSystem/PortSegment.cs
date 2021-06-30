@@ -54,7 +54,7 @@ namespace QuestSystem
                 }
             }
         }
-
+#if UNITY_EDITOR
         public void Begin()
         {
             //GUIStyle style = new GUIStyle();
@@ -78,5 +78,6 @@ namespace QuestSystem
                 port.Draw();
             }
         }
+#endif
     } 
 }

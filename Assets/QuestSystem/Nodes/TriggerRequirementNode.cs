@@ -42,7 +42,7 @@ namespace QuestSystem
             style.padding = new RectOffset(24, 24, 16, 16);
             return style;
         }
-
+#if UNITY_EDITOR
         protected override void DrawNodeHeader()
         {
             GUILayout.Label("Trigger Requirement", headerTextStyle);
@@ -59,7 +59,7 @@ namespace QuestSystem
 
         }
 
-
+#endif
     }
 
 }

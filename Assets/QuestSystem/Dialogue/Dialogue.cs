@@ -65,7 +65,9 @@ namespace QuestSystem.Dialogue
 
             if (nodes.Count == 0)
             {
+#if UNITY_EDITOR
                 CreateNode(null);
+#endif
             }
             nodeLookUp.Clear();
             foreach (DialogueNode node in GetAllNodes())

@@ -41,7 +41,7 @@ namespace QuestSystem
             style.padding = new RectOffset(24, 24, 16, 16);
             return style;
         }
-
+#if UNITY_EDITOR
         protected override void DrawNodeHeader()
         {
             EditorGUILayout.LabelField("Variable Requirement", headerTextStyle);
@@ -80,8 +80,8 @@ namespace QuestSystem
 
             GUILayout.EndHorizontal();
         }
+#endif
 
-       
     }
 
 }

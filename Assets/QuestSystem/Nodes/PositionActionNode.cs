@@ -36,7 +36,7 @@ namespace QuestSystem
             style.padding = new RectOffset(24, 24, 16, 16);
             return style;
         }
-
+#if UNITY_EDITOR
         protected override void DrawNodeHeader()
         {
             GUILayout.Label("Position Action", headerTextStyle);
@@ -52,5 +52,6 @@ namespace QuestSystem
             GUILayout.Label("Goal:", textStyle);
             PositionActionData.GoalTransform = (Transform)EditorGUILayout.ObjectField(PositionActionData.GoalTransform, typeof(Transform), true);
         }
+#endif
     }
 }

@@ -55,6 +55,7 @@ namespace QuestSystem
             return base.UseNodeStyle(); 
         }
 
+#if UNITY_EDITOR
         protected override void DrawNodeHeader()
         {
             DrawEditabelHeader("Branch Node");
@@ -79,6 +80,6 @@ namespace QuestSystem
             requirementSegment.End();
 
         }
-
+#endif
     }
 }
