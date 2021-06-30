@@ -14,14 +14,12 @@ namespace QuestSystem.Dialogue
         Dictionary<string, DialogueNode> nodeLookUp = new Dictionary<string, DialogueNode>();
 
 
-#if UNITY_EDITOR    // Awake is only called in Unity, not in Game
         private void Awake()    //called on Creation or on Unity start
         {
-            if (nodes.Count == 0)
-            {
-                CreateNode(null);
-            }
+            OnValidate();
         }
+
+#if UNITY_EDITOR    // Awake is only called in Unity, not in Game
 
         public void CreateNode(DialogueNode parentNode)
         {

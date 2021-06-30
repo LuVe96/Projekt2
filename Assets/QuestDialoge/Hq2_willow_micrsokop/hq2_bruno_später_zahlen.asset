@@ -18,10 +18,10 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1083
-    y: 643
+    x: 1081
+    y: 702
     width: 200
-    height: 293
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -30,6 +30,49 @@ MonoBehaviour:
     height: 18
   isEndPoint: 1
   endPointDescription: "f\xFCr 20"
+  selectedVariable:
+    title: Helped_Bruno
+    type: 0
+    datas:
+    - True
+    - False
+  selectedOptionIndex: 0
+  requiredVarialbeValue: False
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 11400000, guid: d3a98a8937ef9b6479cdeeab97626ec4, type: 2}
+  requiredLootCount: 20
+--- !u!114 &-2187448376263278681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 22f34117-5808-4226-b929-0eb04c6457b1
+  isPlayerSpeaking: 1
+  text: "Ja, Hier hast du die 20 Goldm\xFCnzen."
+  children:
+  - 73d29027-319a-4d92-9050-acd0ca5940dd
+  rect:
+    serializedVersion: 2
+    x: 798
+    y: 691
+    width: 200
+    height: 293
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
   selectedVariable:
     title: Helped_Bruno
     type: 0
@@ -60,6 +103,7 @@ MonoBehaviour:
   children:
   - 54c73a0e-321b-4f1d-9760-b669444f3125
   - 3de5a7a1-2082-43f9-8778-4a0a1e26d40f
+  - 22f34117-5808-4226-b929-0eb04c6457b1
   rect:
     serializedVersion: 2
     x: 314
@@ -103,6 +147,7 @@ MonoBehaviour:
   - {fileID: 574849897617881463}
   - {fileID: 8701514917919131648}
   - {fileID: -7138227033340260597}
+  - {fileID: -2187448376263278681}
   newNodeOffset: {x: 250, y: 0}
 --- !u!114 &574849897617881463
 MonoBehaviour:
@@ -118,16 +163,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 3de5a7a1-2082-43f9-8778-4a0a1e26d40f
   isPlayerSpeaking: 1
-  text: Ja, Hier hast du das Geld
+  text: "Ja, Hier hast du die 10 Goldm\xFCnzen."
   children:
   - 302008fb-cdd5-466b-b912-15754b027275
-  - 73d29027-319a-4d92-9050-acd0ca5940dd
   rect:
     serializedVersion: 2
-    x: 783
-    y: 437
+    x: 803
+    y: 364
     width: 200
-    height: 205
+    height: 293
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -137,15 +181,17 @@ MonoBehaviour:
   isEndPoint: 0
   endPointDescription: 
   selectedVariable:
-    title: 
+    title: Helped_Bruno
     type: 0
-    datas: []
+    datas:
+    - True
+    - False
   selectedOptionIndex: 0
-  requiredVarialbeValue: 
-  isUsingCondition: 0
-  checkInventory: 0
-  lootItem: {fileID: 0}
-  requiredLootCount: 0
+  requiredVarialbeValue: True
+  isUsingCondition: 1
+  checkInventory: 1
+  lootItem: {fileID: 11400000, guid: d3a98a8937ef9b6479cdeeab97626ec4, type: 2}
+  requiredLootCount: 20
 --- !u!114 &3291574002377764589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +294,7 @@ MonoBehaviour:
     x: 1084
     y: 334
     width: 200
-    height: 293
+    height: 205
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -265,7 +311,7 @@ MonoBehaviour:
     - False
   selectedOptionIndex: 0
   requiredVarialbeValue: True
-  isUsingCondition: 1
-  checkInventory: 1
+  isUsingCondition: 0
+  checkInventory: 0
   lootItem: {fileID: 11400000, guid: d3a98a8937ef9b6479cdeeab97626ec4, type: 2}
   requiredLootCount: 10

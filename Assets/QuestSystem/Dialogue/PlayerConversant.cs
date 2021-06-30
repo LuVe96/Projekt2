@@ -40,6 +40,7 @@ namespace QuestSystem.Dialogue
             currentDialogue = dialogue;
             currentNode = currentDialogue.GetRootNode();
             dialogPanel.SetActive(true);
+            Time.timeScale = 0;
             ShowSentence();
         }
 
@@ -115,6 +116,7 @@ namespace QuestSystem.Dialogue
             } else
             {
                 dialogPanel.SetActive(false);
+                Time.timeScale = 1;
                 currentNpc.DialogueHasFinished(currentDialogue.name, currentNode.UniqueID);
                 QuestButton.Instance.HideQuestButton();
                 currentNpc = null;
