@@ -39,7 +39,7 @@ namespace QuestSystem
             questsLookUp.Clear();
             foreach (Quest.Quest quest in quests)
             {
-                questsLookUp.Add(quest.QuestName, quest.QuestState);
+                questsLookUp.Add(quest.QuestName.Name, quest.QuestState);
                 if ((quest.Nodes[0] as QuestStartNodeData).ActiveAfter == "None")
                     quest.StartQuest();
             }
@@ -83,7 +83,7 @@ namespace QuestSystem
             questsLookUp.Clear();
             foreach (Quest.Quest quest in quests)
             {
-                questsLookUp.Add(quest.QuestName, quest.QuestState);
+                questsLookUp.Add(quest.QuestName.Name, quest.QuestState);
             
             }
         }

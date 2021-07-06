@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.Linq;
 
 namespace QuestSystem.Quest
 {
@@ -11,7 +12,8 @@ namespace QuestSystem.Quest
 
 
         bool showAddName = false;
-        string name = "";
+        string qName = ""; 
+        string qLogName = "";
 
         public override void OnInspectorGUI()
         {
@@ -21,19 +23,19 @@ namespace QuestSystem.Quest
 
             QuestStateObject qso = Resources.Load("QuestStateData") as QuestStateObject;
 
-            string[] choices = qso.GetAllQuestNames().ToArray();
+            QuestName[] choices = qso.GetAllQuestNames().ToArray();
             int selectedIndex = -1;
-            if(name != "" && !showAddName)
+            if(qName != "" && !showAddName)
             {
-                selectedIndex = qso.GetAllQuestNames().IndexOf(name);
-                name = "";
+                selectedIndex = qso.GetAllQuestNames().Select(qs => qs.Name).ToList().IndexOf(qName);
+                qName = "";
             }
             if (selectedIndex == -1)
             {
-                selectedIndex = qso.GetAllQuestNames().IndexOf(quest.QuestName);
+                selectedIndex = qso.GetAllQuestNames().Select(qs => qs.Name).ToList().IndexOf(quest.QuestName.Name);
             }
             GUILayout.BeginHorizontal();
-            selectedIndex = EditorGUILayout.Popup(selectedIndex != -1 ? selectedIndex : 0, choices);
+            selectedIndex = EditorGUILayout.Popup(selectedIndex != -1 ? selectedIndex : 0, choices.Select(qs => qs.Name).ToArray());
             quest.QuestName = choices[selectedIndex];
             if (GUILayout.Button("+", GUILayout.Width(30)))
             {
@@ -44,15 +46,17 @@ namespace QuestSystem.Quest
 
             if (showAddName)
             {
-                GUILayout.BeginHorizontal();
-                name = EditorGUILayout.TextField(name);
+
+                qName = EditorGUILayout.TextField("QuestName", qName);
+                qLogName = EditorGUILayout.TextField("QuestLogName", qLogName);
+
                 if (GUILayout.Button("✓", GUILayout.Width(30)))
                 {
-                    qso.AddQuestName(name);
+                    qso.AddQuestName(qName, qLogName);
                     EditorUtility.SetDirty(qso);
                     showAddName = false;                    
                 }
-                GUILayout.EndHorizontal();
+
             }
 
 

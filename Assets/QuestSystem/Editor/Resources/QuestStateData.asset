@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e9e33f185216f45aac344922de62b3, type: 3}
   m_Name: QuestStateData
   m_EditorClassIdentifier: 
-  questNames:
-  - None
-  - Quest_11
-  - TestQuest 2
-  - NQ_Bruno_help
-  - "Hq1_Willow_Einf\xFChrung"
-  - HQ2_Willow_Mikroskop
+  questStates:
+  - name: None
+    logName: none
+  - name: Quest Test 1
+    logName: Das ist ein Test
+  - name: Q1_Bruno_help
+    logName: Bruno braucht Hilfe
+  - name: "Hq1_Willow_Einf\xFChrung"
+    logName: Willow
+  - name: HQ2_Willow_Mikroskop
+    logName: "Mikroskop f\xFCr Willow "

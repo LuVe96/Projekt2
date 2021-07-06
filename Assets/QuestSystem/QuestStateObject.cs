@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace QuestSystem
@@ -7,37 +8,48 @@ namespace QuestSystem
     [CreateAssetMenu(fileName = "New QuestStateObject", menuName = "QuestSystem/QuestStateObject", order = 0)]
     public class QuestStateObject : ScriptableObject
     {
-        [SerializeField] List<string> questNames = new List<string>();
+        [SerializeField] List<QuestName> questStates = new List<QuestName>();
 
-        public void AddQuestName(string newName)
+        public void AddQuestName(string newName, string logName)
         {
-            questNames.Add(newName);
+            questStates.Add(new QuestName(newName, logName));
         }
 
         public void RemoveQuestName(string newName)
         {
-            questNames.Remove(newName);
+            questStates.Remove(questStates.Find(qS => qS.Name == newName));
         }
 
-        public List<string> GetAllQuestNames() 
+        public List<QuestName> GetAllQuestNames() 
         {
-            return questNames;
+            //return questStates.Select( qs => qs.Name).ToList();
+            return questStates;
         }
 
         private void OnEnable()
         {
-            if(questNames.Count <= 0)
+            if(questStates.Count <= 0)
             {
-                questNames.Add("None");
+                questStates.Add(new QuestName("None", "none"));
             }
         }
 
     }
 
-    //public class QuestState
-    //{
-    //    public string name;
+    [System.Serializable]
+    public class QuestName
+    {
+        [SerializeField] string name;
+        [SerializeField] string logName;
 
-    //}
+        public QuestName(string name, string logName)
+        {
+            this.Name = name;
+            this.LogName = logName;
+        }
+
+        public string Name { get => name; set => name = value; }
+        public string LogName { get => logName; set => logName = value; }
+    }
 
 }

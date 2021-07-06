@@ -3,6 +3,7 @@ using QuestSystem.Quest;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -58,8 +59,8 @@ namespace QuestSystem
          
 
             QuestStateObject qso = Resources.Load("QuestStateData") as QuestStateObject;
-            string[] choices = qso.GetAllQuestNames().ToArray();
-            int selectedIndex = qso.GetAllQuestNames().IndexOf(StartNodeData.ActiveAfter);
+            string[] choices = qso.GetAllQuestNames().Select(qs => qs.Name).ToArray();
+            int selectedIndex = qso.GetAllQuestNames().Select(qs => qs.Name).ToList().IndexOf(StartNodeData.ActiveAfter);
             GUILayout.Label("Start After Quest: ", textStyle);
             selectedIndex = EditorGUILayout.Popup(selectedIndex != -1 ? selectedIndex : 0, choices);
             StartNodeData.ActiveAfter = choices[selectedIndex];

@@ -10,7 +10,7 @@ namespace QuestSystem.Quest
     //[CreateAssetMenu(fileName = "New Quest", menuName = "QuestSystem/Quest", order = 0)]
     public class Quest : MonoBehaviour
     {
-        [SerializeField] string questName;
+        [SerializeField] QuestName questName;
         [SerializeField] QuestState questState = QuestState.Inactive;
         //[SerializeField] List<QuestNodeData> nodeDatas = new List<QuestNodeData>();
         [SerializeField] List<QuestStartNodeData> startNodeDatas = new List<QuestStartNodeData>();
@@ -57,7 +57,7 @@ namespace QuestSystem.Quest
             }
         }
 
-        public string QuestName { get => questName; set => questName = value; }
+        public QuestName QuestName { get => questName; set => questName = value; }
         public QuestState QuestState { get => questState; set => questState = value; }
         public List<VariableActionData> VariableActionDatas { get => variableActionDatas; set => variableActionDatas = value; }
         public List<VariableRequireData> VaraibleRequireDatas { get => varaibleRequireDatas; set => varaibleRequireDatas = value; }
