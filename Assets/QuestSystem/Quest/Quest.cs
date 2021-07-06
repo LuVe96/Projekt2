@@ -28,6 +28,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<EventActionData> eventActionDatas = new List<EventActionData>();
         [SerializeField] List<PositionActionData> positionActionDatas = new List<PositionActionData>();
         [SerializeField] List<OtherQuestEndActionData> otherQuestEndActionDatas = new List<OtherQuestEndActionData>();
+        [SerializeField] List<QuestLogActionData> questLogActionDatas = new List<QuestLogActionData>();
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
@@ -52,6 +53,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(eventActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(positionActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(otherQuestEndActionDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(questLogActionDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -94,6 +96,7 @@ namespace QuestSystem.Quest
             }
 
             QuestState = QuestState.Active;
+            QuestLogManager.Instance.AddQuestAsLog(QuestName.LogName);
         }
 
         void ContinueNodes(MainNodeData parentNode, EndPointContainer endPoint = null)
@@ -179,6 +182,8 @@ namespace QuestSystem.Quest
                         break;
                 }
 
+                QuestLogManager.Instance.CloseQuestAsLog(QuestName.LogName, QuestState);
+
                 // Destroy Nodes
                 for (int i = 0; i < Nodes.Count; i++)
                 {
@@ -262,6 +267,10 @@ namespace QuestSystem.Quest
                     OtherQuestEndActionData othEndData = new OtherQuestEndActionData(Guid.NewGuid().ToString());
                     otherQuestEndActionDatas.Add(othEndData);
                     return othEndData;
+                case QuestNodeType.QuestLogActionNode:
+                    QuestLogActionData logData = new QuestLogActionData(Guid.NewGuid().ToString(), QuestName);
+                    questLogActionDatas.Add(logData);
+                    return logData;
                 default:
                     return null;
             }
@@ -306,6 +315,8 @@ namespace QuestSystem.Quest
                     positionActionDatas.Remove(n); break;
                 case OtherQuestEndActionData n:
                     otherQuestEndActionDatas.Remove(n); break;
+                case QuestLogActionData n:
+                    questLogActionDatas.Remove(n); break;
                 default:
                     return;
             }

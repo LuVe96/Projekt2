@@ -9,16 +9,29 @@ namespace QuestSystem
 {
     public class QuestLogManager : MonoBehaviour
     {
+        public static QuestLogManager Instance = null;
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                //DontDestroyOnLoad(gameObject);  // the Singelton Obj gets not deleted when change szene
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
 
         [SerializeField] GameObject logPager;
-        [SerializeField] Transform activeLogs;
-        [SerializeField] Transform completedLogs;
+        [SerializeField] Transform activeLogContent;
+        [SerializeField] Transform completedLogContent;
 
         [SerializeField] GameObject detailsPage;
-        [SerializeField] Transform detailText;
+        [SerializeField] Transform detailContent;
+        [SerializeField] Text detailsHeaderText;
 
         [SerializeField] GameObject questLogButtonPrefab;
-
         [SerializeField] GameObject questLogTextPrefab;
 
         [SerializeField] Dictionary<string, Logs> questLogs = new Dictionary<string,Logs>(); //TODO: savable
@@ -31,20 +44,33 @@ namespace QuestSystem
 
         }
 
-        public void AddQuestLog(string questLogName,  QuestState state, string logText)
+        public void AddQuestLog(string questLogName, string logText)
         {
-            if (!questLogs.ContainsKey(questLogName))
-            { 
-                questLogs.Add(questLogName, new Logs(state));
-            }
+            if (!questLogs.ContainsKey(questLogName)) return;
 
             questLogs[questLogName].LogTexts.Add(logText);
         }
 
+        public void AddQuestAsLog(string questLogName)
+        {
+            if (!questLogs.ContainsKey(questLogName))
+            {
+                questLogs.Add(questLogName, new Logs(QuestState.Active));
+            }
+        }
+
+        public void CloseQuestAsLog(string questLogName, QuestState state)
+        {
+            if (!questLogs.ContainsKey(questLogName))
+            {
+                questLogs.Add(questLogName, new Logs(state));
+            }
+        }
+
         private void setupQuestLog()
         {
-            ClearChildren(activeLogs);
-            ClearChildren(completedLogs);
+            ClearChildren(activeLogContent);
+            ClearChildren(completedLogContent);
 
             foreach (var log in questLogs)
             {
@@ -54,11 +80,11 @@ namespace QuestSystem
                     case QuestState.Inactive:
                         break;
                     case QuestState.Active:
-                        newLog = Instantiate(questLogButtonPrefab, activeLogs);
+                        newLog = Instantiate(questLogButtonPrefab, activeLogContent);
                         break;
                     case QuestState.Failed:
                     case QuestState.Passed:
-                        newLog = Instantiate(questLogButtonPrefab, completedLogs);
+                        newLog = Instantiate(questLogButtonPrefab, completedLogContent);
                         break;
                     default:
                         break;
@@ -73,11 +99,14 @@ namespace QuestSystem
 
         private void OnClickLog(string key)
         {
+            ClearChildren(detailContent);
+            detailsHeaderText.text = key;
             foreach (string logTxt in questLogs[key].LogTexts)
             {
-                GameObject newTxt = Instantiate(questLogTextPrefab, detailText);
+                GameObject newTxt = Instantiate(questLogTextPrefab, detailContent);
                 newTxt.transform.GetChild(0).GetComponent<Text>().text = logTxt;
             }
+            detailsPage.SetActive(true);
         }
 
         private void ClearChildren(Transform transform)
