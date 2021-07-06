@@ -14,7 +14,7 @@ namespace QuestSystem
 
         public Sprite npcImage;
         public string npcName;
-
+        [SerializeField] GlowMaterialSetter glowMaterialSetter;
         public List<DialogueContainer> Dialogues { get => dialogues; }
 
         // Start is called before the first frame update
@@ -30,11 +30,16 @@ namespace QuestSystem
             //{
             //    Debug.Log("Dia: " + item.Text);
             //}
+            glowMaterialSetter.ChangeGlowMaterial(true);
         }
 
         public void RemoveDialogue(DialogueContainer dialogue)
         {
             Dialogues.Remove(dialogue);
+            if(dialogues.Count <= 0)
+            {
+                glowMaterialSetter.ChangeGlowMaterial(false);
+            }
         }
 
         internal void DialogueHasFinished(string name, string endPointid)
