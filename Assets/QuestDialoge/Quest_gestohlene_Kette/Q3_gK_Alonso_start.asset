@@ -163,6 +163,46 @@ MonoBehaviour:
   checkInventory: 0
   lootItem: {fileID: 0}
   requiredLootCount: 0
+--- !u!114 &-2427126294669958629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 2b0ea0f9-e628-4a20-8e34-3f0d196a6c74
+  isPlayerSpeaking: 1
+  text: Dann werde ich mich auf dies Suche nach dem Dieb machen. [Ende]
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1604
+    y: 620
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: hilft
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,49 +224,9 @@ MonoBehaviour:
   - {fileID: -4019905091671834979}
   - {fileID: 8525862624507374094}
   - {fileID: 5721776540976480942}
-  - {fileID: 1410832107297519388}
   - {fileID: -9135642309860997190}
+  - {fileID: -2427126294669958629}
   newNodeOffset: {x: 250, y: 0}
---- !u!114 &1410832107297519388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueID: 9443de87-3cd0-460d-8d42-7a5d16f83827
-  isPlayerSpeaking: 1
-  text: Dann werde ich mich auf dies Suche nach dem Dieb machen. [Ende]
-  children: []
-  rect:
-    serializedVersion: 2
-    x: 1598
-    y: 583
-    width: 200
-    height: 205
-  textFieldRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 160
-    height: 18
-  isEndPoint: 1
-  endPointDescription: 'hilft '
-  selectedVariable:
-    title: 
-    type: 0
-    datas: []
-  selectedOptionIndex: 0
-  requiredVarialbeValue: 
-  isUsingCondition: 0
-  checkInventory: 0
-  lootItem: {fileID: 0}
-  requiredLootCount: 0
 --- !u!114 &1539508090746972037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,8 +330,8 @@ MonoBehaviour:
   text: "Ich vermute, dass er sich irgendwo im N\xF6rdlichen teil des Landes befindet.
     Dort kennt er sich aus. Vll findest du ihn dort."
   children:
-  - 9443de87-3cd0-460d-8d42-7a5d16f83827
   - 1341d568-cc53-4d88-a4c2-be61926bf797
+  - 2b0ea0f9-e628-4a20-8e34-3f0d196a6c74
   rect:
     serializedVersion: 2
     x: 1336

@@ -23,3 +23,5 @@ MonoBehaviour:
     logName: Willow
   - name: HQ2_Willow_Mikroskop
     logName: "Mikroskop f\xFCr Willow "
+  - name: Q_stolen_necklace
+    logName: Die gestohlene Halskette
