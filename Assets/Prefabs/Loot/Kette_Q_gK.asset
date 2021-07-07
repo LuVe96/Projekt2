@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8f83cb8e54746478344eba14d364bc, type: 3}
+  m_Name: Kette_Q_gK
+  m_EditorClassIdentifier: 
+  name: "Sch\xF6ne Kette"
+  id: kette_Q_GK_001
+  icon: {fileID: 21300000, guid: ad698d3dea8492c4493564c047531e1a, type: 3}
+  gameObject: {fileID: 7559146041957195784, guid: c1f30af69ae8f63409676a2d6b505f39,
+    type: 3}
+  endQuestId: 
