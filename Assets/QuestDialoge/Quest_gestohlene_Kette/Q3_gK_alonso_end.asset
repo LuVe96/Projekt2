@@ -1,0 +1,399 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8689063594596918685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 991fe8cb-5a81-454b-bba7-d3f0238b7626
+  isPlayerSpeaking: 0
+  text: "Sch\xF6nen Dank f\xFCr deine Hilfe. Aber einen Belohnung hast du dir so
+    nicht verdient!"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 540
+    y: 174
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: keine Belohnung
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-6470106110724833106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: b4108cc2-e4bb-45a0-9561-4a210343afae
+  isPlayerSpeaking: 0
+  text: "Na, konntest du den Taugenichst aufsp\xFCren?"
+  children:
+  - bfca1e34-44e3-42f2-9be1-8933f48a1aea
+  - 84bb7cdc-1979-412b-b80f-28158ae29062
+  rect:
+    serializedVersion: 2
+    x: 20
+    y: 377
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-5734258587164587476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: df5a1ad3-c14d-406e-b5e3-fba3f1aec10f
+  isPlayerSpeaking: 0
+  text: "Nagut, dann ist er mit seinem Leben davon gekommen.\r\nHier die 5 kleinen
+    Brocken f\xFCr deine Hilfe."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1129
+    y: 330
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: + 5 kl Br
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-5409453571758850963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 78c634a6-23b3-433c-b7e8-9f63020c4e64
+  isPlayerSpeaking: 1
+  text: "Das weis ich nicht, er ist mier entwischt. Vermutlich ist er schon \xFCber
+    alle Berge."
+  children:
+  - df5a1ad3-c14d-406e-b5e3-fba3f1aec10f
+  rect:
+    serializedVersion: 2
+    x: 879
+    y: 330
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-5011045814331809489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: bdd7d55c-8f5a-4414-9f18-e17b164a0524
+  isPlayerSpeaking: 0
+  text: "Und wo ist er? Sag mir wo er gerade herumlungert. Damit er seine gerechte
+    Strafe erh\xE4llt!"
+  children:
+  - 78c634a6-23b3-433c-b7e8-9f63020c4e64
+  - 76a58ea3-349e-4014-87ce-82975d569c3f
+  rect:
+    serializedVersion: 2
+    x: 539
+    y: 438
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-2568880821187326512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: bfca1e34-44e3-42f2-9be1-8933f48a1aea
+  isPlayerSpeaking: 1
+  text: Nein ich konnte ihn leider nirgends finden.
+  children:
+  - 991fe8cb-5a81-454b-bba7-d3f0238b7626
+  rect:
+    serializedVersion: 2
+    x: 290
+    y: 174
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-580943096236566291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 76a58ea3-349e-4014-87ce-82975d569c3f
+  isPlayerSpeaking: 1
+  text: "Er ist im Norden, einfach den Weg entlang. Nachts m\xFCsstest du sein Lagerfeuer
+    sehen k\xF6nnen."
+  children:
+  - 5ea05f00-dc4c-4159-b6c7-14363a1e194d
+  rect:
+    serializedVersion: 2
+    x: 875
+    y: 580
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: Q3_gK_alonso_end
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -6470106110724833106}
+  - {fileID: -2568880821187326512}
+  - {fileID: 5700888909596093789}
+  - {fileID: -8689063594596918685}
+  - {fileID: -5011045814331809489}
+  - {fileID: -5409453571758850963}
+  - {fileID: -5734258587164587476}
+  - {fileID: -580943096236566291}
+  - {fileID: 6523370303440187219}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &5700888909596093789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 84bb7cdc-1979-412b-b80f-28158ae29062
+  isPlayerSpeaking: 1
+  text: "Ja ich habe ihn aufgesp\xFCrt. Hier ist deine Kette."
+  children:
+  - bdd7d55c-8f5a-4414-9f18-e17b164a0524
+  rect:
+    serializedVersion: 2
+    x: 289
+    y: 438
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: keine Belohnung
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &6523370303440187219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 5ea05f00-dc4c-4159-b6c7-14363a1e194d
+  isPlayerSpeaking: 0
+  text: "Dann werd ich ihn zu strecke bringen.\r\nDanke dir f\xFCr deine Hife. Hier,
+    ein gro\xDFer Brocken ist mir das Wert."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1125
+    y: 580
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: + gr Br / tot F
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0

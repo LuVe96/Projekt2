@@ -1,0 +1,186 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5196158016407300594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 12a5f0ef-8d55-49d3-943c-768d44b1de1e
+  isPlayerSpeaking: 0
+  text: "Genau die bin ich. Was f\xFChrt dich denn zu mir?"
+  children:
+  - b71ef352-be59-4fde-8bdc-48cb03f3ad25
+  rect:
+    serializedVersion: 2
+    x: 296
+    y: 255
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-4235896418797414480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: b71ef352-be59-4fde-8bdc-48cb03f3ad25
+  isPlayerSpeaking: 1
+  text: 'Du kennst doch Ferdiand. Der oben bei Bauer Alonso arbeitet.
+
+    Er hat
+    mir diese Kette und einen Brief dazu gegeben. Ich soll sie dir geben.'
+  children:
+  - 7d0297d8-accd-41df-bb4b-5a9cd8f6c904
+  rect:
+    serializedVersion: 2
+    x: 546
+    y: 255
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-2593497440463241666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 7d0297d8-accd-41df-bb4b-5a9cd8f6c904
+  isPlayerSpeaking: 0
+  text: "Den Brief werde ich mir nachher in Ruhe durchlesen.\r\n Ich danke dir!"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 796
+    y: 255
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-669401515875520213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: c34ad472-a990-423f-be8d-528b5b54f00c
+  isPlayerSpeaking: 1
+  text: Hallo, du must Marie sein, nicht wahr?
+  children:
+  - 12a5f0ef-8d55-49d3-943c-768d44b1de1e
+  rect:
+    serializedVersion: 2
+    x: 46
+    y: 255
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: Q3_gK_marie
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -669401515875520213}
+  - {fileID: -5196158016407300594}
+  - {fileID: -4235896418797414480}
+  - {fileID: -2593497440463241666}
+  newNodeOffset: {x: 250, y: 0}

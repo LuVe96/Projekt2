@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: Q3_gK_ferdinand_mMarie
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 1487279557350146511}
+  - {fileID: 5932296500830134229}
+  - {fileID: 1796776097835047747}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &1487279557350146511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 4a0ce3a6-417e-4db2-b517-34bba0c76896
+  isPlayerSpeaking: 0
+  text: 'Du bist mein Held! Marie hat den Brief gelsenen und mich aufgesucht.
+
+    Nur
+    Danke deiner Hilfe kann ich mein Leben nun mit ihr verbringen. Wir werden versuchen
+    zum Festland zu gelangen und uns ein neues Leben aufbauen.
+
+    Ich bin dir
+    unendlich dankbar. Leider habe ich immer noch kaum Geld um dich ausreichend zu
+    belohen. Aber hier nimm das, meine letzten kleinen Brocken.'
+  children:
+  - 8e2e00b0-efb6-4766-b8af-4c9bc9e403fc
+  - b74cb6d4-6497-4c37-9d47-30341ba2f9b4
+  rect:
+    serializedVersion: 2
+    x: 95
+    y: 368
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &1796776097835047747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: b74cb6d4-6497-4c37-9d47-30341ba2f9b4
+  isPlayerSpeaking: 1
+  text: Nicht all zu viel aber sollte reichen. Eine gute Reise euch.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 370
+    y: 486
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: Belohnung annehmen
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &5932296500830134229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 8e2e00b0-efb6-4766-b8af-4c9bc9e403fc
+  isPlayerSpeaking: 1
+  text: "Ihr werdet sie besser brauchen k\xF6nnen. Behalte das Gold."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 374
+    y: 219
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: Belohnung ablehnen
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0

@@ -1,0 +1,267 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8649457319805294467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 2f8635e8-c51c-4048-8aa5-52fce809c68d
+  isPlayerSpeaking: 0
+  text: "Sehr gut. Verdient hat er das, der Taugenichts. \r\nWo ist die Kette?"
+  children:
+  - 07693671-4989-4c3a-953a-328ca3c67c04
+  - 5bf7c736-1068-452d-967c-10172157be3f
+  rect:
+    serializedVersion: 2
+    x: 250
+    y: 441
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-6631414865801021591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: c7535f6d-e701-4ab1-a37a-229e3f810b45
+  isPlayerSpeaking: 1
+  text: Ich habe ihn zur strecke gebracht er liegt tot in den Bergen.
+  children:
+  - 2f8635e8-c51c-4048-8aa5-52fce809c68d
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 441
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-4017702000548169566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 5dc5cf8a-c4ba-404a-ba1e-31c640ca1c3e
+  isPlayerSpeaking: 0
+  text: "Sch\xF6n. Hier deine Belohnung. Ein gro\xDFer Goldbrocken."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 768
+    y: 502
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: "bekommt 1 gro\xDFer Brocken"
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-2960444193591337435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 846300b3-519a-4377-a488-ad246e723b33
+  isPlayerSpeaking: 0
+  text: "Hier ich gebe dir 5 kleine Goldbrocken f\xFCr deine Hilfe."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 770
+    y: 246
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: bekommt 5 kleine Brocken
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: Q3_gK_Alonso_F_tot
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -6631414865801021591}
+  - {fileID: -8649457319805294467}
+  - {fileID: 8048187883344740147}
+  - {fileID: 8726861439672231818}
+  - {fileID: -2960444193591337435}
+  - {fileID: -4017702000548169566}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &8048187883344740147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 07693671-4989-4c3a-953a-328ca3c67c04
+  isPlayerSpeaking: 1
+  text: Die konnte ich nicht finden, er wird sie verkauft haben.
+  children:
+  - 846300b3-519a-4377-a488-ad246e723b33
+  rect:
+    serializedVersion: 2
+    x: 520
+    y: 246
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &8726861439672231818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 5bf7c736-1068-452d-967c-10172157be3f
+  isPlayerSpeaking: 1
+  text: Hier Hast du sie!
+  children:
+  - 5dc5cf8a-c4ba-404a-ba1e-31c640ca1c3e
+  rect:
+    serializedVersion: 2
+    x: 518
+    y: 502
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0

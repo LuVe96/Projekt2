@@ -1,0 +1,441 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9135642309860997190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 1341d568-cc53-4d88-a4c2-be61926bf797
+  isPlayerSpeaking: 1
+  text: "Ich denke das ist nichsts f\xFCr mich. [Ende]"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1595
+    y: 358
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: hilft nicht
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-6765767162758504173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: d16a9abd-2a89-4c83-a2c8-711fe94d4119
+  isPlayerSpeaking: 1
+  text: "Warum so w\xFCtend? Was ist den passiert?"
+  children:
+  - cf72e8ae-99b1-4fae-83b4-92e22ba95f33
+  rect:
+    serializedVersion: 2
+    x: 330
+    y: 291
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-4105583823263415246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: ebf1bff9-7673-40dd-9441-097ddf6cc130
+  isPlayerSpeaking: 1
+  text: "Ich k\xF6nnte nach ihm suchen, f\xFCr eine kleine Belohnung nat\xFCrlich."
+  children:
+  - e70f2194-de55-4862-bc1c-342ac96ce88e
+  rect:
+    serializedVersion: 2
+    x: 836
+    y: 528
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-4019905091671834979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: b20fad51-8e24-4a8b-add7-9dc1a2ea387d
+  isPlayerSpeaking: 1
+  text: "Da m\xF6chte ich mich nicht Einmischen. Einen sch\xF6nen Tag noch. [ Ende
+    ]"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 837
+    y: 17
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: hilft nciht
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: Q3_gK_Alonso_start
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 5844162905318038538}
+  - {fileID: -6765767162758504173}
+  - {fileID: 3729123269496918705}
+  - {fileID: -4105583823263415246}
+  - {fileID: 1539508090746972037}
+  - {fileID: -4019905091671834979}
+  - {fileID: 8525862624507374094}
+  - {fileID: 5721776540976480942}
+  - {fileID: 1410832107297519388}
+  - {fileID: -9135642309860997190}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &1410832107297519388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 9443de87-3cd0-460d-8d42-7a5d16f83827
+  isPlayerSpeaking: 1
+  text: Dann werde ich mich auf dies Suche nach dem Dieb machen. [Ende]
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1598
+    y: 583
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: 'hilft '
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &1539508090746972037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 6ce980f6-1b49-46dd-b9ae-ce02eac05fcc
+  isPlayerSpeaking: 1
+  text: "Wo k\xF6nnte er sich versteckt habe?"
+  children:
+  - 015a699e-21a9-4e11-90ef-5b2c1369249c
+  rect:
+    serializedVersion: 2
+    x: 841
+    y: 291
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &3729123269496918705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: cf72e8ae-99b1-4fae-83b4-92e22ba95f33
+  isPlayerSpeaking: 0
+  text: "Ferdinand!! Er hat mich bestohlen. Er war einer meiner Knechte, seid gestern
+    ist er verschwunden. Und mit ihm die wertvolle Kette meines verstorbenen Vaters.
+    Ich will diese Kette zur\xFCck und seine gerechte Strafe! "
+  children:
+  - ebf1bff9-7673-40dd-9441-097ddf6cc130
+  - 6ce980f6-1b49-46dd-b9ae-ce02eac05fcc
+  - b20fad51-8e24-4a8b-add7-9dc1a2ea387d
+  rect:
+    serializedVersion: 2
+    x: 581
+    y: 292
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &5721776540976480942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 015a699e-21a9-4e11-90ef-5b2c1369249c
+  isPlayerSpeaking: 0
+  text: "Ich vermute, dass er sich irgendwo im N\xF6rdlichen teil des Landes befindet.
+    Dort kennt er sich aus. Vll findest du ihn dort."
+  children:
+  - 9443de87-3cd0-460d-8d42-7a5d16f83827
+  - 1341d568-cc53-4d88-a4c2-be61926bf797
+  rect:
+    serializedVersion: 2
+    x: 1336
+    y: 528
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &5844162905318038538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: b7ee129a-3030-4363-985c-c3820c63c69c
+  isPlayerSpeaking: 0
+  text: 'So ein Bengel, ein Nichtsnutz.... '
+  children:
+  - d16a9abd-2a89-4c83-a2c8-711fe94d4119
+  rect:
+    serializedVersion: 2
+    x: 80
+    y: 291
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &8525862624507374094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: e70f2194-de55-4862-bc1c-342ac96ce88e
+  isPlayerSpeaking: 0
+  text: "Mhmmm, ja gut. Du bekommst etwas daf\xFCr. Aber nur wenn due ihn zur Strecke
+    gebracht hast!"
+  children:
+  - 015a699e-21a9-4e11-90ef-5b2c1369249c
+  rect:
+    serializedVersion: 2
+    x: 1086
+    y: 528
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0

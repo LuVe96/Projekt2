@@ -1,0 +1,577 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9138004745768657159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 11d58a5a-5d93-41e7-87f6-3092b43b358f
+  isPlayerSpeaking: 0
+  text: 'Weil die Zeiten schlecht sind. Aufs festland zu gehen kann ich mir nicht
+    leisten, so muss ich hier arbeit finden.
+
+    Und Anfangs erging es mir auch
+    besser. Wir Knechte bekamen Essen und ein Warmes Bett. Seid Karlos da ist, musste
+    ich in die Scheune ziehen.'
+  children:
+  - 8642fee3-d145-441a-bb45-736186b8b905
+  - 8811a798-d990-4e7a-9749-d809965531b5
+  rect:
+    serializedVersion: 2
+    x: 2339
+    y: 482
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-7978227057487948008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: d399d7dd-2cd3-460b-aed2-f9997f2e945c
+  isPlayerSpeaking: 0
+  text: "Ich kann sie dir nicht geben. H\xF6re dir doch bitte erst meine Sicht an! "
+  children:
+  - 6981efe3-30dc-411e-8e9a-605a05e35f7c
+  - 68a209b1-54d9-417f-86a1-6c6ff617ac51
+  rect:
+    serializedVersion: 2
+    x: 817
+    y: 499
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-7787310785316911717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 3acb090d-b20f-4b55-8448-b173229770c6
+  isPlayerSpeaking: 1
+  text: "Du bist ein Dieb! Du brauchst nichts zu erkl\xE4ren. Gib die Kette her oder
+    ich muss sie mir nehmen!"
+  children:
+  - d399d7dd-2cd3-460b-aed2-f9997f2e945c
+  rect:
+    serializedVersion: 2
+    x: 567
+    y: 499
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-3977182247217952808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: d04bf84d-94d9-4267-b266-d668622febfa
+  isPlayerSpeaking: 1
+  text: Bist du nicht der Knecht von Bauer Alonso?
+  children:
+  - e68fe0b7-8c49-4426-9618-dcc21726ebfc
+  rect:
+    serializedVersion: 2
+    x: 20
+    y: 304
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-3169069990656188745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: c6907b88-2095-48fb-b440-11ccc245ea75
+  isPlayerSpeaking: 0
+  text: "In der Scheune des alten Alonsos habe ich die alte Kette gefunden und polliert.
+    Jetzt gl\xE4nzt sie wieder. \r\nIch h\xE4tte Marie ja auch gerne etwas gekauft,
+    aber vom Bauer bekommen wir kaum etwas. Das Geld reicht noch kaum um mich zu
+    ern\xE4hren.\r\nJetzt kann ich mich im Dorf nicht mehr blicken lassen. Ich wollte
+    Marie doch noch die Kette und eine Brief geben."
+  children:
+  - 8811a798-d990-4e7a-9749-d809965531b5
+  - 8642fee3-d145-441a-bb45-736186b8b905
+  - 2f2e64aa-b5c4-46e1-b807-3a012fe773c0
+  rect:
+    serializedVersion: 2
+    x: 1832
+    y: 155
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-1853443376329138296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 8a6162b5-3a0b-400f-8734-0e6b0a2f0d6f
+  isPlayerSpeaking: 0
+  text: "Die Kette ist f\xFCr Marie. Sie lebt beim H\xE4ndler im Dorf. Ich bin ein
+    armer Knecht, wie soll ich sie denn von mir \xFCberzeugen. Ich will einfach nicht
+    mehr ohne sie leben."
+  children:
+  - f2d804a0-5e40-4282-9351-be567fe3478b
+  rect:
+    serializedVersion: 2
+    x: 1332
+    y: 155
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &-716047373396564361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 8642fee3-d145-441a-bb45-736186b8b905
+  isPlayerSpeaking: 1
+  text: Gut ich werde dir helfen. Gib den Brief her ich werde ihn ihr geben.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 2663
+    y: 225
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: "will Kette/Brief \xFCberbringen"
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1f03bf3c2ebb42a0db4b828e8d599, type: 3}
+  m_Name: Q3_gK_Ferdinand_f1
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -3977182247217952808}
+  - {fileID: 2524807489388355325}
+  - {fileID: -7787310785316911717}
+  - {fileID: 5774249520386857340}
+  - {fileID: -7978227057487948008}
+  - {fileID: 31569407727609995}
+  - {fileID: -1853443376329138296}
+  - {fileID: 38402397722199069}
+  - {fileID: -3169069990656188745}
+  - {fileID: 3999756107044418017}
+  - {fileID: -716047373396564361}
+  - {fileID: 318737932873192689}
+  - {fileID: -9138004745768657159}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &31569407727609995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 6981efe3-30dc-411e-8e9a-605a05e35f7c
+  isPlayerSpeaking: 1
+  text: Gut, du willst es nicht anders. [angreifen]
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1103
+    y: 500
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: angreifen
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &38402397722199069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: f2d804a0-5e40-4282-9351-be567fe3478b
+  isPlayerSpeaking: 1
+  text: Warum kaufst du ihr nicht selbst etwas und beklaust stattdessen deinen Herren?
+  children:
+  - c6907b88-2095-48fb-b440-11ccc245ea75
+  rect:
+    serializedVersion: 2
+    x: 1582
+    y: 155
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &318737932873192689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 2f2e64aa-b5c4-46e1-b807-3a012fe773c0
+  isPlayerSpeaking: 1
+  text: "Warum arbeitest du \xFCberhaupt noch bei Ihm?"
+  children:
+  - 11d58a5a-5d93-41e7-87f6-3092b43b358f
+  rect:
+    serializedVersion: 2
+    x: 2089
+    y: 482
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &2524807489388355325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: e68fe0b7-8c49-4426-9618-dcc21726ebfc
+  isPlayerSpeaking: 0
+  text: "jjja.. ich bin Ferdinand. Bist du wegen der alten Kette hier? Ich kann das
+    erkl\xE4ren!"
+  children:
+  - 3acb090d-b20f-4b55-8448-b173229770c6
+  - 68a209b1-54d9-417f-86a1-6c6ff617ac51
+  rect:
+    serializedVersion: 2
+    x: 270
+    y: 304
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &3999756107044418017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 8811a798-d990-4e7a-9749-d809965531b5
+  isPlayerSpeaking: 1
+  text: Du hast trotzdem gestohlen, das kann ich nicht zulassen. [angreifen]
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 2665
+    y: 7
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 1
+  endPointDescription: angreifen
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &5774249520386857340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 68a209b1-54d9-417f-86a1-6c6ff617ac51
+  isPlayerSpeaking: 1
+  text: "Na gut dann erz\xE4hle!"
+  children:
+  - 8a6162b5-3a0b-400f-8734-0e6b0a2f0d6f
+  rect:
+    serializedVersion: 2
+    x: 1082
+    y: 155
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
