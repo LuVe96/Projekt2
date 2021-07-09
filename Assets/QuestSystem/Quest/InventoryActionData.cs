@@ -23,6 +23,7 @@ namespace QuestSystem.Quest
 
         public override void executeAction()
         {
+            Debug.Log("execute Inventory Action");
             for (int i = 0; i < Count; i++)
             {
                 if(InventoryAction == InventorySelectionType.Add)

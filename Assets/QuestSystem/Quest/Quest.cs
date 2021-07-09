@@ -126,15 +126,6 @@ namespace QuestSystem.Quest
         {
             List<QuestNodeData> n = new List<QuestNodeData>();
 
-            // getting childNodes
-            foreach (string id in parentNode.ChildrenIDs)
-            {
-                if (nodeDataLookUp.ContainsKey(id))
-                {
-                    n.Add(nodeDataLookUp[id]);
-                }
-            }
-
             // getting endpointNodes
             if (endPoint != null)
             {
@@ -145,7 +136,16 @@ namespace QuestSystem.Quest
                         n.Add(nodeDataLookUp[id]);
                     }
                 }
-            }   
+            }
+
+            // getting childNodes
+            foreach (string id in parentNode.ChildrenIDs)
+            {
+                if (nodeDataLookUp.ContainsKey(id))
+                {
+                    n.Add(nodeDataLookUp[id]);
+                }
+            }
 
             return n;
         }
