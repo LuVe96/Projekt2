@@ -16,9 +16,9 @@ public class GlowMaterialSetter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        outline.enabled = false;
         skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         stdMaterial = skinnedMeshRenderer.material;
-        outline.enabled = false;
     }
 
    public void ChangeGlowMaterial(bool glow)

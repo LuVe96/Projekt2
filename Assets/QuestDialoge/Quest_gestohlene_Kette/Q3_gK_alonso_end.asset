@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 84bb7cdc-1979-412b-b80f-28158ae29062
   isPlayerSpeaking: 1
-  text: "Ja ich habe ihn aufgesp\xFCrt. Hier ist deine Kette."
+  text: "Ja ich habe ihn aufgesp\xFCrt. Hier ist deine Kette. "
   children:
   - bdd7d55c-8f5a-4414-9f18-e17b164a0524
   rect:
@@ -337,7 +337,7 @@ MonoBehaviour:
     x: 289
     y: 438
     width: 200
-    height: 205
+    height: 249
   textFieldRect:
     serializedVersion: 2
     x: 0
@@ -353,9 +353,9 @@ MonoBehaviour:
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
-  checkInventory: 0
-  lootItem: {fileID: 0}
-  requiredLootCount: 0
+  checkInventory: 1
+  lootItem: {fileID: 11400000, guid: ecc2c5d9ce961084da24ffca145f650c, type: 2}
+  requiredLootCount: 1
 --- !u!114 &6523370303440187219
 MonoBehaviour:
   m_ObjectHideFlags: 0
