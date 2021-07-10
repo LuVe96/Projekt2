@@ -12,13 +12,13 @@ public class GlowMaterialSetter : MonoBehaviour
 
     [SerializeField] Outline outline;
 
-
     // Start is called before the first frame update
     void Start()
     {
         outline.enabled = false;
         skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         stdMaterial = skinnedMeshRenderer.material;
+        
     }
 
    public void ChangeGlowMaterial(bool glow)
