@@ -25,6 +25,7 @@ namespace QuestSystem.Quest
 
         protected override void executeNode()
             {
+                 Debug.Log("execute END QUEST");
                 FinishNode();
                 QuestHasFinished(EndType);
             }

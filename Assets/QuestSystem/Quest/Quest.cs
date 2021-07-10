@@ -29,6 +29,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<PositionActionData> positionActionDatas = new List<PositionActionData>();
         [SerializeField] List<OtherQuestEndActionData> otherQuestEndActionDatas = new List<OtherQuestEndActionData>();
         [SerializeField] List<QuestLogActionData> questLogActionDatas = new List<QuestLogActionData>();
+        [SerializeField] List<AndLinkNodeData> andLinkNodeDatas = new List<AndLinkNodeData>();
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
@@ -54,6 +55,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(positionActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(otherQuestEndActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(questLogActionDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(andLinkNodeDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -74,8 +76,6 @@ namespace QuestSystem.Quest
             }
             
         }
-
-     
 
         private List<QuestNodeData> AddToAllNodes(QuestNodeData[] nodes, List<QuestNodeData> allNodes )
         {
@@ -271,6 +271,10 @@ namespace QuestSystem.Quest
                     QuestLogActionData logData = new QuestLogActionData(Guid.NewGuid().ToString(), QuestName);
                     questLogActionDatas.Add(logData);
                     return logData;
+                case QuestNodeType.AndLinkNode:
+                    AndLinkNodeData andLinkData = new AndLinkNodeData(Guid.NewGuid().ToString());
+                    andLinkNodeDatas.Add(andLinkData);
+                    return andLinkData;
                 default:
                     return null;
             }
@@ -317,6 +321,8 @@ namespace QuestSystem.Quest
                     otherQuestEndActionDatas.Remove(n); break;
                 case QuestLogActionData n:
                     questLogActionDatas.Remove(n); break;
+                case AndLinkNodeData n:
+                    andLinkNodeDatas.Remove(n); break;
                 default:
                     return;
             }

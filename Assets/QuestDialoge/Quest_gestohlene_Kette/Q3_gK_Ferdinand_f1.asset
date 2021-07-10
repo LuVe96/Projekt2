@@ -25,8 +25,8 @@ MonoBehaviour:
   - 8811a798-d990-4e7a-9749-d809965531b5
   rect:
     serializedVersion: 2
-    x: 2339
-    y: 482
+    x: 2418
+    y: 474
     width: 200
     height: 205
   textFieldRect:
@@ -186,19 +186,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: c6907b88-2095-48fb-b440-11ccc245ea75
   isPlayerSpeaking: 0
-  text: "In der Scheune des alten Alonsos habe ich die alte Kette gefunden und polliert.
-    Jetzt gl\xE4nzt sie wieder. \r\nIch h\xE4tte Marie ja auch gerne etwas gekauft,
-    aber vom Bauer bekommen wir kaum etwas. Das Geld reicht noch kaum um mich zu
-    ern\xE4hren.\r\nJetzt kann ich mich im Dorf nicht mehr blicken lassen. Ich wollte
-    Marie doch noch die Kette und eine Brief geben."
+  text: Jetzt kann ich mich im Dorf nicht mehr blicken lassen. Ich wollte Marie doch
+    noch die Kette und eine Brief geben.
   children:
   - 8811a798-d990-4e7a-9749-d809965531b5
   - 8642fee3-d145-441a-bb45-736186b8b905
   - 2f2e64aa-b5c4-46e1-b807-3a012fe773c0
   rect:
     serializedVersion: 2
-    x: 1832
-    y: 155
+    x: 1961
+    y: 146
     width: 200
     height: 205
   textFieldRect:
@@ -240,7 +237,7 @@ MonoBehaviour:
   - f2d804a0-5e40-4282-9351-be567fe3478b
   rect:
     serializedVersion: 2
-    x: 1332
+    x: 1312
     y: 155
     width: 200
     height: 205
@@ -328,6 +325,7 @@ MonoBehaviour:
   - {fileID: -716047373396564361}
   - {fileID: 318737932873192689}
   - {fileID: -9138004745768657159}
+  - {fileID: 3054105478907062311}
   newNodeOffset: {x: 250, y: 0}
 --- !u!114 &31569407727609995
 MonoBehaviour:
@@ -385,10 +383,10 @@ MonoBehaviour:
   isPlayerSpeaking: 1
   text: Warum kaufst du ihr nicht selbst etwas und beklaust stattdessen deinen Herren?
   children:
-  - c6907b88-2095-48fb-b440-11ccc245ea75
+  - 2691d914-12b4-4ee9-a86e-fae79414957d
   rect:
     serializedVersion: 2
-    x: 1582
+    x: 1536
     y: 155
     width: 200
     height: 205
@@ -429,8 +427,8 @@ MonoBehaviour:
   - 11d58a5a-5d93-41e7-87f6-3092b43b358f
   rect:
     serializedVersion: 2
-    x: 2089
-    y: 482
+    x: 2199
+    y: 475
     width: 200
     height: 205
   textFieldRect:
@@ -474,6 +472,50 @@ MonoBehaviour:
     serializedVersion: 2
     x: 270
     y: 304
+    width: 200
+    height: 205
+  textFieldRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 160
+    height: 18
+  isEndPoint: 0
+  endPointDescription: 
+  selectedVariable:
+    title: 
+    type: 0
+    datas: []
+  selectedOptionIndex: 0
+  requiredVarialbeValue: 
+  isUsingCondition: 0
+  checkInventory: 0
+  lootItem: {fileID: 0}
+  requiredLootCount: 0
+--- !u!114 &3054105478907062311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5f6e922c88ce4990d5ef05583450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 2691d914-12b4-4ee9-a86e-fae79414957d
+  isPlayerSpeaking: 0
+  text: "In der Scheune des alten Alonsos habe ich die alte Kette gefunden und polliert.
+    Jetzt gl\xE4nzt sie wieder. \r\nIch h\xE4tte Marie ja auch gerne etwas gekauft,
+    aber vom Bauer bekommen wir kaum etwas. Das Geld reicht noch kaum um mich zu
+    ern\xE4hren."
+  children:
+  - c6907b88-2095-48fb-b440-11ccc245ea75
+  rect:
+    serializedVersion: 2
+    x: 1749
+    y: 156
     width: 200
     height: 205
   textFieldRect:

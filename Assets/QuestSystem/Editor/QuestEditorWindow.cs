@@ -24,7 +24,7 @@ namespace QuestSystem.Quest
         [NonSerialized]
         Vector2 draggingCanvasOffset;
 
-        private Vector2 canvasSize = new Vector2(4000, 2000);
+        private Vector2 canvasSize = new Vector2(6000, 4000);
         private QuestVariableTemplate newQuestVaraible = null;
         private Vector2 variableAreaOffset = new Vector2(0,0);
 
@@ -128,6 +128,8 @@ namespace QuestSystem.Quest
                         nodes.Add(new OtherQuestEndActionNode(OnClickNodePort, n, RepaintEditor)); break;
                     case QuestLogActionData n:
                         nodes.Add(new QuestLogActionNode(OnClickNodePort, n, RepaintEditor)); break;
+                    case AndLinkNodeData n:
+                        nodes.Add(new AndLinkNode(OnClickNodePort, n, RepaintEditor)); break;
                     default:
                         break;
                 } 
@@ -395,6 +397,7 @@ namespace QuestSystem.Quest
 
             genericMenu.AddItem(new GUIContent("Other / Note"), false, () => OnClickAddNode(mousePosition, QuestNodeType.NoteNode));
             genericMenu.AddItem(new GUIContent("Other / Branch"), false, () => OnClickAddNode(mousePosition, QuestNodeType.BranchNode));
+            genericMenu.AddItem(new GUIContent("Other / And Link"), false, () => OnClickAddNode(mousePosition, QuestNodeType.AndLinkNode));
             genericMenu.ShowAsContext();
         }
 
@@ -452,6 +455,9 @@ namespace QuestSystem.Quest
                     break;
                 case QuestNodeType.QuestLogActionNode:
                     nodes.Add(new QuestLogActionNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
+                    break;
+                case QuestNodeType.AndLinkNode:
+                    nodes.Add(new AndLinkNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 default:
                     break;

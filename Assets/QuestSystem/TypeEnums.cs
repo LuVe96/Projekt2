@@ -13,6 +13,7 @@ namespace QuestSystem
         InventoryActionNode, EnableActionNode, VariableActionNode, EventActionNode, PostionActionNode, OtherQuestEndActionNode,
         QuestLogActionNode,
         NoteNode,BranchNode,
+        AndLinkNode,
     }
 
     public enum ConnectionPointType {

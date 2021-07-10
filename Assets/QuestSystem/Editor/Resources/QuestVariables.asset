@@ -33,3 +33,13 @@ MonoBehaviour:
     datas:
     - True
     - False
+  - title: Q3_Ferdiand_gets_killed
+    type: 0
+    datas:
+    - True
+    - False
+  - title: Q3_Ferdinand_and_marie
+    type: 0
+    datas:
+    - True
+    - False
