@@ -53,7 +53,7 @@ namespace QuestSystem
             textFieldStyle.wordWrap = true;
 
             GUILayout.Label("Log Text:", textStyle);
-            Data.QuestLogText = GUILayout.TextArea(Data.QuestLogText, textFieldStyle, GUILayout.Height(50));
+            Data.QuestLogText = EditorGUILayout.TextArea(Data.QuestLogText, textFieldStyle, GUILayout.Height(50));
             GUILayout.Space(10);
             GUILayout.BeginHorizontal();
             GUILayout.Label("For Other Quest", textStyle);

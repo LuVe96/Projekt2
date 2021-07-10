@@ -37,7 +37,7 @@ namespace QuestSystem
             );
 
 
-            if(GUI.Button(new Rect((inPoint.Rect.center + outPoint.Rect.center) * 0.5f, new Vector2(15,15)), "x"))
+            if(GUI.Button(new Rect((inPoint.Rect.center + outPoint.Rect.center - new Vector2(15, 15)) * 0.5f, new Vector2(15,15)), "x"))
             {
 
                 inPoint.Segment.Node.RemoveChildsInData(outPoint.Segment.Node, inPoint.Segment);

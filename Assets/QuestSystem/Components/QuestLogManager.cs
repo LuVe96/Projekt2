@@ -61,9 +61,9 @@ namespace QuestSystem
 
         public void CloseQuestAsLog(string questLogName, QuestState state)
         {
-            if (!questLogs.ContainsKey(questLogName))
+            if (questLogs.ContainsKey(questLogName))
             {
-                questLogs.Add(questLogName, new Logs(state));
+                questLogs[questLogName].State = state;
             }
         }
 
