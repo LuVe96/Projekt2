@@ -130,6 +130,8 @@ namespace QuestSystem.Quest
                         nodes.Add(new QuestLogActionNode(OnClickNodePort, n, RepaintEditor)); break;
                     case AndLinkNodeData n:
                         nodes.Add(new AndLinkNode(OnClickNodePort, n, RepaintEditor)); break;
+                    case AnimationSetterData n:
+                        nodes.Add(new AnimationSetterNode(OnClickNodePort, n, RepaintEditor)); break;
                     default:
                         break;
                 } 
@@ -394,6 +396,7 @@ namespace QuestSystem.Quest
             genericMenu.AddItem(new GUIContent("Action Nodes / Postion Action"), false, () => OnClickAddNode(mousePosition, QuestNodeType.PostionActionNode));
             genericMenu.AddItem(new GUIContent("Action Nodes / Quest End Action"), false, () => OnClickAddNode(mousePosition, QuestNodeType.OtherQuestEndActionNode));
             genericMenu.AddItem(new GUIContent("Action Nodes / Quest Log Action"), false, () => OnClickAddNode(mousePosition, QuestNodeType.QuestLogActionNode));
+            genericMenu.AddItem(new GUIContent("Action Nodes / Animation Setter Action"), false, () => OnClickAddNode(mousePosition, QuestNodeType.AnimationSetterNode));
 
             genericMenu.AddItem(new GUIContent("Other / Note"), false, () => OnClickAddNode(mousePosition, QuestNodeType.NoteNode));
             genericMenu.AddItem(new GUIContent("Other / Branch"), false, () => OnClickAddNode(mousePosition, QuestNodeType.BranchNode));
@@ -458,6 +461,9 @@ namespace QuestSystem.Quest
                     break;
                 case QuestNodeType.AndLinkNode:
                     nodes.Add(new AndLinkNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
+                    break;
+                case QuestNodeType.AnimationSetterNode:
+                    nodes.Add(new AnimationSetterNode(mousePosition, 200, 100, OnClickNodePort, questdate, RepaintEditor));
                     break;
                 default:
                     break;

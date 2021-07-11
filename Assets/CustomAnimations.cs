@@ -20,6 +20,7 @@ public class CustomAnimations : MonoBehaviour
         if(idleAnimation != null)
         {
             animatorOverrideController[animatorOverrideController.animationClips[0].name] = idleAnimation;
+            animator.SetFloat("ShotSpeedMultiplier", 0.5f);
         }
 
         if(attackAnimation != null)
@@ -28,5 +29,26 @@ public class CustomAnimations : MonoBehaviour
         }
     }
 
-  
+    public void setAnimationClip(AnimationClip clip, CustomAnimationStateType type)
+    {
+        int index = 0;
+        switch (type)
+        {
+            case CustomAnimationStateType.Idel:
+                index = 0;
+                break;
+            case CustomAnimationStateType.Attack:
+                index = 1;
+                break;
+            default:
+                index = 0;
+                break;
+        }
+        animatorOverrideController[new AnimatorOverrideController(animator.runtimeAnimatorController).animationClips[index].name] = clip;
+    }
+}
+
+public enum CustomAnimationStateType
+{
+    Idel, Attack
 }

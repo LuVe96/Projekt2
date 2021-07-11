@@ -14,6 +14,7 @@ namespace QuestSystem
         QuestLogActionNode,
         NoteNode,BranchNode,
         AndLinkNode,
+        AnimationSetterNode,
     }
 
     public enum ConnectionPointType {

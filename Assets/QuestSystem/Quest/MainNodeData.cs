@@ -23,7 +23,7 @@ namespace QuestSystem.Quest
         public List<string> ActionIDs { get => actionIDs; set => actionIDs = value; }
         public string Title { get => title; set => title = value; }
 
-        bool isActive = false;
+        protected bool isActive = false;
         bool isExecuted = false;
 
         [SerializeField]  protected NodeHasFinished NodeHasFinished;

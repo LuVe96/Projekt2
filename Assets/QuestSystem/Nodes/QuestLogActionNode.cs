@@ -73,6 +73,7 @@ namespace QuestSystem
                 GUILayout.BeginHorizontal();
                 selectedIndex = EditorGUILayout.Popup(selectedIndex != -1 ? selectedIndex : 0, choices.Select(qs => qs.LogName).ToArray());
                 Data.QuestLogName = choices[selectedIndex].LogName;
+                GUILayout.EndHorizontal();
             }
 
         }

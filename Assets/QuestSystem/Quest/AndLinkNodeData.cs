@@ -19,6 +19,13 @@ namespace QuestSystem.Quest
 
         protected override void execute()
         {
+            if(currentExecutes <= 0)
+            {
+                isActive = true;
+            }
+
+            if (!isActive) return;
+
             currentExecutes += 1;
             Debug.Log("And Link: curr: " + currentExecutes + " of: " + requiredExecutes);
 

@@ -77,18 +77,27 @@ public class PlayerCombatHandler : MonoBehaviour, IAttackEnemyInterface
 
     public void MarkFocusedEnemy(GameObject enemy)
     {
-        enemy.transform.Find("focus_marker").gameObject.SetActive(true);
-        enemy.GetComponent<EnemyIndicator>().setFocused(true);
-
-        //disable others
-        foreach (GameObject e in enemys)
+        try
         {
-            if (e != enemy)
+            enemy.transform.Find("focus_marker").gameObject.SetActive(true);
+            enemy.GetComponent<EnemyIndicator>().setFocused(true);
+
+            //disable others
+            foreach (GameObject e in enemys)
             {
-                e.transform.Find("focus_marker").gameObject.SetActive(false);
-                enemy.GetComponent<EnemyIndicator>().setFocused(false);
+                if (e != enemy)
+                {
+                    e.transform.Find("focus_marker").gameObject.SetActive(false);
+                    enemy.GetComponent<EnemyIndicator>().setFocused(false);
+                }
             }
         }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+       
     }
 
     private bool OnSameLevel(Transform player, Transform enemy, float toleranz = 0.5f)

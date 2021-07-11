@@ -30,6 +30,7 @@ namespace QuestSystem.Quest
         [SerializeField] List<OtherQuestEndActionData> otherQuestEndActionDatas = new List<OtherQuestEndActionData>();
         [SerializeField] List<QuestLogActionData> questLogActionDatas = new List<QuestLogActionData>();
         [SerializeField] List<AndLinkNodeData> andLinkNodeDatas = new List<AndLinkNodeData>();
+        [SerializeField] List<AnimationSetterData> animationSetterDatas = new List<AnimationSetterData>();
 
         Dictionary<string, QuestNodeData> nodeDataLookUp = new Dictionary<string, QuestNodeData>();
 
@@ -56,6 +57,7 @@ namespace QuestSystem.Quest
                 allNodes = AddToAllNodes(otherQuestEndActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(questLogActionDatas.ToArray(), allNodes);
                 allNodes = AddToAllNodes(andLinkNodeDatas.ToArray(), allNodes);
+                allNodes = AddToAllNodes(animationSetterDatas.ToArray(), allNodes);
 
                 return allNodes;
             }
@@ -275,6 +277,10 @@ namespace QuestSystem.Quest
                     AndLinkNodeData andLinkData = new AndLinkNodeData(Guid.NewGuid().ToString());
                     andLinkNodeDatas.Add(andLinkData);
                     return andLinkData;
+                case QuestNodeType.AnimationSetterNode:
+                    AnimationSetterData animationSetterData = new AnimationSetterData(Guid.NewGuid().ToString());
+                    animationSetterDatas.Add(animationSetterData);
+                    return animationSetterData;
                 default:
                     return null;
             }
@@ -323,6 +329,8 @@ namespace QuestSystem.Quest
                     questLogActionDatas.Remove(n); break;
                 case AndLinkNodeData n:
                     andLinkNodeDatas.Remove(n); break;
+                case AnimationSetterData n:
+                    animationSetterDatas.Remove(n); break;
                 default:
                     return;
             }
