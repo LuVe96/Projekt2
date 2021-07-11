@@ -25,6 +25,7 @@ namespace QuestSystem
             if (targetTransform != null && goalTransform != null)
             {
                 targetTransform.position = goalTransform.position;
+                targetTransform.rotation = goalTransform.rotation;
             }
             else
             {

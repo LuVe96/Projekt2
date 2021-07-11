@@ -53,6 +53,8 @@ namespace QuestSystem
 
         public void AddQuestAsLog(string questLogName)
         {
+            if (questLogName.Length <= 1) return;
+
             if (!questLogs.ContainsKey(questLogName))
             {
                 questLogs.Add(questLogName, new Logs(QuestState.Active));
