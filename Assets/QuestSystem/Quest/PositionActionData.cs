@@ -24,8 +24,14 @@ namespace QuestSystem
 
             if (targetTransform != null && goalTransform != null)
             {
+                targetTransform.gameObject.SetActive(false);
+                targetTransform.position += new Vector3(0, 100, 0);
+                Vector3 t = goalTransform.position;
+                t.y = 100;
+                targetTransform.position = t;
                 targetTransform.position = goalTransform.position;
                 targetTransform.rotation = goalTransform.rotation;
+                targetTransform.gameObject.SetActive(true);
             }
             else
             {

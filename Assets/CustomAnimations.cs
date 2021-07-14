@@ -34,7 +34,7 @@ public class CustomAnimations : MonoBehaviour
         int index = 0;
         switch (type)
         {
-            case CustomAnimationStateType.Idel:
+            case CustomAnimationStateType.Idle:
                 index = 0;
                 break;
             case CustomAnimationStateType.Attack:
@@ -50,5 +50,5 @@ public class CustomAnimations : MonoBehaviour
 
 public enum CustomAnimationStateType
 {
-    Idel, Attack
+    Idle, Attack
 }
