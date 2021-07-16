@@ -26,6 +26,7 @@ namespace QuestSystem
         protected GUIStyle leftPortTextStyle;
         protected GUIStyle headerTextStyle;
         protected GUIStyle headerButtonStyle;
+        protected GUIStyle textFieldStyle;
 
         protected bool headerButtonPressed = false;
 
@@ -100,6 +101,9 @@ namespace QuestSystem
             headerStyle.normal.background = Resources.Load("node_header") as Texture2D;
             headerStyle.border = new RectOffset(20, 20, 20, 20);
             headerStyle.padding = new RectOffset(24, 24, 16, 16);
+
+            textFieldStyle = EditorStyles.textField;
+            textFieldStyle.wordWrap = true;
 
         }
 
@@ -192,13 +196,13 @@ namespace QuestSystem
             }
             else
             {
-                GUILayout.BeginHorizontal();
-                data.Title = GUILayout.TextField(data.Title != null ? data.Title : defaultTilte);
+                //GUILayout.BeginHorizontal();
+                data.Title = GUILayout.TextField(data.Title != null ? data.Title : defaultTilte, textFieldStyle);
                 if (GUILayout.Button("✓", GUILayout.Width(25)))
                 {
                     headerButtonPressed = false;
                 }
-                GUILayout.EndHorizontal();
+                //GUILayout.EndHorizontal();
             }
         }
 

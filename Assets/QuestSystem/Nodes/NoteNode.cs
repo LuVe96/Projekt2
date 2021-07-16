@@ -20,8 +20,6 @@ namespace QuestSystem
             drawHeader = false;
         }
 
-        GUIStyle textFieldStyle;
-
         public NoteNodeData NoteNodeData { get => (NoteNodeData)Questdata; set { } }
 
         protected override void SetupSegments(OnClickNodePortDelegate OnClickNodePort, List<KeyValuePair<SegmentType, PortSegment>> segments)
@@ -35,9 +33,6 @@ namespace QuestSystem
 
         protected override GUIStyle UseNodeStyle()
         {
-
-            textFieldStyle = EditorStyles.textField;
-            textFieldStyle.wordWrap = true;
 
             style = new GUIStyle();
             style.normal.background = Resources.Load("node_gray") as Texture2D;

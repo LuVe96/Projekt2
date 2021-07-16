@@ -45,7 +45,7 @@ namespace QuestSystem
 #if UNITY_EDITOR
         protected override void DrawNodeHeader()
         {
-            GUILayout.Label("Invnetory Requirement", headerTextStyle);
+            GUILayout.Label("Inventory Requirement", headerTextStyle);
             requirementSegment.Begin();
             requirementSegment.End();
 
@@ -60,7 +60,12 @@ namespace QuestSystem
             EditorGUILayout.Space(10);
             InventoryRequirementData.Count = EditorGUILayout.IntField(InventoryRequirementData.Count, GUILayout.Width(25));
             GUILayout.EndHorizontal();
-            InventoryRequirementData.Exact = GUILayout.Toggle(InventoryRequirementData.Exact, "exact: ");
+
+            EditorGUILayout.Space(10);
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Exact: ", textStyle);
+            InventoryRequirementData.Exact = GUILayout.Toggle(InventoryRequirementData.Exact, "");
+            GUILayout.EndHorizontal();
 
         }
 #endif

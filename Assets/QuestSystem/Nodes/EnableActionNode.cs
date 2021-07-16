@@ -53,8 +53,11 @@ namespace QuestSystem
             GUILayout.Label("GameObject:", textStyle);
             EnableActionData.GObject = (GameObject)EditorGUILayout.ObjectField(EnableActionData.GObject, typeof(GameObject), true);
 
+            EditorGUILayout.Space(10);
+            GUILayout.BeginHorizontal();
             GUILayout.Label("Disable:", textStyle);
-            EnableActionData.Disable = EditorGUILayout.Toggle(EnableActionData.Disable);
+            EnableActionData.Disable = GUILayout.Toggle(EnableActionData.Disable, "");
+            GUILayout.EndHorizontal();
         }
 #endif
     }

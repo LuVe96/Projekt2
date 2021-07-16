@@ -69,6 +69,7 @@ namespace QuestSystem
                 selectedVariable = variables[varIndex];
                 Data.VariableName = selectedVariable.Title;
 
+                EditorGUILayout.Space(10);
                 GUILayout.Label("Value:", textStyle);
                 if (selectedVariable != null)
                 {          

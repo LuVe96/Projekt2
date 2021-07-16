@@ -53,6 +53,7 @@ namespace QuestSystem
             GUILayout.Label("Action:", textStyle);
             InventoryActionData.InventoryAction = (InventorySelectionType)EditorGUILayout.EnumPopup(InventoryActionData.InventoryAction);
 
+            EditorGUILayout.Space(10);
             GUILayout.Label("Item:", textStyle);
             GUILayout.BeginHorizontal();
             InventoryActionData.LootItem = (LootItem)EditorGUILayout.ObjectField(InventoryActionData.LootItem, typeof(LootItem), false);
