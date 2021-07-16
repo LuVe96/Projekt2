@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -25,6 +26,53 @@ namespace QuestSystem
         {
             return questVariableTemplates;
         }
+
+        internal string GetCalculatedValueForVariable(string title, string value, VariableSetterType setterType, int steps)
+        {
+            QuestVariableTemplate variable = questVariableTemplates.Find((v) => v.Title == title);
+
+
+           int curIndex = variable.Datas.IndexOf(value != null ? value : variable.InitialValue);
+
+            if (setterType == VariableSetterType.increaseSteps)
+            {
+                int i = curIndex - steps;
+                return variable.Datas[i < 0 ? 0 : i];
+
+            } else if  (setterType == VariableSetterType.decreaseSteps)
+            {
+                int i = curIndex + steps;
+                return variable.Datas[i >= variable.Datas.Count ? (variable.Datas.Count -1) : i];
+            }
+
+            return null;
+        }
+
+        internal bool CheckVariableValue(string title, string requiredValue, VariableGetterType getterType, string currentValue)
+        {
+            QuestVariableTemplate variable = questVariableTemplates.Find((v) => v.Title == title);
+
+
+            int curIndex = variable.Datas.IndexOf(currentValue != null ? currentValue : variable.InitialValue);
+            int requiredIndex = variable.Datas.IndexOf(requiredValue);
+
+            if (getterType == VariableGetterType.heigherThan)
+            { 
+                return curIndex < requiredIndex;
+
+            }
+            else if (getterType == VariableGetterType.lowerThan)
+            {
+                return curIndex > requiredIndex;
+            }
+
+            return false;
+        }
+
+        internal string GetInitalValueOf(string title)
+        {
+            return questVariableTemplates.Find((v) => v.Title == title).InitialValue;
+        }
     }
 
     [System.Serializable]
@@ -33,6 +81,7 @@ namespace QuestSystem
         [SerializeField] string title = "";
         [SerializeField] QuestVariableType type = QuestVariableType.Bool;
         [SerializeField] List<string> datas = new List<string>();
+        [SerializeField] string initialValue = "";
 
         public QuestVariableTemplate()
         { 
@@ -49,7 +98,7 @@ namespace QuestSystem
                         this.datas.Add("True");
                         this.datas.Add("False");
                         break;
-                    case QuestVariableType.Enum:
+                    case QuestVariableType.State:
                         break;
                     default:
                         break;
@@ -58,6 +107,8 @@ namespace QuestSystem
                 type = value;
             }
         }
+
+        public string InitialValue { get => initialValue; set => initialValue = value; }
 
         //public QuestVariableTemplate(string title, QuestVariableType type, List<string> datas = null)
         //{
@@ -83,7 +134,7 @@ namespace QuestSystem
 
     public enum QuestVariableType
     {
-        Bool, Enum
+        Bool, State
     }
 
 }

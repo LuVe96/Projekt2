@@ -29,12 +29,15 @@ namespace QuestSystem
         private List<QuestVariable> questVariables = new List<QuestVariable>();
         Dictionary<string, QuestVariable> questVariablesLookUp = new Dictionary<string, QuestVariable>();
 
+        QuestVariableObject questVariableResource;
+
 
 
         // Start is called before the first frame update
         void Start()
         {
             quests = FindObjectsOfType<Quest.Quest>();
+            questVariableResource = Resources.Load("QuestVariables") as QuestVariableObject;
 
             questsLookUp.Clear();
             foreach (Quest.Quest quest in quests)
@@ -45,15 +48,28 @@ namespace QuestSystem
             }
         }
 
-        public void setQuestVariable(string title, string value)
+        public void SetQuestVariable(string title, string value, VariableSetterType setterType, int steps)
         {
 
             if (questVariablesLookUp.ContainsKey(title))
             {
-                questVariablesLookUp[title].value = value;
+                if(setterType == VariableSetterType.setTo)
+                {
+                    questVariablesLookUp[title].value = value;
+                } else
+                {
+                    questVariablesLookUp[title].value = questVariableResource.GetCalculatedValueForVariable(title, questVariablesLookUp[title].value, setterType, steps);
+                }
+
             }else
             {
-                questVariables.Add(new QuestVariable(title, value));
+                if( setterType == VariableSetterType.setTo)
+                {
+                    questVariables.Add(new QuestVariable(title, value));
+                } else
+                {
+                    questVariables.Add(new QuestVariable(title, questVariableResource.GetCalculatedValueForVariable(title, null, setterType, steps)));
+                }
             }
 
             questVariablesLookUp.Clear();
@@ -65,15 +81,31 @@ namespace QuestSystem
 
         }
 
-        public string getQuestVariableValue(string title)
+        public bool CheckQuestVariableValue(string title, string requiredValue, VariableGetterType getterType)
         {
             if (questVariablesLookUp.ContainsKey(title))
             {
-                return questVariablesLookUp[title].value;
+                if ( getterType == VariableGetterType.equals)
+                {
+                    return questVariablesLookUp[title].value == requiredValue;
+                }
+                else
+                {
+                    return questVariableResource.CheckVariableValue(title, requiredValue, getterType, questVariablesLookUp[title].value);
+                }
+
             }
             else
             {
-                return "False";
+                if (getterType == VariableGetterType.equals)
+                {
+                    return questVariableResource.GetInitalValueOf(title) == requiredValue;
+                }
+                else
+                {
+                    return questVariableResource.CheckVariableValue(title, requiredValue, getterType, null);
+                }
+
             }  
         }
 

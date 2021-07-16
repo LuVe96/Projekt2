@@ -1,4 +1,5 @@
 ﻿using QuestSystem.Quest;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace QuestSystem
         {
         }
 
-        public VariableRequireData VariableRequireData { get => (VariableRequireData)Questdata; set { } }
+        public VariableRequireData Data { get => (VariableRequireData)Questdata; set { } }
 
         PortSegment requirementSegment;
         QuestVariableTemplate selectedVariable = null;
@@ -54,7 +55,7 @@ namespace QuestSystem
 
             QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
             List<QuestVariableTemplate> variables = qvo.GetAllQuestVariableTemplates();
-            int varIndex = variables.IndexOf(variables.Find(v => v.Title == VariableRequireData.VariableName));
+            int varIndex = variables.IndexOf(variables.Find(v => v.Title == Data.VariableName));
 
             if (variables.Count <= 0)
             {
@@ -63,25 +64,52 @@ namespace QuestSystem
             else 
             {
                 GUILayout.Label("Check Variable:", textStyle);
-                GUILayout.BeginHorizontal();
+
                 varIndex = EditorGUILayout.Popup(varIndex != -1 ? varIndex : 0, variables.Select(x => x.Title).ToArray());
                 selectedVariable = variables[varIndex];
-                VariableRequireData.VariableName = selectedVariable.Title;
+                Data.VariableName = selectedVariable.Title;
 
+                GUILayout.Label("Value:", textStyle);
                 if (selectedVariable != null)
-                {
-                    selectedOptionIndex = selectedVariable.Datas.IndexOf(VariableRequireData.RequiredVarialbeValue);
-                    selectedOptionIndex = EditorGUILayout.Popup(selectedOptionIndex != -1 ? selectedOptionIndex : 0, selectedVariable.Datas.ToArray());
-                    VariableRequireData.RequiredVarialbeValue = selectedVariable.Datas[selectedOptionIndex];
-                    selectedOptionIndex = 0;
+                {          
+
+                    if (selectedVariable.Type == QuestVariableType.Bool)
+                    {
+                        DrawVariableValueSelection();
+                        Data.GetterType = VariableGetterType.equals;
+                    }
+                    else if (selectedVariable.Type == QuestVariableType.State)
+                    {
+                        DrawVariableEnumArea();
+                    }
                 }
 
             }
+
+
+        }
+
+        private void DrawVariableValueSelection()
+        {
+            selectedOptionIndex = selectedVariable.Datas.IndexOf(Data.RequiredVarialbeValue);
+            selectedOptionIndex = EditorGUILayout.Popup(selectedOptionIndex != -1 ? selectedOptionIndex : 0, selectedVariable.Datas.ToArray());
+            Data.RequiredVarialbeValue = selectedVariable.Datas[selectedOptionIndex];
+            selectedOptionIndex = 0;
+        }
+
+        private void DrawVariableEnumArea()
+        {
+            GUILayout.BeginHorizontal();
+            Data.GetterType = (VariableGetterType)EditorGUILayout.EnumPopup(Data.GetterType);
+            DrawVariableValueSelection();
 
             GUILayout.EndHorizontal();
         }
 #endif
 
     }
-
+    public enum VariableGetterType
+    {
+        equals, heigherThan, lowerThan
+    }
 }

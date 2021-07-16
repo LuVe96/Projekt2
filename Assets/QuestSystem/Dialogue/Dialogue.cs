@@ -112,7 +112,7 @@ namespace QuestSystem.Dialogue
                     if (n.IsUsingCondition)
                     {
                         // Check Condition
-                        if (QuestSystemManager.Instance.getQuestVariableValue(n.SelectedVariable.Title) == n.RequiredVarialbeValue)
+                        if (QuestSystemManager.Instance.CheckQuestVariableValue(n.SelectedVariable.Title, n.RequiredVarialbeValue, VariableGetterType.equals))
                         {
                             result.Add(n);
                         }

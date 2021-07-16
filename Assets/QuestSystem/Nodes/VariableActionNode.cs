@@ -19,7 +19,7 @@ namespace QuestSystem
         {
         }
 
-        public VariableActionData VariableActionData { get => (VariableActionData)Questdata; set { } }
+        public VariableActionData Data { get => (VariableActionData)Questdata; set { } }
 
         PortSegment actionSegment;
         QuestVariableTemplate selectedVariable = null;
@@ -54,7 +54,7 @@ namespace QuestSystem
 
             QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
             List<QuestVariableTemplate> variables = qvo.GetAllQuestVariableTemplates();
-            int varIndex = variables.IndexOf(variables.Find(v => v.Title == VariableActionData.VariableName));
+            int varIndex = variables.IndexOf(variables.Find(v => v.Title == Data.VariableName));
 
             if(variables.Count <= 0)
             {
@@ -63,24 +63,62 @@ namespace QuestSystem
             else 
             {
                 GUILayout.Label("Set Variable:", textStyle);
-                GUILayout.BeginHorizontal();
+                //GUILayout.BeginHorizontal();
                 varIndex = EditorGUILayout.Popup(varIndex != -1 ? varIndex : 0, variables.Select(x => x.Title).ToArray());
                 selectedVariable = variables[varIndex];
-                VariableActionData.VariableName = selectedVariable.Title;
+                Data.VariableName = selectedVariable.Title;
 
+                GUILayout.Label("Value:", textStyle);
                 if (selectedVariable != null)
                 {
-                    selectedOptionIndex = selectedVariable.Datas.IndexOf(VariableActionData.VariableValue);
-                    selectedOptionIndex = EditorGUILayout.Popup(selectedOptionIndex != -1 ? selectedOptionIndex : 0, selectedVariable.Datas.ToArray());
-                    VariableActionData.VariableValue = selectedVariable.Datas[selectedOptionIndex];
-                    selectedOptionIndex = 0;
+                    if(selectedVariable.Type == QuestVariableType.Bool)
+                    {
+                        DrawVariableValueSelection();
+                        Data.SetterType = VariableSetterType.setTo;
+                    }
+                    else if( selectedVariable.Type == QuestVariableType.State)
+                    {
+                        DrawVariableEnumArea();
+                    }
+                   
                 }
 
+                //GUILayout.EndHorizontal();
             }
+
+        }
+
+        private void DrawVariableEnumArea()
+        {
+            GUILayout.BeginHorizontal();
+            Data.SetterType = (VariableSetterType) EditorGUILayout.EnumPopup(Data.SetterType);
+
+            if(Data.SetterType == VariableSetterType.setTo)
+            {
+                DrawVariableValueSelection();
+            }
+            else
+            {
+                Data.Steps = EditorGUILayout.IntField(Data.Steps);
+            }
+
 
             GUILayout.EndHorizontal();
         }
+
+        private void DrawVariableValueSelection()
+        {
+            selectedOptionIndex = selectedVariable.Datas.IndexOf(Data.VariableValue);
+            selectedOptionIndex = EditorGUILayout.Popup(selectedOptionIndex != -1 ? selectedOptionIndex : 0, selectedVariable.Datas.ToArray());
+            Data.VariableValue = selectedVariable.Datas[selectedOptionIndex];
+            selectedOptionIndex = 0;
+        }
 #endif
+    }
+
+    public enum VariableSetterType
+    {
+        setTo, increaseSteps, decreaseSteps
     }
 
 }
