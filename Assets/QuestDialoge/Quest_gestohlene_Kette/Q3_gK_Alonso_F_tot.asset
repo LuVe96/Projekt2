@@ -36,6 +36,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -56,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: c7535f6d-e701-4ab1-a37a-229e3f810b45
   isPlayerSpeaking: 1
-  text: Ich habe ihn zur strecke gebracht er liegt tot in den Bergen.
+  text: Ich habe ihn zur Strecke gebracht, er liegt tot in den Bergen.
   children:
   - 2f8635e8-c51c-4048-8aa5-52fce809c68d
   rect:
@@ -77,6 +78,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -117,6 +119,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -157,6 +160,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -218,6 +222,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -259,6 +264,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0

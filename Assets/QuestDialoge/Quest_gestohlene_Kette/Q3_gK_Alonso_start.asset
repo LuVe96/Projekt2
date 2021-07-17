@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 1341d568-cc53-4d88-a4c2-be61926bf797
   isPlayerSpeaking: 1
-  text: "Ich denke das ist nichsts f\xFCr mich. [Ende]"
+  text: "Ich denke das ist nichs f\xFCr mich."
   children: []
   rect:
     serializedVersion: 2
@@ -34,6 +34,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -116,6 +118,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -152,13 +155,16 @@ MonoBehaviour:
     width: 160
     height: 18
   isEndPoint: 1
-  endPointDescription: hilft nciht
+  endPointDescription: hilft nicht
   selectedVariable:
-    title: 
+    title: Is_new
     type: 0
-    datas: []
+    datas:
+    - True
+    - False
+    initialValue: 
   selectedOptionIndex: 0
-  requiredVarialbeValue: 
+  requiredVarialbeValue: True
   isUsingCondition: 0
   checkInventory: 0
   lootItem: {fileID: 0}
@@ -177,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 2b0ea0f9-e628-4a20-8e34-3f0d196a6c74
   isPlayerSpeaking: 1
-  text: Dann werde ich mich auf dies Suche nach dem Dieb machen. [Ende]
+  text: Dann werde ich mich auf dies Suche nach dem Dieb machen.
   children: []
   rect:
     serializedVersion: 2
@@ -197,6 +203,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -262,6 +269,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -307,6 +315,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -327,11 +336,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 015a699e-21a9-4e11-90ef-5b2c1369249c
   isPlayerSpeaking: 0
-  text: "Ich vermute, dass er sich irgendwo im N\xF6rdlichen teil des Landes befindet.
+  text: "Ich vermute, dass er sich irgendwo im N\xF6rdlichen Teil des Landes befindet.
     Dort kennt er sich aus. Vll findest du ihn dort."
   children:
-  - 1341d568-cc53-4d88-a4c2-be61926bf797
   - 2b0ea0f9-e628-4a20-8e34-3f0d196a6c74
+  - 1341d568-cc53-4d88-a4c2-be61926bf797
   rect:
     serializedVersion: 2
     x: 1336
@@ -350,6 +359,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -391,6 +401,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
@@ -433,6 +444,7 @@ MonoBehaviour:
     title: 
     type: 0
     datas: []
+    initialValue: 
   selectedOptionIndex: 0
   requiredVarialbeValue: 
   isUsingCondition: 0
