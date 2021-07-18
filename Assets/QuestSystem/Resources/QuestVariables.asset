@@ -18,7 +18,7 @@ MonoBehaviour:
     datas:
     - True
     - False
-    initialValue: 
+    initialValue: False
   - title: Test_enum
     type: 1
     datas:
@@ -33,22 +33,22 @@ MonoBehaviour:
     datas:
     - True
     - False
-    initialValue: 
+    initialValue: False
   - title: Bruno_is_in_Logos
     type: 0
     datas:
     - True
     - False
-    initialValue: 
+    initialValue: False
   - title: Q3_Ferdiand_gets_killed
     type: 0
     datas:
     - True
     - False
-    initialValue: 
+    initialValue: False
   - title: Q3_Ferdinand_and_marie
     type: 0
     datas:
     - True
     - False
-    initialValue: 
+    initialValue: False

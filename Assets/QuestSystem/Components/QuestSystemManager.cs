@@ -39,6 +39,7 @@ namespace QuestSystem
             quests = FindObjectsOfType<Quest.Quest>();
             questVariableResource = Resources.Load("QuestVariables") as QuestVariableObject;
 
+
             questsLookUp.Clear();
             foreach (Quest.Quest quest in quests)
             {

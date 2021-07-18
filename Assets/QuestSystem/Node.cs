@@ -102,8 +102,10 @@ namespace QuestSystem
             headerStyle.border = new RectOffset(20, 20, 20, 20);
             headerStyle.padding = new RectOffset(24, 24, 16, 16);
 
+#if UNITY_EDITOR
             textFieldStyle = EditorStyles.textField;
             textFieldStyle.wordWrap = true;
+#endif
 
         }
 
