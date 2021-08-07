@@ -253,6 +253,8 @@ namespace QuestSystem.Quest
             }
         }
 
+        int dataListIndex = 0;
+
         private void DrawVariableArea()
         {
             float height = EditorGUILayout.BeginVertical().height;
@@ -276,9 +278,21 @@ namespace QuestSystem.Quest
 
             if (newQuestVaraible != null)
             {
-                GUILayout.BeginHorizontal(GUILayout.Width(300));
+                GUILayout.BeginHorizontal(GUILayout.Width(400));
                 newQuestVaraible.Title = EditorGUILayout.TextField(newQuestVaraible.Title);
                 newQuestVaraible.Type = (QuestVariableType)EditorGUILayout.EnumPopup(newQuestVaraible.Type);
+
+                string[] datalist = newQuestVaraible.Datas.ToArray();
+                dataListIndex = datalist.ToList().IndexOf(newQuestVaraible.InitialValue);
+                if (datalist.Length > 0)
+                {
+                    GUILayout.Space(10);
+                    EditorGUILayout.LabelField("Initial: ", GUILayout.Width(38) );
+                    dataListIndex = EditorGUILayout.Popup(dataListIndex >= 0 ? dataListIndex : 0, datalist);
+                    newQuestVaraible.InitialValue = datalist[dataListIndex];
+                }
+
+
                 if (GUILayout.Button("✓", GUILayout.Width(30)))
                 {
                     QuestVariableObject qvo = Resources.Load("QuestVariables") as QuestVariableObject;
